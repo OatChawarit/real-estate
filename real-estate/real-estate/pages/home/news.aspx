@@ -18,7 +18,7 @@
         <!-- #include virtual ="../include/topbar.html" -->
 
         <!-- เนื้อหา -->
-        <!-- BREADCRUMB AREA START -->
+        <!-- News -->
         <div class="ltn__breadcrumb-area text-left bg-overlay-white-30 bg-image " data-bs-bg="../../vendor/img/bg/8.jpg">
             <div class="container">
                 <div class="row">
@@ -36,9 +36,9 @@
                 </div>
             </div>
         </div>
-        <!-- BREADCRUMB AREA END -->
+        <!-- News -->
 
-        <!-- BLOG AREA START -->
+        <!-- Blog News -->
         <div class="ltn__blog-area ltn__blog-item-3-normal mb-100">
             <div class="container">
                 <div class="row">
@@ -335,7 +335,7 @@
 
             </div>
         </div>
-        <!-- BLOG AREA END -->
+        <!-- Blog News -->
         <!-- เนื้อหา -->
 
         <!-- นำเข้าส่วนท้าย -->
