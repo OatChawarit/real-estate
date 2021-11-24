@@ -1,4 +1,4 @@
-﻿<%@ Page Title="About" Language="C#" AutoEventWireup="true" CodeBehind="about.aspx.cs" Inherits="real_estate.About" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="draft.aspx.cs" Inherits="real_estate.pages.home.draft" %>
 
 <!DOCTYPE html>
 
