@@ -19,7 +19,7 @@
 
         <!-- เนื้อหา -->
         <!-- News -->
-        <div class="ltn__breadcrumb-area text-left bg-overlay-white-30 bg-image " data-bs-bg="../../vendor/img/bg/8.jpg">
+        <div class="ltn__breadcrumb-area text-left bg-overlay-white-30 bg-image " data-bs-bg="../../vendor/img/bg/24.jpg">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
@@ -47,18 +47,18 @@
                     <div class="col-lg-4 col-sm-6 col-12">
                         <div class="ltn__blog-item ltn__blog-item-3">
                             <div class="ltn__blog-img">
-                                <a href="blog-details.html">
+                                <a href="news-detail.aspx">
                                     <img src="../../vendor/img/blog/1.jpg" alt="#"></a>
                             </div>
                             <div class="ltn__blog-brief">
                                 <div class="ltn__blog-meta">
                                     <ul>
                                         <li class="ltn__blog-author">
-                                            <a href="#"><i class="far fa-user"></i>ผู้เขียน: Admin</a>
+                                            <ul><li class="ltn__blog-author"><a href="javascript:void(0)"><i class="far fa-user"></i>ผู้เขียน: Admin</a>
                                         </li>
                                     </ul>
                                 </div>
-                                <h3 class="ltn__blog-title"><a href="blog-details.html">Common Engine Oil Problems and Solutions</a></h3>
+                                <h3 class="ltn__blog-title"><a href="news-detail.aspx">Common Engine Oil Problems and Solutions</a></h3>
                                 <div class="ltn__blog-meta-btn">
                                     <div class="ltn__blog-meta">
                                         <ul>
@@ -66,7 +66,7 @@
                                         </ul>
                                     </div>
                                     <div class="ltn__blog-btn">
-                                        <a href="blog-details.html">อ่านเพิ่มเติม</a>
+                                        <a href="news-detail.aspx">อ่านเพิ่มเติม</a>
                                     </div>
                                 </div>
                             </div>
@@ -77,18 +77,18 @@
                     <div class="col-lg-4 col-sm-6 col-12">
                         <div class="ltn__blog-item ltn__blog-item-3">
                             <div class="ltn__blog-img">
-                                <a href="blog-details.html">
+                                <a href="news-detail.aspx">
                                     <img src="../../vendor/img/blog/2.jpg" alt="#"></a>
                             </div>
                             <div class="ltn__blog-brief">
                                 <div class="ltn__blog-meta">
                                     <ul>
                                         <li class="ltn__blog-author">
-                                            <a href="#"><i class="far fa-user"></i>ผู้เขียน: Admin</a>
+                                            <ul><li class="ltn__blog-author"><a href="javascript:void(0)"><i class="far fa-user"></i>ผู้เขียน: Admin</a>
                                         </li>
                                     </ul>
                                 </div>
-                                <h3 class="ltn__blog-title"><a href="blog-details.html">How and when to replace brake rotors</a></h3>
+                                <h3 class="ltn__blog-title"><a href="news-detail.aspx">How and when to replace brake rotors</a></h3>
                                 <div class="ltn__blog-meta-btn">
                                     <div class="ltn__blog-meta">
                                         <ul>
@@ -96,7 +96,7 @@
                                         </ul>
                                     </div>
                                     <div class="ltn__blog-btn">
-                                        <a href="blog-details.html">อ่านเพิ่มเติม</a>
+                                        <a href="news-detail.aspx">อ่านเพิ่มเติม</a>
                                     </div>
                                 </div>
                             </div>
@@ -107,18 +107,18 @@
                     <div class="col-lg-4 col-sm-6 col-12">
                         <div class="ltn__blog-item ltn__blog-item-3">
                             <div class="ltn__blog-img">
-                                <a href="blog-details.html">
+                                <a href="news-detail.aspx">
                                     <img src="../../vendor/img/blog/3.jpg" alt="#"></a>
                             </div>
                             <div class="ltn__blog-brief">
                                 <div class="ltn__blog-meta">
                                     <ul>
                                         <li class="ltn__blog-author">
-                                            <a href="#"><i class="far fa-user"></i>ผู้เขียน: Admin</a>
+                                            <ul><li class="ltn__blog-author"><a href="javascript:void(0)"><i class="far fa-user"></i>ผู้เขียน: Admin</a>
                                         </li>
                                     </ul>
                                 </div>
-                                <h3 class="ltn__blog-title"><a href="blog-details.html">Electric Car Maintenance, Servicing & Repairs</a></h3>
+                                <h3 class="ltn__blog-title"><a href="news-detail.aspx">Electric Car Maintenance, Servicing & Repairs</a></h3>
                                 <div class="ltn__blog-meta-btn">
                                     <div class="ltn__blog-meta">
                                         <ul>
@@ -126,7 +126,7 @@
                                         </ul>
                                     </div>
                                     <div class="ltn__blog-btn">
-                                        <a href="blog-details.html">อ่านเพิ่มเติม</a>
+                                        <a href="news-detail.aspx">อ่านเพิ่มเติม</a>
                                     </div>
                                 </div>
                             </div>
@@ -137,18 +137,18 @@
                     <div class="col-lg-4 col-sm-6 col-12">
                         <div class="ltn__blog-item ltn__blog-item-3">
                             <div class="ltn__blog-img">
-                                <a href="blog-details.html">
+                                <a href="news-detail.aspx">
                                     <img src="../../vendor/img/blog/4.jpg" alt="#"></a>
                             </div>
                             <div class="ltn__blog-brief">
                                 <div class="ltn__blog-meta">
                                     <ul>
                                         <li class="ltn__blog-author">
-                                            <a href="#"><i class="far fa-user"></i>ผู้เขียน: Admin</a>
+                                            <ul><li class="ltn__blog-author"><a href="javascript:void(0)"><i class="far fa-user"></i>ผู้เขียน: Admin</a>
                                         </li>
                                     </ul>
                                 </div>
-                                <h3 class="ltn__blog-title"><a href="blog-details.html">How to Prepare for your First Track Day!</a></h3>
+                                <h3 class="ltn__blog-title"><a href="news-detail.aspx">How to Prepare for your First Track Day!</a></h3>
                                 <div class="ltn__blog-meta-btn">
                                     <div class="ltn__blog-meta">
                                         <ul>
@@ -156,7 +156,7 @@
                                         </ul>
                                     </div>
                                     <div class="ltn__blog-btn">
-                                        <a href="blog-details.html">อ่านเพิ่มเติม</a>
+                                        <a href="news-detail.aspx">อ่านเพิ่มเติม</a>
                                     </div>
                                 </div>
                             </div>
@@ -167,18 +167,18 @@
                     <div class="col-lg-4 col-sm-6 col-12">
                         <div class="ltn__blog-item ltn__blog-item-3">
                             <div class="ltn__blog-img">
-                                <a href="blog-details.html">
+                                <a href="news-detail.aspx">
                                     <img src="../../vendor/img/blog/5.jpg" alt="#"></a>
                             </div>
                             <div class="ltn__blog-brief">
                                 <div class="ltn__blog-meta">
                                     <ul>
                                         <li class="ltn__blog-author">
-                                            <a href="#"><i class="far fa-user"></i>ผู้เขียน: Admin</a>
+                                            <ul><li class="ltn__blog-author"><a href="javascript:void(0)"><i class="far fa-user"></i>ผู้เขียน: Admin</a>
                                         </li>
                                     </ul>
                                 </div>
-                                <h3 class="ltn__blog-title"><a href="blog-details.html">How to: Make Your Tires Last Longer</a></h3>
+                                <h3 class="ltn__blog-title"><a href="news-detail.aspx">How to: Make Your Tires Last Longer</a></h3>
                                 <div class="ltn__blog-meta-btn">
                                     <div class="ltn__blog-meta">
                                         <ul>
@@ -186,7 +186,7 @@
                                         </ul>
                                     </div>
                                     <div class="ltn__blog-btn">
-                                        <a href="blog-details.html">อ่านเพิ่มเติม</a>
+                                        <a href="news-detail.aspx">อ่านเพิ่มเติม</a>
                                     </div>
                                 </div>
                             </div>
@@ -197,18 +197,18 @@
                     <div class="col-lg-4 col-sm-6 col-12">
                         <div class="ltn__blog-item ltn__blog-item-3">
                             <div class="ltn__blog-img">
-                                <a href="blog-details.html">
+                                <a href="news-detail.aspx">
                                     <img src="../../vendor/img/blog/6.jpg" alt="#"></a>
                             </div>
                             <div class="ltn__blog-brief">
                                 <div class="ltn__blog-meta">
                                     <ul>
                                         <li class="ltn__blog-author">
-                                            <a href="#"><i class="far fa-user"></i>ผู้เขียน: Admin</a>
+                                            <ul><li class="ltn__blog-author"><a href="javascript:void(0)"><i class="far fa-user"></i>ผู้เขียน: Admin</a>
                                         </li>
                                     </ul>
                                 </div>
-                                <h3 class="ltn__blog-title"><a href="blog-details.html">Common Engine Oil Problems and Solutions</a></h3>
+                                <h3 class="ltn__blog-title"><a href="news-detail.aspx">Common Engine Oil Problems and Solutions</a></h3>
                                 <div class="ltn__blog-meta-btn">
                                     <div class="ltn__blog-meta">
                                         <ul>
@@ -216,7 +216,7 @@
                                         </ul>
                                     </div>
                                     <div class="ltn__blog-btn">
-                                        <a href="blog-details.html">อ่านเพิ่มเติม</a>
+                                        <a href="news-detail.aspx">อ่านเพิ่มเติม</a>
                                     </div>
                                 </div>
                             </div>
@@ -227,18 +227,18 @@
                     <div class="col-lg-4 col-sm-6 col-12">
                         <div class="ltn__blog-item ltn__blog-item-3">
                             <div class="ltn__blog-img">
-                                <a href="blog-details.html">
+                                <a href="news-detail.aspx">
                                     <img src="../../vendor/img/blog/7.jpg" alt="#"></a>
                             </div>
                             <div class="ltn__blog-brief">
                                 <div class="ltn__blog-meta">
                                     <ul>
                                         <li class="ltn__blog-author">
-                                            <a href="#"><i class="far fa-user"></i>ผู้เขียน: Admin</a>
+                                            <ul><li class="ltn__blog-author"><a href="javascript:void(0)"><i class="far fa-user"></i>ผู้เขียน: Admin</a>
                                         </li>
                                     </ul>
                                 </div>
-                                <h3 class="ltn__blog-title"><a href="blog-details.html">How and when to replace brake rotors</a></h3>
+                                <h3 class="ltn__blog-title"><a href="news-detail.aspx">How and when to replace brake rotors</a></h3>
                                 <div class="ltn__blog-meta-btn">
                                     <div class="ltn__blog-meta">
                                         <ul>
@@ -246,7 +246,7 @@
                                         </ul>
                                     </div>
                                     <div class="ltn__blog-btn">
-                                        <a href="blog-details.html">อ่านเพิ่มเติม</a>
+                                        <a href="news-detail.aspx">อ่านเพิ่มเติม</a>
                                     </div>
                                 </div>
                             </div>
@@ -257,18 +257,18 @@
                     <div class="col-lg-4 col-sm-6 col-12">
                         <div class="ltn__blog-item ltn__blog-item-3">
                             <div class="ltn__blog-img">
-                                <a href="blog-details.html">
+                                <a href="news-detail.aspx">
                                     <img src="../../vendor/img/blog/8.jpg" alt="#"></a>
                             </div>
                             <div class="ltn__blog-brief">
                                 <div class="ltn__blog-meta">
                                     <ul>
                                         <li class="ltn__blog-author">
-                                            <a href="#"><i class="far fa-user"></i>ผู้เขียน: Admin</a>
+                                            <ul><li class="ltn__blog-author"><a href="javascript:void(0)"><i class="far fa-user"></i>ผู้เขียน: Admin</a>
                                         </li>
                                     </ul>
                                 </div>
-                                <h3 class="ltn__blog-title"><a href="blog-details.html">Electric Car Maintenance, Servicing & Repairs</a></h3>
+                                <h3 class="ltn__blog-title"><a href="news-detail.aspx">Electric Car Maintenance, Servicing & Repairs</a></h3>
                                 <div class="ltn__blog-meta-btn">
                                     <div class="ltn__blog-meta">
                                         <ul>
@@ -276,7 +276,7 @@
                                         </ul>
                                     </div>
                                     <div class="ltn__blog-btn">
-                                        <a href="blog-details.html">อ่านเพิ่มเติม</a>
+                                        <a href="news-detail.aspx">อ่านเพิ่มเติม</a>
                                     </div>
                                 </div>
                             </div>
@@ -287,18 +287,18 @@
                     <div class="col-lg-4 col-sm-6 col-12">
                         <div class="ltn__blog-item ltn__blog-item-3">
                             <div class="ltn__blog-img">
-                                <a href="blog-details.html">
+                                <a href="news-detail.aspx">
                                     <img src="../../vendor/img/blog/2.jpg" alt="#"></a>
                             </div>
                             <div class="ltn__blog-brief">
                                 <div class="ltn__blog-meta">
                                     <ul>
                                         <li class="ltn__blog-author">
-                                            <a href="#"><i class="far fa-user"></i>ผู้เขียน: Admin</a>
+                                            <ul><li class="ltn__blog-author"><a href="javascript:void(0)"><i class="far fa-user"></i>ผู้เขียน: Admin</a>
                                         </li>
                                     </ul>
                                 </div>
-                                <h3 class="ltn__blog-title"><a href="blog-details.html">How to: Make Your Tires Last Longer</a></h3>
+                                <h3 class="ltn__blog-title"><a href="news-detail.aspx">How to: Make Your Tires Last Longer</a></h3>
                                 <div class="ltn__blog-meta-btn">
                                     <div class="ltn__blog-meta">
                                         <ul>
@@ -306,7 +306,7 @@
                                         </ul>
                                     </div>
                                     <div class="ltn__blog-btn">
-                                        <a href="blog-details.html">อ่านเพิ่มเติม</a>
+                                        <a href="news-detail.aspx">อ่านเพิ่มเติม</a>
                                     </div>
                                 </div>
                             </div>

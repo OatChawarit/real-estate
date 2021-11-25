@@ -1,6 +1,5 @@
 ﻿/*
- * Add day  strDate as Date string 
- * @intNum as number of day
+ * @Function Help & Covert Etc.
  */
 
 
@@ -31,12 +30,6 @@ Date.prototype.addMonths = function (value) {
 };
 
 
-///////////////
-//var urlBackEndMeeconnect = "http://localhost:45072";
-var urlBackEndMeeconnect = "https://api02.meecapital.co.th";
-var tokenMeeconnect = "MEECAPSKDLFSSDFL@SLSLSO@!SLSADDDWWEEWREWDS252ASSEREWDSFSFSDFDSFS";
-var username = "";
-username = localStorage.getItem('username');
 function AddDay(strDate, intNum)
 {
 	sdate =  new Date(strDate);
@@ -170,35 +163,6 @@ function getObjectByKey(array, key, value, result) {
 var mydate = AddDay("2019-10-10", 90);
 mydate = dateFormat(mydate);
 //console.log(mydate);
-
-class MeeApi {
-    constructor(url) {
-        this.controller;
-        this.url ="http://localhost:4157/api/";
-        this.body;
-        this.header ="";
-        this.error;
-        this.result;
-        this.type ='GET';
-    }
-
-    send(res) {
-        let xmlhttp = new XMLHttpRequest();
-        let urlFull = this.url+this.controller;
-        xmlhttp.onreadystatechange = function () {
-            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                this.result = xmlhttp.responseText; //JSON.parse(xmlhttp.responseText);
-                res(this.result);
-                return this.result;
-            } else {
-                console.log('Request status : '+xmlhttp.status +' '+ xmlhttp.statusText);
-            }
-        };
-        xmlhttp.open(this.type, urlFull, true);
-        xmlhttp.setRequestHeader('tokens', 'abc');
-        xmlhttp.send();
-    }
-}
 
 
 

@@ -88,12 +88,12 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="input-item input-item-name ltn__custom-icon">
-                                            <input type="text" name="name" placeholder="ชื่อ - สกุล" />
+                                            <input type="text" id="conName" value="" placeholder="ชื่อ - สกุล" />
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="input-item input-item-email ltn__custom-icon">
-                                            <input type="email" name="email" placeholder="อีเมล" />
+                                            <input type="email" id="conEmail" value="" placeholder="อีเมล" />
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -109,12 +109,12 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="input-item input-item-phone ltn__custom-icon">
-                                            <input type="text" name="phone" placeholder="เบอร์โทร." />
+                                            <input type="text" id="conPhone" value="" placeholder="เบอร์โทร." />
                                         </div>
                                     </div>
                                 </div>
                                 <div class="input-item input-item-textarea ltn__custom-icon">
-                                    <textarea name="message" placeholder="ข้อความรายละเอียด"></textarea>
+                                    <textarea id="conDes" placeholder="ข้อความรายละเอียด"></textarea>
                                 </div>
                                 <div class="btn-wrapper mt-0">
                                     <button class="btn theme-btn-1 btn-effect-1 text-uppercase" type="submit">ส่งข้อมูล</button>

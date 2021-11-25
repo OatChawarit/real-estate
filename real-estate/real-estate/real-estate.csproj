@@ -163,9 +163,12 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="pages\home\draft.aspx" />
+    <Content Include="pages\home\login.aspx" />
     <Content Include="pages\home\main.aspx" />
     <Content Include="pages\home\news-detail.aspx" />
     <Content Include="pages\home\news.aspx" />
+    <Content Include="pages\register\register-sale.aspx" />
+    <Content Include="pages\register\register-user.aspx" />
     <Content Include="pages\include\footcontent.html" />
     <Content Include="pages\include\footer.html" />
     <Content Include="pages\include\header.html" />
@@ -2073,6 +2076,8 @@
     <Content Include="vendor\img\img-slide\4.jpg" />
     <Content Include="vendor\img\img-slide\9.png" />
     <Content Include="vendor\img\logo-2.png" />
+    <Content Include="vendor\img\Logo-DSC1.png" />
+    <Content Include="vendor\img\Logo-DSC2.png" />
     <Content Include="vendor\img\logo.png" />
     <Content Include="vendor\img\neighbour\1.jpg" />
     <Content Include="vendor\img\neighbour\2.jpg" />
@@ -2163,6 +2168,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="App_Start\RouteConfig2.cs" />
+    <Compile Include="ClassData\News.cs" />
     <Compile Include="ConnectDB\DBClass.cs" />
     <Compile Include="Controllers\main\newsController.cs" />
     <Compile Include="pages\home\about.aspx.cs">
@@ -2197,6 +2203,13 @@
     <Compile Include="pages\home\draft.aspx.designer.cs">
       <DependentUpon>draft.aspx</DependentUpon>
     </Compile>
+    <Compile Include="pages\home\login.aspx.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\home\login.aspx.designer.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
     <Compile Include="pages\home\main.aspx.cs">
       <DependentUpon>main.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2217,6 +2230,20 @@
     </Compile>
     <Compile Include="pages\home\news.aspx.designer.cs">
       <DependentUpon>news.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\register\register-sale.aspx.cs">
+      <DependentUpon>register-sale.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\register\register-sale.aspx.designer.cs">
+      <DependentUpon>register-sale.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\register\register-user.aspx.cs">
+      <DependentUpon>register-user.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\register\register-user.aspx.designer.cs">
+      <DependentUpon>register-user.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
@@ -2244,6 +2271,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Data\" />
+    <Folder Include="pages\admin\" />
+    <Folder Include="pages\sales\" />
     <Folder Include="Views\news\" />
   </ItemGroup>
   <ItemGroup>
