@@ -528,14 +528,16 @@
                         </div>
                     </div>
                 </div>
-                <div class="row  ltn__blog-slider-one-active slick-arrow-1 ltn__blog-item-3-normal">
+                <div id="news_blog" class="row  ltn__blog-slider-one-active slick-arrow-1 ltn__blog-item-3-normal">
 
                     <!-- Blog Item -->
-                    <div class="col-lg-12">
+                    <div class="col-lg-12 ">
                         <div class="ltn__blog-item ltn__blog-item-3">
                             <div class="ltn__blog-img">
                                 <a href="blog-details.html">
-                                    <img src="../../vendor/img/blog/1.jpg" alt="#" /></a>
+                                    <%--<img src="../../vendor/img/blog/1.jpg" alt="#" /></a>--%>
+                                    <img id="news_image1" src="../../../image/news/1.jpg" alt="#" /></a>
+
                             </div>
                             <div class="ltn__blog-brief">
                                 <div class="ltn__blog-meta">
@@ -561,11 +563,14 @@
                     </div>
 
                     <!-- Blog Item -->
-                    <div class="col-lg-12">
+                    <div class="col-lg-12 ">
                         <div class="ltn__blog-item ltn__blog-item-3">
                             <div class="ltn__blog-img">
                                 <a href="blog-details.html">
-                                    <img src="../../vendor/img/blog/2.jpg" alt="#" /></a>
+                                    <%--<img src="../../vendor/img/blog/2.jpg" alt="#" />--%>
+
+                                    <img src="../../../image/news/2.jpg" alt="#" />
+                                </a>
                             </div>
                             <div class="ltn__blog-brief">
                                 <div class="ltn__blog-meta">
@@ -591,7 +596,7 @@
                     </div>
 
                     <!-- Blog Item -->
-                    <div class="col-lg-12">
+                    <div class="col-lg-12 ">
                         <div class="ltn__blog-item ltn__blog-item-3">
                             <div class="ltn__blog-img">
                                 <a href="blog-details.html">
@@ -634,4 +639,46 @@
     <!-- นำเข้าส่วนท้าย JS -->
     <!-- #include virtual ="../include/footer.html" -->
 </body>
+    <script> 
+
+        $(document).ready(function () {
+
+
+            var jsonData = JSON.stringify({
+                
+            });
+
+
+
+
+            //เรียก api
+            $.get("../../api/news", { jsonData: jsonData, types: "listNews" })
+                .done(function (data) {
+
+                  
+
+                    let Meedata = JSON.parse(data);
+     
+
+                    let img_path = '../../../image/news/' + Meedata[1].news_image; 
+
+                    $('#news_image1').attr('src', img_path);
+
+                    console.log('Meedata', Meedata);
+
+
+
+
+
+
+                });
+           
+
+
+        });
+
+
+    </script>
+ 
+
 </html>

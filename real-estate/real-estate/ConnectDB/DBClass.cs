@@ -15,12 +15,12 @@ namespace real_estate.ConnectDB
         {
             if (app == "main")
             {
-                return new SqlConnection("Data Source=127.254.174.73;Initial Catalog=realestate" +
+                return new SqlConnection("Data Source=27.254.174.73;Initial Catalog=realestate" +
                     ";Persist Security Info=True;User ID=adminsa;Password=C0mm@nd@1234;Max Pool Size=36000;Enlist=true;");
             }
             else
             {
-                return new SqlConnection("Data Source=127.254.174.73;Initial Catalog=realestate" +
+                return new SqlConnection("Data Source=27.254.174.73;Initial Catalog=realestate" +
                    ";Persist Security Info=True;User ID=adminsa;Password=C0mm@nd@1234;Max Pool Size=36000;Enlist=true;");
             }
         }
