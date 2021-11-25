@@ -1,6 +1,5 @@
-﻿<%@ Page Title="About" Language="C#" AutoEventWireup="true" CodeBehind="about.aspx.cs" Inherits="real_estate.About" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="news-detail.aspx.cs" Inherits="real_estate.pages.home.news_detail" %>
 
-<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">

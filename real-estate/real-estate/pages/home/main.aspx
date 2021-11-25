@@ -1,6 +1,7 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="main.aspx.cs" Inherits="real_estate.pages.home._default" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="main.aspx.cs" Inherits="real_estate.pages.home._default" %>
 
 <!DOCTYPE html>
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <!-- Place favicon.png in the root directory -->
@@ -191,13 +192,12 @@
         <!--<div class="ltn__about-us-area pt-120 pb-90 ">
         </div> -->
 
-        <!-- พื้นหลังสีขาว  -->
+        <!-- พื้นหลังสีขาว โครงการ -->
         <div class="ltn__product-slider-area ltn__product-gutter pt-115 pb-90 plr--7">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="section-title-area ltn__section-title-2--- text-center">
-                            <h6 class="section-subtitle section-subtitle-2 ltn__secondary-color">โครงการอสังหาฯ</h6>
                             <h1 class="section-title">โครงการของเรา</h1>
                         </div>
                     </div>
@@ -450,7 +450,7 @@
 
                 </div>
             </div>
-        </div>
+            <div class="text-center"><h4><a class="section-subtitle section-subtitle-2 ltn__secondary-color" href="#">ดูโครงการอสังหาฯทั้งหมด</a></h4></div>        </div>
 
 
 
@@ -493,7 +493,7 @@
                             </div>
                             <div class="ltn__feature-info">
                                 <h3><a href="service-details.html">ลงขายบ้าน</a></h3>
-                                <p>ลงประกาศขายบ้าน ขายทาวน์โฮม คอนโดมีเนียม</p>
+                                <p>ลงประกาศขายบ้าน ทาวน์โฮม คอนโดมีเนียมกับเรา</p>
                                 <!-- <a class="ltn__service-btn" href="service-details.html">Find A Home <i class="flaticon-right-arrow"></i></a> -->
                             </div>
                         </div>
@@ -543,7 +543,7 @@
                                 <div class="ltn__blog-meta">
                                     <ul>
                                         <li class="ltn__blog-author">
-                                            <a href="#"><i class="far fa-user"></i>by: Admin</a>
+                                            <a href="#"><i class="far fa-user"></i>ผู้เขียน: Admin</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -555,7 +555,7 @@
                                         </ul>
                                     </div>
                                     <div class="ltn__blog-btn">
-                                        <a href="blog-details.html">Read more</a>
+                                        <a href="blog-details.html">อ่านเพิ่มเติม</a>
                                     </div>
                                 </div>
                             </div>
@@ -576,7 +576,7 @@
                                 <div class="ltn__blog-meta">
                                     <ul>
                                         <li class="ltn__blog-author">
-                                            <a href="#"><i class="far fa-user"></i>by: Admin</a>
+                                            <a href="#"><i class="far fa-user"></i>ผู้เขียน: Admin</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -588,7 +588,7 @@
                                         </ul>
                                     </div>
                                     <div class="ltn__blog-btn">
-                                        <a href="blog-details.html">Read more</a>
+                                        <a href="blog-details.html">อ่านเพิ่มเติม</a>
                                     </div>
                                 </div>
                             </div>
@@ -606,7 +606,7 @@
                                 <div class="ltn__blog-meta">
                                     <ul>
                                         <li class="ltn__blog-author">
-                                            <a href="#"><i class="far fa-user"></i>by: Admin</a>
+                                            <a href="#"><i class="far fa-user"></i>ผู้เขียน: Admin</a>
                                         </li>
 
                                     </ul>
@@ -619,7 +619,7 @@
                                         </ul>
                                     </div>
                                     <div class="ltn__blog-btn">
-                                        <a href="blog-details.html">Read more</a>
+                                        <a href="blog-details.html">อ่านเพิ่มเติม</a>
                                     </div>
                                 </div>
                             </div>
@@ -628,6 +628,7 @@
                    
                 
                 </div>
+                 <div class="text-center"><h4><a class="section-subtitle section-subtitle-2 ltn__secondary-color" href="news.aspx">ดูข่าวสารทั้งหมด</a></h4></div>
             </div>
         </div>
         <!-- News -->

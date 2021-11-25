@@ -162,7 +162,10 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="pages\home\draft.aspx" />
     <Content Include="pages\home\main.aspx" />
+    <Content Include="pages\home\news-detail.aspx" />
+    <Content Include="pages\home\news.aspx" />
     <Content Include="pages\include\footcontent.html" />
     <Content Include="pages\include\footer.html" />
     <Content Include="pages\include\header.html" />
@@ -372,6 +375,8 @@
     <Content Include="vendor\bootstrap\js\bootstrap.bundle.min.js" />
     <Content Include="vendor\bootstrap\js\bootstrap.js" />
     <Content Include="vendor\bootstrap\js\bootstrap.min.js" />
+    <Content Include="vendor\css\bootstrap.css" />
+    <Content Include="vendor\css\bootstrap.min.css" />
     <Content Include="vendor\css\custom.css" />
     <Content Include="vendor\css\elements\_portfoli.css" />
     <Content Include="vendor\css\font-icons.css" />
@@ -2128,6 +2133,8 @@
     <Content Include="vendor\jquery\jquery.min.js" />
     <Content Include="vendor\jquery\jquery.slim.js" />
     <Content Include="vendor\jquery\jquery.slim.min.js" />
+    <Content Include="vendor\js\bootstrap.js" />
+    <Content Include="vendor\js\bootstrap.min.js" />
     <Content Include="vendor\js\contact.js" />
     <Content Include="vendor\js\google-map.js" />
     <Content Include="vendor\js\helper.js" />
@@ -2183,12 +2190,33 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="pages\home\draft.aspx.cs">
+      <DependentUpon>draft.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\home\draft.aspx.designer.cs">
+      <DependentUpon>draft.aspx</DependentUpon>
+    </Compile>
     <Compile Include="pages\home\main.aspx.cs">
       <DependentUpon>main.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="pages\home\main.aspx.designer.cs">
       <DependentUpon>main.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\home\news-detail.aspx.cs">
+      <DependentUpon>news-detail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\home\news-detail.aspx.designer.cs">
+      <DependentUpon>news-detail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\home\news.aspx.cs">
+      <DependentUpon>news.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\home\news.aspx.designer.cs">
+      <DependentUpon>news.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
