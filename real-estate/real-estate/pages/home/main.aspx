@@ -34,9 +34,7 @@
                                                 </a>
                                             </div>
                                             <h6 class="slide-sub-title white-color--- animated"><span><i class="fas fa-home"></i></span>ผู้ช่วยเลือกซื้อ-ขาย</h6>
-                                            <h1 class="slide-title animated ">ค้นหาบ้านในฝัน
-                                                <br />
-                                                ของคุณ</h1>
+                                            <h1 class="slide-title animated ">ค้นหาบ้านในฝัน<br />ของคุณ</h1>
                                             <div class="slide-brief animated">
                                                 <p>เราสามารถช่วยให้คุณตระหนักถึงความฝันของบ้านใหม่</p>
                                             </div>
@@ -63,9 +61,7 @@
                                     <div class="slide-item-info">
                                         <div class="slide-item-info-inner ltn__slide-animation">
                                             <h6 class="slide-sub-title white-color--- animated"><span><i class="fas fa-home"></i></span>ผู้ช่วยเลือกซื้อ-ขาย</h6>
-                                            <h1 class="slide-title animated ">รวบรวมอสังหาริมทรัพย์
-                                                <br />
-                                                ที่เหมาะสมกับคุณ</h1>
+                                            <h1 class="slide-title animated ">รวบรวมอสังหาริมทรัพย์<br />ที่เหมาะสมกับคุณ</h1>
                                             <div class="slide-brief animated">
                                                 <p>ค้นหาบ้านที่เหมาะสมกับคุณได้ที่นี้</p>
                                             </div>
@@ -101,85 +97,87 @@
                                 </div>
                             </div>
 
-                            <div class="tab-content bg-white box-shadow-1 position-relative pb-10">
-                                <div class="tab-pane fade active show" id="ltn__form_tab_1_1">
-                                    <div class="car-dealer-form-inner">
-                                        <form runat="server" class="ltn__car-dealer-form-box row ">
-                                            <div class="col-lg-3 col-md-6">
-                                                 <select id="drdwProvince">
-                                                   <option value="">-- เลือกจังหวัด --</option>
-                                                   <%
-                                                       real_estate.ClassData.DropDownData.drdwProvince();
-                                                   %>
-                                                   </select>
-                                             </div>
-                                            <div class="col-lg-3 col-md-6">
-                                                <%--<select id="drdwDistrict">  </select>--%>
-                                                <asp:DropDownList ID="drdwDistrict" runat="server" >
-                                                </asp:DropDownList>
-                                               
-                                            </div>
-                                            <div class="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-calendar col-lg-3 col-md-6">
-                                                <select class="nice-select">
-                                                    <option>Property Type</option>
-                                                    <option>Apartment</option>
-                                                    <option>Co-op</option>
-                                                    <option>Condo</option>
-                                                    <option>Single Family Home</option>
-                                                </select>
-                                            </div>
-                                            <div class="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-calendar col-lg-3 col-md-6">
-                                                <div class="btn-wrapper text-center mt-0">
-                                                    <!-- <button type="submit" class="btn theme-btn-1 btn-effect-1 text-uppercase">Search Inventory</button> -->
-                                                    <a href="shop-right-sidebar.html" class="btn theme-btn-1 btn-effect-1 text-uppercase">ค้นหา</a>
+                            <form runat="server">
+                                <div class="tab-content bg-white box-shadow-1 position-relative pb-10">
+
+                                    <!-- ค้นหาเมื่อเข้าหน้าเว็บ -->
+                                    <div class="tab-pane fade active show" id="ltn__form_tab_1_1">
+                                        <div class="car-dealer-form-inner">
+                                            <div class="ltn__car-dealer-form-box row ">
+                                                <div class="col-lg-3 col-md-6">
+                                                    <select id="drdwProvince">
+                                                        <option value="">เลือกจังหวัด</option>
+                                                        <%
+                                                            real_estate.ClassData.DropDownData.drdwProvince();
+                                                        %>
+                                                    </select>
+                                                </div>
+                                                <div class="col-lg-3 col-md-6">
+                                                    <%--<select id="drdwDistrict">  </select>--%>
+                                                    <asp:DropDownList ID="drdwDistrict" CssClass="drdwDis" runat="server">
+                                                        <asp:ListItem> เลือกทำเลที่ตั้งในจังหวัด</asp:ListItem>
+                                                    </asp:DropDownList>
+
+                                                </div>
+                                                <div class="col-lg-3 col-md-6">
+                                                    <select class="nice-select" id="projectType">
+                                                        <option value="">เลือกประเภทโครงการ</option>
+                                                        <option value="Ready">โครงการพร้อมอยู่</option>
+                                                        <option value="New">โครงการใหม่</option>
+                                                    </select>
+                                                </div>
+                                                <div class="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-calendar col-lg-3 col-md-6">
+                                                    <div class="btn-wrapper text-center mt-0">
+                                                        <!-- <button type="submit" class="btn theme-btn-1 btn-effect-1 text-uppercase">Search Inventory</button> -->
+                                                        <a href="shop-right-sidebar.html" class="btn theme-btn-1 btn-effect-1 text-uppercase">ค้นหา</a>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </form>
+                                        </div>
                                     </div>
-                                </div>
+                                    <!-- ค้นหาเมื่อเข้าหน้าเว็บ -->
 
-                                <div class="tab-pane fade" id="ltn__form_tab_1_2">
-                                    <div class="car-dealer-form-inner">
-                                        <form action="#" class="ltn__car-dealer-form-box row">
-                                            <div class="ltn__car-dealer-form-item ltn__custom-icon---- ltn__icon-car---- col-lg-3 col-md-6">
-                                                <select class="nice-select">
-                                                    <option>Choose Area</option>
-                                                    <option>chicago</option>
-                                                    <option>London</option>
-                                                    <option>Los Angeles</option>
-                                                    <option>New York</option>
-                                                    <option>New Jersey</option>
-                                                </select>
-                                            </div>
-                                            <div class="ltn__car-dealer-form-item ltn__custom-icon---- ltn__icon-meter---- col-lg-3 col-md-6">
-                                                <select class="nice-select">
-                                                    <option>Property Status</option>
-                                                    <option>Open house</option>
-                                                    <option>Rent</option>
-                                                    <option>Sale</option>
-                                                    <option>Sold</option>
-                                                </select>
-                                            </div>
-                                            <div class="ltn__car-dealer-form-item ltn__custom-icon---- ltn__icon-calendar---- col-lg-3 col-md-6">
-                                                <select class="nice-select">
-                                                    <option>Property Type</option>
-                                                    <option>Apartment</option>
-                                                    <option>Co-op</option>
-                                                    <option>Condo</option>
-                                                    <option>Single Family Home</option>
-                                                </select>
-                                            </div>
-                                            <div class="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-calendar col-lg-3 col-md-6">
-                                                <div class="btn-wrapper text-center mt-0">
-                                                    <!-- <button type="submit" class="btn theme-btn-1 btn-effect-1 text-uppercase">Search Inventory</button> -->
-                                                    <a href="shop-right-sidebar.html" class="btn theme-btn-1 btn-effect-1 text-uppercase">Search Properties</a>
+                                    <!-- ค้นหาเมื่อเข้าหน้ามือถือ -->
+                                    <div class="tab-pane fade" id="ltn__form_tab_1_2">
+                                        <div class="car-dealer-form-inner">
+
+                                            <div class="ltn__car-dealer-form-box row ">
+                                                <div class="col-lg-3 col-md-6">
+                                                    <select id="drdwProvinceMob">
+                                                        <option value="">เลือกจังหวัด</option>
+                                                        <%
+                                                            real_estate.ClassData.DropDownData.drdwProvince();
+                                                        %>
+                                                    </select>
+                                                </div>
+                                                <div class="col-lg-3 col-md-6">
+                                                    <%--<select id="drdwDistrict">  </select>--%>
+                                                    <asp:DropDownList ID="drdwDistrictMob" CssClass="drdwDisMob" runat="server">
+                                                        <asp:ListItem> เลือกทำเลที่ตั้งในจังหวัด</asp:ListItem>
+                                                    </asp:DropDownList>
+
+                                                </div>
+                                                <div class="col-lg-3 col-md-6">
+                                                    <select class="nice-select" id="projectTypeMob">
+                                                        <option value="">เลือกประเภทโครงการ</option>
+                                                        <option value="Ready">โครงการพร้อมอยู่</option>
+                                                        <option value="New">โครงการใหม่</option>
+                                                    </select>
+                                                </div>
+                                                <div class="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-calendar col-lg-3 col-md-6">
+                                                    <div class="btn-wrapper text-center mt-0">
+                                                        <!-- <button type="submit" class="btn theme-btn-1 btn-effect-1 text-uppercase">Search Inventory</button> -->
+                                                        <a href="shop-right-sidebar.html" class="btn theme-btn-1 btn-effect-1 text-uppercase">ค้นหา</a>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </form>
+                                        </div>
                                     </div>
-                                </div>
+                                    <!-- ค้นหาเมื่อเข้าหน้ามือถือ -->
 
-                            </div>
+                                </div>
+                            </form>
+
                         </div>
                     </div>
                 </div>
@@ -192,7 +190,7 @@
         </div> -->
 
         <!-- พื้นหลังสีขาว โครงการ -->
-        <div class="ltn__product-slider-area ltn__product-gutter pt-115 pb-90 plr--7">
+        <div class="ltn__product-slider-area ltn__product-gutter pt-90 pb-90 plr--7">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
@@ -462,7 +460,7 @@
         </div>  -->
 
         <!-- พื้นหลังสีเทา  -->
-        <div class="ltn__feature-area section-bg-1 pt-120 pb-90 mb-120---">
+        <div class="ltn__feature-area section-bg-1 pt-90 pb-90 mb-120---">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
@@ -602,19 +600,51 @@
         }, 200); */
     }
 
+   //drdw เขต/แขวง หน้าเว็บ
     $("#drdwProvince").change(function () {
-
-        $("#drdwDistrict").val("");
         $("#drdwDistrict").empty();
+        $(".drdwDis").empty();
+        $("#drdwDistrict").val("");
 
+
+        let html1 = '<option value=""> เลือกทำเลที่ตั้งในจังหวัด</option>';
+        let html2 = '<li data-value="" class="option focus"></li>';
         $.get("../../api/drdwData", { id: $(this).val(), types: "District" })
             .done(function (data) {
                 Listdata = JSON.parse(data);
-                console.log(Listdata)
-                $("#drdwDistrict").append("<option value=''>-- กรุณาพื้นที่ทำเล --</option>");
-                for (var i = 0; i < Listdata.length; i++) {
-                    $("#drdwDistrict").append("<option value='" + Listdata[i]["district_id"] + "'>" + Listdata[i]["district_name"] + "</option>");
-                }
+                //console.log(Listdata)
+                Listdata.forEach((item, i) => {
+                    html1 += '<option value="' + item.district_id + '">' + item.district_name + '</option>';
+                    html2 += '<li data-value="' + item.district_id + '" class="option focus">' + item.district_name + '</li>';
+
+                });
+                $(".drdwDis").append(html2);
+                $("#drdwDistrict").append(html1);
+                $('.drdwDis').niceSelect('update');
+            });
+    });
+
+    //drdw เขต/แขวง หน้ามือถือ
+    $("#drdwProvinceMob").change(function () {
+        $("#drdwDistrictMob").empty();
+        $(".drdwDisMob").empty();
+        $("#drdwDistrictMob").val("");
+
+
+        let html1 = '<option value=""> เลือกทำเลที่ตั้งในจังหวัด</option>';
+        let html2 = '<li data-value="" class="option focus"></li>';
+        $.get("../../api/drdwData", { id: $(this).val(), types: "District" })
+            .done(function (data) {
+                Listdata = JSON.parse(data);
+                //console.log(Listdata)
+                Listdata.forEach((item, i) => {
+                    html1 += '<option value="' + item.district_id + '">' + item.district_name + '</option>';
+                    html2 += '<li data-value="' + item.district_id + '" class="option focus">' + item.district_name + '</li>';
+
+                });
+                $(".drdwDisMob").append(html2);
+                $("#drdwDistrictMob").append(html1);
+                $('.drdwDisMob').niceSelect('update');
             });
     });
 
