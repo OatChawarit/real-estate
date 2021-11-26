@@ -6,7 +6,7 @@
 <head runat="server">
     <!-- Place favicon.png in the root directory -->
     <link rel="shortcut icon" href="../../vendor/img/favicon.png" type="image/x-icon" />
-    <link href="../../vendor/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+
     <!-- นำเข้าส่วนหัว -->
     <!-- #include virtual ="../include/header.html" -->
 </head>
@@ -544,7 +544,6 @@
 
     <!-- นำเข้าส่วนท้าย JS -->
     <!-- #include virtual ="../include/footer.html" -->
-    <script src="../../vendor/bootstrap-select/js/bootstrap-select.js"></script>
 </body>
 <script> 
 
