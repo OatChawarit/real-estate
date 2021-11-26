@@ -26,7 +26,7 @@
                             <h1 class="page-title">ติดต่อเรา</h1>
                             <div class="ltn__breadcrumb-list">
                                 <ul>
-                                    <li><a href="main.aspx"><span class="ltn__secondary-color"><i class="fas fa-home"></i></span>หน้าแรก</a></li>
+                                    <li><a href="main.aspx"><span class="ltn__secondary-color"><i class="fas fa-home"></i></span> หน้าแรก</a></li>
                                     <li>ติดต่อเรา</li>
                                 </ul>
                             </div>

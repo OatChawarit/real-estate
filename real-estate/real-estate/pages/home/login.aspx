@@ -49,8 +49,8 @@
                                สมัครเป็นสมาชิกรับชมข่าวสาร เรื่องราวที่น่าสนใจได้ที่เว็บไซต์ของเรา หรือต้องการสมัครเป็นตัวแทนขายเพื่อ ลงประกาศขาย อสังหาริมทรัพย์ บ้าน ทาวน์โฮม คอนโดมีเนียม
                             </p>
                             <div class="btn-wrapper">
-                                <a href="../register-user.aspx" class="theme-btn-2 btn black-btn">สมัครสมาชิก</a>
-                                <a href="../register-sale.aspx" class="theme-btn-3 btn black-btn">สมัครตัวแทนขาย</a>
+                                <a href="../register/register-user.aspx" class="theme-btn-2 btn black-btn">สมัครสมาชิก</a>
+                                <a href="../register/register-sale.aspx" class="theme-btn-3 btn black-btn">สมัครตัวแทนขาย</a>
                             </div>
                         </div>
                     </div>

@@ -25,8 +25,8 @@
                             <h1 class="page-title">ข่าวสารน่ารู้</h1>
                             <div class="ltn__breadcrumb-list">
                                 <ul>
-                                    <li><a href="main.aspx"><span class="ltn__secondary-color"><i class="fas fa-home"></i></span>หน้าแรก</a></li>
-                                    <li>ข่าวสารน่ารู้</li>
+                                    <li><a href="news.aspx"><span class="ltn__secondary-color"><i class="fas fa-list-ol"></i></span> ข่าวสารทั้งหมด</a></li>
+                                    <li>รายละเอียดข่าวสาร</li>
                                 </ul>
                             </div>
                         </div>

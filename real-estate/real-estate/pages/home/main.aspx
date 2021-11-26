@@ -33,7 +33,7 @@
                                                     <i class="fa fa-play"></i>
                                                 </a>
                                             </div>
-                                            <h6 class="slide-sub-title white-color--- animated"><span><i class="fas fa-home"></i></span>ตัวแทนอสังหาริมทรัพย์</h6>
+                                            <h6 class="slide-sub-title white-color--- animated"><span><i class="fas fa-home"></i></span> ผู้ช่วยเลือกซื้อ-ขาย</h6>
                                             <h1 class="slide-title animated ">ค้นหาบ้านในฝัน
                                                 <br />
                                                 ของคุณ</h1>
@@ -62,7 +62,7 @@
                                 <div class="col-lg-12 align-self-center">
                                     <div class="slide-item-info">
                                         <div class="slide-item-info-inner ltn__slide-animation">
-                                            <h6 class="slide-sub-title white-color--- animated"><span><i class="fas fa-home"></i></span>ตัวแทนอสังหาริมทรัพย์</h6>
+                                            <h6 class="slide-sub-title white-color--- animated"><span><i class="fas fa-home"></i></span> ผู้ช่วยเลือกซื้อ-ขาย</h6>
                                             <h1 class="slide-title animated ">รวบรวมอสังหาริมทรัพย์
                                                 <br />
                                                 ที่เหมาะสมกับคุณ</h1>

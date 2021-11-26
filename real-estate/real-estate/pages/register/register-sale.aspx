@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="register-sale.aspx.cs" Inherits="real_estate.pages.register_sale" %>
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -15,43 +16,52 @@
         <!-- #include virtual ="../include/topbar.html" -->
 
         <!-- เนื้อหา -->
+        <div class="mt-80">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="ltn__breadcrumb-inner">
+                            <div class="ltn__breadcrumb-list">
+                                <ul>
+                                    <li><a href="../home/login.aspx"><span class="ltn__secondary-color"><i class="fas fa-sign-in-alt"></i></span> เข้าสู่ระบบ</a></li>
+                                    <li>สมัครตัวแทนขาย</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- register -->
-        <div class="ltn__login-area pb-65 mt-120">
+        <div class="ltn__login-area pb-65">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="section-title-area text-center">
-                            <h1 class="section-title">Register
-                                <br />
-                                Your Account</h1>
+                            <h3 class="">สมัครสมาชิกเป็นตัวแทนขาย<br />
+                                บัญชีของคุณ</h3>
                         </div>
                     </div>
                 </div>
 
                 <div class="row">
 
-                    <div class="col-lg-6 offset-lg-3">
-                        <div class="account-login-inner">
-                            <form action="#" class="ltn__form-box contact-form-box">
-                                <input type="text" name="firstname" placeholder="First Name">
-                                <input type="text" name="lastname" placeholder="Last Name">
-                                <input type="text" name="email" placeholder="Email*">
-                                <input type="password" name="password" placeholder="Password*">
-                                <input type="password" name="confirmpassword" placeholder="Confirm Password*">
-                                <label class="checkbox-inline">
-                                    <input type="checkbox" value="">
-                                    I consent to Herboil processing my personal data in order to send personalized marketing material in 
-                                    accordance with the consent form and the privacy policy.
-                                </label>
-                                <label class="checkbox-inline">
-                                    <input type="checkbox" value="">
-                                    By clicking "create account", I consent to the privacy policy.
-                                </label>
-                                <div class="btn-wrapper">
-                                    <button class="theme-btn-1 btn reverse-color btn-block" type="submit">CREATE ACCOUNT</button>
-                                </div>
-                            </form>
+                    <div class="col-lg-6">
+                        <input type="text" id="fName" placeholder="ชื่อ" class="form-control" />
+                        <input type="text" id="idCard" placeholder="เลขประจำตัวประชาชน*" />
+                        <input type="text" id="tel" placeholder="เบอร์โทร.*" />
+
+                        <input type="password" id="uPass" placeholder="Password*" />
+                        <div class="btn-wrapper">
+                            <button class="theme-btn-1 btn reverse-color btn-block" type="submit">สมัครสมาชิก</button>
                         </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <input type="text" id="lastName" placeholder="นามสกุล" />
+                        <input type="email" id="eMail" placeholder="Email*" />
+                        <input type="text" id="uName" placeholder="รหัสผู้ใช้งาน*" />
+                        <input type="password" id="confirmPass" placeholder="Confirm Password*" />
                     </div>
 
                 </div>
