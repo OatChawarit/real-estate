@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using real_estate.ClassData;
 
 namespace real_estate.pages.home
 {
@@ -11,7 +12,7 @@ namespace real_estate.pages.home
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            //DropDownData.drdwProvince(drdwProvince);
         }
     }
 }

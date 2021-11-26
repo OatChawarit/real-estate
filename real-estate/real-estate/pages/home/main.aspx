@@ -6,7 +6,7 @@
 <head runat="server">
     <!-- Place favicon.png in the root directory -->
     <link rel="shortcut icon" href="../../vendor/img/favicon.png" type="image/x-icon" />
-
+    <link href="../../vendor/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
     <!-- นำเข้าส่วนหัว -->
     <!-- #include virtual ="../include/header.html" -->
 </head>
@@ -33,7 +33,7 @@
                                                     <i class="fa fa-play"></i>
                                                 </a>
                                             </div>
-                                            <h6 class="slide-sub-title white-color--- animated"><span><i class="fas fa-home"></i></span> ผู้ช่วยเลือกซื้อ-ขาย</h6>
+                                            <h6 class="slide-sub-title white-color--- animated"><span><i class="fas fa-home"></i></span>ผู้ช่วยเลือกซื้อ-ขาย</h6>
                                             <h1 class="slide-title animated ">ค้นหาบ้านในฝัน
                                                 <br />
                                                 ของคุณ</h1>
@@ -62,7 +62,7 @@
                                 <div class="col-lg-12 align-self-center">
                                     <div class="slide-item-info">
                                         <div class="slide-item-info-inner ltn__slide-animation">
-                                            <h6 class="slide-sub-title white-color--- animated"><span><i class="fas fa-home"></i></span> ผู้ช่วยเลือกซื้อ-ขาย</h6>
+                                            <h6 class="slide-sub-title white-color--- animated"><span><i class="fas fa-home"></i></span>ผู้ช่วยเลือกซื้อ-ขาย</h6>
                                             <h1 class="slide-title animated ">รวบรวมอสังหาริมทรัพย์
                                                 <br />
                                                 ที่เหมาะสมกับคุณ</h1>
@@ -89,7 +89,7 @@
         <!-- สไลด์ -->
 
         <!-- ค้นหา -->
-        <div class="ltn__car-dealer-form-area mt--65 mt-120 pb-115---">
+        <div class="ltn__car-dealer-form-area mt--65 mt-120 pb-115">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
@@ -100,30 +100,26 @@
                                     <a data-bs-toggle="tab" href="#ltn__form_tab_1_2" class=""><i class="far fa-user"></i>Get a Dealer</a>
                                 </div>
                             </div>
+
                             <div class="tab-content bg-white box-shadow-1 position-relative pb-10">
                                 <div class="tab-pane fade active show" id="ltn__form_tab_1_1">
                                     <div class="car-dealer-form-inner">
-                                        <form action="#" class="ltn__car-dealer-form-box row">
-                                            <div class="ltn__car-dealer-form-item ltn__custom-icon---- ltn__icon-car---- col-lg-3 col-md-6">
-                                                <select class="nice-select">
-                                                    <option>Choose Area</option>
-                                                    <option>chicago</option>
-                                                    <option>London</option>
-                                                    <option>Los Angeles</option>
-                                                    <option>New York</option>
-                                                    <option>New Jersey</option>
-                                                </select>
+                                        <form runat="server" class="ltn__car-dealer-form-box row ">
+                                            <div class="col-lg-3 col-md-6">
+                                                 <select id="drdwProvince">
+                                                   <option value="">-- เลือกจังหวัด --</option>
+                                                   <%
+                                                       real_estate.ClassData.DropDownData.drdwProvince();
+                                                   %>
+                                                   </select>
+                                             </div>
+                                            <div class="col-lg-3 col-md-6">
+                                                <%--<select id="drdwDistrict">  </select>--%>
+                                                <asp:DropDownList ID="drdwDistrict" runat="server" >
+                                                </asp:DropDownList>
+                                               
                                             </div>
-                                            <div class="ltn__car-dealer-form-item ltn__custom-icon---- ltn__icon-meter---- col-lg-3 col-md-6">
-                                                <select class="nice-select">
-                                                    <option>Property Status</option>
-                                                    <option>Open house</option>
-                                                    <option>Rent</option>
-                                                    <option>Sale</option>
-                                                    <option>Sold</option>
-                                                </select>
-                                            </div>
-                                            <div class="ltn__car-dealer-form-item ltn__custom-icon---- ltn__icon-calendar---- col-lg-3 col-md-6">
+                                            <div class="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-calendar col-lg-3 col-md-6">
                                                 <select class="nice-select">
                                                     <option>Property Type</option>
                                                     <option>Apartment</option>
@@ -141,6 +137,7 @@
                                         </form>
                                     </div>
                                 </div>
+
                                 <div class="tab-pane fade" id="ltn__form_tab_1_2">
                                     <div class="car-dealer-form-inner">
                                         <form action="#" class="ltn__car-dealer-form-box row">
@@ -181,6 +178,7 @@
                                         </form>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -533,8 +531,6 @@
                     </div>
                 </div>
                 <div id="news_blog" class="row ltn__blog-slider-one-active slick-arrow-1 ltn__blog-item-3-normal">
-
-               
                 </div>
                 <div class="text-center">
                     <h4><a class="section-subtitle section-subtitle-2 ltn__secondary-color" href="news.aspx">ดูข่าวสารทั้งหมด</a></h4>
@@ -547,12 +543,15 @@
         <!-- นำเข้าส่วนท้าย -->
         <!-- #include virtual ="../include/footcontent.html" -->
     </div>
+
     <!-- นำเข้าส่วนท้าย JS -->
     <!-- #include virtual ="../include/footer.html" -->
+    <script src="../../vendor/bootstrap-select/js/bootstrap-select.js"></script>
 </body>
 <script> 
 
     $(document).ready(function () {
+
         var jsonData = JSON.stringify({
 
         });
@@ -577,21 +576,21 @@
             html += '<div class="col-lg-4 ">';
             html += '<div class="ltn__blog-item ltn__blog-item-3">';
             html += '<div class="ltn__blog-img">';
-            html += '<a href="news-detail.aspx">  <img src="../../../image/news/'+ item.news_image +'" alt="'+ item.news_image +'" /></a>';
+            html += '<a href="news-detail.aspx">  <img src="../../../image/news/' + item.news_image + '" alt="' + item.news_image + '" /></a>';
             html += '</div>';
             html += '<div class="ltn__blog-brief">';
             html += '<div class="ltn__blog-meta">';
-            html += '<ul><li class="ltn__blog-author"><a href="javascript:void(0)"><i class="far fa-user"></i>ผู้เขียน: '+ item.create_by +'</a></li></ul>';
+            html += '<ul><li class="ltn__blog-author"><a href="javascript:void(0)"><i class="far fa-user"></i>ผู้เขียน: ' + item.create_by + '</a></li></ul>';
             html += '</div>';
-            html += '<h3 class="ltn__blog-title"><a href="news-detail.aspx">'+ item.news_topic +'</a></h3>';
+            html += '<h3 class="ltn__blog-title"><a href="news-detail.aspx">' + item.news_topic + '</a></h3>';
             html += '<div class="ltn__blog-meta-btn">';
-            html += ' <div class="ltn__blog-meta"><ul><li class="ltn__blog-date"><i class="far fa-calendar-alt"></i>'+ dateFormat(item.create_date) +'</li></ul>';
+            html += ' <div class="ltn__blog-meta"><ul><li class="ltn__blog-date"><i class="far fa-calendar-alt"></i>' + dateFormat(item.create_date) + '</li></ul>';
             html += '</div>';
             html += '<div class="ltn__blog-btn">';
             html += '<a href="news-detail.aspx">อ่านเพิ่มเติม</a>';
             html += '</div>';
-            html += '</div></div></div></div>';         
-        }); 
+            html += '</div></div></div></div>';
+        });
 
         //console.log(html);
         $('#news_blog').append(html);
@@ -602,6 +601,23 @@
             //loadScript();
         }, 200); */
     }
+
+    $("#drdwProvince").change(function () {
+
+        $("#drdwDistrict").val("");
+        $("#drdwDistrict").empty();
+
+        $.get("../../api/drdwData", { id: $(this).val(), types: "District" })
+            .done(function (data) {
+                Listdata = JSON.parse(data);
+                console.log(Listdata)
+                $("#drdwDistrict").append("<option value=''>-- กรุณาพื้นที่ทำเล --</option>");
+                for (var i = 0; i < Listdata.length; i++) {
+                    $("#drdwDistrict").append("<option value='" + Listdata[i]["district_id"] + "'>" + Listdata[i]["district_name"] + "</option>");
+                }
+            });
+    });
+
 
     //โหลด javascript
     function loadScript() {
