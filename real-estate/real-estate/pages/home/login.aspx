@@ -69,11 +69,6 @@
 </body>
     <script>
 
-        $(document).ready(function () {
-
-        });
-
-
         function onBtnLoginClick() {
 
             let uName = $('#uName').val();
