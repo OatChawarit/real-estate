@@ -34,7 +34,7 @@
                                 <input type="text" id="uName" value="" placeholder="รหัสผู้ใช้งาน" />
                                 <input type="password" id="uPassword" value="" placeholder="รหัสผ่าน" />
                                 <div class="btn-wrapper mt-0">
-                                    <button class="theme-btn-1 btn btn-block" type="submit">ลงทะเบียนเข้าใช้งาน</button>
+                                    <button class="theme-btn-1 btn btn-block" type="submit" onclick="onBtnLoginClick()">ลงทะเบียนเข้าใช้งาน</button>
                                 </div>
                                <!-- <div class="go-to-btn mt-20">
                                     <a href="#"><small>ลืมรหัสผ่านเข้าใช้งาน</small></a>
@@ -67,4 +67,79 @@
     <!-- นำเข้าส่วนท้าย JS -->
     <!-- #include virtual ="../include/footer.html" -->
 </body>
+    <script>
+
+        $(document).ready(function () {
+
+        });
+
+
+        function onBtnLoginClick() {
+
+            let uName = $('#uName').val();
+            let uPassword = $('#uPassword').val();
+      
+
+            if (!uName) {
+                Swal.fire({
+                    type: 'warning',
+                    title: 'กรุณาระบุ!!',
+                    text: 'ระบุรหัสผู้ใช้งาน'
+                });
+            } else if (!uPassword) {
+                Swal.fire({
+                    type: 'warning',
+                    title: 'กรุณาระบุ!!',
+                    text: 'ระบุรหัสผ่าน'
+                });
+            } else {
+
+                var jsonData = JSON.stringify({
+                    "user_name": uName,
+                    "user_password": uPassword,
+                });
+         
+                //เรียก api
+                $.ajax({
+                    type: 'POST',
+                    url: "../../api/register",
+                    data: { "data": jsonData },
+                    headers: {
+                        "types": "login"
+                    }
+                }).done(function (data) {
+
+                    let resData = JSON.parse(data);
+                    if (resData.length > 0) {
+
+                        console.log('Pass')
+                        console.log(resData)
+
+                        sessionStorage.setItem("resData", data);
+                        //localStorage.setItem("lastname", "Smith");
+
+
+
+                    } else {
+
+                 
+                        Swal.fire({                            
+                            type: 'info',
+                            html: ` <h3 style=" "> <i>  ชื่อผู้ใช้ หรือ รหัสผ่านไม่ถูกต้อง </i></h3>`  
+                        });
+             
+                    }
+                });
+
+
+
+            }
+
+        };
+
+
+
+
+
+    </script>
 </html>

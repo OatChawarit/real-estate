@@ -18,16 +18,13 @@ namespace real_estate.Controllers.main
     public class newsController : ApiController
     {
 
-        // GET: api/withdrawal
+        // GET: api/news
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
-        }
+        } 
 
-        //string getdateNow = "GETDATE()";
-
-
-        public string Get(string jsonData, string types)
+        public string Get( string jsonData , string types)
         {
             var db = new DBClass();
             string rs = "";
@@ -48,36 +45,16 @@ namespace real_estate.Controllers.main
                     for (int i = 0; i < dr.FieldCount; i++)
                     {
                         result.Add(dr.GetName(i), dr[i].ToString());
-                    }
-                    //result.Add("check", check);
+                    } 
                     arr.Add(result);
                 }
                 rs = JsonConvert.SerializeObject(arr);
             }
-            else if (types == "GetSeqCloseBKUP")
+            else
             {
-                SqlDataReader dr;
-                string sqltext = "";
-
-                sqltext += "SELECT A.CloseNumber, A.close_code, A.sum_balance_book_close, FORMAT(Close_Date,'dd/MM/yyyy') as  CloseDate ";
-                sqltext += "FROM New_Menaleasing..bc_close_bookBankHD A  ";
-                sqltext += " WHERE A.loan_number = '" + stuff.loan_number + "'    ";
-                sqltext += "ORDER BY  A.CloseNumber + 0 ASC ";
-
-                dr = db.GetSqlDataReader(sqltext);
-                ArrayList arr = new ArrayList();
-                while (dr.Read())
-                {
-                    var result = new Dictionary<string, object>();
-                    for (int i = 0; i < dr.FieldCount; i++)
-                    {
-                        result.Add(dr.GetName(i), dr[i].ToString());
-                    }
-                    arr.Add(result);
-                }
-                rs = JsonConvert.SerializeObject(arr);
+                rs = "ไม่ข้อมูล";
             }
-          
+
             return rs;
         }
 
@@ -92,7 +69,7 @@ namespace real_estate.Controllers.main
 
         }
 
-        // POST: api/withdrawal
+        // POST: api/news
         public string Post(save_result value)
         {
             dynamic stuff = JsonConvert.DeserializeObject(value.data_1.ToString());

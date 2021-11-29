@@ -2170,8 +2170,10 @@
     <Compile Include="App_Start\RouteConfig2.cs" />
     <Compile Include="ClassData\DropDownData.cs" />
     <Compile Include="ClassData\News.cs" />
+    <Compile Include="ClassData\PrefixID.cs" />
     <Compile Include="ConnectDB\DBClass.cs" />
     <Compile Include="Controllers\main\newsController.cs" />
+    <Compile Include="Controllers\register\registerController.cs" />
     <Compile Include="Controllers\service\drdwDataController.cs" />
     <Compile Include="pages\home\about.aspx.cs">
       <DependentUpon>about.aspx</DependentUpon>
@@ -2276,6 +2278,7 @@
     <Folder Include="pages\admin\" />
     <Folder Include="pages\sales\" />
     <Folder Include="Views\news\" />
+    <Folder Include="Views\register\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
