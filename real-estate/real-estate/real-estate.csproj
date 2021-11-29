@@ -161,12 +161,14 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="libman.json" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="pages\home\draft.aspx" />
     <Content Include="pages\home\login.aspx" />
     <Content Include="pages\home\main.aspx" />
     <Content Include="pages\home\news-detail.aspx" />
     <Content Include="pages\home\news.aspx" />
+    <Content Include="pages\project\project-details.aspx" />
     <Content Include="pages\register\register-sale.aspx" />
     <Content Include="pages\register\register-user.aspx" />
     <Content Include="pages\include\footcontent.html" />
@@ -2234,6 +2236,13 @@
     </Compile>
     <Compile Include="pages\home\news.aspx.designer.cs">
       <DependentUpon>news.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\project\project-details.aspx.cs">
+      <DependentUpon>project-details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\project\project-details.aspx.designer.cs">
+      <DependentUpon>project-details.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\register\register-sale.aspx.cs">
       <DependentUpon>register-sale.aspx</DependentUpon>

@@ -204,7 +204,7 @@
                     <div class="col-lg-12">
                         <div class="ltn__product-item ltn__product-item-4 text-center---">
                             <div class="product-img">
-                                <a href="product-details.html">
+                                <a href="../project/project-details.aspx">
                                     <img src="../../vendor/img/product-3/1.jpg" alt="#" /></a>
                                 <div class="product-badge">
                                     <ul>
@@ -217,7 +217,7 @@
                                 <div class="product-price">
                                     <span>1,200,000<label> /บาท</label></span>
                                 </div>
-                                <h2 class="product-title"><a href="product-details.html">New Apartment Nice View</a></h2>
+                                <h2 class="product-title"><a href="../project/project-details.aspx">New Apartment Nice View</a></h2>
                                 <div class="product-description">
                                     <p>
                                         Beautiful Huge 1 Family House In Heart Of
@@ -240,7 +240,7 @@
                             <div class="product-info-bottom">
                                 <div class="real-estate-agent">
                                     <div class="agent-brief">
-                                        <h6><a href="team-details.html">William Seklo</a></h6>
+                                        <h6><a href="javascript:void(0)">William Seklo</a></h6>
                                         <small>Tel : 089-00905005</small>
                                     </div>
                                 </div>
@@ -253,7 +253,7 @@
                     <div class="col-lg-12">
                         <div class="ltn__product-item ltn__product-item-4 text-center---">
                             <div class="product-img">
-                                <a href="product-details.html">
+                                <a href="../project/project-details.aspx">
                                     <img src="../../vendor/img/product-3/2.jpg" alt="#" /></a>
                                 <div class="product-badge">
                                     <ul>
@@ -266,7 +266,7 @@
                                 <div class="product-price">
                                     <span>1,200,000<label> /บาท</label></span>
                                 </div>
-                                <h2 class="product-title"><a href="product-details.html">Modern Apartments</a></h2>
+                                <h2 class="product-title"><a href="../project/project-details.aspx">Modern Apartments</a></h2>
                                 <div class="product-description">
                                     <p>
                                         Beautiful Huge 1 Family House In Heart Of
@@ -289,7 +289,7 @@
                             <div class="product-info-bottom">
                                 <div class="real-estate-agent">
                                     <div class="agent-brief">
-                                        <h6><a href="team-details.html">William Seklo</a></h6>
+                                        <h6><a href="javascript:void(0)">William Seklo</a></h6>
                                         <small>Tel : 089-00905005</small>
                                     </div>
                                 </div>
@@ -302,7 +302,7 @@
                     <div class="col-lg-12">
                         <div class="ltn__product-item ltn__product-item-4 text-center---">
                             <div class="product-img">
-                                <a href="product-details.html">
+                                <a href="../project/project-details.aspx">
                                     <img src="../../vendor/img/product-3/3.jpg" alt="#" /></a>
                                 <div class="product-badge">
                                     <ul>
@@ -315,7 +315,7 @@
                                 <div class="product-price">
                                     <span>1,200,000<label> /บาท</label></span>
                                 </div>
-                                <h2 class="product-title"><a href="product-details.html">Comfortable Apartment</a></h2>
+                                <h2 class="product-title"><a href="../project/project-details.aspx">Comfortable Apartment</a></h2>
                                 <div class="product-description">
                                     <p>
                                         Beautiful Huge 1 Family House In Heart Of
@@ -338,7 +338,7 @@
                             <div class="product-info-bottom">
                                 <div class="real-estate-agent">
                                     <div class="agent-brief">
-                                        <h6><a href="team-details.html">William Seklo</a></h6>
+                                        <h6><a href="javascript:void(0)">William Seklo</a></h6>
                                         <small>Tel : 089-00905005</small>
                                     </div>
                                 </div>
@@ -351,7 +351,7 @@
                     <div class="col-lg-12">
                         <div class="ltn__product-item ltn__product-item-4 text-center---">
                             <div class="product-img">
-                                <a href="product-details.html">
+                                <a href="../project/project-details.aspx">
                                     <img src="../../vendor/img/product-3/4.jpg" alt="#" /></a>
                                 <div class="product-badge">
                                     <ul>
@@ -364,7 +364,7 @@
                                 <div class="product-price">
                                     <span>1,200,000<label> /บาท</label></span>
                                 </div>
-                                <h2 class="product-title"><a href="product-details.html">Luxury villa in Rego Park </a></h2>
+                                <h2 class="product-title"><a href="../project/project-details.aspx">Luxury villa in Rego Park </a></h2>
                                 <div class="product-description">
                                     <p>
                                         Beautiful Huge 1 Family House In Heart Of
@@ -387,7 +387,7 @@
                             <div class="product-info-bottom">
                                 <div class="real-estate-agent">
                                     <div class="agent-brief">
-                                        <h6><a href="team-details.html">William Seklo</a></h6>
+                                        <h6><a href="javascript:void(0)">William Seklo</a></h6>
                                         <small>Tel : 089-00905005</small>
                                     </div>
                                 </div>
@@ -400,7 +400,7 @@
                     <div class="col-lg-12">
                         <div class="ltn__product-item ltn__product-item-4 text-center---">
                             <div class="product-img">
-                                <a href="product-details.html">
+                                <a href="../project/project-details.aspx">
                                     <img src="../../vendor/img/product-3/5.jpg" alt="#" /></a>
                                 <div class="product-badge">
                                     <ul>
@@ -413,7 +413,7 @@
                                 <div class="product-price">
                                     <span>1,200,000<label> /บาท</label></span>
                                 </div>
-                                <h2 class="product-title"><a href="product-details.html">Beautiful Flat in Manhattan </a></h2>
+                                <h2 class="product-title"><a href="../project/project-details.aspx">Beautiful Flat in Manhattan </a></h2>
                                 <div class="product-description">
                                     <p>
                                         Beautiful Huge 1 Family House In Heart Of
@@ -436,7 +436,7 @@
                             <div class="product-info-bottom">
                                 <div class="real-estate-agent">
                                     <div class="agent-brief">
-                                        <h6><a href="team-details.html">William Seklo</a></h6>
+                                        <h6><a href="javascript:void(0)">William Seklo</a></h6>
                                         <small>Tel : 089-00905005</small>
                                     </div>
                                 </div>
