@@ -77,8 +77,7 @@
         function onBtnLoginClick() {
 
             let uName = $('#uName').val();
-            let uPassword = $('#uPassword').val();
-      
+            let uPassword = $('#uPassword').val();      
 
             if (!uName) {
                 Swal.fire({
@@ -98,7 +97,7 @@
                     "user_name": uName,
                     "user_password": uPassword,
                 });
-         
+        
                 //เรียก api
                 $.ajax({
                     type: 'POST',
@@ -117,29 +116,15 @@
 
                         sessionStorage.setItem("resData", data);
                         //localStorage.setItem("lastname", "Smith");
-
-
-
                     } else {
-
-                 
                         Swal.fire({                            
                             type: 'info',
                             html: ` <h3 style=" "> <i>  ชื่อผู้ใช้ หรือ รหัสผ่านไม่ถูกต้อง </i></h3>`  
                         });
-             
                     }
                 });
-
-
-
             }
-
         };
-
-
-
-
 
     </script>
 </html>
