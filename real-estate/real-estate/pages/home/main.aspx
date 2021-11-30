@@ -34,7 +34,8 @@
                                                 </a>
                                             </div>
                                             <h6 class="slide-sub-title white-color--- animated"><span><i class="fas fa-home"></i></span>ผู้ช่วยเลือกซื้อ-ขาย</h6>
-                                            <h1 class="slide-title animated ">ค้นหาบ้านในฝัน<br />ของคุณ</h1>
+                                            <h1 class="slide-title animated ">ค้นหาบ้านในฝัน<br />
+                                                ของคุณ</h1>
                                             <div class="slide-brief animated">
                                                 <p>เราสามารถช่วยให้คุณตระหนักถึงความฝันของบ้านใหม่</p>
                                             </div>
@@ -61,7 +62,8 @@
                                     <div class="slide-item-info">
                                         <div class="slide-item-info-inner ltn__slide-animation">
                                             <h6 class="slide-sub-title white-color--- animated"><span><i class="fas fa-home"></i></span>ผู้ช่วยเลือกซื้อ-ขาย</h6>
-                                            <h1 class="slide-title animated ">รวบรวมอสังหาริมทรัพย์<br />ที่เหมาะสมกับคุณ</h1>
+                                            <h1 class="slide-title animated ">รวบรวมอสังหาริมทรัพย์<br />
+                                                ที่เหมาะสมกับคุณ</h1>
                                             <div class="slide-brief animated">
                                                 <p>ค้นหาบ้านที่เหมาะสมกับคุณได้ที่นี้</p>
                                             </div>
@@ -240,9 +242,18 @@
                             <div class="product-info-bottom">
                                 <div class="real-estate-agent">
                                     <div class="agent-brief">
-                                        <h6><a href="javascript:void(0)">William Seklo</a></h6>
-                                        <small>Tel : 089-00905005</small>
+                                        <h6>William Seklo</h6>
+                                        <small>ตัวแทนขาย</small>
                                     </div>
+                                </div>
+                                <div class="product-hover-action">
+                                    <ul>
+                                        <li style="width: 100px;">
+                                            <a href="tel:+66-111-11111" title="ติดต่อตัวแทนขาย">
+                                                <i class="fas fa-phone">&nbsp;โทร</i>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
 
@@ -289,9 +300,18 @@
                             <div class="product-info-bottom">
                                 <div class="real-estate-agent">
                                     <div class="agent-brief">
-                                        <h6><a href="javascript:void(0)">William Seklo</a></h6>
-                                        <small>Tel : 089-00905005</small>
+                                        <h6>William Seklo</h6>
+                                        <small>ตัวแทนขาย</small>
                                     </div>
+                                </div>
+                                <div class="product-hover-action">
+                                    <ul>
+                                        <li style="width: 100px;">
+                                            <a href="tel:+66-111-11111" title="ติดต่อตัวแทนขาย">
+                                                <i class="fas fa-phone">&nbsp;โทร</i>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
 
@@ -338,9 +358,18 @@
                             <div class="product-info-bottom">
                                 <div class="real-estate-agent">
                                     <div class="agent-brief">
-                                        <h6><a href="javascript:void(0)">William Seklo</a></h6>
-                                        <small>Tel : 089-00905005</small>
+                                        <h6>William Seklo</h6>
+                                        <small>ตัวแทนขาย</small>
                                     </div>
+                                </div>
+                                <div class="product-hover-action">
+                                    <ul>
+                                        <li style="width: 100px;">
+                                            <a href="tel:+66-111-11111" title="ติดต่อตัวแทนขาย">
+                                                <i class="fas fa-phone">&nbsp;โทร</i>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
 
@@ -387,9 +416,18 @@
                             <div class="product-info-bottom">
                                 <div class="real-estate-agent">
                                     <div class="agent-brief">
-                                        <h6><a href="javascript:void(0)">William Seklo</a></h6>
-                                        <small>Tel : 089-00905005</small>
+                                        <h6>William Seklo</h6>
+                                        <small>ตัวแทนขาย</small>
                                     </div>
+                                </div>
+                                <div class="product-hover-action">
+                                    <ul>
+                                        <li style="width: 100px;">
+                                            <a href="tel:+66-111-11111" title="ติดต่อตัวแทนขาย">
+                                                <i class="fas fa-phone">&nbsp;โทร</i>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
 
@@ -436,9 +474,18 @@
                             <div class="product-info-bottom">
                                 <div class="real-estate-agent">
                                     <div class="agent-brief">
-                                        <h6><a href="javascript:void(0)">William Seklo</a></h6>
-                                        <small>Tel : 089-00905005</small>
+                                        <h6>William Seklo</h6>
+                                        <small>ตัวแทนขาย</small>
                                     </div>
+                                </div>
+                                <div class="product-hover-action">
+                                    <ul>
+                                        <li style="width: 100px;">
+                                            <a href="tel:+66-111-11111" title="ติดต่อตัวแทนขาย">
+                                                <i class="fas fa-phone">&nbsp;โทร</i>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
 
@@ -599,7 +646,7 @@
         }, 200); */
     }
 
-   //drdw เขต/แขวง หน้าเว็บ
+    //drdw เขต/แขวง หน้าเว็บ
     $("#drdwProvince").change(function () {
         $("#drdwDistrict").empty();
         $(".drdwDis").empty();

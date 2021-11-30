@@ -97,7 +97,8 @@
                                     </li>
                                 </ul>
                             </div>
-                            <h1>โครการ : Diamond Manor Apartment</h1>
+                            <h1>฿ 2,200,000</h1>
+                            <h3>Diamond Manor Apartment</h3>
                             <h4 class="title-2">รายละเอียด</h4>
                             <p>
                                 Massa tempor nec feugiat nisl pretium. Egestas fringilla phasellus faucibus scelerisque eleifend donec
@@ -250,9 +251,10 @@
                                     <!-- <img src="img/team/4.jpg" alt="Image"> -->
                                     <h5 class="text-center">Rosalina D. Willaimson</h5>
                                     <p class="text-center">ตัวแทนขายอสังหาริมทรัพย์</p>
-                                    <p><i class="far fa-envelope"></i>Email : sale@mail.com</p>
-                                    <p><i class="fas fa-phone"></i>เบอร์โทร : 069-285-2512</p>
-                                    <p><i class="fab fa-line"></i>Line : @sale_dd</p>
+                                    <p><i class="far fa-envelope"></i>&nbsp;Email : sale@mail.com</p>
+                                    <p><i class="fas fa-phone"></i>&nbsp;เบอร์โทร : 069-285-2512</p>
+                                    <p><i class="fab fa-line"></i>&nbsp;Line : @sale_dd</p>
+                                    <p><a href="tel:+66-111-11111" class="btn btn-outline-success btn-sm"><i class="fas fa-phone"></i>&nbsp;โทร</a></p>
                                 </div>
                             </div>
                         </aside>
