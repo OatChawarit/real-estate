@@ -41,9 +41,11 @@ namespace real_estate.Controllers.register
             {
                 SqlDataReader dr;
                 string sqltext = "";
-                sqltext += " SELECT  a.user_name ";
+                sqltext += " SELECT  a.user_email , a.user_role_id ";
                 sqltext += " FROM [realestate].[dbo].[sa_user] a ";
-                sqltext += " WHERE a.user_name = '" + stuff.user_name + "' ;";
+                sqltext += " WHERE a.user_email = '" + stuff.user_email + "' ";
+                sqltext += " AND a.user_role_id = '" + stuff.user_role_id + "' ;";
+
 
                 dr = db.GetSqlDataReader(sqltext);
  
@@ -87,7 +89,7 @@ namespace real_estate.Controllers.register
             var db = new DBClass();
             string rs = "";
 
-            if (types == "AddRegisterUser")
+            if (types == "AddRegisterUserCustomer")//สมัครสมาชิก
             {
                 string uid = PrefixID.RunPrefixID("gen_userId", "Add");
                 string cid = PrefixID.RunPrefixID("gen_customerId", "Add");
@@ -98,28 +100,138 @@ namespace real_estate.Controllers.register
                 StringBuilder sqlInsert = new StringBuilder();
                 sqlInsert.Clear();
                 sqlInsert.Append("INSERT INTO [realestate].[dbo].[sa_user] ( ");
-                sqlInsert.AppendLine("  user_id ");
-                sqlInsert.AppendLine(" ,user_name ");
-                sqlInsert.AppendLine(" ,user_password ");
-                sqlInsert.AppendLine(" ,user_role_id ");
-                sqlInsert.AppendLine(" ,create_date ");
-                sqlInsert.AppendLine(" ,create_by ");
-                sqlInsert.AppendLine(" ,cus_id ");
-                sqlInsert.AppendLine(" ) ");
-
-
-                sqlInsert.AppendLine(" VALUES ( ");
-                sqlInsert.AppendLine(" '" + uid + "',");
-                sqlInsert.AppendLine(" '" + stuff.user_name + "',");
-                sqlInsert.AppendLine(" '" + hashPassword + "',");
-                sqlInsert.AppendLine(" 2 ,");
+                sqlInsert.AppendLine("  user_id                         ");
+                sqlInsert.AppendLine(" ,user_email                      ");
+                sqlInsert.AppendLine(" ,user_password                   ");
+                sqlInsert.AppendLine(" ,user_role_id                    "); 
+                sqlInsert.AppendLine(" ,user_status                     ");
+                sqlInsert.AppendLine(" ,user_firstName                  ");
+                sqlInsert.AppendLine(" ,user_lastName                   ");
+                sqlInsert.AppendLine(" ,create_date                     ");
+                sqlInsert.AppendLine(" ,create_by                       "); 
+                sqlInsert.AppendLine(" )                                "); 
+                sqlInsert.AppendLine(" VALUES (                         ");
+                sqlInsert.AppendLine(" '" + uid + "',                   ");
+                sqlInsert.AppendLine(" '" + stuff.user_email + "',      ");
+                sqlInsert.AppendLine(" '" + hashPassword + "',          ");
+                sqlInsert.AppendLine(" 2 ,                              ");
+                sqlInsert.AppendLine(" 'A' ,                            ");
+                sqlInsert.AppendLine(" '" + stuff.user_firstName + "',  ");
+                sqlInsert.AppendLine(" '" + stuff.user_lastName + "',   ");
                 sqlInsert.AppendLine(" getdate(),");
-                sqlInsert.AppendLine(" 'System', ");
-                sqlInsert.AppendLine(" '" + cid + "'");
-                sqlInsert.AppendLine(" ) ");
+                sqlInsert.AppendLine(" 'System'  ");         
+                sqlInsert.AppendLine(" ) "); 
+
+                StringBuilder sqlInsertCus = new StringBuilder();
+                sqlInsertCus.Clear();
+                sqlInsertCus.Append("INSERT INTO  [realestate].[dbo].[re_CustomerTable] ( ");
+                sqlInsertCus.AppendLine("  cus_id                           ");
+                sqlInsertCus.AppendLine("  ,user_id                         ");
+                sqlInsertCus.AppendLine(" ,cus_firstName                    ");
+                sqlInsertCus.AppendLine(" ,cus_lastName                     ");
+                sqlInsertCus.AppendLine(" ,cus_dateOfBirth                  ");
+                sqlInsertCus.AppendLine(" ,cus_idCard                       ");
+                sqlInsertCus.AppendLine(" ,cus_phone                        "); 
+                sqlInsertCus.AppendLine(" ,create_date                      ");
+                sqlInsertCus.AppendLine(" ,create_by                        ");   
+                sqlInsertCus.AppendLine(" ,cus_status                       ");
+                sqlInsertCus.AppendLine(" )                                 ");
+                sqlInsertCus.AppendLine(" VALUES (                          ");
+                sqlInsertCus.AppendLine(" '" + cid + "',                    ");
+                sqlInsertCus.AppendLine(" '" + uid + "',                    ");
+                sqlInsertCus.AppendLine(" '" + stuff.cus_firstName + "',    ");
+                sqlInsertCus.AppendLine(" '" + stuff.cus_lastName + "',     ");
+                sqlInsertCus.AppendLine(" '" + stuff.cus_dateOfBirth + "',  ");
+                sqlInsertCus.AppendLine(" '" + stuff.cus_idCard + "',       ");
+                sqlInsertCus.AppendLine(" '" + stuff.cus_phone + "',        "); 
+                sqlInsertCus.AppendLine(" getdate(),                        ");
+                sqlInsertCus.AppendLine(" 'System' ,                        ");
+                sqlInsertCus.AppendLine(" 'A'                               ");
+                sqlInsertCus.AppendLine(" )                                 ");
                 try
                 {
                     db.SqlExecute(sqlInsert.ToString());
+                    db.SqlExecute(sqlInsertCus.ToString());
+                    rs = "success";
+                    //rs = sqlInsert.ToString();
+                }
+                catch (SqlException ex) { rs = ex.ToString(); }
+
+            }
+            else if (types == "AddRegisterUserSale")//สมัครสมาชิก
+            {
+                string uid = PrefixID.RunPrefixID("gen_userId", "Add");
+                string sid = PrefixID.RunPrefixID("gen_saleId", "Add");
+
+                string hashPassword = ConvertMD5(stuff.user_password.ToString());
+
+                //string res = $"{hashPassword} , {uid} "; 
+                StringBuilder sqlInsert = new StringBuilder();
+                sqlInsert.Clear();
+                sqlInsert.Append("INSERT INTO [realestate].[dbo].[sa_user] ( ");
+                sqlInsert.AppendLine("  user_id                         ");
+                sqlInsert.AppendLine(" ,user_email                      ");
+                sqlInsert.AppendLine(" ,user_password                   ");
+                sqlInsert.AppendLine(" ,user_role_id                    ");
+                sqlInsert.AppendLine(" ,user_status                     ");
+                sqlInsert.AppendLine(" ,user_firstName                  ");
+                sqlInsert.AppendLine(" ,user_lastName                   "); 
+                sqlInsert.AppendLine(" ,create_date                     ");
+                sqlInsert.AppendLine(" ,create_by                       ");
+                sqlInsert.AppendLine(" )                                ");
+                sqlInsert.AppendLine(" VALUES (                         ");
+                sqlInsert.AppendLine(" '" + uid + "',                   ");
+                sqlInsert.AppendLine(" '" + stuff.user_email + "',      ");
+                sqlInsert.AppendLine(" '" + hashPassword + "',          ");
+                sqlInsert.AppendLine(" 3 ,                              ");
+                sqlInsert.AppendLine(" 'N' ,                            ");
+                sqlInsert.AppendLine(" '" + stuff.user_firstName + "',  ");
+                sqlInsert.AppendLine(" '" + stuff.user_lastName + "',   ");
+                sqlInsert.AppendLine(" getdate(),");
+                sqlInsert.AppendLine(" 'System'  ");
+                sqlInsert.AppendLine(" ) ");
+
+                StringBuilder sqlInsertSale = new StringBuilder();
+                sqlInsertSale.Clear();
+                sqlInsertSale.Append("INSERT INTO  [realestate].[dbo].[re_SaleTable] ( ");
+                sqlInsertSale.AppendLine("  sale_id                             ");
+                sqlInsertSale.AppendLine("  ,user_id                            ");
+                sqlInsertSale.AppendLine(" ,[sale_firstName]                    ");
+                sqlInsertSale.AppendLine(" ,[sale_lastName]                     ");
+                sqlInsertSale.AppendLine(" ,[sale_dateOfBirth]                  ");
+                sqlInsertSale.AppendLine(" ,[sale_idCard]                       ");
+                sqlInsertSale.AppendLine(" ,[sale_phone]                        ");
+                sqlInsertSale.AppendLine(" ,[sale_line]                         ");
+                sqlInsertSale.AppendLine(" ,[sale_mail]                         ");
+                sqlInsertSale.AppendLine(" ,[sale_company]                      ");
+                sqlInsertSale.AppendLine(" ,[sale_position]                     ");
+                sqlInsertSale.AppendLine(" ,[sale_AgentApproveNo]               ");  
+                sqlInsertSale.AppendLine(" ,create_date                         ");
+                sqlInsertSale.AppendLine(" ,create_by                           ");
+                sqlInsertSale.AppendLine(" ,sale_status                         ");
+
+                sqlInsertSale.AppendLine(" )                                    ");
+                sqlInsertSale.AppendLine(" VALUES (                             ");
+                sqlInsertSale.AppendLine(" '" + sid + "',                       ");
+                sqlInsertSale.AppendLine(" '" + uid + "',                       ");
+                sqlInsertSale.AppendLine(" '" + stuff.sale_firstName + "',      ");
+                sqlInsertSale.AppendLine(" '" + stuff.sale_lastName + "',       ");
+                sqlInsertSale.AppendLine(" '" + stuff.sale_dateOfBirth + "',    ");
+                sqlInsertSale.AppendLine(" '" + stuff.sale_idCard + "',         ");
+                sqlInsertSale.AppendLine(" '" + stuff.sale_phone + "',          ");
+                sqlInsertSale.AppendLine(" '" + stuff.sale_line + "',           ");
+                sqlInsertSale.AppendLine(" '" + stuff.sale_mail + "',           ");
+                sqlInsertSale.AppendLine(" '" + stuff.sale_company + "',        ");
+                sqlInsertSale.AppendLine(" '" + stuff.sale_position + "',       ");
+                sqlInsertSale.AppendLine(" '" + stuff.sale_AgentApproveNo + "', "); 
+                sqlInsertSale.AppendLine(" getdate() ,                          ");
+                sqlInsertSale.AppendLine(" 'System' ,                           ");
+                sqlInsertSale.AppendLine(" 'N'                                  ");
+                sqlInsertSale.AppendLine(" )                                    ");
+                try
+                {
+                    db.SqlExecute(sqlInsert.ToString());
+                    db.SqlExecute(sqlInsertSale.ToString());
                     rs = "success";
                     //rs = sqlInsert.ToString();
                 }
@@ -132,7 +244,10 @@ namespace real_estate.Controllers.register
                 sqlUpdate.Clear();
                 sqlUpdate.Append("UPDATE [realestate].[dbo].[sa_user] SET "); 
                 sqlUpdate.AppendLine("   last_login = getdate() ");
-                sqlUpdate.AppendLine("  WHERE [user_name] ='" + stuff.user_name + "'");
+                sqlUpdate.AppendLine("  WHERE [user_email] ='" + stuff.user_email + "'");
+                sqlUpdate.AppendLine("  AND [user_role_id] in('" + stuff.user_role_id + "', '1' ) ");
+                sqlUpdate.AppendLine("  AND [user_status] ='A'"); 
+
                 try
                 { 
                     db.SqlExecute(sqlUpdate.ToString()); 
@@ -144,12 +259,14 @@ namespace real_estate.Controllers.register
 
                 SqlDataReader dr;
                 string sqltext = "";
-                sqltext += " SELECT  a.[user_id] , a.[user_name] , a.user_role_id , a.user_status , b.role_name ";
-                sqltext += " FROM [realestate].[dbo].[sa_user] a ";
-                sqltext += " INNER JOIN realestate..sa_role b ON b.role_id = a.user_role_id";
-                sqltext += " WHERE a.[user_name] = '" + stuff.user_name + "' "; 
-                sqltext += " AND a.[user_password] = '" + dbPassword + "' ";
-                sqltext += " AND a.user_status = 'N' ";
+                sqltext += " SELECT  a.[user_id] , a.[user_email] , a.user_role_id , a.user_status , b.role_name ";
+                sqltext += "        ,  a.user_firstName , a.user_lastName                                        ";
+                sqltext += " FROM [realestate].[dbo].[sa_user] a                                                 ";
+                sqltext += " INNER JOIN realestate..sa_role b ON b.role_id = a.user_role_id                      ";
+                sqltext += " WHERE a.[user_email] = '" + stuff.user_email + "'                                   "; 
+                sqltext += " AND a.[user_password] = '" + dbPassword + "'                                        ";
+                sqltext += " AND a.[user_role_id] in('" + stuff.user_role_id + "', '1' )                         ";
+                sqltext += " AND a.[user_status] ='A'                                                            ";
 
 
 

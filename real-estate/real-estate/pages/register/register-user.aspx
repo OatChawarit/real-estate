@@ -58,10 +58,10 @@
                 <div class="row col-12">
 
                     <div class="col-lg-6">                       
-                        <input type="text" id="fName" placeholder="ชื่อ*" class="form-control" />
+                        <input type="text" id="fName" placeholder="ชื่อ*" class="form-control" maxlength="50" />
                     </div>
                     <div class="col-lg-6">                      
-                        <input type="text" id="lastName" placeholder="นามสกุล*" />
+                        <input type="text" id="lastName" placeholder="นามสกุล*" maxlength="50" />
                     </div>
 
                     
@@ -77,7 +77,7 @@
 
                     <div class="col-lg-6">
                         <label>Email*  สำหรับใช้เข้าสู่ระบบ <span id="WarnEmail"></span></label>
-                        <input type="email" id="eMail" placeholder="Email*  "  onchange="checkEmail( $('#eMail').val() )" />
+                        <input type="email" id="eMail" placeholder="Email*  "  onchange="checkEmail( $('#eMail').val() )" maxlength="60"/>
                     </div>
                     <div class="col-lg-6">
                         <label>วันเกิด (ค.ศ.)</label>
@@ -86,10 +86,10 @@
                     
 
                     <div class="col-lg-6">
-                        <input type="password" id="uPass" placeholder="Password*" />
+                        <input type="password" id="uPass" placeholder="Password*" maxlength="50" />
                     </div>
                     <div class="col-lg-6">
-                        <input type="password" id="confirmPass" placeholder="Confirm Password*" />
+                        <input type="password" id="confirmPass" placeholder="Confirm Password*" maxlength="50" />
                     </div>
                     <div class="btn-wrapper col-lg-12">
 
@@ -137,7 +137,7 @@
 
             let yearPick = new Date(dateOfBirth).getFullYear() ;
              
-            console.log('chkEmail', chkEmail);
+            //console.log('chkEmail', chkEmail);
  
             if (!fName) {
                 Swal.fire({
@@ -186,7 +186,7 @@
                     text: 'Password'
                 });
             }
-            else if (!lastName) {
+            else if (!confirmPass) {
                 Swal.fire({
                     type: 'warning',
                     title: 'กรุณาระบุ!!',
@@ -230,7 +230,7 @@
                         if (val.value) {
 
                             var jsonData = JSON.stringify({
-                                "user_name": eMail,
+                                "user_email": eMail,
                                 "user_password": uPass,
 
                                 "cus_firstName": fName,
@@ -246,7 +246,7 @@
                                 url: "../../api/register",
                                 data: { "data": jsonData },
                                 headers: {
-                                    "types": "AddRegisterUser"
+                                    "types": "AddRegisterUserCustomer"
                                 }
                             }).done(function (data) {
                                 console.log('data', data);
@@ -263,7 +263,7 @@
                                         title: 'พบข้อผิดพลาด',
                                         text: data
                                     }).then((value) => {
-                                        location.reload();
+                                        //location.reload();
                                     });
                                 }
                             });
@@ -291,7 +291,8 @@
             let currentEmail = e;
 
             var jsonData = JSON.stringify({
-                "user_name": currentEmail
+                "user_email": currentEmail,
+                    "user_role_id": 2
             });
 
             let resData;

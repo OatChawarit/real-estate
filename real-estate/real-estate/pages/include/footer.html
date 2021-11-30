@@ -27,8 +27,51 @@
 
 <script>
 
-    $(document).ready(function () {
+    let logInData = JSON.parse(sessionStorage.getItem("LogInData")); 
 
-        
+    $(document).ready(function () {
+        //$('#tbUsername').html('');
+        if (logInData) {
+
+            let user_role = "";
+
+            if (logInData[0].user_role_id == 1) {
+                user_role = 'ผู้ดูแลระบบ';
+            } else if (logInData[0].user_role_id == 2) {
+                user_role = 'สมาชิกทั่วไป';
+            } else if (logInData[0].user_role_id == 3) {
+                user_role = 'ตัวแทนขาย';
+            } 
+
+            $('#tbUsername').html(` <b> ${logInData[0].user_firstName} ${logInData[0].user_lastName} <br> [${user_role}] </b> `);
+
+        }
+         
     });
+
+
+    function checkLogin( permission_role) {    
+
+        if (logInData == null) {
+            alert('กรุณาเข้าสู่ระบบ!!');
+            window.location.href = "../home/login";
+        }
+
+        if (logInData[0].user_role_id == 1) {
+            //system admin ผ่าน
+
+        } else if (logInData[0].user_role_id != permission_role) { 
+            alert(" คุณไม่ได้รับสิทธิ์เข้า!! ");
+            window.location.href = "../home/main"; 
+        } 
+    }
+
+    function logOutClick() {
+
+        sessionStorage.setItem("LogInData",  null )
+        window.location.reload();
+
+    }
+
+
 </script>
