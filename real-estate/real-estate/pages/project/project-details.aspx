@@ -272,4 +272,53 @@
     <!-- นำเข้าส่วนท้าย JS -->
     <!-- #include virtual ="../include/footer.html" -->
 </body>
+<script>
+
+    $(document).ready(function () {
+ 
+         
+        var jsonData = JSON.stringify({
+            //// ส่งค่า plan_type_id ไป where
+            "plan_type_id": 'PJL-test0001'
+        });
+
+        //เรียก api
+        $.get("../../api/ProjectList", { jsonData: jsonData, types: "listProjectDetails" })
+            .done(function (data) {
+                let listProjectDetails = JSON.parse(data);
+                console.log('listProjectDetails', listProjectDetails);
+                
+            });
+
+        $.get("../../api/ProjectList", { jsonData: jsonData, types: "getPlanType_ImgTransaction" })
+            .done(function (data) {
+                let getPlanType_ImgTransaction = JSON.parse(data);
+                console.log('getPlanType_ImgTransaction', getPlanType_ImgTransaction);
+
+            });
+
+        ////เรียก api
+        //$.ajax({
+        //    type: 'POST',
+        //    url: "../../api/projectList",
+        //    data: { "data": jsonData },
+        //    headers: {
+        //        "types": "listProjectDetails"
+        //    }
+        //}).done(function (data) {
+
+        //    let listProjectDetails = JSON.parse(data);
+        //    console.log('listProjectDetails', listProjectDetails);
+
+        //});
+
+
+
+
+    });
+
+</script>
+
+
+
 </html>

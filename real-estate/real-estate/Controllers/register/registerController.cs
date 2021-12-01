@@ -14,10 +14,7 @@ using System.Text;
 using System.Web.Http;
 
 using System.Security.Cryptography;
-
  
- 
-
 
 namespace real_estate.Controllers.register
 {
@@ -66,10 +63,7 @@ namespace real_estate.Controllers.register
                 rs = "ไม่ข้อมูล";
             }
 
-            return rs;
-
- 
-
+            return rs; 
             //return  $"value {id}";
         }
 

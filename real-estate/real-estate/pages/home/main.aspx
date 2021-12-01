@@ -644,7 +644,7 @@
             //loadCSS();
             //loadScript();
         }, 200); */
-    }
+    } 
 
     //drdw เขต/แขวง หน้าเว็บ
     $("#drdwProvince").change(function () {
