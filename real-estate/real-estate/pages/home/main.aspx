@@ -217,7 +217,7 @@
 
                             <div class="product-info">
                                 <div class="product-price">
-                                    <span>1,200,000<label> /บาท</label></span>
+                                    <span>2,200,000<label> /บาท</label></span>
                                 </div>
                                 <h2 class="product-title"><a href="../project/project-details.aspx">New Apartment Nice View</a></h2>
                                 <div class="product-description">
@@ -275,7 +275,7 @@
 
                             <div class="product-info">
                                 <div class="product-price">
-                                    <span>1,200,000<label> /บาท</label></span>
+                                    <span>2,200,000<label> /บาท</label></span>
                                 </div>
                                 <h2 class="product-title"><a href="../project/project-details.aspx">Modern Apartments</a></h2>
                                 <div class="product-description">
@@ -333,7 +333,7 @@
 
                             <div class="product-info">
                                 <div class="product-price">
-                                    <span>1,200,000<label> /บาท</label></span>
+                                    <span>2,200,000<label> /บาท</label></span>
                                 </div>
                                 <h2 class="product-title"><a href="../project/project-details.aspx">Comfortable Apartment</a></h2>
                                 <div class="product-description">
@@ -391,7 +391,7 @@
 
                             <div class="product-info">
                                 <div class="product-price">
-                                    <span>1,200,000<label> /บาท</label></span>
+                                    <span>2,200,000<label> /บาท</label></span>
                                 </div>
                                 <h2 class="product-title"><a href="../project/project-details.aspx">Luxury villa in Rego Park </a></h2>
                                 <div class="product-description">
@@ -449,7 +449,7 @@
 
                             <div class="product-info">
                                 <div class="product-price">
-                                    <span>1,200,000<label> /บาท</label></span>
+                                    <span>2,200,000<label> /บาท</label></span>
                                 </div>
                                 <h2 class="product-title"><a href="../project/project-details.aspx">Beautiful Flat in Manhattan </a></h2>
                                 <div class="product-description">
@@ -576,6 +576,7 @@
                     </div>
                 </div>
                 <div id="news_blog" class="row ltn__blog-slider-one-active slick-arrow-1 ltn__blog-item-3-normal">
+
                 </div>
                 <div class="text-center">
                     <h4><a class="section-subtitle section-subtitle-2 ltn__secondary-color" href="news.aspx">ดูข่าวสารทั้งหมด</a></h4>
@@ -620,18 +621,18 @@
             html += '<div class="col-lg-4 ">';
             html += '<div class="ltn__blog-item ltn__blog-item-3">';
             html += '<div class="ltn__blog-img">';
-            html += '<a href="news-detail.aspx">  <img src="../../../image/news/' + item.news_image + '" alt="' + item.news_image + '" /></a>';
+            html += '<a href="news-detail.aspx?newsid='+ item.news_id +'">  <img src="../../../image/news/' + item.news_image + '" alt="' + item.news_image + '" /></a>';
             html += '</div>';
             html += '<div class="ltn__blog-brief">';
             html += '<div class="ltn__blog-meta">';
             html += '<ul><li class="ltn__blog-author"><a href="javascript:void(0)"><i class="far fa-user"></i>ผู้เขียน: ' + item.create_by + '</a></li></ul>';
             html += '</div>';
-            html += '<h3 class="ltn__blog-title"><a href="news-detail.aspx">' + item.news_topic + '</a></h3>';
+            html += '<h3 class="ltn__blog-title"><a href="news-detail.aspx?newsid='+ item.news_id +'">' + item.news_topic + '</a></h3>';
             html += '<div class="ltn__blog-meta-btn">';
             html += ' <div class="ltn__blog-meta"><ul><li class="ltn__blog-date"><i class="far fa-calendar-alt"></i>' + dateFormat(item.create_date) + '</li></ul>';
             html += '</div>';
             html += '<div class="ltn__blog-btn">';
-            html += '<a href="news-detail.aspx">อ่านเพิ่มเติม</a>';
+            html += '<a href="news-detail.aspx?newsid='+ item.news_id +'">อ่านเพิ่มเติม</a>';
             html += '</div>';
             html += '</div></div></div></div>';
         });
@@ -675,8 +676,8 @@
         $("#drdwDistrictMob").empty();
         $(".drdwDisMob").empty();
         $("#drdwDistrictMob").val("");
-
-
+        
+        let Listdata;
         let html1 = '<option value=""> เลือกทำเลที่ตั้งในจังหวัด</option>';
         let html2 = '<li data-value="" class="option focus"></li>';
         $.get("../../api/drdwData", { id: $(this).val(), types: "District" })

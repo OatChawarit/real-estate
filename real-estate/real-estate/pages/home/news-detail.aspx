@@ -17,7 +17,7 @@
 
         <!-- เนื้อหา -->
         <!-- News -->
-        <div class="ltn__breadcrumb-area text-left bg-overlay-white-30 bg-image " data-bs-bg="../../vendor/img/bg/24.jpg">
+        <div class="ltn__breadcrumb-area text-left bg-overlay-white-30 bg-image " data-bs-bg="../../../vendor/img/bg/24.jpg">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
@@ -25,7 +25,7 @@
                             <h1 class="page-title">ข่าวสารน่ารู้</h1>
                             <div class="ltn__breadcrumb-list">
                                 <ul>
-                                    <li><a href="news.aspx"><span class="ltn__secondary-color"><i class="fas fa-list-ol"></i></span> ข่าวสารทั้งหมด</a></li>
+                                    <li><a href="news.aspx"><span class="ltn__secondary-color"><i class="fas fa-list-ol"></i></span>ข่าวสารทั้งหมด</a></li>
                                     <li>รายละเอียดข่าวสาร</li>
                                 </ul>
                             </div>
@@ -44,38 +44,22 @@
                     <div class="col-lg-8">
                         <div class="ltn__page-details-inner ltn__service-details-inner">
                             <div class="ltn__blog-img">
-                                <img src="../../vendor/img/blog/1.jpg" alt="Image">
+                                <img src="" id="news_image" alt="Image" />
                             </div>
-                            <p>
-                                <span class="ltn__first-letter">L</span>orem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
-                                incidi dunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exerc itation ullamco laboris nisi 
-                                ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                            </p>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque 
-                                ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia
-                                voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione.
-                            </p>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                                    Excepteur sint occaecat cupidatat non proident.
-                            </p>
-                            <div class="ltn__service-list-menu text-uppercase mt-50 d-none">
+                            <div class="ltn__blog-meta">
                                 <ul>
-                                    <li><i class="fas fa-car"></i>Front Brakes Repair <span class="service-price">$225.95 <span>Plus Parts</span></span> </li>
-                                    <li><i class="fas fa-life-ring"></i>Rear Brakes Repair <span class="service-price">$225.95 <span>Plus Parts</span></span> </li>
-                                    <li><i class="fas fa-cog"></i>Axle <span class="service-price">$225.95 <span>Plus Parts</span></span> </li>
-                                    <li><i class="fas fa-car"></i>Starters / Alternators <span class="service-price">$225.95 <span>Plus Parts</span></span> </li>
+                                    <li class="ltn__blog-author"><a href="javascript:void(0)"><i class="far fa-user"></i>ผู้เขียน: <span id="blogCreate"></span></a></li>
+                                    <li class="ltn__blog-date">
+                                        <i class="far fa-calendar-alt"></i><span id="blogDate"></span>
+                                    </li>
                                 </ul>
                             </div>
-
+                            <h3 id="headerNews"></h3>
+                            <p id="detailNews">
+                            </p>
                         </div>
                     </div>
+
                     <div class="col-lg-4">
                         <aside class="sidebar-area ltn__right-sidebar">
                             <!-- Menu Widget -->
@@ -93,6 +77,7 @@
                 </div>
             </div>
         </div>
+        <br />
         <!-- details -->
 
         <!-- เนื้อหา -->
@@ -103,4 +88,82 @@
     <!-- นำเข้าส่วนท้าย JS -->
     <!-- #include virtual ="../include/footer.html" -->
 </body>
+<script>
+
+
+    $(document).ready(function () {
+        Swal.fire({
+            title: 'โปรดรอสักครู่',
+            html: 'กำลังโหลดข้อมูล..',// add html attribute if you want or remove
+            allowOutsideClick: false,
+            onBeforeOpen: () => {
+                Swal.showLoading()
+            },
+        });
+        //loadScript();
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const news_id = urlParams.get('newsid');
+        //console.log(news_id);
+
+        var jsonData = JSON.stringify({
+            id: news_id
+        });
+
+        let Listdata;
+        $.get("../../api/news", { jsonData, types: "getNews" })
+            .done(function (data) {
+                Listdata = JSON.parse(data);
+                console.log(Listdata);
+
+                let img_path = '../../../image/news/' + Listdata[0].news_image;
+                $("#news_image").attr('src', img_path);
+                $('#headerNews').append(Listdata[0].news_topic);
+                $('#detailNews').append(Listdata[0].news_content);
+                $("#blogDate").append(dateFormat(Listdata[0].create_date));
+                $("#blogCreate").append(Listdata[0].create_by);
+                Swal.close();
+                //loadNews(Listdata);
+            });
+    });
+
+    function loadNews(arrData) {
+        let html = "";
+        arrData.forEach((item, i) => {
+            $('#headerNews').append(item.news_topic);
+            $('#detailNews').append(item.news_content);
+        });
+        loadCSS();
+    }
+
+    //โหลด javascript
+    function loadScript() {
+        let jss = [
+            { jsPath: "../../vendor/js/plugins.js" }, { jsPath: "../../vendor/js/bootstrap.js" }, { jsPath: "../../vendor/js/helper.js" }
+        ];
+        jss.forEach((item, i) => {
+            var script = document.createElement('script');
+            script.onload = function () {
+            };
+            script.src = item.jsPath;
+            document.head.appendChild(script); //or something of the likes
+            //console.log(document.head.appendChild(script));
+        });
+    }
+
+    //โหลด css
+    function loadCSS() {
+        let csss = [
+            { cssPath: "../../vendor/css/bootstrap.css" }, { cssPath: "../../vendor/css/style.css" }
+        ];
+        csss.forEach((item, i) => {
+            var link = document.createElement('link');
+            link.rel = "stylesheet";
+            link.type = "text/css";
+            link.href = item.cssPath;
+            document.head.appendChild(link);
+            //console.log(document.head.appendChild(link));
+        });
+    }
+</script>
 </html>

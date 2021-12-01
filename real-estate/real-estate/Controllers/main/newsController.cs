@@ -24,7 +24,7 @@ namespace real_estate.Controllers.main
             return new string[] { "value1", "value2" };
         } 
 
-        public string Get( string jsonData , string types)
+        public string Get(string jsonData , string types)
         {
             var db = new DBClass();
             string rs = "";
@@ -46,6 +46,26 @@ namespace real_estate.Controllers.main
                     {
                         result.Add(dr.GetName(i), dr[i].ToString());
                     } 
+                    arr.Add(result);
+                }
+                rs = JsonConvert.SerializeObject(arr);
+            }
+            else if(types == "getNews")
+            {
+                SqlDataReader dr;
+                string sqltext = "";
+                sqltext += " SELECT  a.*  ";
+                sqltext += " FROM realestate..re_news a Where news_id='"+ stuff.id + "'";
+
+                dr = db.GetSqlDataReader(sqltext);
+                ArrayList arr = new ArrayList();
+                while (dr.Read())
+                {
+                    var result = new Dictionary<string, object>();
+                    for (int i = 0; i < dr.FieldCount; i++)
+                    {
+                        result.Add(dr.GetName(i), dr[i].ToString());
+                    }
                     arr.Add(result);
                 }
                 rs = JsonConvert.SerializeObject(arr);

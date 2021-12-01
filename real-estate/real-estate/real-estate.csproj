@@ -2173,6 +2173,7 @@
     <Compile Include="ClassData\DropDownData.cs" />
     <Compile Include="ClassData\News.cs" />
     <Compile Include="ClassData\PrefixID.cs" />
+    <Compile Include="ClassData\shareHelper.cs" />
     <Compile Include="ConnectDB\DBClass.cs" />
     <Compile Include="Controllers\main\newsController.cs" />
     <Compile Include="Controllers\register\registerController.cs" />
