@@ -622,11 +622,11 @@
         });
  
         //เรียก api
-        $.get("../../api/projectList", { jsonData: jsonData1, types: "listProject" })
+        $.get("../../api/projectList", { jsonData: jsonData1, types: "listProjectDetails" })
             .done(function (data) {
 
                 let listProject = JSON.parse(data); 
-                let img_path1 = '../../../image/project/' + listProject[0].plan_image_profile;  
+                //let img_path1 = '../../../image/project/' + listProject[0].plan_image_profile;  
                 console.log('listProject', listProject);
           
             });
