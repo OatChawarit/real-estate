@@ -613,6 +613,23 @@
                 loadNews(resData);
             });
         //
+
+
+
+
+        var jsonData1 = JSON.stringify({
+
+        });
+ 
+        //เรียก api
+        $.get("../../api/projectList", { jsonData: jsonData1, types: "listProject" })
+            .done(function (data) {
+
+                let listProject = JSON.parse(data);
+                
+                console.log('listProject', listProject);
+          
+            });
     });
 
     function loadNews(arrData) {

@@ -33,15 +33,28 @@ namespace real_estate.Controllers.project
             {
                 SqlDataReader dr;
                 string sqltext = "";
-                sqltext += "SELECT pro_id, sale_id, pro_company_id, pro_name";
-                sqltext += ", pro_description, pro_type_id, pro_location_id";
-                sqltext += ", pro_total_area, pro_land_area, pro_usable_area";
-                sqltext += ", pro_unit, pro_opening_price, pro_opening_date";
-                sqltext += ", pro_address, pro_sub_district_id, pro_district_id";
-                sqltext += ", pro_province_id, pro_postal_code, pro_LinkGoogleMap";
-                sqltext += ", pro_bank_name, pro_bank_branchName, pro_bank_number";
-                sqltext += ", create_date, create_by, update_date, update_by, pro_status";
-                sqltext += " FROM realestate..re_ProjectTable Order by pro_id desc";
+                sqltext += "SELECT ";
+                sqltext += "	  PJL.plan_type_id                   ";
+                sqltext += "      , pro_name                         ";
+                sqltext += "      , pType.pro_type_name	             ";
+                sqltext += "	  , pLo.pro_location_id              ";
+                sqltext += "	  , pLo.pro_location_name            ";
+                sqltext += "	  , PJL.plan_name                    ";
+                sqltext += "      , PJL.plan_useable_area            ";
+                sqltext += "      , PJL.plan_floor                   ";
+                sqltext += "      , PJL.plan_bed_room                ";
+                sqltext += "      , PJL.plan_bath_room               ";
+                sqltext += "      , PJL.plan_multiFunction_room      ";
+                sqltext += "      , PJL.plan_parking                 ";
+                sqltext += "      , PJL.plan_price                   ";
+
+                sqltext += "   FROM [realestate].[dbo].[re_ProjectTable] PJ  ";
+                sqltext += "   INNER JOIN [realestate].[dbo].[re_Project_PlanType] PJL ON PJL.pro_id = PJ.pro_id ";
+                sqltext += "   INNER JOIN [realestate].[dbo].[re_Project_Type_Table]  pType ON pType.pro_type_id = PJ.pro_type_id   ";
+                sqltext += "   INNER JOIN [realestate].[dbo].[re_Project_Location_Table] pLo ON pLo.pro_location_id = PJ.pro_location_id ";
+
+                sqltext += "   WHERE PJ.pro_status = 'N' ";
+
 
                 dr = db.GetSqlDataReader(sqltext);
                 ArrayList arr = new ArrayList();
