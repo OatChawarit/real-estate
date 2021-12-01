@@ -44,8 +44,8 @@
                                             </div> -->
                                         </div>
                                     </div>
-                                    <div class="slide-item-img">
-                                        <img src="../../vendor/img/slider/21.png" alt="#" />
+                                    <div class="slide-item-img" >
+                                        <img src="../../vendor/img/slider/21.png" alt="#"   />
                                     </div>
                                 </div>
                             </div>
@@ -583,7 +583,7 @@
                 </div>
             </div>
         </div>
-        <!-- News -->
+        <!-- News --> 
 
 
         <!-- นำเข้าส่วนท้าย -->
@@ -625,11 +625,14 @@
         $.get("../../api/projectList", { jsonData: jsonData1, types: "listProject" })
             .done(function (data) {
 
-                let listProject = JSON.parse(data);
-                
+                let listProject = JSON.parse(data); 
+                let img_path1 = '../../../image/project/' + listProject[0].plan_image_profile;  
                 console.log('listProject', listProject);
           
             });
+       
+
+       
     });
 
     function loadNews(arrData) {

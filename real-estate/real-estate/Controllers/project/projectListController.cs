@@ -43,12 +43,15 @@ namespace real_estate.Controllers.project
                 sqltext += "      , PJL.plan_useable_area            ";
                 sqltext += "      , PJL.plan_floor                   ";
                 sqltext += "      , PJL.plan_bed_room                ";
-                sqltext += "      , PJL.plan_bath_room               ";
+                sqltext += "      , PJL.plan_bath_room               "; 
                 sqltext += "      , PJL.plan_multiFunction_room      ";
                 sqltext += "      , PJL.plan_parking                 ";
                 sqltext += "      , PJL.plan_price                   ";
                 sqltext += "      , pS.pro_statusType_name           ";
                 sqltext += "      , s.sale_firstName +' '+ s.sale_lastName as sale_fullName        ";
+                sqltext += "      , s.sale_phone                                                   ";
+                sqltext += "      , PJL.plan_image_profile                                         ";
+
 
 
                 sqltext += "   FROM [realestate].[dbo].[re_ProjectTable] PJ  ";
@@ -81,6 +84,33 @@ namespace real_estate.Controllers.project
                 string sqltext = "";
                 sqltext += "";
                 sqltext += "";
+
+                dr = db.GetSqlDataReader(sqltext);
+                ArrayList arr = new ArrayList();
+                while (dr.Read())
+                {
+                    var result = new Dictionary<string, object>();
+                    for (int i = 0; i < dr.FieldCount; i++)
+                    {
+                        result.Add(dr.GetName(i), dr[i].ToString());
+                    }
+                    arr.Add(result);
+                }
+                rs = JsonConvert.SerializeObject(arr);
+            }
+            else if (types == "getPlanType_ImgTransaction")
+            {
+                SqlDataReader dr;
+                string sqltext = "";
+                sqltext += "  SELECT                                                          ";
+                sqltext += " 		[plan_img_id]                                             ";
+                sqltext += "       ,[plan_img_path]                                           ";
+                sqltext += "       ,[plan_img_description]                                    ";
+                sqltext += "       ,[plan_type_id]                                            ";
+
+                sqltext += "   FROM [realestate].[dbo].[re_PlanType_ImgTransaction] a         ";
+
+                sqltext += "   WHERE a.plan_type_id = '"+ stuff.plan_type_id + "'             ";
 
                 dr = db.GetSqlDataReader(sqltext);
                 ArrayList arr = new ArrayList();

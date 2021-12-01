@@ -142,6 +142,10 @@
     <Content Include="image\news\1.jpg" />
     <Content Include="image\news\2.jpg" />
     <Content Include="image\news\3.jpg" />
+    <Content Include="image\project\setthasiri-rama-5-floorplan-meridian-454.png" />
+    <Content Include="image\project\setthasiri-rama-5-housetype-majesty-324.png" />
+    <Content Include="image\project\setthasiri-rama-5-housetype-meridian-454-1.png" />
+    <Content Include="image\project\setthasiri-rama-5-housetype-meridian-454-2.png" />
     <Content Include="pages\home\about.aspx" />
     <Content Include="pages\home\contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -2294,7 +2298,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Data\" />
-    <Folder Include="image\project\" />
     <Folder Include="pages\admin\" />
     <Folder Include="pages\sales\" />
     <Folder Include="Views\news\" />
