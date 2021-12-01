@@ -298,23 +298,7 @@
                 console.log('getPlanType_ImgTransaction', getPlanType_ImgTransaction);
 
             });
-
-        ////เรียก api
-        //$.ajax({
-        //    type: 'POST',
-        //    url: "../../api/projectList",
-        //    data: { "data": jsonData },
-        //    headers: {
-        //        "types": "listProjectDetails"
-        //    }
-        //}).done(function (data) {
-
-        //    let listProjectDetails = JSON.parse(data);
-        //    console.log('listProjectDetails', listProjectDetails);
-
-        //});
-
-
+ 
 
 
     });
