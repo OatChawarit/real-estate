@@ -39,7 +39,7 @@ namespace real_estate.Controllers.project
                 sqltext += "      , pType.pro_type_name	             ";
                 sqltext += "	  , pLo.pro_location_id              ";
                 sqltext += "	  , pLo.pro_location_name            ";
-                sqltext += "	  , PJL.plan_name                    ";
+                sqltext += "	  , PJL.plan_name                    "; 
                 sqltext += "      , PJL.plan_useable_area            ";
                 sqltext += "      , PJL.plan_floor                   ";
                 sqltext += "      , PJL.plan_bed_room                ";
@@ -47,11 +47,13 @@ namespace real_estate.Controllers.project
                 sqltext += "      , PJL.plan_multiFunction_room      ";
                 sqltext += "      , PJL.plan_parking                 ";
                 sqltext += "      , PJL.plan_price                   ";
+                sqltext += "      , pS.pro_statusType_name           "; 
 
                 sqltext += "   FROM [realestate].[dbo].[re_ProjectTable] PJ  ";
                 sqltext += "   INNER JOIN [realestate].[dbo].[re_Project_PlanType] PJL ON PJL.pro_id = PJ.pro_id ";
                 sqltext += "   INNER JOIN [realestate].[dbo].[re_Project_Type_Table]  pType ON pType.pro_type_id = PJ.pro_type_id   ";
                 sqltext += "   INNER JOIN [realestate].[dbo].[re_Project_Location_Table] pLo ON pLo.pro_location_id = PJ.pro_location_id ";
+                sqltext += "   INNER JOIN realestate..re_Project_StatusType pS ON pS.pro_statusType_id = PJ.pro_statusType_id          "; 
 
                 sqltext += "   WHERE PJ.pro_status = 'N' ";
 
