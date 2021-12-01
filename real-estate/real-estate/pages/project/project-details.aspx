@@ -26,8 +26,8 @@
                             <h1 class="page-title">โครงการของเรา</h1>
                             <div class="ltn__breadcrumb-list">
                                 <ul>
-                                    <li><a href="main.aspx"><span class="ltn__secondary-color"><i class="fas fa-home"></i></span>หน้าแรก</a></li>
-                                    <li>โครงการอสังหาฯ</li>
+                                    <li><a href="project-list.aspx"><span class="ltn__secondary-color"><i class="fas fa-home"></i></span>โครงการอสังหาฯ</a></li>
+                                    <li>รายละเอียดโครงการ</li>
                                 </ul>
                             </div>
                         </div>
@@ -275,36 +275,79 @@
 <script>
 
     $(document).ready(function () {
-        const queryString = window.location.search; 
-        const urlParams = new URLSearchParams(queryString); 
-        const plan_type_id = urlParams.get('id');
+        //Swal.fire({
+        //    title: 'โปรดรอสักครู่',
+        //    html: 'กำลังโหลดข้อมูล..',// add html attribute if you want or remove
+        //    allowOutsideClick: false,
+        //    onBeforeOpen: () => {
+        //        Swal.showLoading()
+        //    },
+        //});
+        //loadScript();
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const pro_id = urlParams.get('id');
+        //console.log(news_id);
 
         var jsonData = JSON.stringify({
-            //// ส่งค่า plan_type_id ไป where
-            "plan_type_id": plan_type_id
+            pro_id : pro_id
         });
 
-        //เรียก api
-        $.get("../../api/ProjectList", { jsonData: jsonData, types: "listProjectDetails" })
-            .done(function (data) {
-                let listProjectDetails = JSON.parse(data);
-                console.log('listProjectDetails', listProjectDetails);
-                
-            });
+        let Listdata;
+        //$.get("../../api/news", { jsonData, types: "getNews" })
+        //    .done(function (data) {
+        //        Listdata = JSON.parse(data);
+        //        console.log(Listdata);
 
-        $.get("../../api/ProjectList", { jsonData: jsonData, types: "getPlanType_ImgTransaction" })
-            .done(function (data) {
-                let getPlanType_ImgTransaction = JSON.parse(data);
-                console.log('getPlanType_ImgTransaction', getPlanType_ImgTransaction);
-
-            });
- 
-
-
+        //        let img_path = '../../../image/news/' + Listdata[0].news_image;
+        //        $("#news_image").attr('src', img_path);
+        //        $('#headerNews').append(Listdata[0].news_topic);
+        //        $('#detailNews').append(Listdata[0].news_content);
+        //        $("#blogDate").append(dateFormat(Listdata[0].create_date));
+        //        $("#blogCreate").append(Listdata[0].create_by);
+        //        Swal.close();
+        //        //loadNews(Listdata);
+        //    });
     });
 
+    function loadNews(arrData) {
+        let html = "";
+        arrData.forEach((item, i) => {
+            $('#headerNews').append(item.news_topic);
+            $('#detailNews').append(item.news_content);
+        });
+        loadCSS();
+    }
+
+    //โหลด javascript
+    function loadScript() {
+        let jss = [
+            { jsPath: "../../vendor/js/plugins.js" }, { jsPath: "../../vendor/js/bootstrap.js" }, { jsPath: "../../vendor/js/helper.js" }
+        ];
+        jss.forEach((item, i) => {
+            var script = document.createElement('script');
+            script.onload = function () {
+            };
+            script.src = item.jsPath;
+            document.head.appendChild(script); //or something of the likes
+            //console.log(document.head.appendChild(script));
+        });
+    }
+
+    //โหลด css
+    function loadCSS() {
+        let csss = [
+            { cssPath: "../../vendor/css/bootstrap.css" }, { cssPath: "../../vendor/css/style.css" }
+        ];
+        csss.forEach((item, i) => {
+            var link = document.createElement('link');
+            link.rel = "stylesheet";
+            link.type = "text/css";
+            link.href = item.cssPath;
+            document.head.appendChild(link);
+            //console.log(document.head.appendChild(link));
+        });
+    }
+
 </script>
-
-
-
 </html>
