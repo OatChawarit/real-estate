@@ -47,13 +47,17 @@ namespace real_estate.Controllers.project
                 sqltext += "      , PJL.plan_multiFunction_room      ";
                 sqltext += "      , PJL.plan_parking                 ";
                 sqltext += "      , PJL.plan_price                   ";
-                sqltext += "      , pS.pro_statusType_name           "; 
+                sqltext += "      , pS.pro_statusType_name           ";
+                sqltext += "      , s.sale_firstName +' '+ s.sale_lastName as sale_fullName        ";
+
 
                 sqltext += "   FROM [realestate].[dbo].[re_ProjectTable] PJ  ";
                 sqltext += "   INNER JOIN [realestate].[dbo].[re_Project_PlanType] PJL ON PJL.pro_id = PJ.pro_id ";
-                sqltext += "   INNER JOIN [realestate].[dbo].[re_Project_Type_Table]  pType ON pType.pro_type_id = PJ.pro_type_id   ";
+                sqltext += "   INNER JOIN [realestate].[dbo].[re_Project_Type_Table]  pType ON pType.pro_type_id = PJ.pro_type_id        ";
                 sqltext += "   INNER JOIN [realestate].[dbo].[re_Project_Location_Table] pLo ON pLo.pro_location_id = PJ.pro_location_id ";
-                sqltext += "   INNER JOIN realestate..re_Project_StatusType pS ON pS.pro_statusType_id = PJ.pro_statusType_id          "; 
+                sqltext += "   INNER JOIN realestate..re_Project_StatusType pS ON pS.pro_statusType_id = PJ.pro_statusType_id            ";
+                sqltext += "   INNER JOIN realestate..re_SaleTable s ON s.sale_id = PJ.sale_id AND s.sale_status = 'N'                   ";
+
 
                 sqltext += "   WHERE PJ.pro_status = 'N' ";
 
