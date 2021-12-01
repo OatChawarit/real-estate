@@ -169,6 +169,7 @@
     <Content Include="pages\home\news-detail.aspx" />
     <Content Include="pages\home\news.aspx" />
     <Content Include="pages\project\project-details.aspx" />
+    <Content Include="pages\project\project-list.aspx" />
     <Content Include="pages\register\register-sale.aspx" />
     <Content Include="pages\register\register-user.aspx" />
     <Content Include="pages\include\footcontent.html" />
@@ -2176,6 +2177,7 @@
     <Compile Include="ClassData\shareHelper.cs" />
     <Compile Include="ConnectDB\DBClass.cs" />
     <Compile Include="Controllers\main\newsController.cs" />
+    <Compile Include="Controllers\project\projectListController.cs" />
     <Compile Include="Controllers\register\registerController.cs" />
     <Compile Include="Controllers\service\drdwDataController.cs" />
     <Compile Include="pages\home\about.aspx.cs">
@@ -2244,6 +2246,13 @@
     </Compile>
     <Compile Include="pages\project\project-details.aspx.designer.cs">
       <DependentUpon>project-details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\project\project-list.aspx.cs">
+      <DependentUpon>project-list.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\project\project-list.aspx.designer.cs">
+      <DependentUpon>project-list.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\register\register-sale.aspx.cs">
       <DependentUpon>register-sale.aspx</DependentUpon>

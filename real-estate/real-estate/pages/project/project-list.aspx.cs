@@ -5,13 +5,14 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace real_estate.pages.home
+namespace real_estate.pages.project
 {
-    public partial class news : System.Web.UI.Page
+    public partial class project_list : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-          
+     
+           
         }
     }
 }

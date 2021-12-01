@@ -44,107 +44,11 @@
                     <div class="row">
                         <%
                             var tb = new real_estate.ClassData.News();
-                            //if (string.IsNullOrEmpty(Session["username"] as string))
-                            //{
-                            //    Response.Write("<script>location.replace('../home/login.aspx');</script>");
-                            //    return;
-                            //}
-                            //tb.username = Session["username"].ToString();
                             Response.Write(tb.listAllNews());
+
+                            //string id = HttpContext.Current.Request.QueryString.Get("id");
+                            //Response.Write(id);
                         %>
-
-                        <div class="col-lg-4 col-sm-6 col-12">
-                            <div class="ltn__blog-item ltn__blog-item-3">
-                                <div class="ltn__blog-img">
-                                    <a href="news-detail.aspx">
-                                        <img src="../../vendor/img/blog/7.jpg" alt="#"></a>
-                                </div>
-                                <div class="ltn__blog-brief">
-                                    <div class="ltn__blog-meta">
-                                        <ul>
-                                            <li class="ltn__blog-author">
-                                                <ul>
-                                                    <li class="ltn__blog-author"><a href="javascript:void(0)"><i class="far fa-user"></i>ผู้เขียน: Admin</a>
-                                                    </li>
-                                                </ul>
-                                    </div>
-                                    <h3 class="ltn__blog-title"><a href="news-detail.aspx">How and when to replace brake rotors</a></h3>
-                                    <div class="ltn__blog-meta-btn">
-                                        <div class="ltn__blog-meta">
-                                            <ul>
-                                                <li class="ltn__blog-date"><i class="far fa-calendar-alt"></i>2021-11-25</li>
-                                            </ul>
-                                        </div>
-                                        <div class="ltn__blog-btn">
-                                            <a href="news-detail.aspx">อ่านเพิ่มเติม</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Blog Item -->
-                        <div class="col-lg-4 col-sm-6 col-12">
-                            <div class="ltn__blog-item ltn__blog-item-3">
-                                <div class="ltn__blog-img">
-                                    <a href="news-detail.aspx">
-                                        <img src="../../vendor/img/blog/8.jpg" alt="#"></a>
-                                </div>
-                                <div class="ltn__blog-brief">
-                                    <div class="ltn__blog-meta">
-                                        <ul>
-                                            <li class="ltn__blog-author">
-                                                <ul>
-                                                    <li class="ltn__blog-author"><a href="javascript:void(0)"><i class="far fa-user"></i>ผู้เขียน: Admin</a>
-                                                    </li>
-                                                </ul>
-                                    </div>
-                                    <h3 class="ltn__blog-title"><a href="news-detail.aspx">Electric Car Maintenance, Servicing & Repairs</a></h3>
-                                    <div class="ltn__blog-meta-btn">
-                                        <div class="ltn__blog-meta">
-                                            <ul>
-                                                <li class="ltn__blog-date"><i class="far fa-calendar-alt"></i>2021-11-25</li>
-                                            </ul>
-                                        </div>
-                                        <div class="ltn__blog-btn">
-                                            <a href="news-detail.aspx">อ่านเพิ่มเติม</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Blog Item -->
-                        <div class="col-lg-4 col-sm-6 col-12">
-                            <div class="ltn__blog-item ltn__blog-item-3">
-                                <div class="ltn__blog-img">
-                                    <a href="news-detail.aspx">
-                                        <img src="../../vendor/img/blog/2.jpg" alt="#"></a>
-                                </div>
-                                <div class="ltn__blog-brief">
-                                    <div class="ltn__blog-meta">
-                                        <ul>
-                                            <li class="ltn__blog-author">
-                                                <ul>
-                                                    <li class="ltn__blog-author"><a href="javascript:void(0)"><i class="far fa-user"></i>ผู้เขียน: Admin</a>
-                                                    </li>
-                                                </ul>
-                                    </div>
-                                    <h3 class="ltn__blog-title"><a href="news-detail.aspx">How to: Make Your Tires Last Longer</a></h3>
-                                    <div class="ltn__blog-meta-btn">
-                                        <div class="ltn__blog-meta">
-                                            <ul>
-                                                <li class="ltn__blog-date"><i class="far fa-calendar-alt"></i>2021-11-25</li>
-                                            </ul>
-                                        </div>
-                                        <div class="ltn__blog-btn">
-                                            <a href="news-detail.aspx">อ่านเพิ่มเติม</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--  -->
                     </div>
 
                     <!-- <div class="row">
@@ -169,7 +73,7 @@
             </div>
             <!-- Blog News -->
         </form>
-        <!-- เนื้อหา -->
+        <!-- เนื้อหา -->`
 
         <!-- นำเข้าส่วนท้าย -->
         <!-- #include virtual ="../include/footcontent.html" -->
@@ -179,7 +83,8 @@
 </body>
 <script>
     $(document).ready(function () {
-
-    }
+        //let username = JSON.parse(sessionStorage.getItem("LogInData"));
+        //console.log(logInData);
+    });
 </script>
 </html>

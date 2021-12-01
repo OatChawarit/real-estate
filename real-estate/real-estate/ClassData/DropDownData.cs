@@ -45,6 +45,7 @@ namespace real_estate.ClassData
                 }
             }
             System.Web.HttpContext.Current.Response.Write(str);
+            
         }
     }
 }
