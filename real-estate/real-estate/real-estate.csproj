@@ -2294,6 +2294,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Data\" />
+    <Folder Include="image\project\" />
     <Folder Include="pages\admin\" />
     <Folder Include="pages\sales\" />
     <Folder Include="Views\news\" />
