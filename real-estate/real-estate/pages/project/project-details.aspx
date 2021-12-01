@@ -275,11 +275,13 @@
 <script>
 
     $(document).ready(function () {
- 
-         
+        const queryString = window.location.search; 
+        const urlParams = new URLSearchParams(queryString); 
+        const plan_type_id = urlParams.get('id');
+
         var jsonData = JSON.stringify({
             //// ส่งค่า plan_type_id ไป where
-            "plan_type_id": 'PJL-test0001'
+            "plan_type_id": plan_type_id
         });
 
         //เรียก api
