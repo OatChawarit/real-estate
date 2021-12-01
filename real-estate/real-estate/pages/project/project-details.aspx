@@ -275,6 +275,9 @@
 <script>
 
     $(document).ready(function () {
+
+
+
         //Swal.fire({
         //    title: 'โปรดรอสักครู่',
         //    html: 'กำลังโหลดข้อมูล..',// add html attribute if you want or remove
@@ -290,8 +293,22 @@
         //console.log(news_id);
 
         var jsonData = JSON.stringify({
-            pro_id : pro_id
+            "plan_type_id" : pro_id
         });
+
+
+        $.get("../../api/ProjectList", { jsonData: jsonData, types: "listProjectDetails" })
+            .done(function (data) {
+                let listProjectDetails = JSON.parse(data);
+                console.log('listProjectDetails', listProjectDetails);
+
+            });
+        $.get("../../api/ProjectList", { jsonData: jsonData, types: "getPlanType_ImgTransaction" })
+            .done(function (data) {
+                let getPlanType_ImgTransaction = JSON.parse(data);
+                console.log('getPlanType_ImgTransaction', getPlanType_ImgTransaction);
+
+            });
 
         let Listdata;
         //$.get("../../api/news", { jsonData, types: "getNews" })
