@@ -50,6 +50,7 @@ namespace real_estate.Controllers.project
                 sqltext += "      , pS.pro_statusType_name           ";
                 sqltext += "      , s.sale_firstName +' '+ s.sale_lastName as sale_fullName        ";
                 sqltext += "      , s.sale_phone                                                   ";
+                sqltext += "      , s.sale_company                   ";
                 sqltext += "      , PJL.plan_image_profile                                         "; 
 
                 sqltext += "   FROM [realestate].[dbo].[re_ProjectTable] PJ  ";
@@ -146,6 +147,7 @@ namespace real_estate.Controllers.project
                 sqltext += "      , s.sale_phone                  ";
                 sqltext += "      , s.sale_line                  ";
                 sqltext += "      , s.sale_mail                  ";
+                sqltext += "      , s.sale_company               ";
                 sqltext += "      , PJL.plan_image_profile                  ";
                 sqltext += "      , PJ.create_date                  ";
                 sqltext += "      , PJ.pro_LinkGoogleMap                  "; 
