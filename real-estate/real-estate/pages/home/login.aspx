@@ -147,6 +147,7 @@
 
                 let resData = JSON.parse(data);
                 if (resData.length > 0) { 
+                    
                     sessionStorage.setItem("LogInData", data);
                     //localStorage.setItem("LogInData", resData);                     
                     location.replace('../home/main.aspx')

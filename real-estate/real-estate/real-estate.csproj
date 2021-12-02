@@ -174,7 +174,7 @@
     <Content Include="pages\home\news.aspx" />
     <Content Include="pages\project\project-details.aspx" />
     <Content Include="pages\project\project-list.aspx" />
-    <Content Include="pages\project\project-sales-managementaspx.aspx" />
+    <Content Include="pages\project\project-sales-management.aspx" />
     <Content Include="pages\register\register-sale.aspx" />
     <Content Include="pages\register\register-user.aspx" />
     <Content Include="pages\include\footcontent.html" />
@@ -2259,12 +2259,12 @@
     <Compile Include="pages\project\project-list.aspx.designer.cs">
       <DependentUpon>project-list.aspx</DependentUpon>
     </Compile>
-    <Compile Include="pages\project\project-sales-managementaspx.aspx.cs">
-      <DependentUpon>project-sales-managementaspx.aspx</DependentUpon>
+    <Compile Include="pages\project\project-sales-management.aspx.cs">
+      <DependentUpon>project-sales-management.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="pages\project\project-sales-managementaspx.aspx.designer.cs">
-      <DependentUpon>project-sales-managementaspx.aspx</DependentUpon>
+    <Compile Include="pages\project\project-sales-management.aspx.designer.cs">
+      <DependentUpon>project-sales-management.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\register\register-sale.aspx.cs">
       <DependentUpon>register-sale.aspx</DependentUpon>

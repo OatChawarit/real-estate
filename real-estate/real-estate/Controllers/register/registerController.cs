@@ -110,8 +110,8 @@ namespace real_estate.Controllers.register
                 sqlInsert.AppendLine(" '" + hashPassword + "',          ");
                 sqlInsert.AppendLine(" 2 ,                              ");
                 sqlInsert.AppendLine(" 'A' ,                            ");
-                sqlInsert.AppendLine(" '" + stuff.user_firstName + "',  ");
-                sqlInsert.AppendLine(" '" + stuff.user_lastName + "',   ");
+                sqlInsert.AppendLine(" '" + stuff.cus_firstName + "',  ");
+                sqlInsert.AppendLine(" '" + stuff.cus_lastName + "',   ");
                 sqlInsert.AppendLine(" getdate(),");
                 sqlInsert.AppendLine(" 'System'  ");         
                 sqlInsert.AppendLine(" ) "); 
@@ -179,8 +179,8 @@ namespace real_estate.Controllers.register
                 sqlInsert.AppendLine(" '" + hashPassword + "',          ");
                 sqlInsert.AppendLine(" 3 ,                              ");
                 sqlInsert.AppendLine(" 'N' ,                            ");
-                sqlInsert.AppendLine(" '" + stuff.user_firstName + "',  ");
-                sqlInsert.AppendLine(" '" + stuff.user_lastName + "',   ");
+                sqlInsert.AppendLine(" '" + stuff.sale_firstName + "',  ");
+                sqlInsert.AppendLine(" '" + stuff.sale_lastName + "',   ");
                 sqlInsert.AppendLine(" getdate(),");
                 sqlInsert.AppendLine(" 'System'  ");
                 sqlInsert.AppendLine(" ) ");

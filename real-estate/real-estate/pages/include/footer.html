@@ -20,18 +20,20 @@
 
 <script src="../../../vendor/js/sweetalert2.all.min.js"></script>
 <script src="../../../vendor/js/sweetalert2.js"></script>
-<script src="../../../vendor/js/bootstrap.js"></script> 
+<script src="../../../vendor/js/bootstrap.js"></script>
 
 <script src="../../../vendor/js/helper.js"></script>
-
+<script src="../../../vendor/bootstrap-select/js/bootstrap-select.js"></script>
 
 <script>
 
-    let logInData = JSON.parse(sessionStorage.getItem("LogInData")); 
+    const logInData = JSON.parse(sessionStorage.getItem("LogInData"));
 
     $(document).ready(function () {
         //$('#tbUsername').html('');
         if (logInData) {
+
+            $('.topbar_login').addClass('d-none');
 
             let user_role = "";
 
@@ -41,16 +43,16 @@
                 user_role = 'สมาชิกทั่วไป';
             } else if (logInData[0].user_role_id == 3) {
                 user_role = 'ตัวแทนขาย';
-            } 
+            }
 
             $('#tbUsername').html(` <b> ${logInData[0].user_firstName} ${logInData[0].user_lastName} <br> [${user_role}] </b> `);
 
         }
-         
+
     });
 
 
-    function checkLogin( permission_role) {    
+    function checkLogin(permission_role) {
 
         if (logInData == null) {
             alert('กรุณาเข้าสู่ระบบ!!');
@@ -60,15 +62,15 @@
         if (logInData[0].user_role_id == 1) {
             //system admin ผ่าน
 
-        } else if (logInData[0].user_role_id != permission_role) { 
+        } else if (logInData[0].user_role_id != permission_role) {
             alert(" คุณไม่ได้รับสิทธิ์เข้า!! ");
-            window.location.href = "../home/main"; 
-        } 
+            window.location.href = "../home/main";
+        }
     }
 
     function logOutClick() {
 
-        sessionStorage.setItem("LogInData",  null )
+        sessionStorage.setItem("LogInData", null)
         window.location.reload();
 
     }

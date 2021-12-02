@@ -121,7 +121,7 @@
     let yearNow = d.getFullYear();
 
     $(document).ready(function () {
-        checkLogin(3);
+     
     });
 
 

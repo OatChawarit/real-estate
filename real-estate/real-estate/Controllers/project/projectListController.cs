@@ -188,34 +188,31 @@ namespace real_estate.Controllers.project
                          
                     }
                     arr.Add(result);
-                }
-
-                //SqlDataReader drIMG;
-                //string sqltextIMG = "";
-                //sqltextIMG += "  SELECT                                                          ";
-                //sqltextIMG += " 		[plan_img_id]                                             ";
-                //sqltextIMG += "       ,[plan_img_path]                                           ";
-                //sqltextIMG += "       ,[plan_img_description]                                    ";
-
-                //sqltextIMG += "   FROM [realestate].[dbo].[re_PlanType_ImgTransaction] a         ";
-
-                //sqltextIMG += "   WHERE a.plan_type_id = '" + stuff.plan_type_id + "'       ";
-
-                //drIMG = db.GetSqlDataReader(sqltextIMG);
-                //ArrayList arrIMG = new ArrayList();
-                //while (drIMG.Read())
-                //{
-                //    var resultIMG = new Dictionary<string, object>();
-                //    for (int i = 0; i < drIMG.FieldCount; i++)
-                //    {
-                //        resultIMG.Add(drIMG.GetName(i), drIMG[i].ToString());
-                //    }
-                //    arrIMG.Add(resultIMG);
-                //}
-
-                //var res  = arr.Add(arrIMG); 
+                } 
 
                  rs = JsonConvert.SerializeObject(arr);
+            }
+            else if (types == "getSaleId")
+            {
+                SqlDataReader dr;
+                string sqltext = "  SELECT [sale_id]   ,[user_id]               ";
+                sqltext += "        FROM [realestate].[dbo].[re_SaleTable] a    ";
+                sqltext += "        WHERE a.sale_status = 'N'                   ";
+                sqltext += "        AND a.user_id = '"+ stuff.user_id +"'                   ";
+
+
+                dr = db.GetSqlDataReader(sqltext);
+                ArrayList arr = new ArrayList();
+                while (dr.Read())
+                {
+                    var result = new Dictionary<string, object>();
+                    for (int i = 0; i < dr.FieldCount; i++)
+                    {
+                        result.Add(dr.GetName(i), dr[i].ToString());
+                    }
+                    arr.Add(result);
+                }
+                rs = JsonConvert.SerializeObject(arr);
             }
             else
             {
@@ -309,7 +306,7 @@ namespace real_estate.Controllers.project
 
 
             }
-            else if (types == "aa ")//สมัครสมาชิก
+            else if (types == "Test") 
             {
               
 

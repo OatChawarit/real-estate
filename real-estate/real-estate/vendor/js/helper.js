@@ -279,3 +279,48 @@ function startScript() {
         $("#tbIp").html(data.myip);
     });
 }
+
+
+
+//Lock Modal close
+function LockModal(ModalId) {
+    var $modal = $(ModalId);
+    var keyboard = false; // Prevent to close by ESC
+    var backdrop = 'static'; // Prevent to close on click outside the modal
+
+    if (typeof $modal.data('bs.modal') === 'undefined') { // Modal did not open yet
+        $modal.modal({
+            keyboard: keyboard,
+            backdrop: backdrop
+        });
+    } else { // Modal has already been opened
+        $modal.data('bs.modal')._config.keyboard = keyboard;
+        $modal.data('bs.modal')._config.backdrop = backdrop;
+
+        if (keyboard === false) {
+            $modal.off('keydown.dismiss.bs.modal'); // Disable ESC
+        } else { // 
+            $modal.data('bs.modal').escape(); // Resets ESC
+        }
+    }
+}
+
+
+//Clear Modal
+function ClearModal(ModalId) {
+    $("input[type='text']").val(""); //Reset TextBox
+    $("input[type='password']").val(""); //textbox password
+    /*var NowDate = new Date();
+    $("input[type='date']").val(formatDate(NowDate));*/
+    $("select").val(""); //Reset --เลือก--
+}
+
+function HideTopbar(status) {
+    if (status == 1) {
+        $("#top_bar").addClass("d-none");
+    } else {
+        $("#top_bar").removeClass("d-none");
+    }
+ 
+
+}

@@ -48,6 +48,28 @@ namespace real_estate.Controllers.service
                 }
                 rs = JsonConvert.SerializeObject(arr);
             }
+            else if (types == "SubDistrict")
+            {
+                string strsql = "";
+                strsql += " SELECT  [sub_district_id] ,[sub_district_name] , [district_id] ";
+                strsql += " FROM [realestate].[dbo].[sa_AddressSubDistrict] ";
+                strsql += " Where [district_id] = '" + id + "' ";
+                strsql += " Order By sub_district_id Asc";
+
+                SqlDataReader dr;
+                dr = db.GetSqlDataReader(strsql);
+                ArrayList arr = new ArrayList();
+                while (dr.Read())
+                {
+                    var result = new Dictionary<string, object>();
+                    for (int i = 0; i < dr.FieldCount; i++)
+                    {
+                        result.Add(dr.GetName(i), dr[i].ToString());
+                    }
+                    arr.Add(result);
+                }
+                rs = JsonConvert.SerializeObject(arr);
+            }
             else
             {
                  rs = "ไม่ข้อมูล";
