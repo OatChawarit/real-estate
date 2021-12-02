@@ -201,7 +201,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="row ltn__product-slider-item-four-active-full-width slick-arrow-1">
+                <div class="row ltn__product-slider-item-four-active-full-width slick-arrow-1" id="product_grid">
+
                     <!-- ltn__product-item -->
                     <div class="col-lg-12">
                         <div class="ltn__product-item ltn__product-item-4 text-center---">
@@ -495,7 +496,7 @@
                 </div>
             </div>
             <div class="text-center">
-                <h4><a class="section-subtitle section-subtitle-2 ltn__secondary-color" href="#">ดูโครงการอสังหาฯทั้งหมด</a></h4>
+                <h4><a class="section-subtitle section-subtitle-2 ltn__secondary-color" href="../project/project-list.aspx">ดูโครงการอสังหาฯทั้งหมด</a></h4>
             </div>
         </div>
 
@@ -576,7 +577,6 @@
                     </div>
                 </div>
                 <div id="news_blog" class="row ltn__blog-slider-one-active slick-arrow-1 ltn__blog-item-3-normal">
-
                 </div>
                 <div class="text-center">
                     <h4><a class="section-subtitle section-subtitle-2 ltn__secondary-color" href="news.aspx">ดูข่าวสารทั้งหมด</a></h4>
@@ -612,6 +612,15 @@
                 console.log(resData);
                 loadNews(resData);
             });
+
+
+        //$.get("../../api/projectList", { jsonData: jsonData, types: "listProject" })
+        // .done(function (data) {
+        //     let listProject = JSON.parse(data);
+        //     console.log('listProject', listProject);
+        //     loadProject(listProject);
+        // }); 
+        Swal.close();
     });
 
     function loadNews(arrData) {
@@ -620,18 +629,18 @@
             html += '<div class="col-lg-4 ">';
             html += '<div class="ltn__blog-item ltn__blog-item-3">';
             html += '<div class="ltn__blog-img">';
-            html += '<a href="news-detail.aspx?newsid='+ item.news_id +'">  <img src="../../../image/news/' + item.news_image + '" alt="' + item.news_image + '" /></a>';
+            html += '<a href="news-detail.aspx?newsid=' + item.news_id + '">  <img src="../../../image/news/' + item.news_image + '" alt="' + item.news_image + '" /></a>';
             html += '</div>';
             html += '<div class="ltn__blog-brief">';
             html += '<div class="ltn__blog-meta">';
             html += '<ul><li class="ltn__blog-author"><a href="javascript:void(0)"><i class="far fa-user"></i>ผู้เขียน: ' + item.create_by + '</a></li></ul>';
             html += '</div>';
-            html += '<h3 class="ltn__blog-title"><a href="news-detail.aspx?newsid='+ item.news_id +'">' + item.news_topic + '</a></h3>';
+            html += '<h3 class="ltn__blog-title"><a href="news-detail.aspx?newsid=' + item.news_id + '">' + item.news_topic + '</a></h3>';
             html += '<div class="ltn__blog-meta-btn">';
             html += ' <div class="ltn__blog-meta"><ul><li class="ltn__blog-date"><i class="far fa-calendar-alt"></i>' + dateFormat(item.create_date) + '</li></ul>';
             html += '</div>';
             html += '<div class="ltn__blog-btn">';
-            html += '<a href="news-detail.aspx?newsid='+ item.news_id +'">อ่านเพิ่มเติม</a>';
+            html += '<a href="news-detail.aspx?newsid=' + item.news_id + '">อ่านเพิ่มเติม</a>';
             html += '</div>';
             html += '</div></div></div></div>';
         });
@@ -644,7 +653,7 @@
             //loadCSS();
             //loadScript();
         }, 200); */
-    } 
+    }
 
     //drdw เขต/แขวง หน้าเว็บ
     $("#drdwProvince").change(function () {
@@ -675,7 +684,7 @@
         $("#drdwDistrictMob").empty();
         $(".drdwDisMob").empty();
         $("#drdwDistrictMob").val("");
-        
+
         let Listdata;
         let html1 = '<option value=""> เลือกทำเลที่ตั้งในจังหวัด</option>';
         let html2 = '<li data-value="" class="option focus"></li>';
@@ -694,6 +703,36 @@
             });
     });
 
+    function loadProject(arrData) {
+        var htmlgrid = '';
+
+        arrData.forEach((item, i) => {
+            htmlgrid += '<div class="col-lg-12">';
+            htmlgrid += '<div class="ltn__product-item ltn__product-item-4">';
+            htmlgrid += '<div class="product-img"><a href="../project/project-details.aspx?id=' + item.plan_type_id + '"><img src="../../vendor/img/project/' + item.plan_image_profile + '" alt="' + item.plan_type_id + '" /></a>';
+            if (item.pro_statusType_name == "โครงการพร้อมอยู่") {
+                htmlgrid += '<div class="product-badge"><ul><li class="sale-badge bg-green">' + item.pro_statusType_name + '</li></ul></div></div>';
+            } else {
+                htmlgrid += '<div class="product-badge"><ul><li class="sale-badge">' + item.pro_statusType_name + '</li></ul></div></div>';
+            }
+            htmlgrid += '<div class="product-info"><div class="product-price"><span>' + money_format(item.plan_price) + '<label>&nbsp;/บาท</label></span></div>';
+            htmlgrid += '<h2 class="product-title"><a href="../project/project-details.aspx?id=' + item.plan_type_id + '">' + item.pro_name + '</a></h2>';
+            htmlgrid += '<div class="product-description">' + item.pro_type_name + ' : ' + item.plan_type_id + ' ' + item.plan_name + '</div>';
+            htmlgrid += '<ul class="ltn__list-item-2 ltn__list-item-2-before">';
+            htmlgrid += '<li><span>' + item.plan_bed_room + ' ห้องนอน <i class="flaticon-bed"></i></span></li>';
+            htmlgrid += '<li><span>' + item.plan_bath_room + ' ห้องน้ำ <i class="flaticon-clean"></i></span></li>';
+            htmlgrid += '<li><span>' + item.plan_useable_area + ' <i class="flaticon-square-shape-design-interface-tool-symbol"></i></span></li>';
+            htmlgrid += '</ul></div>';
+            htmlgrid += '<div class="product-info-bottom"><div class="real-estate-agent">';
+            htmlgrid += '<div class="agent-brief"><h6>' + item.sale_fullName + '</h6><small>ตัวแทนขาย</small></div></div>';
+            htmlgrid += '<div class="product-hover-action"><ul><li style="width: 100px;"><a href="tel:' + item.sale_phone + '" title="ติดต่อตัวแทนขาย"><i class="fas fa-phone">&nbsp;โทร</i></a></li></ul>';
+            htmlgrid += '</div></div></div></div>';
+
+        });
+        $('#product_grid').append(htmlgrid);
+        loadCSS();
+
+    }
 
     //โหลด javascript
     function loadScript() {

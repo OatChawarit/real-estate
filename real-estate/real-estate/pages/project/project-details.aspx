@@ -11,12 +11,14 @@
     <!-- #include virtual ="../include/header.html" -->
     <style>
         .proimg {
-            width: 600px;height: 400px;
+            width: 600px;
+            height: 400px;
         }
 
         @media (max-width: 767px) {
             .proimg {
-               width: 500px; height : 300px;
+                width: 500px;
+                height: 300px;
             }
         }
     </style>
@@ -59,7 +61,7 @@
                             //Response.Write(id);
                             var tb = new real_estate.ClassData.projectData();
                             Response.Write(tb.getProductDetail(id));
-                     
+
                         %>
                     </div>
                 </div>
@@ -75,144 +77,32 @@
                         <div class="ltn__shop-details-inner ltn__page-details-inner mb-60">
                             <div class="ltn__blog-meta">
                                 <ul>
-                                    <li class="ltn__blog-category" id="pro_category">
-                                        
-                                    </li>
-                                    <li class="ltn__blog-date" id="pro_date">
-                                        
-                                    </li>
+                                    <li class="ltn__blog-category" id="pro_category"></li>
+                                    <li class="ltn__blog-date" id="pro_date"></li>
                                 </ul>
                             </div>
-                            <h1 id="pro_price"> </h1>
-                            <h3 id="pro_head"> </h3>
+
+                            <h1 id="pro_price"></h1>
+                            <h3 id="pro_head"></h3>
+
                             <h4 class="title-2">รายละเอียด</h4>
+
                             <p id="pro_detail">
-                               
                             </p>
 
                             <h4 class="title-2">รายละเอียดทรัพย์สิน</h4>
-                            <div class="property-detail-info-list section-bg-1 clearfix mb-60">
-                                <ul>
-                                    <li>
-                                        <label>รหัสที่ : </label>
-                                        <span>HZ29</span></li>
-                                    <li>
-                                        <label>พื้นที่ทั้งหมด : </label>
-                                        <span>120 sqft</span></li>
-                                    <li>
-                                        <label>ห้องนอน : </label>
-                                        <span>2</span></li>
-                                    <li>
-                                        <label>ห้องน้ำ : </label>
-                                        <span>3</span></li>
-                                </ul>
-                                <ul>
-                                    <li>
-                                        <label>ปีที่สร้าง  :</label>
-                                        <span>1992</span></li>
-                                    <li>
-                                        <label>ราคา : </label>
-                                        <span>2,200,000</span></li>
-                                    <li>
-                                        <label>สถานะ : </label>
-                                        <span>โครงการใหม่</span></li>
-                                </ul>
+                            <div class="property-detail-info-list section-bg-1 clearfix mb-60" id="property_details">
                             </div>
 
                             <h4 class="title-2 mb-10">สิ่งอำนวยความสะดวก</h4>
                             <div class="property-details-amenities mb-60">
-                                <div class="row">
-                                    <div class="col-lg-4 col-md-6">
-                                        <div class="ltn__menu-widget">
-                                            <ul>
-                                                <li>
-                                                    <label class="checkbox-item">
-                                                        เครื่องปรับอากาศ
-                                                    <input type="checkbox" checked="checked">
-                                                        <span class="checkmark"></span>
-                                                    </label>
-                                                </li>
-                                                <li>
-                                                    <label class="checkbox-item">
-                                                        ห้องฟิตเนส
-                                                    <input type="checkbox" checked="checked">
-                                                        <span class="checkmark"></span>
-                                                    </label>
-                                                </li>
-                                                <li>
-                                                    <label class="checkbox-item">
-                                                        สระว่ายน้ำ
-                                                    <input type="checkbox" checked="checked">
-                                                        <span class="checkmark"></span>
-                                                    </label>
-                                                </li>
+                                <div class="row" id="facilities-list">
 
-                                            </ul>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-4 col-md-6">
-                                        <div class="ltn__menu-widget">
-                                            <ul>
-                                                <li>
-                                                    <label class="checkbox-item">
-                                                        สวนสาธารณะ
-                                                    <input type="checkbox" checked="checked">
-                                                        <span class="checkmark"></span>
-                                                    </label>
-                                                </li>
-                                                <li>
-                                                    <label class="checkbox-item">
-                                                        ที่จอดรถ
-                                                    <input type="checkbox" checked="checked">
-                                                        <span class="checkmark"></span>
-                                                    </label>
-                                                </li>
-                                                <li>
-                                                    <label class="checkbox-item">
-                                                        ลิฟต์
-                                                    <input type="checkbox" checked="checked">
-                                                        <span class="checkmark"></span>
-                                                    </label>
-                                                </li>
-
-                                            </ul>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-4 col-md-6">
-                                        <div class="ltn__menu-widget">
-                                            <ul>
-                                                <li>
-                                                    <label class="checkbox-item">
-                                                        WiFi
-                                                    <input type="checkbox" checked="checked">
-                                                        <span class="checkmark"></span>
-                                                    </label>
-                                                </li>
-                                                <li>
-                                                    <label class="checkbox-item">
-                                                        พื้นที่ส่วนกลาง
-                                                    <input type="checkbox" checked="checked">
-                                                        <span class="checkmark"></span>
-                                                    </label>
-                                                </li>
-                                                <li>
-                                                    <label class="checkbox-item">
-                                                        รักษาความปลอดภัย 24 ชม.
-                                                    <input type="checkbox" checked="checked">
-                                                        <span class="checkmark"></span>
-                                                    </label>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
 
                             <h4 class="title-2">Location</h4>
                             <div class="property-details-google-map mb-60" id="pro_map">
-                               
                             </div>
                             <br />
                         </div>
@@ -257,17 +147,14 @@
 <script>
 
     $(document).ready(function () {
-
-
-
-        //Swal.fire({
-        //    title: 'โปรดรอสักครู่',
-        //    html: 'กำลังโหลดข้อมูล..',// add html attribute if you want or remove
-        //    allowOutsideClick: false,
-        //    onBeforeOpen: () => {
-        //        Swal.showLoading()
-        //    },
-        //});
+        Swal.fire({
+            title: 'โปรดรอสักครู่',
+            html: 'กำลังโหลดข้อมูล..',// add html attribute if you want or remove
+            allowOutsideClick: false,
+            onBeforeOpen: () => {
+                Swal.showLoading()
+            },
+        });
 
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
@@ -284,51 +171,55 @@
                 listProjectDetails = JSON.parse(data);
                 console.log('listProjectDetails', listProjectDetails);
 
-//                plan_name: "MERIDIAN"
-//plan_parking: "4"
-//plan_price: "25000000"
-//plan_type_id: "PJL-test0001"
-//plan_useable_area: "454 ตร.ม."
-//pro_location_id: "22"
-//pro_location_name: "ราชพฤกษ์ - พระราม 5"
-//pro_name: "โครงการเศรษฐสิริ พระราม 5"
-//pro_statusType_name: "โครงการใหม่"
-//pro_type_name: "บ้านเดี่ยว"
-//promotion_IsElectricMeter_free: "1"
-//promotion_IsWaterMeter_free: "1"
-//promotion_airConditioner_free: "2"
-//promotion_airConditioner_remark: "แอร์ 9200BTU จำนวน 1 เครื่อง , แอร์ 23000BTU จำนวน 1 เครื่อง"
-//promotion_discount_percent: "10"
-//promotion_discount_transferDate: "500000"
-//promotion_giftVoucher_price: "100000"
-//promotion_other: ""
-//promotion_publicServicefeeYear_free: "3"
-//sale_fullName: "เพทาย[sale] ประพฤติดี"
-//sale_phone: "0882812968"
+                loadfacilities(listProjectDetails);
 
                 listProjectDetails.forEach((item, i) => {
                     if (item.pro_statusType_name == "โครงการใหม่") {
-                       $('#pro_category').append("<a class='bg-orange'>"+ item.pro_statusType_name +"</a>"); 
+                        $('#pro_category').append("<a class='bg-orange'>" + item.pro_statusType_name + "</a>");
                     } else {
-                       $('#pro_category').append("<a class='bg-green'>"+ item.pro_statusType_name +"</a>");
+                        $('#pro_category').append("<a class='bg-green'>" + item.pro_statusType_name + "</a>");
                     }
 
                     $('#pro_date').append("<i class='far fa-calendar-alt'></i>" + dateFormat(item.create_date) + "");
                     $('#pro_head').append(item.pro_name);
                     $('#pro_price').append("฿ " + money_format(item.plan_price));
 
-                    let details = "ชื่อแปลน : " + item.plan_name + "<br />ประเภทบ้าน : " + item.pro_type_name + "<br />ทำเลที่ตั้ง : " + item.pro_location_name + "<br />เพิ่มเติม : " + item.promotion_airConditioner_remark;
-                    details += "<br />โปรโมชั่นส่วนลดโอนวันที่ : " + money_format(item.promotion_discount_transferDate) + "<br />โปรโมชั่น gift Voucher ราคา : " + money_format(item.promotion_giftVoucher_price);
-                    
+                    let details = "รูปแบบแปลนโครงการ : " + item.plan_name + "<br />ประเภทบ้าน : " + item.pro_type_name + "<br />ทำเลที่ตั้ง : " + item.pro_location_name + "<br />เพิ่มเติม : " + item.promotion_airConditioner_remark;
+                    details += "<br />โปรโมชั่นส่วนลดวันโอน : " + money_format(item.promotion_discount_transferDate) + "<br />โปรโมชั่น gift Voucher ราคา : " + money_format(item.promotion_giftVoucher_price);
                     $('#pro_detail').append(details);
 
-                    $('#pro_sale').append( item.sale_fullName);
+                    $('#pro_sale').append(item.sale_fullName);
                     $('#pro_mail').append("<i class='far fa-envelope'></i>&nbsp;Email : " + item.sale_mail);
                     $('#pro_line').append("<i class='fab fa-line'></i>&nbsp;Line : " + item.sale_line);
                     $('#pro_tel').append("<i class='fas fa-phone'></i>&nbsp;เบอร์โทร : " + item.sale_phone);
-                    $('#pro_tel2').append("<a href='tel:"+ item.sale_phone +"' class='btn btn-outline-success btn-sm'><i class='fas fa-phone'></i>&nbsp;โทร</a>");
+                    $('#pro_tel2').append("<a href='tel:" + item.sale_phone + "' class='btn btn-outline-success btn-sm'><i class='fas fa-phone'></i>&nbsp;โทร</a>");
+
+                    let prop = "";
+                    prop += "<ul><li><label>รหัส : </label><span>" + item.plan_type_id + "</span></li>";
+                    prop += "<li><label>พื้นที่ทั้งหมด : </label><span>" + item.plan_useable_area + "</span></li>";
+                    prop += "<li><label>ห้องนอน : </label><span>" + item.plan_bed_room + "</span></li>";
+                    prop += "<li><label>ห้องน้ำ : </label><span>" + item.plan_bath_room + "</span></li>";
+                    if (item.promotion_IsElectricMeter_free == "1") {
+                        prop += "<li><label>มิเตอร์ไฟฟ้า : </label><span>ฟรีค่าติดตั้ง</span></li>";
+                    } else {
+                        prop += "<li><label>มิเตอร์ไฟฟ้า : ง</label><span>ไม่ฟรีค่าติดตั้</span></li></ul>";
+                    }
+
+                    if (item.promotion_IsWaterMeter_free == "1") {
+                        prop += "<li><label>มิเตอร์น้ำปะปา : </label><span>ฟรีค่าติดตั้ง</span></li></ul>";
+                    } else {
+                        prop += "<li><label>มิเตอร์น้ำปะปา : </label><span>ไม่ฟรีค่าติดตั้ง</span></li></ul>";
+                    }
+                    prop += "<ul><li><label>ชั้นที่ / จำนวนชั้น : </label><span>" + item.plan_floor + "</span></li>";
+                    prop += "<li><label>เครื่องปรับอากาศ : </label><span>" + item.promotion_airConditioner_free + " (เครื่อง)</span></li>";
+                    prop += "<li><label>ค่าบริการสาธารณะ : </label><span>" + item.promotion_publicServicefeeYear_free + " (ปี)</span></li>";
+                    prop += "<li><label>ราคา : </label><span>" + money_format(item.plan_price) + " (บาท)</span></li>";
+                    prop += "<li><label>ส่วนลด % : </label><span>" + item.promotion_discount_percent + "</span></li></ul>";
+                    $('#property_details').append(prop);
+
                     $('#pro_map').append(item.pro_LinkGoogleMap);
                 });
+                Swal.close();
             });
 
         //setTimeout(function () {
@@ -336,6 +227,104 @@
         //    loadScript();
         //}, 500);
     });
+
+
+    function loadfacilities(arrDara) {
+
+        let facilities = "";
+
+        arrDara.forEach((item, i) => {
+            facilities += "<div class='col-lg-4 col-md-6'><div class='ltn__menu-widget'>";
+            if (item.facilities_IsNearBySkyTrain == "1") {
+                facilities += "<ul><li><label class='checkbox-item'>ใกล้สถานีรถไฟฟ้า<input type='checkbox' checked='checked'><span class='checkmark'></span></label>";
+            } else {
+                facilities += "<ul><li><label class='checkbox-item'>ใกล้สถานีรถไฟฟ้า<input type='checkbox'><span class='checkmark'></span></label>";
+            }
+
+            if (item.facilities_IsParks == "1") {
+                facilities += "</li><li><label class='checkbox-item'>สวนสาธารณะ<input type='checkbox' checked='checked'><span class='checkmark'></span></label></li>";
+            } else {
+                facilities += "<li><label class='checkbox-item'>สวนสาธารณะ<input type='checkbox' ><span class='checkmark'></span></label></li>";
+            }
+
+            if (item.facilities_IsSwimmingPool == "1") {
+                facilities += "<li><label class='checkbox-item'>สระว่ายน้ำ<input type='checkbox' checked='checked'><span class='checkmark'></span></label></li>";
+            } else {
+                facilities += "<li><label class='checkbox-item'>สระว่ายน้ำ<input type='checkbox'><span class='checkmark'></span></label></li>";
+            }
+
+
+            if (item.facilities_IsRoofGarden == "1") {
+                facilities += "<li><label class='checkbox-item'>สวนดาดฟ้า<input type='checkbox' checked='checked'><span class='checkmark'></span></label></li>";
+            } else {
+                facilities += "<li><label class='checkbox-item'>สวนดาดฟ้า<input type='checkbox'><span class='checkmark'></span></label></li>";
+            }
+
+            if (item.facilities_IsFitness == "1") {
+                facilities += "<li><label class='checkbox-item'>ฟิตเนส<input type='checkbox' checked='checked'><span class='checkmark'></span></label></li>";
+                facilities += "</ul></div></div>";
+            } else {
+                facilities += "<li><label class='checkbox-item'>ฟิตเนส<input type='checkbox' ><span class='checkmark'></span></label></li>";
+                facilities += "</ul></div></div>";
+            }
+
+            facilities += "<div class='col-lg-4 col-md-6'><div class='ltn__menu-widget'>";
+            if (item.facilities_IsLift == "1") {
+                facilities += "<ul><li><label class='checkbox-item'>ลิฟต์<input type='checkbox' checked='checked'><span class='checkmark'></span></label>";
+            } else {
+                facilities += "<ul><li><label class='checkbox-item'>ลิฟต์<input type='checkbox'><span class='checkmark'></span></label>";
+            }
+
+            if (item.facilities_IsParking == "1") {
+                facilities += "</li><li><label class='checkbox-item'>ที่จอดรถ<input type='checkbox' checked='checked'><span class='checkmark'></span></label></li>";
+            } else {
+                facilities += "</li><li><label class='checkbox-item'>ที่จอดรถ<input type='checkbox'><span class='checkmark'></span></label></li>";
+            }
+
+            if (item.facilities_IsCoWorkingSpace == "1") {
+                facilities += "<li><label class='checkbox-item'>Co-working Space<input type='checkbox' checked='checked'><span class='checkmark'></span></label></li>";
+            } else {
+                facilities += "<li><label class='checkbox-item'>Co-working Space<input type='checkbox' ><span class='checkmark'></span></label></li>";
+            }
+
+            if (item.facilities_IsLaunDry == "1") {
+                facilities += "<li><label class='checkbox-item'>ห้องซักรีด<input type='checkbox' checked='checked'><span class='checkmark'></span></label></li>";
+                facilities += "</ul></div></div>";
+            } else {
+                facilities += "<li><label class='checkbox-item'>ห้องซักรีด<input type='checkbox'><span class='checkmark'></span></label></li>";
+                facilities += "</ul></div></div>";
+            }
+
+            facilities += "<div class='col-lg-4 col-md-6'><div class='ltn__menu-widget'>";
+            if (item.facilities_IsKeyCard == "1") {
+                facilities += "<ul><li><label class='checkbox-item'>คีย์การ์ดและสแกนนิ้ว<input type='checkbox' checked='checked'><span class='checkmark'></span></label>";
+            } else {
+                facilities += "<ul><li><label class='checkbox-item'>คีย์การ์ดและสแกนนิ้ว<input type='checkbox' ><span class='checkmark'></span></label>";
+            }
+
+            if (item.facilities_IsCCTV == "1") {
+                facilities += "</li><li><label class='checkbox-item'>CCTV<input type='checkbox' checked='checked'><span class='checkmark'></span></label></li>";
+            } else {
+                facilities += "</li><li><label class='checkbox-item'>CCTV<input type='checkbox' ><span class='checkmark'></span></label></li>";
+            }
+
+            if (item.facilities_IsSecuritySystem == "1") {
+                facilities += "<li><label class='checkbox-item'>ระบบรักษาความปลอดภัย 24 ชม.<input type='checkbox' checked='checked'><span class='checkmark'></span></label></li>";
+            } else {
+                facilities += "<li><label class='checkbox-item'>ระบบรักษาความปลอดภัย 24 ชม.<input type='checkbox' ><span class='checkmark'></span></label></li>";
+            }
+
+            if (item.facilities_IsClubHouse == "1") {
+                facilities += "<li><label class='checkbox-item'>คลับเฮ้าส์<input type='checkbox' checked='checked'><span class='checkmark'></span></label></li>";
+                facilities += "</ul></div></div>";
+            } else {
+                facilities += "<li><label class='checkbox-item'>คลับเฮ้าส์<input type='checkbox' ><span class='checkmark'></span></label></li>";
+                facilities += "</ul></div></div>";
+            }
+
+        });
+        $('#facilities-list').append(facilities);
+    }
 
 
     //โหลด javascript

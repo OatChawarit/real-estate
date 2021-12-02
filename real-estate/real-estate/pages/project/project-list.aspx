@@ -132,7 +132,7 @@
             htmlgrid += '<div class="col-lg-4 col-sm-6 col-12">';
             htmlgrid += '<div class="ltn__product-item ltn__product-item-4">';
             htmlgrid += '<div class="product-img"><a href="project-details.aspx?id='+ item.plan_type_id +'">';
-            htmlgrid += '<img src="../../image/project/'+ item.plan_image_profile +'" alt="#" /></a>';
+            htmlgrid += '<img src="../../image/project/'+ item.plan_image_profile +'" alt="'+ item.plan_type_id +'" /></a>';
             if (item.pro_statusType_name == "โครงการพร้อมอยู่") {
                 htmlgrid += '<div class="product-badge"><ul><li class="sale-badge bg-green">' + item.pro_statusType_name + '</li></ul></div></div>';
             } else {
@@ -155,7 +155,7 @@
             htmlgrid += '</div></div></div></div>';
 
             htmllist += '<div class="col-lg-12"><div class="ltn__product-item ltn__product-item-4 ltn__product-item-5">';
-            htmllist += '<div class="product-img"><a href="project-details.aspx?id='+ item.plan_type_id +'"><img src="../../image/project/'+ item.plan_image_profile +'" alt="#" /></a></div>';
+            htmllist += '<div class="product-img"><a href="project-details.aspx?id='+ item.plan_type_id +'"><img src="../../image/project/'+ item.plan_image_profile +'" alt="'+ item.plan_type_id +'" /></a></div>';
             htmllist += '<div class="product-info"><div class="product-badge-price"><div class="product-badge">';
             if (item.pro_statusType_name == "โครงการพร้อมอยู่") {
                 htmllist += '<ul><li class="sale-badge bg-green" style="padding: 5px 5px 2px 5px;">' + item.pro_statusType_name + '</li></ul></div>';
