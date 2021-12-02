@@ -9,6 +9,17 @@
 
     <!-- นำเข้าส่วนหัว -->
     <!-- #include virtual ="../include/header.html" -->
+    <style>
+        .proimg {
+            width: 600px;height: 400px;
+        }
+
+        @media (max-width: 767px) {
+            .proimg {
+               width: 500px; height : 300px;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Body main wrapper start -->
@@ -37,51 +48,26 @@
         </div>
         <!-- Project -->
 
-        <!-- IMAGE SLIDER AREA START (img-slider-3) -->
-        <div class="ltn__img-slider-area mb-90">
-            <div class="container-fluid">
-                <div class="row ltn__image-slider-5-active slick-arrow-1 slick-arrow-1-inner ltn__no-gutter-all">
-                    <div class="col-lg-12">
-                        <div class="ltn__img-slide-item-4">
-                            <a href="../../vendor/img/img-slide/31.jpg" data-rel="lightcase:myCollection">
-                                <img src="../../vendor/img/img-slide/31.jpg" alt="Image">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="ltn__img-slide-item-4">
-                            <a href="../../vendor/img/img-slide/32.jpg" data-rel="lightcase:myCollection">
-                                <img src="../../vendor/img/img-slide/32.jpg" alt="Image">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="ltn__img-slide-item-4">
-                            <a href="../../vendor/img/img-slide/33.jpg" data-rel="lightcase:myCollection">
-                                <img src="../../vendor/img/img-slide/33.jpg" alt="Image">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="ltn__img-slide-item-4">
-                            <a href="../../vendor/img/img-slide/34.jpg" data-rel="lightcase:myCollection">
-                                <img src="../../vendor/img/img-slide/34.jpg" alt="Image">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="ltn__img-slide-item-4">
-                            <a href="../../vendor/img/img-slide/35.jpg" data-rel="lightcase:myCollection">
-                                <img src="../../vendor/img/img-slide/35.jpg" alt="Image">
-                            </a>
-                        </div>
+        <!-- IMAGE SLIDER  -->
+        <form runat="server">
+            <div class="ltn__img-slider-area">
+                <div class="container-fluid">
+                    <div class="row  ltn__image-slider-2-active slick-arrow-1 slick-arrow-1-inner">
+                        <%
+
+                            string id = HttpContext.Current.Request.QueryString.Get("id");
+                            //Response.Write(id);
+                            var tb = new real_estate.ClassData.projectData();
+                            Response.Write(tb.getProductDetail(id));
+                     
+                        %>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- IMAGE SLIDER AREA END -->
+        </form>
+        <!-- IMAGE SLIDER  -->
 
-        <!-- SHOP DETAILS AREA START -->
+        <!--  DETAILS  -->
         <div class="ltn__shop-details-area pb-10">
             <div class="container">
                 <div class="row">
@@ -89,25 +75,20 @@
                         <div class="ltn__shop-details-inner ltn__page-details-inner mb-60">
                             <div class="ltn__blog-meta">
                                 <ul>
-                                    <li class="ltn__blog-category">
-                                        <a class="bg-orange" href="#">โครงการใหม่</a>
+                                    <li class="ltn__blog-category" id="pro_category">
+                                        
                                     </li>
-                                    <li class="ltn__blog-date">
-                                        <i class="far fa-calendar-alt"></i>2021-11-27
+                                    <li class="ltn__blog-date" id="pro_date">
+                                        
                                     </li>
                                 </ul>
                             </div>
-                            <h1>฿ 2,200,000</h1>
-                            <h3>Diamond Manor Apartment</h3>
+                            <h1 id="pro_price"> </h1>
+                            <h3 id="pro_head"> </h3>
                             <h4 class="title-2">รายละเอียด</h4>
-                            <p>
-                                Massa tempor nec feugiat nisl pretium. Egestas fringilla phasellus faucibus scelerisque eleifend donec
-                            Porta nibh venenatis cras sed felis eget velit aliquet. Neque volutpat ac tincidunt vitae semper
-                            quis lectus. Turpis in eu mi bibendum neque egestas congue quisque. Sed elementum tempus egestas
-                            sed sed risus pretium quam. Dignissim sodales ut eu sem. Nibh mauris cursus mattis molestee
-                            iaculis at erat pellentesque. Id interdum velit laoreet id donec ultrices tincidunt.
+                            <p id="pro_detail">
+                               
                             </p>
-                            <p>To the left is the modern kitchen with central island, leading through to the unique breakfast family room which feature glass walls and doors out onto the garden and access to the separate utility room.</p>
 
                             <h4 class="title-2">รายละเอียดทรัพย์สิน</h4>
                             <div class="property-detail-info-list section-bg-1 clearfix mb-60">
@@ -230,10 +211,10 @@
                             </div>
 
                             <h4 class="title-2">Location</h4>
-                            <div class="property-details-google-map mb-60">
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9334.271551495209!2d-73.97198251485975!3d40.668170674982946!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25b0456b5a2e7%3A0x68bdf865dda0b669!2sBrooklyn%20Botanic%20Garden%20Shop!5e0!3m2!1sen!2sbd!4v1590597267201!5m2!1sen!2sbd" width="100%" height="100%" frameborder="0" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                            <div class="property-details-google-map mb-60" id="pro_map">
+                               
                             </div>
-
+                            <br />
                         </div>
                     </div>
 
@@ -249,20 +230,21 @@
                             <div class="widget ltn__author-widget">
                                 <div class="ltn__author-widget-inner">
                                     <!-- <img src="img/team/4.jpg" alt="Image"> -->
-                                    <h5 class="text-center">Rosalina D. Willaimson</h5>
+                                    <h5 class="text-center" id="pro_sale"></h5>
                                     <p class="text-center">ตัวแทนขายอสังหาริมทรัพย์</p>
-                                    <p><i class="far fa-envelope"></i>&nbsp;Email : sale@mail.com</p>
-                                    <p><i class="fas fa-phone"></i>&nbsp;เบอร์โทร : 069-285-2512</p>
-                                    <p><i class="fab fa-line"></i>&nbsp;Line : @sale_dd</p>
-                                    <p><a href="tel:+66-111-11111" class="btn btn-outline-success btn-sm"><i class="fas fa-phone"></i>&nbsp;โทร</a></p>
+                                    <p id="pro_mail"></p>
+                                    <p id="pro_tel"></p>
+                                    <p id="pro_line"></p>
+                                    <p id="pro_tel2"></p>
                                 </div>
                             </div>
                         </aside>
+
                     </div>
                 </div>
             </div>
         </div>
-        <!-- SHOP DETAILS AREA END -->
+        <!--  DETAILS END -->
 
         <!-- เนื้อหา -->
 
@@ -286,64 +268,85 @@
         //        Swal.showLoading()
         //    },
         //});
-        //loadScript();
+
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
         const pro_id = urlParams.get('id');
         //console.log(news_id);
 
         var jsonData = JSON.stringify({
-            "plan_type_id" : pro_id
+            "plan_type_id": pro_id
         });
 
-
+        let listProjectDetails;
         $.get("../../api/ProjectList", { jsonData: jsonData, types: "listProjectDetails" })
             .done(function (data) {
-                let listProjectDetails = JSON.parse(data);
+                listProjectDetails = JSON.parse(data);
                 console.log('listProjectDetails', listProjectDetails);
 
+//                plan_name: "MERIDIAN"
+//plan_parking: "4"
+//plan_price: "25000000"
+//plan_type_id: "PJL-test0001"
+//plan_useable_area: "454 ตร.ม."
+//pro_location_id: "22"
+//pro_location_name: "ราชพฤกษ์ - พระราม 5"
+//pro_name: "โครงการเศรษฐสิริ พระราม 5"
+//pro_statusType_name: "โครงการใหม่"
+//pro_type_name: "บ้านเดี่ยว"
+//promotion_IsElectricMeter_free: "1"
+//promotion_IsWaterMeter_free: "1"
+//promotion_airConditioner_free: "2"
+//promotion_airConditioner_remark: "แอร์ 9200BTU จำนวน 1 เครื่อง , แอร์ 23000BTU จำนวน 1 เครื่อง"
+//promotion_discount_percent: "10"
+//promotion_discount_transferDate: "500000"
+//promotion_giftVoucher_price: "100000"
+//promotion_other: ""
+//promotion_publicServicefeeYear_free: "3"
+//sale_fullName: "เพทาย[sale] ประพฤติดี"
+//sale_phone: "0882812968"
+
+                listProjectDetails.forEach((item, i) => {
+                    if (item.pro_statusType_name == "โครงการใหม่") {
+                       $('#pro_category').append("<a class='bg-orange'>"+ item.pro_statusType_name +"</a>"); 
+                    } else {
+                       $('#pro_category').append("<a class='bg-green'>"+ item.pro_statusType_name +"</a>");
+                    }
+
+                    $('#pro_date').append("<i class='far fa-calendar-alt'></i>" + dateFormat(item.create_date) + "");
+                    $('#pro_head').append(item.pro_name);
+                    $('#pro_price').append("฿ " + money_format(item.plan_price));
+
+                    let details = "ชื่อแปลน : " + item.plan_name + "<br />ประเภทบ้าน : " + item.pro_type_name + "<br />ทำเลที่ตั้ง : " + item.pro_location_name + "<br />เพิ่มเติม : " + item.promotion_airConditioner_remark;
+                    details += "<br />โปรโมชั่นส่วนลดโอนวันที่ : " + money_format(item.promotion_discount_transferDate) + "<br />โปรโมชั่น gift Voucher ราคา : " + money_format(item.promotion_giftVoucher_price);
+                    
+                    $('#pro_detail').append(details);
+
+                    $('#pro_sale').append( item.sale_fullName);
+                    $('#pro_mail').append("<i class='far fa-envelope'></i>&nbsp;Email : " + item.sale_mail);
+                    $('#pro_line').append("<i class='fab fa-line'></i>&nbsp;Line : " + item.sale_line);
+                    $('#pro_tel').append("<i class='fas fa-phone'></i>&nbsp;เบอร์โทร : " + item.sale_phone);
+                    $('#pro_tel2').append("<a href='tel:"+ item.sale_phone +"' class='btn btn-outline-success btn-sm'><i class='fas fa-phone'></i>&nbsp;โทร</a>");
+                    $('#pro_map').append(item.pro_LinkGoogleMap);
+                });
             });
-        $.get("../../api/ProjectList", { jsonData: jsonData, types: "getPlanType_ImgTransaction" })
-            .done(function (data) {
-                let getPlanType_ImgTransaction = JSON.parse(data);
-                console.log('getPlanType_ImgTransaction', getPlanType_ImgTransaction);
 
-            });
-
-        let Listdata;
-        //$.get("../../api/news", { jsonData, types: "getNews" })
-        //    .done(function (data) {
-        //        Listdata = JSON.parse(data);
-        //        console.log(Listdata);
-
-        //        let img_path = '../../../image/news/' + Listdata[0].news_image;
-        //        $("#news_image").attr('src', img_path);
-        //        $('#headerNews').append(Listdata[0].news_topic);
-        //        $('#detailNews').append(Listdata[0].news_content);
-        //        $("#blogDate").append(dateFormat(Listdata[0].create_date));
-        //        $("#blogCreate").append(Listdata[0].create_by);
-        //        Swal.close();
-        //        //loadNews(Listdata);
-        //    });
+        //setTimeout(function () {
+        //    loadCSS();
+        //    loadScript();
+        //}, 500);
     });
 
-    function loadNews(arrData) {
-        let html = "";
-        arrData.forEach((item, i) => {
-            $('#headerNews').append(item.news_topic);
-            $('#detailNews').append(item.news_content);
-        });
-        loadCSS();
-    }
 
     //โหลด javascript
     function loadScript() {
         let jss = [
-            { jsPath: "../../vendor/js/plugins.js" }, { jsPath: "../../vendor/js/bootstrap.js" }, { jsPath: "../../vendor/js/helper.js" }
+            { jsPath: "../../../vendor/js/plugins.js" }, { jsPath: "../../../vendor/js/bootstrap.js" }, { jsPath: "../../../vendor/js/helper.js" }
         ];
         jss.forEach((item, i) => {
             var script = document.createElement('script');
             script.onload = function () {
+                console.log(script);
             };
             script.src = item.jsPath;
             document.head.appendChild(script); //or something of the likes
@@ -354,7 +357,7 @@
     //โหลด css
     function loadCSS() {
         let csss = [
-            { cssPath: "../../vendor/css/bootstrap.css" }, { cssPath: "../../vendor/css/style.css" }
+            { cssPath: "../../../vendor/css/plugins.css" }, { cssPath: "../../../vendor/css/bootstrap.css" }, { cssPath: "../../../vendor/css/style.css" }
         ];
         csss.forEach((item, i) => {
             var link = document.createElement('link');
