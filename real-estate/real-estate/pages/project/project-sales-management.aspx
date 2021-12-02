@@ -139,9 +139,9 @@
                                                             <div id="divProjectInfo" class="row col-12 setting-row" >
 
                                                                 <div class="col-lg-3">
-                                                                    <div class="inputText setting-font">เลือกบริษัท </div>
-                                                                    <select id="pro_company_id" class="w-100">
-                                                                        <option value="">-- เลือกบริษัท --</option>
+                                                                    <div class="inputText setting-font">เลือกบริษัท </div> 
+                                                                    <select id="pro_company_id" class="w-100 "   >
+                                                                        <option value="" selected disabled >-- เลือกบริษัท --</option>
                                                                         <%
                                                                             real_estate.ClassData.DropDownData.drdwCompany(); 
                                                                         %>
@@ -156,7 +156,7 @@
                                                                 <div class="col-lg-3">
                                                                     <div class="inputText setting-font">ประเภทโครงการ </div>
                                                                     <select id="pro_type_id" class="w-100">
-                                                                        <option value="">-- เลือกประเภทโครงการ --</option>
+                                                                        <option value="" selected disabled>-- เลือกประเภทโครงการ --</option>
                                                                         <%
                                                                             real_estate.ClassData.DropDownData.drdwProjectType();
                                                                         %>
@@ -165,7 +165,7 @@
                                                                   <div class="col-lg-3">
                                                                     <div class="inputText setting-font">โซน/ทำเล </div>
                                                                     <select id="pro_location_id" class="w-100">
-                                                                        <option value="">-- เลือกโซน/ทำเล --</option>
+                                                                        <option value="" selected disabled>-- เลือกโซน/ทำเล --</option>
                                                                         <%
                                                                             real_estate.ClassData.DropDownData.drdwProjectLocation();
                                                                         %>
@@ -199,7 +199,7 @@
                                                                 <div class="col-lg-3">
                                                                     <div class="inputText setting-font">สถานะประเภทโครงการ </div>
                                                                     <select id="pro_statusType_id" class="w-100">
-                                                                        <option value="">-- สถานะประเภทโครงการ --</option>
+                                                                        <option value="" selected disabled>-- สถานะประเภทโครงการ --</option>
                                                                         <%
                                                                             real_estate.ClassData.DropDownData.drdwProjectStatusType();
                                                                         %>
@@ -238,7 +238,7 @@
                                                                 <div class="col-lg-3 ">
                                                                     <div class="inputText setting-font">เลือกจังหวัด*</div>
                                                                     <select id="drdwProvince" class="w-100" onchange="drdwProvinceChange(this.value)">
-                                                                        <option value="">-- เลือกจังหวัด --</option>
+                                                                        <option value="" selected disabled>-- เลือกจังหวัด --</option>
                                                                         <%
                                                                             real_estate.ClassData.DropDownData.drdwProvince();
                                                                         %>
@@ -247,14 +247,14 @@
                                                                 <div class="col-lg-3">
                                                                     <div class="inputText setting-font">เลือกอำเภอ/เขต* </div>
                                                                     <select id="drdwDistrict" class="w-100" onchange="drdwDistrictChange(this.value)">
-                                                                        <option value="">-- เลือกอำเภอ/เขต --</option>
+                                                                        <option value="" selected disabled>-- เลือกอำเภอ/เขต --</option>
 
                                                                     </select>
                                                                 </div>
                                                                 <div class="col-lg-3">
                                                                     <div class="inputText setting-font">เลือกตำบล/แขวง* </div>
                                                                     <select id="drdwSubDistrict" class="w-100">
-                                                                        <option value="">-- เลือกตำบล/แขวง --</option>
+                                                                        <option value="" selected disabled>-- เลือกตำบล/แขวง --</option>
 
                                                                     </select>
                                                                 </div>
@@ -271,7 +271,7 @@
 
                                                   <div id="labelBank" class="card shadow mb-4">
                                                     <div class="card-header py-3">
-                                                        <h6 class="m-0 font-weight-bold " ><span style="color:#198754" >ข้อมูลบัญชีธนาคาร </span> *สำหรับให้ลูกค้าโอน</h6>
+                                                        <h6 class="m-0 font-weight-bold " ><span style="color:#198754" >ข้อมูลบัญชีธนาคาร </span> <span style="font-weight:400">*สำหรับให้ลูกค้าโอน</span></h6>
                                                     </div>
                                                     <div class="card-body">
                                                         <div class="form-group row ">
@@ -336,7 +336,7 @@
     <!-- #include virtual ="../include/footer.html" -->
 </body>
 <script>
-     
+
     const d = new Date();
     let yearNow = d.getFullYear();
 
@@ -369,18 +369,31 @@
 
     // Save ข้อมูล รับค่า action type ( Create , Edit) มาเช็ค
     function btnSaveData(e) {
+        let sale_id = "";
+        let action = e;      
+        let user_id = logInData[0].user_id;
+     
+        console.log('user_id', user_id);
+        console.log(' user_role_id', logInData[0].user_role_id);
+        if (logInData[0].user_role_id != 1) {
 
-        let action = e; 
-        logInData
-        console.log('logInData', logInData)
-
-        $.get("../../api/drdwData", { id: district_id, types: "SubDistrict" })
-            .done(function (data) {
-                let JsondropdownData = JSON.parse(data);
-                
-
+            var jsonData = JSON.stringify({
+                "user_id": user_id
             });
 
+            $.get("../../api/projectList", { jsonData, types: "getSaleId" })
+                .done(function (data) {
+                    let getSaleId = JSON.parse(data); 
+                    sale_id = getSaleId;
+                });
+ 
+        } else if (logInData[0].user_role_id == 1){
+
+            sale_id = user_id; 
+
+        } 
+
+        console.log('sale_id', sale_id);
 
        
         if (action == "Create") {
@@ -408,11 +421,7 @@
 
     }
 
-
-
-
-
-
+     
 
     function drdwProvinceChange(e) {
         let province_id = e;
