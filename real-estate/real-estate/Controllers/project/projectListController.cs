@@ -143,10 +143,13 @@ namespace real_estate.Controllers.project
                 sqltext += "      , PJL.plan_price                   ";
                 sqltext += "      , pS.pro_statusType_name           ";
                 sqltext += "      , s.sale_firstName +' '+ s.sale_lastName as sale_fullName        ";
-                sqltext += "      , s.sale_phone                                                   ";
-                sqltext += "      , PJL.plan_image_profile                                         ";
-
-                sqltext += "	  , PJL.promotion_discount_percent                   ";
+                sqltext += "      , s.sale_phone                  ";
+                sqltext += "      , s.sale_line                  ";
+                sqltext += "      , s.sale_mail                  ";
+                sqltext += "      , PJL.plan_image_profile                  ";
+                sqltext += "      , PJ.create_date                  ";
+                sqltext += "      , PJ.pro_LinkGoogleMap                  "; 
+                 sqltext += "	  , PJL.promotion_discount_percent                   ";
                 sqltext += "      , PJL.promotion_giftVoucher_price                  ";
                 sqltext += "      , PJL.promotion_discount_transferDate              ";
                 sqltext += "      , PJL.promotion_publicServicefeeYear_free          ";
