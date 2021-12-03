@@ -1,6 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="news-detail.aspx.cs" Inherits="real_estate.pages.home.news_detail" %>
 
 
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <!-- Place favicon.png in the root directory -->
@@ -65,7 +66,7 @@
                             <!-- Menu Widget -->
                             <div class="widget-2 ltn__menu-widget ltn__menu-widget-2 text-uppercase">
                                 <ul>
-                                    <li><a href="#">ลงประกาศขายบ้าน</a></li>
+                                    <li><a href="../project/project-sales-management.aspx">ลงประกาศขายบ้าน</a></li>
                                     <li><a href="../home/contact.aspx">ติดต่อเรา</a></li>
                                     <li><a href="../register/register-user.aspx">สมัครสมาชิก</a></li>
                                     <li><a href="../register/register-sale.aspx">สมัครตัวแทนขาย</a></li>

@@ -182,6 +182,7 @@
     <Content Include="pages\include\footer.html" />
     <Content Include="pages\include\header.html" />
     <Content Include="pages\include\topbar.html" />
+    <Content Include="pages\sales\order-list.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -2289,6 +2290,13 @@
     <Compile Include="pages\register\register-user.aspx.designer.cs">
       <DependentUpon>register-user.aspx</DependentUpon>
     </Compile>
+    <Compile Include="pages\sales\order-list.aspx.cs">
+      <DependentUpon>order-list.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\sales\order-list.aspx.designer.cs">
+      <DependentUpon>order-list.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
@@ -2316,7 +2324,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Data\" />
     <Folder Include="pages\admin\" />
-    <Folder Include="pages\sales\" />
     <Folder Include="Views\news\" />
     <Folder Include="Views\register\" />
   </ItemGroup>

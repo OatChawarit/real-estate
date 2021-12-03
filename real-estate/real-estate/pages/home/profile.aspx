@@ -51,7 +51,7 @@
                                         <div class="ltn__tab-menu-list mb-50">
                                             <div class="nav">
                                                 <a class="active show" data-bs-toggle="tab" href="#profiles">ข้อมูลส่วนตัว<i class="fas fa-user"></i></a>
-                                                <a href="main.aspx">รายการใบสั่งจอง<i class="fas fa-file-alt"></i></a>
+                                                <a href="../sales/order-list.aspx">รายการใบสั่งจอง<i class="fas fa-file-alt"></i></a>
                                                 <a data-bs-toggle="tab" href="#re-pass">เปลี่ยนรหัสผ่าน<i class="fas fa-redo-alt"></i></a>
                                                 <a href="javascript:void(0)" data-toggle="modal" data-target="#logoutModal">ออกจากระบบ<i class="fas fa-sign-out-alt"></i></a>
                                             </div>
@@ -84,7 +84,7 @@
                                                             <div class="col-lg-6">
                                                                 <input type="text" id="sale_line" placeholder="Line Id" maxlength="30" />
                                                             </div>
-           
+
                                                             <div class="col-lg-6">
                                                                 <input type="text" id="sale_company" placeholder="ชื่อบริษัท" maxlength="50" />
                                                             </div>
@@ -174,6 +174,34 @@
         }
     });
 
+    function checkEmail(e) {
+
+        let currentEmail = e;
+
+        var jsonData = JSON.stringify({
+            "user_email": currentEmail,
+            "user_role_id": 3
+
+        });
+
+        let resData;
+        //เรียก api
+        $.get("../../api/register", { jsonData: jsonData, types: "chkDuplicateEmail" })
+            .done(function (data) {
+                resData = JSON.parse(data);
+
+                if (resData.length > 0) {
+                    $('#WarnEmail').text('[email ดังกล่าวไม่สามารถใช้ได้]');
+                    $('#WarnEmail').css("color", "red");
+                    chkEmail = 1;
+                } else {
+
+                    $('#WarnEmail').text('[email สามารถใช้ได้]');
+                    $('#WarnEmail').css("color", "green");
+                    chkEmail = 0;
+                }
+            });
+    };
 
 </script>
 
