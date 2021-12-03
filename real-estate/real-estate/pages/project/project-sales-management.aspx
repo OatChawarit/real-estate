@@ -215,7 +215,7 @@
                                                                 </div>
                                                                 <div class="col-lg-6">
                                                                     <div class="inputText setting-font">Link ตำแหน่ง Google Map </div>
-                                                                    <textarea id="pro_LinkGoogleMap" name="pro_LinkGoogleMap" rows="2" cols="50" maxlength="255" >
+                                                                    <textarea id="pro_LinkGoogleMap" name="pro_LinkGoogleMap" rows="2" cols="50"  >
                                                                          
                                                                     </textarea>
                                                                 </div> 
