@@ -134,10 +134,11 @@
             htmlgrid += '<div class="product-img"><a href="project-details.aspx?id='+ item.plan_type_id +'">';
             htmlgrid += '<img src="../../image/project/'+ item.plan_image_profile +'" alt="'+ item.plan_type_id +'" /></a>';
             if (item.pro_statusType_name == "โครงการพร้อมอยู่") {
-                htmlgrid += '<div class="product-badge"><ul><li class="sale-badge bg-green">' + item.pro_statusType_name + '</li></ul></div></div>';
+                htmlgrid += '<div class="product-badge"><ul><li class="sale-badge bg-green">' + item.pro_statusType_name + '</li></ul></div>';
             } else {
-                htmlgrid += '<div class="product-badge"><ul><li class="sale-badge">' + item.pro_statusType_name + '</li></ul></div></div>';
+                htmlgrid += '<div class="product-badge"><ul><li class="sale-badge">' + item.pro_statusType_name + '</li></ul></div>';
             }
+            htmlgrid += '<div class="product-img-location-gallery"><div class=""><ul><li><h5 style="color:#fff;"><i class="fas fa-eye"></i> 300</h5></li></ul></div></div></div>';
             htmlgrid += '<div class="product-info">';
             htmlgrid += '<div class="product-price"><span>' + money_format(item.plan_price) + '<label>&nbsp;/บาท</label></span></div>';
             htmlgrid += '<h2 class="product-title"><a href="project-details.aspx?id='+ item.plan_type_id +'">' + item.pro_name + '</a></h2>';
@@ -149,19 +150,21 @@
             htmlgrid += '<li><span>' + item.plan_useable_area + ' <i class="flaticon-square-shape-design-interface-tool-symbol"></i></span></li>';
             htmlgrid += '</ul></div>';
             htmlgrid += '<div class="product-info-bottom"><div class="real-estate-agent"><div class="agent-brief">';
-            htmlgrid += '<h6>' + item.sale_fullName + '</h6><small>ตัวแทนขาย</small></div></div>';
+            htmlgrid += '<h6>' + item.sale_fullName + '</h6><small>' + item.sale_company + '</small></div></div>';
             htmlgrid += '<div class="product-hover-action">';
             htmlgrid += '<ul><li style="width: 100px;"><a href="tel:' + item.sale_phone + '" title="ติดต่อตัวแทนขาย"><i class="fas fa-phone">&nbsp;โทร</i></a></li></ul>';
             htmlgrid += '</div></div></div></div>';
 
             htmllist += '<div class="col-lg-12"><div class="ltn__product-item ltn__product-item-4 ltn__product-item-5">';
-            htmllist += '<div class="product-img"><a href="project-details.aspx?id='+ item.plan_type_id +'"><img src="../../image/project/'+ item.plan_image_profile +'" alt="'+ item.plan_type_id +'" /></a></div>';
+            htmllist += '<div class="product-img"><a href="project-details.aspx?id=' + item.plan_type_id + '"><img src="../../image/project/' + item.plan_image_profile + '" alt="' + item.plan_type_id + '" /></a>';
+            htmllist += '<div class="product-img-location-gallery"><div class=""><ul><li><h5 style="color:#fff;"><i class="fas fa-eye"></i> 300</h5></li></ul></div></div></div>';
             htmllist += '<div class="product-info"><div class="product-badge-price"><div class="product-badge">';
             if (item.pro_statusType_name == "โครงการพร้อมอยู่") {
                 htmllist += '<ul><li class="sale-badge bg-green" style="padding: 5px 5px 2px 5px;">' + item.pro_statusType_name + '</li></ul></div>';
             } else {
                 htmllist += '<ul><li class="sale-badge bg-orange" style="padding: 5px 5px 2px 5px;">' + item.pro_statusType_name + '</li></ul></div>';
             }
+           
             htmllist += '<div class="product-price"><span>' + money_format(item.plan_price) + '<label>&nbsp;/บาท</label></span></div></div>';
             htmllist += '<h2 class="product-title"><a href="project-details?id='+ item.plan_type_id +'">' + item.pro_name + '</a></h2><div class="product-img-location">';
             htmllist += '<ul><li><a href="javascript:void(0)"><i class="flaticon-pin"></i>' + item.pro_location_name + '</a></li></ul></div>';
@@ -171,7 +174,7 @@
             htmllist += '<li><span>' + item.plan_bath_room + ' <i class="flaticon-clean"></i></span> ห้องน้ำ</li>';
             htmllist += '<li><span>' + item.plan_useable_area + ' <i class="flaticon-square-shape-design-interface-tool-symbol"></i></span></li></ul></div>';
             htmllist += '<div class="product-info-bottom"><div class="real-estate-agent"><div class="agent-brief">';
-            htmllist += '<h6>' + item.sale_fullName + '</h6><small>ตัวแทนขาย</small></div></div>';
+            htmllist += '<h6>' + item.sale_fullName + '</h6><small>' + item.sale_company + '</small></div></div>';
             htmllist += '<div class="product-hover-action"><ul><li style="width: 100px;"><a href="tel:' + item.sale_phone + '" title="ติดต่อตัวแทนขาย">';
             htmllist += '<i class="fas fa-phone">&nbsp;โทร</i></a></li></ul></div></div></div></div>';
 

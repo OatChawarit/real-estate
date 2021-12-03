@@ -60,7 +60,7 @@
                             string id = HttpContext.Current.Request.QueryString.Get("id");
                             //Response.Write(id);
                             var tb = new real_estate.ClassData.projectData();
-                            Response.Write(tb.getProductDetail(id));
+                            Response.Write(tb.getProductSilde(id));
 
                         %>
                     </div>
@@ -79,6 +79,7 @@
                                 <ul>
                                     <li class="ltn__blog-category" id="pro_category"></li>
                                     <li class="ltn__blog-date" id="pro_date"></li>
+                                    <li id="pro_views"></li>
                                 </ul>
                             </div>
 
@@ -121,7 +122,8 @@
                                 <div class="ltn__author-widget-inner">
                                     <!-- <img src="img/team/4.jpg" alt="Image"> -->
                                     <h5 class="text-center" id="pro_sale"></h5>
-                                    <p class="text-center">ตัวแทนขายอสังหาริมทรัพย์</p>
+                                    <p class="text-center">ตัวแทนขาย</p>
+                                    <p class="text-center" id="pro_comp"></p>
                                     <p id="pro_mail"></p>
                                     <p id="pro_tel"></p>
                                     <p id="pro_line"></p>
@@ -182,13 +184,15 @@
 
                     $('#pro_date').append("<i class='far fa-calendar-alt'></i>" + dateFormat(item.create_date) + "");
                     $('#pro_head').append(item.pro_name);
+                    $('#pro_views').append("<i class='fas fa-eye'></i>ผู้เข้าชม : 300");
                     $('#pro_price').append("฿ " + money_format(item.plan_price));
 
                     let details = "รูปแบบแปลนโครงการ : " + item.plan_name + "<br />ประเภทบ้าน : " + item.pro_type_name + "<br />ทำเลที่ตั้ง : " + item.pro_location_name + "<br />เพิ่มเติม : " + item.promotion_airConditioner_remark;
                     details += "<br />โปรโมชั่นส่วนลดวันโอน : " + money_format(item.promotion_discount_transferDate) + "<br />โปรโมชั่น gift Voucher ราคา : " + money_format(item.promotion_giftVoucher_price);
                     $('#pro_detail').append(details);
-
+                    
                     $('#pro_sale').append(item.sale_fullName);
+                    $('#pro_comp').append("บริษัท : "+item.sale_company);
                     $('#pro_mail').append("<i class='far fa-envelope'></i>&nbsp;Email : " + item.sale_mail);
                     $('#pro_line').append("<i class='fab fa-line'></i>&nbsp;Line : " + item.sale_line);
                     $('#pro_tel').append("<i class='fas fa-phone'></i>&nbsp;เบอร์โทร : " + item.sale_phone);
@@ -202,13 +206,13 @@
                     if (item.promotion_IsElectricMeter_free == "1") {
                         prop += "<li><label>มิเตอร์ไฟฟ้า : </label><span>ฟรีค่าติดตั้ง</span></li>";
                     } else {
-                        prop += "<li><label>มิเตอร์ไฟฟ้า : ง</label><span>ไม่ฟรีค่าติดตั้</span></li></ul>";
+                        prop += "<li><label>มิเตอร์ไฟฟ้า : </label><span>มีค่าติดตั้ง</span></li></ul>";
                     }
 
                     if (item.promotion_IsWaterMeter_free == "1") {
                         prop += "<li><label>มิเตอร์น้ำปะปา : </label><span>ฟรีค่าติดตั้ง</span></li></ul>";
                     } else {
-                        prop += "<li><label>มิเตอร์น้ำปะปา : </label><span>ไม่ฟรีค่าติดตั้ง</span></li></ul>";
+                        prop += "<li><label>มิเตอร์น้ำปะปา : </label><span>มีค่าติดตั้ง</span></li></ul>";
                     }
                     prop += "<ul><li><label>ชั้นที่ / จำนวนชั้น : </label><span>" + item.plan_floor + "</span></li>";
                     prop += "<li><label>เครื่องปรับอากาศ : </label><span>" + item.promotion_airConditioner_free + " (เครื่อง)</span></li>";

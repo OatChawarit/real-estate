@@ -13,6 +13,15 @@ namespace real_estate.pages.home {
     public partial class _default {
         
         /// <summary>
+        /// mains control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlForm mains;
+        
+        /// <summary>
         /// drdwDistrict control.
         /// </summary>
         /// <remarks>
