@@ -172,6 +172,7 @@
     <Content Include="pages\home\main.aspx" />
     <Content Include="pages\home\news-detail.aspx" />
     <Content Include="pages\home\news.aspx" />
+    <Content Include="pages\home\profile.aspx" />
     <Content Include="pages\project\project-details.aspx" />
     <Content Include="pages\project\project-list.aspx" />
     <Content Include="pages\project\project-sales-management.aspx" />
@@ -2245,6 +2246,13 @@
     </Compile>
     <Compile Include="pages\home\news.aspx.designer.cs">
       <DependentUpon>news.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\home\profile.aspx.cs">
+      <DependentUpon>profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\home\profile.aspx.designer.cs">
+      <DependentUpon>profile.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\project\project-details.aspx.cs">
       <DependentUpon>project-details.aspx</DependentUpon>

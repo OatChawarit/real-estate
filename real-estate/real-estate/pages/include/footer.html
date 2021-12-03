@@ -32,7 +32,7 @@
     $(document).ready(function () {
         //$('#tbUsername').html('');
         if (logInData) {
-
+    
             $('.topbar_login').addClass('d-none');
 
             let user_role = "";
@@ -47,6 +47,20 @@
 
             $('#tbUsername').html(` <b> ${logInData[0].user_firstName} ${logInData[0].user_lastName} <br> [${user_role}] </b> `);
 
+            $("#bar-login").addClass('d-none');
+            $("#mob-login").addClass('d-none');
+
+            if (logInData[0].user_role_id == "2") {
+                $("#bar-order").addClass('d-none');
+                $("#mob-order").addClass('d-none');
+            }
+        } else {
+            $("#mob-profile").addClass('d-none');
+            $("#bar-profile").addClass('d-none');
+            $("#mob-exit").addClass('d-none');
+            $("#bar-exit").addClass('d-none');
+            $("#bar-order").addClass('d-none');
+            $("#mob-order").addClass('d-none');
         }
 
     });

@@ -11,7 +11,7 @@
     font-size: 16px;
     font-weight: 400;
     font-family: var(--ltn__heading-font);
-    padding: 17px 40px;
+    padding: 15px 30px;
     text-align: center;
     cursor: pointer;
     transition: all 0.3s ease 0s;
@@ -193,10 +193,10 @@
 
 @media (min-width: 768px) and (max-width: 991px){
     .btn {
-        padding: 12px 25px;
+        padding: 10px 20px;
     }
     [type="submit"].btn {
-        padding: 15px 30px;
+        padding: 10px 20px;
     }
 }
 
@@ -206,7 +206,7 @@
         font-size: 14px;
     }
     [type="submit"].btn {
-        padding: 12px 30px;
+        padding: 10px 20px;
     }
 }
 
