@@ -395,6 +395,9 @@
 
         console.log('sale_id', sale_id);
 
+
+
+        console.log('url', $('#pro_LinkGoogleMap').val().trim() );
        
         if (action == "Create") {
 
