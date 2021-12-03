@@ -38,7 +38,7 @@ namespace real_estate.ClassData
                     {
                         str.AppendLine("<div class='col-lg-12'><div class='ltn__img-slide-item-4'>");
                         str.AppendLine("<a href='../../image/project/" + reader["plan_image_profile"].ToString() + "' id='imgMain' data-rel='lightcase:myCollectionPro'>");
-                        str.AppendLine("<img src='../../image/project/" + reader["plan_image_profile"].ToString() + "' id='imgMains' alt='ImageMain'  /></a></div></div>");
+                        str.AppendLine("<img src='../../image/project/" + reader["plan_image_profile"].ToString() + "' id='imgMains' alt='ภาพหลักโครงการ'  /></a></div></div>");
 
                         str.AppendLine("<div class='col-lg-12'><div class='ltn__img-slide-item-4'>");
                         str.AppendLine("<a href='../../image/project/" + reader["plan_img_path"].ToString() + "' id='imgPro" + reader.GetInt32(0) + "' data-rel='lightcase:myCollectionPro'>");

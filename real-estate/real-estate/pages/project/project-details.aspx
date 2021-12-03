@@ -98,7 +98,6 @@
                             <h4 class="title-2 mb-10">สิ่งอำนวยความสะดวก</h4>
                             <div class="property-details-amenities mb-60">
                                 <div class="row" id="facilities-list">
-
                                 </div>
                             </div>
 
@@ -112,7 +111,7 @@
                     <div class="col-lg-4">
                         <div class="widget-2 ltn__menu-widget">
                             <ul>
-                                <li class=""><a href="#" class="btn btn-success">ซื้อโครงการ / จองโครงการ</a></li>
+                                <li class=""><a href="#" class="btn btn-success">สั่งจองโครงการ</a></li>
                             </ul>
                         </div>
 
@@ -122,8 +121,8 @@
                                 <div class="ltn__author-widget-inner">
                                     <!-- <img src="img/team/4.jpg" alt="Image"> -->
                                     <h5 class="text-center" id="pro_sale"></h5>
-                                    <p class="text-center">ตัวแทนขาย</p>
-                                    <p class="text-center" id="pro_comp"></p>
+                                    <p class="text-center">ตัวแทนขาย <span id="pro_comp"></span></p>
+
                                     <p id="pro_mail"></p>
                                     <p id="pro_tel"></p>
                                     <p id="pro_line"></p>
@@ -133,10 +132,47 @@
                         </aside>
 
                     </div>
+
                 </div>
             </div>
         </div>
         <!--  DETAILS END -->
+
+        <!-- Modal -->
+        <div class="modal fade" id="sendModalCenter" tabindex="-1" role="dialog" aria-labelledby="sendModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title mx-2" id="sendModalCenterTitle">ติดต่อตัวแทนขายเพื่อสอบถามข้อมูลเพิ่มเติม</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label class="col-form-label">ชื่อ-สกุล :</label>
+                            <input type="text" class="form-control" id="contactName" />
+                        </div>
+                         <div class="form-group">
+                            <label class="col-form-label">อีเมล :</label>
+                            <input type="text" class="form-control" id="contactEmail" />
+                        </div>
+                         <div class="form-group">
+                            <label class="col-form-label">เบอร์โทร :</label>
+                            <input type="text" class="form-control" id="contactTel" />
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">ข้อความสอบถาม :</label>
+                            <textarea class="form-control" id="mesText"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary btm-sm"><i class="fas fa-paper-plane"></i> ส่งข้อมูล</button>
+                        <button type="button" class="btn btn-secondary btm-sm" data-dismiss="modal"><i class="fas fa-times"></i> ปิด</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- เนื้อหา -->
 
@@ -190,13 +226,16 @@
                     let details = "รูปแบบแปลนโครงการ : " + item.plan_name + "<br />ประเภทบ้าน : " + item.pro_type_name + "<br />ทำเลที่ตั้ง : " + item.pro_location_name + "<br />เพิ่มเติม : " + item.promotion_airConditioner_remark;
                     details += "<br />โปรโมชั่นส่วนลดวันโอน : " + money_format(item.promotion_discount_transferDate) + "<br />โปรโมชั่น gift Voucher ราคา : " + money_format(item.promotion_giftVoucher_price);
                     $('#pro_detail').append(details);
-                    
+
                     $('#pro_sale').append(item.sale_fullName);
-                    $('#pro_comp').append("บริษัท : "+item.sale_company);
+                    $('#pro_comp').append(" : " + item.sale_company);
                     $('#pro_mail').append("<i class='far fa-envelope'></i>&nbsp;Email : " + item.sale_mail);
                     $('#pro_line').append("<i class='fab fa-line'></i>&nbsp;Line : " + item.sale_line);
                     $('#pro_tel').append("<i class='fas fa-phone'></i>&nbsp;เบอร์โทร : " + item.sale_phone);
-                    $('#pro_tel2').append("<a href='tel:" + item.sale_phone + "' class='btn btn-outline-success btn-sm'><i class='fas fa-phone'></i>&nbsp;โทร</a>");
+
+                    let dialogTel = "<a href='tel:" + item.sale_phone + "' class='btn btn-outline-success btn-sm' style='font-size:14px'><i class='fas fa-phone'></i>&nbsp;โทร</a>";
+                    dialogTel += "<a href='javascript:void(0)' data-toggle='modal' data-target='#sendModalCenter' class='btn btn-outline-primary btn-sm' style='font-size:14px'><i class='far fa-comment'></i>&nbsp;สอบถาม</a>";
+                    $('#pro_tel2').append(dialogTel);
 
                     let prop = "";
                     prop += "<ul><li><label>รหัส : </label><span>" + item.plan_type_id + "</span></li>";
