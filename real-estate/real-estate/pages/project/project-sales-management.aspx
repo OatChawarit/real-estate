@@ -371,12 +371,9 @@
     function btnSaveData(e) {
         let sale_id = "";
         let action = e;      
-        let user_id = logInData[0].user_id;
-     
-        console.log('user_id', user_id);
-        console.log(' user_role_id', logInData[0].user_role_id);
-        if (logInData[0].user_role_id != 1) {
 
+        let user_id = logInData[0].user_id;
+    
             var jsonData = JSON.stringify({
                 "user_id": user_id
             });
@@ -384,16 +381,11 @@
             $.get("../../api/projectList", { jsonData, types: "getSaleId" })
                 .done(function (data) {
                     let getSaleId = JSON.parse(data); 
-                    sale_id = getSaleId;
+                    
                 });
- 
-        } else if (logInData[0].user_role_id == 1){
+  
 
-            sale_id = user_id; 
-
-        } 
-
-        console.log('sale_id', sale_id);
+        console.log('getSaleId', getSaleId);
 
 
 
