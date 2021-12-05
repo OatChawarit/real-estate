@@ -146,11 +146,17 @@
             }).done(function (data) {
 
                 let resData = JSON.parse(data);
+                //console.log(resData);
                 if (resData.length > 0) {
-
-                    sessionStorage.setItem("LogInData", data);
-                    //localStorage.setItem("LogInData", resData);                     
-                    location.replace('../home/main.aspx')
+                    if (resData[0].user_role_id == "1") {
+                       sessionStorage.setItem("LogInData", data);
+                       //localStorage.setItem("LogInData", resData);                     
+                        location.replace('../admin/manage-user.aspx')
+                    } else {
+                       sessionStorage.setItem("LogInData", data);
+                       //localStorage.setItem("LogInData", resData);                     
+                       location.replace('../home/main.aspx')
+                    }
                 } else {
 
                     Swal.fire({
