@@ -111,7 +111,7 @@
             uPassword = $('#uPassword').val();
         } else if (LoginType == 3) {
             uName = $('#sName').val();
-            uPassword = $('#sPassword').val(); 
+            uPassword = $('#sPassword').val();
         }
         console.log(uName, uPassword)
 
@@ -146,13 +146,13 @@
             }).done(function (data) {
 
                 let resData = JSON.parse(data);
-                if (resData.length > 0) { 
-                    
+                if (resData.length > 0) {
+
                     sessionStorage.setItem("LogInData", data);
                     //localStorage.setItem("LogInData", resData);                     
                     location.replace('../home/main.aspx')
                 } else {
-                  
+
                     Swal.fire({
                         type: 'info',
                         html: ` <h3 style=" "> <i>  ชื่อผู้ใช้ หรือ รหัสผ่านไม่ถูกต้อง </i></h3>`
@@ -162,33 +162,53 @@
         }
     };
 
- 
+    $('#uPassword').on("keypress", function (e) {
+        if (e.keyCode == 13) {
+           onBtnLoginClick(2)
+        }
+    });
+
+
+     $('#sPassword').on("keypress", function (e) {
+        if (e.keyCode == 13) {
+           onBtnLoginClick(3)
+        }
+    });
+
     /// แก้ css hover และ reset input
     function onTabClick(tabType) {
-  
+
         if (tabType == 2) {
             $('#uName').val('');
-            $('#uPassword').val(''); 
+            $('#uPassword').val('');
 
-            $('#pills-home-tab').css({ "background-color": "#ff5a3c", "color" : "white" });  
-            $("#pills-home-tab").hover(function () {$(this).css({ "background-color": "#ff5a3c", "color": "white" });
-                                    }, function () {$(this).css({"background-color": "black", "color": "white"});
-            }); 
+            $('#pills-home-tab').css({ "background-color": "#ff5a3c", "color": "white" });
+            $("#pills-home-tab").hover(function () {
+                $(this).css({ "background-color": "#ff5a3c", "color": "white" });
+            }, function () {
+                $(this).css({ "background-color": "black", "color": "white" });
+            });
             $('#pills-sale-tab').css({ "background-color": "white", "color": "black" });
-            $("#pills-sale-tab").hover(function () {$(this).css({ "background-color": "#ff5a3c", "color": "white" });
-                                    }, function () { $(this).css({ "background-color": "white", "color": "black" });
+            $("#pills-sale-tab").hover(function () {
+                $(this).css({ "background-color": "#ff5a3c", "color": "white" });
+            }, function () {
+                $(this).css({ "background-color": "white", "color": "black" });
             });
         } else if (tabType == 3) {
             $('#sName').val('');
-            $('#sPassword').val(''); 
+            $('#sPassword').val('');
 
             $('#pills-sale-tab').css({ "background-color": "#ff5a3c", "color": "white" });
-            $("#pills-sale-tab").hover(function () {$(this).css({ "background-color": "#ff5a3c", "color": "white" });               
-                                    }, function () {$(this).css({ "background-color": "black", "color": "white" });             
-            }); 
+            $("#pills-sale-tab").hover(function () {
+                $(this).css({ "background-color": "#ff5a3c", "color": "white" });
+            }, function () {
+                $(this).css({ "background-color": "black", "color": "white" });
+            });
             $('#pills-home-tab').css({ "background-color": "white", "color": "black", "border": "2px solid #e4ecf2" });
-            $("#pills-home-tab").hover(function () {$(this).css({ "background-color": "#ff5a3c", "color": "white" });
-                                    }, function () { $(this).css({ "background-color": "white", "color": "black" });
+            $("#pills-home-tab").hover(function () {
+                $(this).css({ "background-color": "#ff5a3c", "color": "white" });
+            }, function () {
+                $(this).css({ "background-color": "white", "color": "black" });
             });
         }
 
