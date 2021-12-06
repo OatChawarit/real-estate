@@ -134,6 +134,25 @@ namespace real_estate.ClassData
         }
 
 
+        public static void drdwRoleType()
+        {
+            string sqltext = "";
+            sqltext += "   SELECT  [role_id]  ,[role_name]        ";
+            sqltext += "   FROM [realestate].[dbo].[sa_role]      ";
+
+            var db = new ConnectDB.DBClass();
+            SqlDataReader dr = db.GetSqlDataReader(sqltext.ToString());
+            StringBuilder str = new StringBuilder();
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+                    str.AppendLine("<option value='" + dr["role_id"].ToString() + "'>" + dr["role_name"].ToString() + "</option>");
+                }
+            }
+            System.Web.HttpContext.Current.Response.Write(str);
+
+        }
 
     }
 }

@@ -2190,6 +2190,7 @@
     <Compile Include="ClassData\shareHelper.cs" />
     <Compile Include="ConnectDB\DBClass.cs" />
     <Compile Include="Controllers\main\newsController.cs" />
+    <Compile Include="Controllers\main\userDataController.cs" />
     <Compile Include="Controllers\project\projectListController.cs" />
     <Compile Include="Controllers\register\registerController.cs" />
     <Compile Include="Controllers\service\drdwDataController.cs" />
