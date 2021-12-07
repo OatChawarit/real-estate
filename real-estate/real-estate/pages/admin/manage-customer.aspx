@@ -45,7 +45,7 @@
                             <table class="table table-striped " id="customer-table" width="100%" cellspacing="0">
                                 <thead class="table-dark" align="center">
                                     <tr>
-                                        <th style="width: 60px; min-width: 60px; max-width: 60px; vertical-align: middle;"></th>
+                                        <th style="width: 60px; min-width: 60px; max-width: 60px; vertical-align: middle;">#</th>
                                         <th>รหัสสมาชิก</th>
                                         <th>รหัสผู้ใช้</th>
                                         <th>ชื่อ</th>
@@ -120,7 +120,7 @@
 
         let tb = $("#customer-table").DataTable();
 
-        $.get("../../api/userData", { jsonData: jsonData, types: "get_customer" })
+        $.get("../../api/userData", { jsonData: jsonData, types: "list_customer", username : LogInData[0].user_id })
             .done(function (data) {
                 Sdata = JSON.parse(data);
                 console.log(Sdata);

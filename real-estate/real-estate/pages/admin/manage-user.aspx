@@ -104,7 +104,7 @@
                                 <table class="table table-striped " id="user-table" width="100%" cellspacing="0">
                                     <thead class="table-dark" align="center">
                                         <tr>
-                                            <th style="width: 60px; min-width: 60px; max-width: 60px; vertical-align: middle;"></th>
+                                            <th style="width: 60px; min-width: 60px; max-width: 60px; vertical-align: middle;">#</th>
                                             <th>รหัสสมาชิก</th>
                                             <th>รหัสผู้ใช้งาน</th>
                                             <th>ชื่อ</th>
@@ -158,25 +158,25 @@
                                                     <div class="row">
                                                         <div class="col-lg-6">
                                                             <div class="inputText setting-font">รหัสสมาชิก *</div>
-                                                            <input type="text" id="user_id" placeholder="รหัสสมาชิก" class="setting-form" readonly="true" />
+                                                            <input type="text" id="user_id" placeholder="รหัสสมาชิก" class="setting-form" value="" readonly="true" />
                                                         </div>
 
                                                         <div class="col-lg-6">
                                                             <div class="inputText setting-font">รหัสผู้ใช้งาน *</div>
-                                                            <input type="text" id="user_email" placeholder="รหัสผู้ใช้งาน" class="setting-form" readonly="true" />
+                                                            <input type="text" id="user_email" placeholder="รหัสผู้ใช้งาน" class="setting-form" value="" readonly="true" />
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-lg-6">
                                                         <div class="inputText setting-font">ชื่อ *</div>
-                                                        <input type="text" id="user_firstName" placeholder=" " class="setting-form" readonly="true" />
+                                                        <input type="text" id="user_firstName" placeholder=" " class="setting-form" value="" readonly="true" />
                                                     </div>
 
 
                                                     <div class="col-lg-6">
                                                         <div class="inputText setting-font">นามสกุล *</div>
-                                                        <input type="text" id="user_lastName" placeholder=" " class="setting-form" readonly="true" />
+                                                        <input type="text" id="user_lastName" placeholder=" " class="setting-form" value="" readonly="true" />
                                                     </div>
                                                 </div>
                                                 <div class="row">
@@ -217,41 +217,37 @@
                                             <div id="divProjectAddress" class="row col-12 setting-row">
                                                 <div class="col-lg-6">
                                                     <div class="inputText setting-font">รหัสผ่านใหม่ *</div>
-                                                    <input type="password" id="user_password" placeholder=" " class="setting-form" maxlength="20" />
+                                                    <input type="password" id="user_password" placeholder=" " class="setting-form" value="" maxlength="20" />
                                                 </div>
-                                                    <div class="col-lg-6">
+                                                <div class="col-lg-6">
                                                     <div class="inputText setting-font">ยืนยันรหัสผ่านใหม่ *</div>
-                                                    <input type="password" id="confirm_user_password" placeholder=" " class="setting-form" maxlength="20" />
+                                                    <input type="password" id="confirm_user_password" placeholder=" " class="setting-form" value="" maxlength="20" />
                                                 </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                            <button id="btnConfirmPass" type="button" class="btn-setting btn btn-warning btnConfirmPass" value="Create">re-PassWord</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
                             </div>
-                            
+
                             <!-- close nav tabs -->
                         </div>
-                   
-                    <!-- close modal body -->
-                    <div class="modal-footer">
-                        <button type="button" class="btn-setting btn btn-danger close"><i class="fas fa-trash-alt"></i>&nbsp;InAcive</button>
-                        <button id="btnSave" type="button" class="btn-setting btn btn-primary btnSave" onclick="btnSaveData(this.value)" value="Create"><i class="far fa-save"></i>&nbsp;Save</button>
-                        <button type="button" class="btn-setting btn btn-secondary close" data-dismiss="modal"><i class="fas fa-times"></i>&nbsp;Close</button>
+
+                        <!-- close modal body -->
+                        <div class="modal-footer">
+                            <button id="btnSave" type="button" class="btn-setting btn btn-primary btnSave" onclick="btnConfirmPass(this.value)" value="Create"><i class="far fa-save"></i>&nbsp;Save</button>
+                            <button type="button" class="btn-setting btn btn-secondary close" data-dismiss="modal"><i class="fas fa-times"></i>&nbsp;Close</button>
+                        </div>
                     </div>
                 </div>
             </div>
-    </div>
 
-    </form>
+        </form>
         <!-- Begin Page Content -->
-    <!-- เนื้อหา -->
+        <!-- เนื้อหา -->
 
-    <!-- นำเข้าส่วนท้าย -->
-    <!-- #include virtual ="../include/footcontent-admin.html" -->
+        <!-- นำเข้าส่วนท้าย -->
+        <!-- #include virtual ="../include/footcontent-admin.html" -->
     </div>
     <!-- นำเข้าส่วนท้าย JS -->
     <!-- #include virtual ="../include/footer.html" -->
@@ -261,8 +257,11 @@
     const d = new Date();
     let yearNow = d.getFullYear();
     let Sdata;
+    const userData = JSON.parse(sessionStorage.getItem("LogInData"));
 
     $(document).ready(function () {
+
+
         checkLogin(1);
         loadUser();
 
@@ -278,9 +277,80 @@
 
     $(document).on("click", ".btnEdit", function () {
         var uid = $(this).data('value');
-        console.log(uid);
+        //console.log(uid);
         $("#Edit-UserModal").modal("show");
+
+        var json = JSON.stringify({
+            user_id: uid
+        });
+        $.get("../../api/userData", { jsonData: json, types: "get_user", username: userData[0].user_id })
+            .done(function (data) {
+                Sdata = JSON.parse(data);
+                //console.log(Sdata);
+                if (Sdata.length > 0) {
+                    //console.log(Sdata);
+                    $("#user_id").val(Sdata[0].user_id);
+                    $("#user_email").val(Sdata[0].user_email);
+                    $("#user_firstName").val(Sdata[0].user_firstName);
+                    $("#user_lastName").val(Sdata[0].user_lastName);
+                    $("#user_role_id").val(Sdata[0].user_role_id);
+                    $("#user_status").val(Sdata[0].user_status);
+
+                    $('#user_role_id').niceSelect('update');
+                    $('#user_status').niceSelect('update');
+                }
+                else {
+                    Swal.fire(
+                        "Found an Error", //title
+                        "ไม่พบข้อมูล", //main text
+                        "error" //icon
+                    );
+                }
+            });
     });
+
+
+    $(document).on("click", ".btnCanCel", function () {
+        var uid = $(this).data('value');
+        console.log(uid);
+
+        var jsonData = JSON.stringify({
+            user_id: uid,
+        });
+        Swal.fire({ 
+            title: 'คุณต้องยกเลิกผู้ใช่งาน!',
+            html: '<p>รหัสสมาชิก : ' + uid + ' ใช่หรือไม่ ? </p>',
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'ตกลง',
+            cancelButtonText: 'ยกเลิก',
+        }).then((result) => {
+            if (result.value) {
+                $.get("../../api/userData", { jsonData: jsonData, types: "cancel_user", username: userData[0].user_id })
+                    .done(function (data) {
+                        Sdata = data;
+                        //console.log(Sdata);
+                        if (Sdata == "success") {
+                            Swal.fire(
+                                "Success", //title
+                                "แก้ไขข้อมูล เรียบร้อย!", //main text
+                                "success" //icon
+                            );
+                            loadUser();
+                        } else {
+                            Swal.fire(
+                                "Found an Error", //title
+                                "แก้ไข ไม่สำเร็จ!", //main text
+                                "error" //icon
+                            );
+                        }
+                    });
+            }
+        });
+    });
+
 
     function loadUser() {
         Swal.fire({
@@ -297,8 +367,9 @@
         });
 
         let tb = $("#user-table").DataTable();
+         $("#user-table").DataTable().clear().draw();
 
-        $.get("../../api/userData", { jsonData: jsonData, types: "get_user" })
+        $.get("../../api/userData", { jsonData: jsonData, types: "list_user", username: userData[0].user_id })
             .done(function (data) {
                 Sdata = JSON.parse(data);
                 //console.log(Sdata);
@@ -306,11 +377,14 @@
                     Sdata.forEach((item, rows) => {
                         let Status = "";
                         let ShowRole = "";
+                        let Action = "";
                         if (item.user_status == 'A') {
                             Status = '<span class="bg-green" style="padding: 5px;">Active</span>';
+                             Action = `<button type='button' class='btn-danger btn-sm btnCanCel' id='btnCanCel` + item.user_id + `' data-value='` + item.user_id + `' title='ยกเลิก'><i class='fas fa-trash-alt'></i></button>`;
                         }
                         else if (item.user_status == 'C') {
                             Status = '<span class="bg-red" style="padding: 5px;">InActive</span>';
+                            Action = `<button type='button' class='btn-danger btn-sm btnCanCel' id='btnCanCel` + item.user_id + `' data-value='` + item.user_id + `' title='ยกเลิก' disabled><i class='fas fa-trash-alt'></i></button>`;
                         }
                         else if (item.user_status == 'N' && item.user_role_id == "3") {
                             Status = '<span class="bg-blue" style="padding: 5px;">Panding</span>';
@@ -327,7 +401,9 @@
                         }
 
                         tb.row.add([
-                            `<div class="text-center"><button type='button' class='btn-primary btn-sm btnEdit' id='btnEdit' data-value='` + item.user_id + `' title='แก้ไข'><i class='fas fa-eye'></i></button></div>`,
+                            `<div class="text-center">
+                            <button type='button' class='btn-primary btn-sm btnEdit' id='btnEdit` + item.user_id + `' data-value='` + item.user_id + `' title='แก้ไข'><i class='fas fa-eye'></i></button>
+                            ${Action}</div>`,
                             `<div class="text-center">${item.user_id}</div>`,
                             `<div >${item.user_email}</div>`,
                             `<div >${item.user_firstName}</div>`,
