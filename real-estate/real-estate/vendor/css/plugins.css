@@ -5521,7 +5521,7 @@ textarea.form-control-lg {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 10600;
+    z-index: 1060;
     display: none;
     width: 100%;
     height: 100%;
