@@ -140,7 +140,7 @@
     let yearNow = d.getFullYear();
 
     $(document).ready(function () {
-        checkLogin(3);
+        //checkLogin(3);
 
         $('#FormModal_Project').modal({ backdrop: 'static', keyboard: false })
 

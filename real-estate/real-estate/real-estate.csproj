@@ -146,6 +146,9 @@
     <Content Include="image\project\setthasiri-rama-5-housetype-majesty-324.png" />
     <Content Include="image\project\setthasiri-rama-5-housetype-meridian-454-1.png" />
     <Content Include="image\project\setthasiri-rama-5-housetype-meridian-454-2.png" />
+    <Content Include="pages\admin\manage-customer.aspx" />
+    <Content Include="pages\admin\manage-news.aspx" />
+    <Content Include="pages\admin\manage-user.aspx" />
     <Content Include="pages\home\about.aspx" />
     <Content Include="pages\home\contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -173,10 +176,13 @@
     <Content Include="pages\home\news-detail.aspx" />
     <Content Include="pages\home\news.aspx" />
     <Content Include="pages\home\profile.aspx" />
+    <Content Include="pages\include\footcontent-admin.html" />
+    <Content Include="pages\include\topbar-admin.html" />
     <Content Include="pages\project\project-details.aspx" />
     <Content Include="pages\project\project-list.aspx" />
     <Content Include="pages\project\project-sales-details-management.aspx" />
     <Content Include="pages\project\project-sales-management.aspx" />
+    <Content Include="pages\project\purchase-order.aspx" />
     <Content Include="pages\register\register-sale.aspx" />
     <Content Include="pages\register\register-user.aspx" />
     <Content Include="pages\include\footcontent.html" />
@@ -2187,9 +2193,31 @@
     <Compile Include="ConnectDB\DBClass.cs" />
     <Compile Include="Controllers\imageApi\ImageAPIController.cs" />
     <Compile Include="Controllers\main\newsController.cs" />
+    <Compile Include="Controllers\main\userDataController.cs" />
     <Compile Include="Controllers\project\projectListController.cs" />
     <Compile Include="Controllers\register\registerController.cs" />
     <Compile Include="Controllers\service\drdwDataController.cs" />
+    <Compile Include="pages\admin\manage-customer.aspx.cs">
+      <DependentUpon>manage-customer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\admin\manage-customer.aspx.designer.cs">
+      <DependentUpon>manage-customer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\admin\manage-news.aspx.cs">
+      <DependentUpon>manage-news.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\admin\manage-news.aspx.designer.cs">
+      <DependentUpon>manage-news.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\admin\manage-user.aspx.cs">
+      <DependentUpon>manage-user.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\admin\manage-user.aspx.designer.cs">
+      <DependentUpon>manage-user.aspx</DependentUpon>
+    </Compile>
     <Compile Include="pages\home\about.aspx.cs">
       <DependentUpon>about.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2285,6 +2313,13 @@
     <Compile Include="pages\project\project-sales-management.aspx.designer.cs">
       <DependentUpon>project-sales-management.aspx</DependentUpon>
     </Compile>
+    <Compile Include="pages\project\purchase-order.aspx.cs">
+      <DependentUpon>purchase-order.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\project\purchase-order.aspx.designer.cs">
+      <DependentUpon>purchase-order.aspx</DependentUpon>
+    </Compile>
     <Compile Include="pages\register\register-sale.aspx.cs">
       <DependentUpon>register-sale.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2333,7 +2368,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Data\" />
     <Folder Include="pages\admin\" />
-    <Folder Include="Views\ImageAPI\" />
     <Folder Include="Views\news\" />
     <Folder Include="Views\register\" />
   </ItemGroup>
