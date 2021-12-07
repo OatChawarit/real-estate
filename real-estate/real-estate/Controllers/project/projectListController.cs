@@ -1,4 +1,5 @@
 ﻿using real_estate.ConnectDB;
+using real_estate.ClassData;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -11,6 +12,9 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Web.Http;
+using System.IO;
+using System.Web;
+  
 
 namespace real_estate.Controllers.project
 {
@@ -202,8 +206,40 @@ namespace real_estate.Controllers.project
                 SqlDataReader dr;
                 string sqltext = "  SELECT [sale_id]   ,[user_id]               ";
                 sqltext += "        FROM [realestate].[dbo].[re_SaleTable] a    ";
-                sqltext += "        WHERE a.sale_status = 'N'                   ";
+                sqltext += "        WHERE a.sale_status = 'A'                   ";
                 sqltext += "        AND a.user_id = '"+ stuff.user_id +"'                   ";
+
+
+                dr = db.GetSqlDataReader(sqltext);
+                ArrayList arr = new ArrayList();
+                while (dr.Read())
+                {
+                    var result = new Dictionary<string, object>();
+                    for (int i = 0; i < dr.FieldCount; i++)
+                    {
+                        result.Add(dr.GetName(i), dr[i].ToString());
+                    }
+                    arr.Add(result);
+                }
+                rs = JsonConvert.SerializeObject(arr);
+            }
+            else if (types == "listProjectTableBysale")
+            {
+                SqlDataReader dr;
+                string sqltext = "  SELECT   a.pro_id        , b.com_name     , a.pro_name                                            ";
+                sqltext += "                ,c.pro_type_name , d.pro_location_name     , e.pro_statusType_name                        ";
+          
+                sqltext += "                ,a.pro_status                                                     ";  
+                sqltext += "  FROM [realestate].[dbo].[re_ProjectTable] a                                                             ";
+                sqltext += "  INNER JOIN realestate..re_CompanyTable b ON a.pro_company_id = b.com_id                                 "; 
+                sqltext += "  INNER JOIN realestate..re_Project_Type_Table c ON c.pro_type_id = a.pro_type_id                         ";
+                sqltext += "  INNER JOIN realestate..re_Project_Location_Table d ON d.pro_location_id = a.pro_location_id             ";
+                sqltext += "  INNER JOIN [realestate].[dbo].[re_Project_StatusType] e ON e.pro_statusType_id = a.pro_statusType_id    "; 
+
+                sqltext += "  WHERE a.sale_id = '" + stuff.sale_id + "'                                                               ";
+                sqltext += "  ORDER BY a.pro_id    desc                                                                               ";
+
+
 
 
                 dr = db.GetSqlDataReader(sqltext);
@@ -231,9 +267,9 @@ namespace real_estate.Controllers.project
         {
             public string data { get; set; }
         }
-
+      
         // POST: api/projectList 
-        public string Post(Project_Result value)
+        public string Post(Project_Result value ) 
         {
             dynamic stuff = JsonConvert.DeserializeObject(value.data.ToString());
             string types = Request.Headers.GetValues("types").FirstOrDefault().ToString();
@@ -289,7 +325,7 @@ namespace real_estate.Controllers.project
                 sqltext += "   INNER JOIN [realestate].[dbo].[re_Project_Type_Table]  pType ON pType.pro_type_id = PJ.pro_type_id        ";
                 sqltext += "   INNER JOIN [realestate].[dbo].[re_Project_Location_Table] pLo ON pLo.pro_location_id = PJ.pro_location_id ";
                 sqltext += "   INNER JOIN realestate..re_Project_StatusType pS ON pS.pro_statusType_id = PJ.pro_statusType_id            ";
-                sqltext += "   INNER JOIN realestate..re_SaleTable s ON s.sale_id = PJ.sale_id AND s.sale_status = 'N'                   ";
+                sqltext += "   INNER JOIN realestate..re_SaleTable s ON s.sale_id = PJ.sale_id AND s.sale_status = 'A'                   ";
                 sqltext += "   WHERE PJ.pro_status = 'N' ";
                 sqltext += "      AND PJL.plan_type_id = '" + stuff.plan_type_id + "'       ";
 
@@ -311,9 +347,81 @@ namespace real_estate.Controllers.project
 
 
             }
-            else if (types == "Test") 
+            else if (types == "addProject") 
             {
-              
+                string pid = PrefixID.RunPrefixID("gen_projectId", "Add");
+
+                StringBuilder sqlInsert = new StringBuilder();
+                sqlInsert.Clear();
+                sqlInsert.Append("INSERT INTO [realestate].[dbo].[re_ProjectTable] ( ");
+                sqlInsert.AppendLine("       [pro_id]                      ");
+                sqlInsert.AppendLine("     ,[sale_id]                      ");
+                sqlInsert.AppendLine("     ,[pro_company_id]               ");
+                sqlInsert.AppendLine("     ,[pro_name]                     ");
+                sqlInsert.AppendLine("     ,[pro_description]              ");
+                sqlInsert.AppendLine("     ,[pro_type_id]                  ");
+                sqlInsert.AppendLine("     ,[pro_location_id]              ");
+                sqlInsert.AppendLine("     ,[pro_total_area]               ");
+                sqlInsert.AppendLine("     ,[pro_land_area]                ");
+                sqlInsert.AppendLine("     ,[pro_usable_area]              ");
+                sqlInsert.AppendLine("     ,[pro_unit]                     ");
+                sqlInsert.AppendLine("     ,[pro_opening_price]            ");
+                sqlInsert.AppendLine("     ,[pro_opening_date]             ");
+                sqlInsert.AppendLine("     ,[pro_address]                  ");
+                sqlInsert.AppendLine("     ,[pro_sub_district_id]          ");
+                sqlInsert.AppendLine("     ,[pro_district_id]              ");
+                sqlInsert.AppendLine("     ,[pro_province_id]              ");
+                sqlInsert.AppendLine("     ,[pro_postal_code]              ");
+                sqlInsert.AppendLine("     ,[pro_LinkGoogleMap]            ");
+                sqlInsert.AppendLine("     ,[pro_bank_name]                ");
+                sqlInsert.AppendLine("     ,[pro_bank_branchName]          ");
+                sqlInsert.AppendLine("     ,[pro_bank_number]              ");
+                sqlInsert.AppendLine("     ,[create_date]                  ");
+                sqlInsert.AppendLine("     ,[create_by]                    ");
+                sqlInsert.AppendLine("     ,[pro_status]                   ");
+                sqlInsert.AppendLine("     ,[pro_statusType_id]            ");
+                sqlInsert.AppendLine("     ,[pro_bank_qrCodeImg]           ");
+                sqlInsert.AppendLine(" )                                ");
+                sqlInsert.AppendLine(" VALUES (                         ");
+                sqlInsert.AppendLine(" '" + pid + "',                   ");
+                sqlInsert.AppendLine(" '" + stuff.sale_id + "',         ");
+                sqlInsert.AppendLine(" '" + stuff.pro_company_id + "',              ");
+                sqlInsert.AppendLine(" '" + stuff.pro_name + "',                    ");
+                sqlInsert.AppendLine(" '" + stuff.pro_description + "',             ");
+                sqlInsert.AppendLine(" '" + stuff.pro_type_id + "',                 ");
+                sqlInsert.AppendLine(" '" + stuff.pro_location_id + "',             ");
+                sqlInsert.AppendLine(" '" + stuff.pro_total_area + "',              ");
+                sqlInsert.AppendLine(" '" + stuff.pro_land_area + "',               ");
+                sqlInsert.AppendLine(" '" + stuff.pro_usable_area + "',             ");
+                sqlInsert.AppendLine(" '" + stuff.pro_unit + "',                    ");
+                sqlInsert.AppendLine(" '" + stuff.pro_opening_price + "',           ");
+                sqlInsert.AppendLine(" '" + stuff.pro_opening_date + "',            ");
+                sqlInsert.AppendLine(" '" + stuff.pro_address + "',                 ");
+                sqlInsert.AppendLine(" '" + stuff.pro_sub_district_id + "',         ");
+                sqlInsert.AppendLine(" '" + stuff.pro_district_id + "',             ");
+                sqlInsert.AppendLine(" '" + stuff.pro_province_id + "',             ");
+                sqlInsert.AppendLine(" '" + stuff.pro_postal_code + "',             ");
+                sqlInsert.AppendLine(" '" + stuff.pro_LinkGoogleMap + "',           ");
+                sqlInsert.AppendLine(" '" + stuff.pro_bank_name + "',               ");
+                sqlInsert.AppendLine(" '" + stuff.pro_bank_branchName + "',         ");
+                sqlInsert.AppendLine(" '" + stuff.pro_bank_number + "',             ");
+                sqlInsert.AppendLine(" getdate(),                                   ");
+                sqlInsert.AppendLine(" '" + stuff.sale_id + "',                     ");
+                sqlInsert.AppendLine(" 'N' ,                                        ");
+                sqlInsert.AppendLine(" '" + stuff.pro_statusType_id + "' ,          ");
+                sqlInsert.AppendLine(" '" + stuff.pro_bank_qrCodeImg + "'           ");
+                sqlInsert.AppendLine(" ) ");
+
+                try
+                {
+                    db.SqlExecute(sqlInsert.ToString());
+
+                    rs = "success";
+
+                    //rs = sqlInsert.ToString();
+                }
+                catch (SqlException ex) { rs = ex.ToString(); }
+
 
             }
           
@@ -330,6 +438,11 @@ namespace real_estate.Controllers.project
         // DELETE: api/projectList/5
         public void Delete(int id)
         {
+        }
+
+        public static bool IsNullOrEmpty(String value)
+        {
+            return (value == null || value.Length == 0);
         }
     }
 }

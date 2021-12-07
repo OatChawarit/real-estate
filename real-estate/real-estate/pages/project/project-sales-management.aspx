@@ -18,7 +18,7 @@
         }
 
         .setting-form {
-            height: 50px !important;
+            height: 45px !important;
         }
 
         .setting-modal {
@@ -83,14 +83,14 @@
                                         <thead class="table-dark" align="center">
                                             <tr>
                                                 <th style="width: 60px; min-width: 60px; max-width: 60px; vertical-align: middle;"></th>
-                                                <th>รหัสประเภทโครงการ</th>
-                                                <th>ชื่อบริษัท</th>
-                                                <th>ชื่อโครงการ</th>
-                                                <th>ประเภทโครงการ</th>
-                                                <th>ทำเล</th>
-                                                <th>ประเภทแปลน</th>
-                                                <th>สถานะประเภทโครงการ</th>
-                                                <th>สถานะโครงการ</th>
+                                                <th style="width: 40px;">รหัสโครงการ</th>
+                                                <th style="width: 80px;">ชื่อบริษัท</th>
+                                                <th style="width: 80px;">ชื่อโครงการ</th> 
+                                                <th style="width: 40px;">ประเภทโครงการ</th>
+                                                <th style="width: 80px;">ทำเล</th>                                             
+                                                <th style="width: 50px;">สถานะประเภทโครงการ</th>
+                                                <%--<th style="width: 30px;">สถานะโครงการ</th>--%>
+                                            
                                             </tr>
                                         </thead>
                                         <!--js-exportable -->
@@ -139,7 +139,7 @@
                                                             <div id="divProjectInfo" class="row col-12 setting-row" >
 
                                                                 <div class="col-lg-3">
-                                                                    <div class="inputText setting-font">เลือกบริษัท </div> 
+                                                                    <div class="inputText setting-font">เลือกบริษัท* </div> 
                                                                     <select id="pro_company_id" class="w-100 "   >
                                                                         <option value="" selected disabled >-- เลือกบริษัท --</option>
                                                                         <%
@@ -154,7 +154,7 @@
                                                                
 
                                                                 <div class="col-lg-3">
-                                                                    <div class="inputText setting-font">ประเภทโครงการ </div>
+                                                                    <div class="inputText setting-font">ประเภทโครงการ*</div>
                                                                     <select id="pro_type_id" class="w-100">
                                                                         <option value="" selected disabled>-- เลือกประเภทโครงการ --</option>
                                                                         <%
@@ -163,7 +163,7 @@
                                                                     </select>
                                                                 </div>
                                                                   <div class="col-lg-3">
-                                                                    <div class="inputText setting-font">โซน/ทำเล </div>
+                                                                    <div class="inputText setting-font">โซน/ทำเล* </div>
                                                                     <select id="pro_location_id" class="w-100">
                                                                         <option value="" selected disabled>-- เลือกโซน/ทำเล --</option>
                                                                         <%
@@ -173,16 +173,16 @@
                                                                 </div>  
                                                                 
                                                                 <div class="col-lg-3">
-                                                                    <div class="inputText setting-font">พื้นที่โครงการทั้งหมด</div>
-                                                                    <input type="text" id="pro_total_area" placeholder="xx-xx-xx ไร่[ไร่-งาน-ตารางวา]" class="setting-form" maxlength="30" />
+                                                                    <div class="inputText setting-font">พื้นที่โครงการทั้งหมด </div>
+                                                                    <input type="text" id="pro_total_area" placeholder="[ไร่-งาน-ตารางวา]" class="setting-form" maxlength="30" />
                                                                 </div>
                                                                 <div class="col-lg-3">
-                                                                    <div class="inputText setting-font">พื้นที่ดิน </div>
-                                                                    <input type="text" id="pro_land_area" placeholder="(EX. xx.x-xxx ตร.วา )" class="setting-form" maxlength="30" />
+                                                                    <div class="inputText setting-font">พื้นที่ดิน (ตร.วา)</div>
+                                                                    <input type="text" id="pro_land_area" placeholder="" class="setting-form" maxlength="30" />
                                                                 </div>
                                                                 <div class="col-lg-3">
-                                                                    <div class="inputText setting-font">พื้นที่ใช้สอย </div>
-                                                                    <input type="text" id="pro_usable_area" placeholder="(EX. xx.x-xxx ตร.ม )" class="setting-form" maxlength="30" />
+                                                                    <div class="inputText setting-font">พื้นที่ใช้สอย (ตร.ม)</div>
+                                                                    <input type="text" id="pro_usable_area" placeholder="" class="setting-form" maxlength="30" />
                                                                 </div>
                                                                 <div class="col-lg-3">
                                                                     <div class="inputText setting-font">จำนวนยูนิต </div>
@@ -190,14 +190,14 @@
                                                                 </div>
                                                                 <div class="col-lg-3">
                                                                     <div class="inputText setting-font">ราคาเปิดโครงการ </div>
-                                                                    <input type="text" id="pro_opening_price" placeholder="(Ex. x-xx ล้านบาท) " class="setting-form" maxlength="30" />
+                                                                    <input type="text" id="pro_opening_price" placeholder="(x-xx ล้านบาท) " class="setting-form" maxlength="30" />
                                                                 </div>
                                                                 <div class="col-lg-3">
                                                                     <div class="inputText setting-font">วันที่เปิดขาย</div>
                                                                     <input type="date" id="pro_opening_date"  class="setting-form" />
                                                                 </div>
                                                                 <div class="col-lg-3">
-                                                                    <div class="inputText setting-font">สถานะประเภทโครงการ </div>
+                                                                    <div class="inputText setting-font">สถานะประเภทโครงการ* </div>
                                                                     <select id="pro_statusType_id" class="w-100">
                                                                         <option value="" selected disabled>-- สถานะประเภทโครงการ --</option>
                                                                         <%
@@ -289,6 +289,19 @@
                                                                     <div class="inputText setting-font">เลขบัญชีธนาคาร </div>
                                                                     <input type="text" id="pro_bank_number" placeholder="" class="setting-form" maxlength="100" />
                                                                 </div>
+                                                                 <div class="col-lg-3">
+                                                                    <div class="inputText setting-font">รูป QR Code </div>
+                                                                    <input type="file" id="pro_bank_qrCodeImg" class="setting-form theme-btn-3 btn-setting w-100"  accept="image/png,image/jpg" onchange="upload_qrCode(event)" />
+                                                                       <%--<input  type="file" class="setting-form theme-btn-3 btn-setting w-100" accept="image/*" multiple="multiple" id="fileUploader">--%>
+                                                                     <div id="display_image">
+                                                                          <img id='output'  >  
+                                                                     </div>
+                                                                  
+                                                               
+
+
+
+                                                                </div>
 
                                                             </div>
 
@@ -336,25 +349,36 @@
     <!-- #include virtual ="../include/footer.html" -->
 </body>
 <script>
-
+ 
     const d = new Date();
-    let yearNow = d.getFullYear();
-
+    let yearNow = d.getFullYear(); 
+    let qrCodeImg = "";
+    let qrCodeData = [];
+ 
     $(document).ready(function () {
         checkLogin(3);
 
         $('#FormModal_Project').modal({ backdrop: 'static', keyboard: false })  
 
-        $('#footer_callme').addClass('d-none'); 
-        $('#register_project').DataTable({
-            "destroy": true,
-            "responsive": true,
-            "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-            pageLength: 10,
+        $('#footer_callme').addClass('d-none');  
 
-            "order": [[1, "asc"]]
-        });  
+        let sale_id = logInData[0].sale_id;
+        let jsonData = JSON.stringify({
+            "sale_id" : sale_id
+        }); 
+        //เรียก api
+        $.get("../../api/projectList", { jsonData: jsonData, types: "listProjectTableBysale" })
+            .done(function (data) {
 
+                let resData = JSON.parse(data);
+                
+                /// สร้างตาราง 
+                createProjectDataTable(resData, "");
+                 
+            });
+
+
+     
     });
 
     // ตั้งค่าเมื่อกดปุ่ม Create
@@ -369,39 +393,206 @@
 
     // Save ข้อมูล รับค่า action type ( Create , Edit) มาเช็ค
     function btnSaveData(e) {
-        let sale_id = "";
-        let action = e;      
-
-        let user_id = logInData[0].user_id;
     
-            var jsonData = JSON.stringify({
-                "user_id": user_id
-            });
-
-            $.get("../../api/projectList", { jsonData, types: "getSaleId" })
-                .done(function (data) {
-                    let getSaleId = JSON.parse(data); 
-                    
-                });
+        let action = e;             
+        const d = new Date();
+        let time = d.getTime(); 
   
-
-        console.log('getSaleId', getSaleId);
-
-
-
-        console.log('url', $('#pro_LinkGoogleMap').val().trim() );
        
         if (action == "Create") {
+            let sale_id = logInData[0].sale_id;
+            let pro_company_id = $('#pro_company_id').val();
+            let pro_name = $('#pro_name').val();
+            let pro_description = $('#pro_description').val();
+            let pro_type_id = $('#pro_type_id').val();
+            let pro_location_id = $('#pro_location_id').val();
+            let pro_total_area = $('#pro_total_area').val();
+            let pro_land_area = $('#pro_land_area').val();
+            let pro_usable_area = $('#pro_usable_area').val();
+            let pro_unit = $('#pro_unit').val();
+            let pro_opening_price = $('#pro_opening_price').val();
+            let pro_opening_date = $('#pro_opening_date').val();
+            let pro_address = $('#pro_address').val();
+            let pro_sub_district_id = $('#drdwSubDistrict').val();
+            let pro_district_id = $('#drdwDistrict').val();
+            let pro_province_id = $('#drdwProvince').val();
+            let pro_postal_code = $('#pro_postal_code').val();
+            let pro_LinkGoogleMap = $('#pro_LinkGoogleMap').val().trim();
+            let pro_bank_name = $('#pro_bank_name').val();
+            let pro_bank_branchName = $('#pro_bank_branchName').val();
+            let pro_bank_number = $('#pro_bank_number').val();
+            let pro_bank_qrCodeImg = qrCodeImg ;
+            let pro_statusType_id = $('#pro_statusType_id').val();
 
-           
+            if (!pro_company_id) {
+                Swal.fire({
+                    type: 'warning',
+                    title: 'กรุณาระบุ!!',
+                    text: 'บริษัท'
+                });
+            }
+            else if (!pro_name) {
+                Swal.fire({
+                    type: 'warning',
+                    title: 'กรุณาระบุ!!',
+                    text: 'ชื่อโครงการ'
+                });
+            } else if (!pro_type_id) {
+                Swal.fire({
+                    type: 'warning',
+                    title: 'กรุณาระบุ!!',
+                    text: 'ประเภทโครงการ'
+                });
+            } else if (!pro_location_id) {
+                Swal.fire({
+                    type: 'warning',
+                    title: 'กรุณาระบุ!!',
+                    text: 'โซน/ทำเล'
+                });
+            } else if (!pro_statusType_id) {
+                Swal.fire({
+                    type: 'warning',
+                    title: 'กรุณาระบุ!!',
+                    text: 'สถานะประเภทโครงการ'
+                });
+            } else if (!pro_address) {
+                Swal.fire({
+                    type: 'warning',
+                    title: 'กรุณาระบุ!!',
+                    text: 'ที่ตั้งโครงการ'
+                });
+            } else if (!pro_sub_district_id) {
+                Swal.fire({
+                    type: 'warning',
+                    title: 'กรุณาระบุ!!',
+                    text: 'ตำบล/แขวง'
+                });
+            } else if (!pro_district_id) {
+                Swal.fire({
+                    type: 'warning',
+                    title: 'กรุณาระบุ!!',
+                    text: 'อำเภอ/เขต'
+                });
+            } else if (!pro_province_id) {
+                Swal.fire({
+                    type: 'warning',
+                    title: 'กรุณาระบุ!!',
+                    text: 'จังหวัด'
+                });
+            } else if (!pro_postal_code) {
+                Swal.fire({
+                    type: 'warning',
+                    title: 'กรุณาระบุ!!',
+                    text: 'รหัสไปรษณีย์'
+                });
+            }   
 
+            else {
 
+                Swal.fire({ //alert confirm 
+                    title: 'ยืนยันการสมัคร ?',
+                    type: 'question',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'ตกลง',
+                    cancelButtonText: 'ยกเลิก',
+                })
+                    .then((val) => {
+                        if (val.value) {
 
+                            if (qrCodeImg) {
 
+                                pro_bank_qrCodeImg = "BY_" + sale_id + "_" + time + "_" + qrCodeImg;
+                            } else {
 
+                                pro_bank_qrCodeImg = "";
+                            }
+                         
 
+                            var jsonData = JSON.stringify({
+                                "sale_id": sale_id,
+                                "pro_company_id": pro_company_id,
+                                "pro_name": pro_name,
+                                "pro_description": pro_description,
+                                "pro_type_id": pro_type_id,
+                                "pro_location_id": pro_location_id,
+                                "pro_total_area": pro_total_area,
+                                "pro_land_area" : pro_land_area,
+                                "pro_usable_area" : pro_usable_area,
+                                "pro_unit" : pro_unit,
+                                "pro_opening_price" : pro_opening_price,
+                                "pro_opening_date" : pro_opening_date,
+                                "pro_address" : pro_address,
+                                "pro_sub_district_id" : pro_sub_district_id,
+                                "pro_district_id" : pro_district_id,
+                                "pro_province_id" : pro_province_id,
+                                "pro_postal_code" : pro_postal_code,
+                                "pro_LinkGoogleMap" : pro_LinkGoogleMap.trim(),
+                                "pro_bank_name" : pro_bank_name,
+                                "pro_bank_branchName" : pro_bank_branchName,
+                                "pro_bank_number" : pro_bank_number,
+                                "pro_bank_qrCodeImg": pro_bank_qrCodeImg ,
+                                "pro_statusType_id" : pro_statusType_id,
+                               
+                            }); 
+                             
+                            console.log(JSON.parse(jsonData) )
+                            if (qrCodeData != "") {
+                               
+                                var formData = new FormData();
+                                formData.append("file", qrCodeData);
+                                $.ajax({
+                                    url: '/api/ImageAPI/UploadFiles',
+                                    type: 'POST',
+                                    data: formData,
+                                    headers: {
+                                        "sale_id": sale_id,
+                                        "time": time ,
+                                    },
+                                    cache: false,
+                                    contentType: false,
+                                    processData: false,
+                                    success: function (fileName) {
+                                        //console.log('fileName', fileName)
+                                        
+                                    }
+                                })
+                            }
 
+                            //เรียก api
+                            $.ajax({
+                                type: 'POST',
+                                url: "../../api/projectList",
+                                data: { "data": jsonData }, 
+                                headers: {
+                                    "types": "addProject"
+                                }
+                            }).done(function (data) { 
 
+                                if (data == "success") {
+                                    swal.fire({
+                                        type: 'success',
+                                        title: 'บันทึกข้อมูลเรียบร้อย'
+                                    }).then((value) => {
+                                        location.reload();
+                                     
+                                    });
+                                } else {
+                                    swal.fire({
+                                        type: 'warning',
+                                        title: 'พบข้อผิดพลาด',
+                                        text: data
+                                    }).then((value) => {
+                                        //location.reload();
+                                    });
+                                }
+                            });
+
+                        }
+                    });
+            } 
+  
 
         } else if(action == "Edit") {
 
@@ -414,9 +605,36 @@
 
 
 
+    } 
+    function upload_qrCode(e) {
+ 
+        let input = e.target;  
+
+        var reader = new FileReader();
+        reader.onload = function () {
+            var dataURL = reader.result;
+            var output = document.getElementById('output');
+            output.src = dataURL;
+        };
+
+        if (input.files[0]) {
+            reader.readAsDataURL(input.files[0]);         
+            qrCodeImg = input.files[0].name;
+            qrCodeData = input.files[0];
+        } else { 
+            qrCodeImg = "";
+            qrCodeData = [];
+            clearpic();
+        }
+      
+
+    }    
+    function clearpic() { 
+        $("#output").attr("src", "");
+        $("#pro_bank_qrCodeImg").val('');
+ 
     }
 
-     
 
     function drdwProvinceChange(e) {
         let province_id = e;
@@ -443,7 +661,6 @@
                   
                 }); 
     }
-
     function drdwDistrictChange(e) {
         let district_id = e;
         $("#drdwSubDistrict").niceSelect();
@@ -476,176 +693,103 @@
         HideTopbar(0);
         $('#FormModal_Project').modal('hide'); 
     });
-
-
     $(".btn-Refresh").click(function () {
         location.reload();
     });
 
      
+    //สร้างตาราง
+    function createProjectDataTable(data, type) {
+      
+
+        $("#register_project").dataTable({
+            "destroy": true,
+            data: data,
+            "responsive": true,
+            "bLengthChange": false,
+            "bInfo": false,
+            "searching": true,
+            "bPaginate": true,
+            columns: [
+
+                {
+                    render: function (data, type, row, meta) {
+
+                        let chk = `
+                                  <td>                                 
+                                        <button type='button' class='btn-warning sm btnView  ' id="btnView${meta.row}"  value="${row.pro_id}" title='รายละเอียดประเภทแปลนโครงการ'  onclick="onBtnViewClick(this)"   ><i class='fas fa-eye' style="color:white" ></i>  </button>
+                                                  
+                                  </td> 
+                                  `;
+
+                        return "" + chk + "";
+                    },
+                    className: "text-center"
+                },
+                {
+                    render: function (data, type, row, meta) {
+
+                        return row.pro_id
+                    },
+                    className: "text-center"
+                },
+                {
+                    render: function (data, type, row, meta) {
+
+                        return row.com_name
+                    },
+                    className: "text-center"
+                },
+                {
+                    render: function (data, type, row, meta) {
+
+                        return row.pro_name
+                    },
+                    className: "text-center"
+                },
+                {
+                    render: function (data, type, row, meta) {
+
+                        return row.pro_type_name
+                    },
+                    className: "text-center"
+                },
+                {
+                    render: function (data, type, row, meta) {
+
+                        return row.pro_location_name
+                    },
+                    className: "text-center"
+                },
+                {
+                    render: function (data, type, row, meta) {
+
+                        return row.pro_statusType_name
+                    },
+                    className: "text-center"
+                },
+                //{
+                //    render: function (data, type, row, meta) {
+
+                //        return row.pro_status
+                //    },
+                //    className: "text-center"
+                //},
+                
+            
+            ],
+            pageLength: 10
+        });
 
 
-    function btnRegisterClick() {
+    }
+    
+    function onBtnViewClick(e) {
 
-        let sale_firstName = $('#sale_firstName').val();
-        let sale_lastName = $('#sale_lastName').val();
-        let sale_idCard = $('#sale_idCard').val(); 
-        let sale_phone = $('#sale_phone').val();
-        let sale_line = $('#sale_line').val();
-        let sale_mail = $('#eMail').val(); 
-        let sale_company = $('#sale_company').val();
-        let sale_position = $('#sale_position').val();
-        let sale_AgentApproveNo = $('#sale_AgentApproveNo').val();
+        //console.log('e', e.value)
+        window.location.href = "../project/project-sales-details-management?id=" + e.value ;
 
-        let eMail = $('#eMail').val();
-        let dateOfBirth = $('#dateOfBirth').val();
-        let uPass = $('#uPass').val();
-        let confirmPass = $('#confirmPass').val();
-
-        let yearPick = new Date(dateOfBirth).getFullYear();
-         
-        if (!sale_firstName) {
-            Swal.fire({
-                type: 'warning',
-                title: 'กรุณาระบุ!!',
-                text: 'ชื่อ'
-            });
-        } else if (!sale_lastName) {
-            Swal.fire({
-                type: 'warning',
-                title: 'กรุณาระบุ!!',
-                text: 'นามสกุล'
-            });
-        } else if (!sale_idCard || (sale_idCard.length != 13)) {
-            Swal.fire({
-                type: 'warning',
-                title: 'กรุณาระบุ!!',
-                text: 'รหัสบัตรประชาชนให้ถูกต้อง'
-            });
-        }
-        else if (!eMail) {
-            Swal.fire({
-                type: 'warning',
-                title: 'กรุณาระบุ!!',
-                text: 'Email'
-            });
-        }
-        else if (!dateOfBirth) {
-            Swal.fire({
-                type: 'warning',
-                title: 'กรุณาระบุ!!',
-                text: 'วันเกิด '
-            });
-        }
-        else if (yearPick > yearNow) {
-            Swal.fire({
-                type: 'warning',
-                title: 'กรุณาระบุ!!',
-                text: 'วันเกิดเป็นคริสต์ศักราช (ค.ศ.)'
-            });
-        }
-        else if (!uPass) {
-            Swal.fire({
-                type: 'warning',
-                title: 'กรุณาระบุ!!',
-                text: 'Password'
-            });
-        }
-        else if (!confirmPass) {
-            Swal.fire({
-                type: 'warning',
-                title: 'กรุณาระบุ!!',
-                text: 'ยืนยัน Password'
-            });
-        }
-
-        else if (uPass != confirmPass) {
-
-            Swal.fire({
-                type: 'warning',
-                title: 'กรุณายืนยันรหัสผ่านใหม่!!',
-
-                onAfterClose: () => {
-                    $('#confirmPass').val('');
-                    $('#uPass').val('');
-                    setTimeout(() => $("#uPass").focus(), 110);
-                }
-            });
-
-        } else if (chkEmail == 1) {
-            console.log(chkEmail);
-
-            Swal.fire({
-                type: 'warning',
-                title: 'Email ดังกล่าวไม่สามารถใช้ได้',
-
-            });
-        } else {
-
-            Swal.fire({ //alert confirm 
-                title: 'ยืนยันการสมัคร ?',
-                type: 'question',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'ตกลง',
-                cancelButtonText: 'ยกเลิก',
-            })
-                .then((val) => {
-                    if (val.value) {
-
-                        var jsonData = JSON.stringify({
-                            "user_email": eMail,
-                            "user_password": uPass,
-
-                            "sale_firstName": sale_firstName,
-                            "sale_lastName": sale_lastName,
-                            "sale_idCard": sale_idCard,
-                            "sale_phone": sale_phone,
-                            "sale_dateOfBirth": dateOfBirth,
-
-                            "sale_line": sale_line,
-                            "sale_mail": sale_mail,
-                            "sale_company": sale_company,
-                            "sale_position": sale_position,
-                            "sale_AgentApproveNo": sale_AgentApproveNo 
-
-                        });
-
-                        //เรียก api
-                        $.ajax({
-                            type: 'POST',
-                            url: "../../api/register",
-                            data: { "data": jsonData },
-                            headers: {
-                                "types": "AddRegisterUserSale"
-                            }
-                        }).done(function (data) {
-                            console.log('data', data);
-                            if (data == "success") {
-                                swal.fire({
-                                    type: 'success',
-                                    title: 'บันทึกข้อมูลเรียบร้อย'
-                                }).then((value) => {
-                                    location.reload();
-                                });
-                            } else {
-                                swal.fire({
-                                    type: 'warning',
-                                    title: 'พบข้อผิดพลาด',
-                                    text: data
-                                }).then((value) => {
-                                    //location.reload();
-                                });
-                            }
-                        });
-
-                    }
-                }); 
-        } 
-
-    }; 
-
+    }
     
 
 </script>

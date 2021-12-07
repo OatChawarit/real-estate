@@ -253,14 +253,17 @@ namespace real_estate.Controllers.register
 
                 SqlDataReader dr;
                 string sqltext = "";
-                sqltext += " SELECT  a.[user_id] , a.[user_email] , a.user_role_id , a.user_status , b.role_name ";
-                sqltext += "        ,  a.user_firstName , a.user_lastName                                        ";
-                sqltext += " FROM [realestate].[dbo].[sa_user] a                                                 ";
-                sqltext += " INNER JOIN realestate..sa_role b ON b.role_id = a.user_role_id                      ";
-                sqltext += " WHERE a.[user_email] = '" + stuff.user_email + "'                                   "; 
-                sqltext += " AND a.[user_password] = '" + dbPassword + "'                                        ";
-                sqltext += " AND a.[user_role_id] in('" + stuff.user_role_id + "', '1' )                         ";
-                sqltext += " AND a.[user_status] ='A'                                                            ";
+                sqltext += " SELECT  a.[user_id] , a.[user_email] , a.user_role_id , a.user_status , b.role_name    ";
+                sqltext += "        ,  a.user_firstName , a.user_lastName                                           ";
+                sqltext += "        , ISNULL( c.sale_id,'' ) as sale_id , ISNULL( d.cus_id , '' ) as  cus_id        ";
+                sqltext += " FROM [realestate].[dbo].[sa_user] a                                                    ";
+                sqltext += " INNER JOIN realestate..sa_role b ON b.role_id = a.user_role_id                         ";
+                sqltext += " LEFT JOIN realestate..re_SaleTable c ON c.user_id = a.user_id  and c.sale_status = 'A' ";
+                sqltext += " LEFT JOIN realestate..re_CustomerTable d ON d.user_id = a.user_id                      ";
+                sqltext += " WHERE a.[user_email] = '" + stuff.user_email + "'                                      "; 
+                sqltext += " AND a.[user_password] = '" + dbPassword + "'                                           ";
+                sqltext += " AND a.[user_role_id] in('" + stuff.user_role_id + "', '1' )                            ";
+                sqltext += " AND a.[user_status] ='A'                                                               ";
 
 
 
