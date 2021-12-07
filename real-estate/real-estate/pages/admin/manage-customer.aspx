@@ -82,6 +82,7 @@
     const d = new Date();
     let yearNow = d.getFullYear();
     let Sdata;
+    const userData = JSON.parse(sessionStorage.getItem("LogInData"));
 
     $(document).ready(function () {
         checkLogin(1);
@@ -100,6 +101,7 @@
 
     $(document).on("click", ".btnEdit", function () {
         var uid = $(this).data('value');
+        HideTopbar(1);
         console.log(uid);
         //$("#Edit-UserModal").modal("show");
     });
@@ -120,7 +122,7 @@
 
         let tb = $("#customer-table").DataTable();
 
-        $.get("../../api/userData", { jsonData: jsonData, types: "list_customer", username : LogInData[0].user_id })
+        $.get("../../api/userData", { jsonData: jsonData, types: "list_customer", username : userData[0].user_id })
             .done(function (data) {
                 Sdata = JSON.parse(data);
                 console.log(Sdata);

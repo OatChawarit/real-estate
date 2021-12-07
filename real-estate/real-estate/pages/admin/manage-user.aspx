@@ -277,6 +277,7 @@
 
     $(document).on("click", ".btnEdit", function () {
         var uid = $(this).data('value');
+        HideTopbar(1);
         //console.log(uid);
         $("#Edit-UserModal").modal("show");
 
@@ -312,8 +313,8 @@
 
     $(document).on("click", ".btnCanCel", function () {
         var uid = $(this).data('value');
-        console.log(uid);
-
+        //console.log(uid);
+        HideTopbar(1);
         var jsonData = JSON.stringify({
             user_id: uid,
         });
