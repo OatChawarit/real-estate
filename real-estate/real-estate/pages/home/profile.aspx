@@ -511,7 +511,7 @@
                 Sdata = JSON.parse(data);
 
                 if (Sdata.length > 0) {
-                    //console.log(Sdata);
+                    console.log(Sdata);
                     $('#cus_firstName').val(Sdata[0].sale_firstName);
                     $('#cus_lastName').val(Sdata[0].sale_lastName);
                     $('#cus_idCard').val(Sdata[0].sale_idCard);
@@ -620,7 +620,11 @@
                         );
                     }
                 } else {
-
+                    Swal.fire(
+                        "Warning", //title
+                        "รหัสผ่านเก่า ไม่ถูกต้อง!", //main text
+                        "warning" //icon
+                    );
                 }
 
             });
