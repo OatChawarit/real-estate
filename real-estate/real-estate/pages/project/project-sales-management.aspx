@@ -706,8 +706,8 @@
             "destroy": true,
             data: data,
             "responsive": true,
-            "bLengthChange": false,
-            "bInfo": false,
+            "bLengthChange": true,
+            "bInfo": true,
             "searching": true,
             "bPaginate": true,
             columns: [

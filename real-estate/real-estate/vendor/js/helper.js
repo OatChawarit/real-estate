@@ -309,6 +309,8 @@ function LockModal(ModalId) {
 //Clear Modal
 function ClearModal(ModalId) {
     $("input[type='text']").val(""); //Reset TextBox
+    $("input[type='number']").val(""); //Reset TextBox
+
     $("input[type='password']").val(""); //textbox password
     /*var NowDate = new Date();
     $("input[type='date']").val(formatDate(NowDate));*/

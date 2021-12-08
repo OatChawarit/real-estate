@@ -111,7 +111,7 @@
                     <div class="col-lg-4">
                         <div class="widget-2 ltn__menu-widget">
                             <ul>
-                                <li class=""><a href="purchase-order.aspx" class="btn btn-success">สั่งจองโครงการ</a></li>
+                                <li class=""><a   class="btn btn-success" onclick="onBooking()" >สั่งจองโครงการ</a></li>
                             </ul>
                         </div>
 
@@ -399,6 +399,13 @@
             document.head.appendChild(link);
             //console.log(document.head.appendChild(link));
         });
+    }
+
+    function onBooking() {
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const pro_id = urlParams.get('id');
+        window.location.href = "../project/purchase-order?id=" + pro_id; 
     }
 
 </script>

@@ -276,6 +276,7 @@
     });
 
     $(document).on("click", ".btnEdit", function () {
+        HideTopbar(1);
         var uid = $(this).data('value');
         //console.log(uid);
         $("#Edit-UserModal").modal("show");

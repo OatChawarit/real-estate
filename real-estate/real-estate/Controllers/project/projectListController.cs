@@ -255,6 +255,37 @@ namespace real_estate.Controllers.project
                 }
                 rs = JsonConvert.SerializeObject(arr);
             }
+            else if (types == "listTopicByProID")
+            {
+                SqlDataReader dr;
+                string sqltext = "  SELECT   pj.pro_id , ct.com_name , pj.pro_name , ty.pro_type_name                                 ";
+                sqltext += "               	, lo.pro_location_name , st.pro_statusType_name                   ";
+                 
+                sqltext += "  FROM [realestate].[dbo].[re_ProjectTable] PJ                                                           ";
+                sqltext += "  INNER JOIN realestate..re_CompanyTable ct ON ct.com_id = PJ.pro_company_id                             ";
+                sqltext += "  INNER JOIN realestate..re_Project_Type_Table ty ON ty.pro_type_id = pj.pro_type_id                      ";
+                sqltext += "  INNER JOIN realestate..re_Project_Location_Table lo ON lo.pro_location_id = pj.pro_location_id            ";
+                sqltext += "  INNER JOIN realestate..re_Project_StatusType st ON st.pro_statusType_id = pj.pro_statusType_id   ";
+
+                sqltext += "  WHERE PJ.pro_id  = '" + stuff.pro_id + "'                                                               ";
+                
+
+
+
+
+                dr = db.GetSqlDataReader(sqltext);
+                ArrayList arr = new ArrayList();
+                while (dr.Read())
+                {
+                    var result = new Dictionary<string, object>();
+                    for (int i = 0; i < dr.FieldCount; i++)
+                    {
+                        result.Add(dr.GetName(i), dr[i].ToString());
+                    }
+                    arr.Add(result);
+                }
+                rs = JsonConvert.SerializeObject(arr);
+            }
             else
             {
                 rs = "ไม่ข้อมูล";

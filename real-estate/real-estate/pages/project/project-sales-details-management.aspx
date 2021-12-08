@@ -44,6 +44,23 @@
             background:#dddddd33 !important;
 
         }
+        .checkbox-item .checkmark {
+            height: 20px !important;
+            width: 20px !important;
+        }
+
+            .checkbox-item .checkmark:after {
+                left: 7px !important;
+                top: 2px !important;
+                width: 5px !important;
+                height: 12px !important;
+            }
+
+        .set-label-checkbox {
+      
+            height: 45px !important;
+        }
+
     </style>
 
     <!-- นำเข้าส่วนหัว -->
@@ -76,8 +93,8 @@
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold  ">
                         ข้อมูลโครงการ
-                        <span id="pro_id" class="mx-3">[รหัส]</span>
-                        <span id="com_name">[บริษัท]</span>
+                        <span id="topic_pro_id" class="mx-3"></span>
+                        <span id="topic_com_name"></span>
 
 
                     </h6>
@@ -88,12 +105,12 @@
 
                             <div class="col-sm-3">
                                 <div class="inputText setting-font">ชื่อโครงการ </div>
-                                <input type="text" id="topic_pro_id" placeholder=" " class="setting-form set-disabled" maxlength="100" disabled />
+                                <input type="text" id="topic_pro_name" placeholder=" " class="setting-form set-disabled" maxlength="100" disabled />
                             </div>
 
                             <div class="col-sm-3">
                                 <div class="inputText setting-font">ประเภทโครงการ </div>
-                                <input type="text" id="topic_pro_name" placeholder=" " class="setting-form set-disabled" maxlength="100" disabled />
+                                <input type="text" id="topic_pro_type_name" placeholder=" " class="setting-form set-disabled" maxlength="100" disabled />
                             </div>
 
                             <div class="col-sm-3">
@@ -159,7 +176,7 @@
                     <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-header setting-modal">
-                                <h5 class="modal-title topic-text" id="topic_Modal">เพิ่มโครงการ</h5>
+                                <h5 class="modal-title topic-text" id="topic_Modal">เพิ่มแบบแปลนโครงการ</h5>
                                 <button class="close " type="button" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">×</span>
                                 </button>
@@ -169,7 +186,7 @@
 
                                 <ul class="nav nav-tabs d-none" id="myTab" role="tablist">
                                     <li class="nav-item">
-                                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">ข้อมูลสั่งซื้อประกันภัย</a>
+                                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"> </a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" id="upimg-tab" data-toggle="tab" href="#upimg" role="tab" aria-controls="profile" aria-selected="false"></a>
@@ -180,93 +197,42 @@
 
                                         <div id="labelProject" class="card shadow mb-4">
                                             <div class="card-header py-3">
-                                                <h6 class="m-0 font-weight-bold text-primary">ข้อมูลโครงการ</h6>
+                                                <h6 class="m-0 font-weight-bold text-primary">ข้อมูลแบบแปลนโครงการ <span id="modalTopic" style="color:#071c1f"></span></h6>
                                             </div>
                                             <div class="card-body">
                                                 <div class="form-group row ">
                                                     <div id="divProjectInfo" class="row col-12 setting-row">
 
+                                                       <div class="col-lg-6">
+                                                            <div class="inputText setting-font">ชื่อแบบแปลน* </div>
+                                                            <input type="text" id="plan_name" placeholder=" " class="setting-form" maxlength="100" />
+                                                        </div> 
                                                         <div class="col-lg-3">
-                                                            <div class="inputText setting-font">เลือกบริษัท* </div>
-                                                            <select id="pro_company_id" class="w-100 ">
-                                                                <option value="" selected disabled>-- เลือกบริษัท --</option>
-                                                                <%
-                                                                    real_estate.ClassData.DropDownData.drdwCompany();
-                                                                %>
-                                                            </select>
+                                                            <div class="inputText setting-font">พื้นที่ใช้สอย </div>
+                                                            <input type="text" id="plan_useable_area" placeholder=" " class="setting-form" maxlength="20" />
+                                                        </div> 
+                                                        <div class="col-lg-3">
+                                                            <div class="inputText setting-font">ราคาขาย*</div>
+                                                            <input type="text" id="plan_price"   class="setting-form" maxlength="30" onkeyup="onPriceChange(this)" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"/>
+                                                        </div> 
+                                                        <div class="col-lg-3">
+                                                            <div class="inputText setting-font">จำนวนชั้น </div>
+                                                            <input type="number" id="plan_floor"  class="setting-form"  />
                                                         </div>
-                                                        <div class="col-lg-6">
-                                                            <div class="inputText setting-font">ชื่อโครงการ* </div>
-                                                            <input type="text" id="pro_name" placeholder=" " class="setting-form" maxlength="100" />
+                                                        <div class="col-lg-3">
+                                                            <div class="inputText setting-font">จำนวนห้องนอน</div>
+                                                            <input type="number" id="plan_bed_room"   class="setting-form"   />
                                                         </div>
+                                                        <div class="col-lg-3">
+                                                            <div class="inputText setting-font">จำนวนห้องน้ำ</div>
+                                                            <input type="number" id="plan_bath_room"   class="setting-form"   />
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <div class="inputText setting-font">จำนวนห้องอเนกประสงค์</div>
+                                                            <input type="number" id="plan_multiFunction_room"   class="setting-form"   />
+                                                        </div>
+                                                        
 
-
-                                                        <div class="col-lg-3">
-                                                            <div class="inputText setting-font">ประเภทโครงการ*</div>
-                                                            <select id="pro_type_id" class="w-100">
-                                                                <option value="" selected disabled>-- เลือกประเภทโครงการ --</option>
-                                                                <%
-                                                                    real_estate.ClassData.DropDownData.drdwProjectType();
-                                                                %>
-                                                            </select>
-                                                        </div>
-                                                        <div class="col-lg-3">
-                                                            <div class="inputText setting-font">โซน/ทำเล* </div>
-                                                            <select id="pro_location_id" class="w-100">
-                                                                <option value="" selected disabled>-- เลือกโซน/ทำเล --</option>
-                                                                <%
-                                                                    real_estate.ClassData.DropDownData.drdwProjectLocation();
-                                                                %>
-                                                            </select>
-                                                        </div>
-
-                                                        <div class="col-lg-3">
-                                                            <div class="inputText setting-font">พื้นที่โครงการทั้งหมด </div>
-                                                            <input type="text" id="pro_total_area" placeholder="[ไร่-งาน-ตารางวา]" class="setting-form" maxlength="30" />
-                                                        </div>
-                                                        <div class="col-lg-3">
-                                                            <div class="inputText setting-font">พื้นที่ดิน (ตร.วา)</div>
-                                                            <input type="text" id="pro_land_area" placeholder="" class="setting-form" maxlength="30" />
-                                                        </div>
-                                                        <div class="col-lg-3">
-                                                            <div class="inputText setting-font">พื้นที่ใช้สอย (ตร.ม)</div>
-                                                            <input type="text" id="pro_usable_area" placeholder="" class="setting-form" maxlength="30" />
-                                                        </div>
-                                                        <div class="col-lg-3">
-                                                            <div class="inputText setting-font">จำนวนยูนิต </div>
-                                                            <input type="text" id="pro_unit" placeholder="" class="setting-form" />
-                                                        </div>
-                                                        <div class="col-lg-3">
-                                                            <div class="inputText setting-font">ราคาเปิดโครงการ </div>
-                                                            <input type="text" id="pro_opening_price" placeholder="(x-xx ล้านบาท) " class="setting-form" maxlength="30" />
-                                                        </div>
-                                                        <div class="col-lg-3">
-                                                            <div class="inputText setting-font">วันที่เปิดขาย</div>
-                                                            <input type="date" id="pro_opening_date" class="setting-form" />
-                                                        </div>
-                                                        <div class="col-lg-3">
-                                                            <div class="inputText setting-font">สถานะประเภทโครงการ* </div>
-                                                            <select id="pro_statusType_id" class="w-100">
-                                                                <option value="" selected disabled>-- สถานะประเภทโครงการ --</option>
-                                                                <%
-                                                                    real_estate.ClassData.DropDownData.drdwProjectStatusType();
-                                                                %>
-                                                            </select>
-                                                        </div>
-
-                                                        <div class="col-lg-6">
-                                                            <div class="inputText setting-font">รายละเอียดโครงการ </div>
-                                                            <textarea id="pro_description" name="pro_description" rows="4" cols="50" maxlength="255">
-                                                                         
-                                                                    </textarea>
-
-                                                        </div>
-                                                        <div class="col-lg-6">
-                                                            <div class="inputText setting-font">Link ตำแหน่ง Google Map </div>
-                                                            <textarea id="pro_LinkGoogleMap" name="pro_LinkGoogleMap" rows="2" cols="50">
-                                                                         
-                                                                    </textarea>
-                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -274,41 +240,60 @@
 
                                         <div id="labelAddress" class="card shadow mb-4">
                                             <div class="card-header py-3">
-                                                <h6 class="m-0 font-weight-bold  " style="color: #dc3545">ข้อมูลที่ตั้งโครงการ</h6>
+                                                <h6 class="m-0 font-weight-bold  " style="color: #dc3545">ข้อมูล Promotion</h6>
                                             </div>
                                             <div class="card-body">
                                                 <div class="form-group row ">
-                                                    <div id="divProjectAddress" class="row col-12 setting-row">
-                                                        <div class="col-lg-12">
-                                                            <div class="inputText setting-font">ที่ตั้งโครงการ [บ้านเลขที่, หมู่, ซอย, ถนน]* </div>
-                                                            <input type="text" id="pro_address" placeholder=" " class="setting-form" maxlength="100" />
-                                                        </div>
-                                                        <div class="col-lg-3 ">
-                                                            <div class="inputText setting-font">เลือกจังหวัด*</div>
-                                                            <select id="drdwProvince" class="w-100" onchange="drdwProvinceChange(this.value)">
-                                                                <option value="" selected disabled>-- เลือกจังหวัด --</option>
-                                                                <%
-                                                                    real_estate.ClassData.DropDownData.drdwProvince();
-                                                                %>
-                                                            </select>
+                                                    <div id="divProjectPromotion" class="row col-12 setting-row">
+                                                        <div class="col-lg-3">
+                                                            <div class="inputText setting-font">ส่วนลด(เปอร์เซ็น)</div>
+                                                            <input type="number" id="promotion_discount_percent" class="setting-form" />
                                                         </div>
                                                         <div class="col-lg-3">
-                                                            <div class="inputText setting-font">เลือกอำเภอ/เขต* </div>
-                                                            <select id="drdwDistrict" class="w-100" onchange="drdwDistrictChange(this.value)">
-                                                                <option value="" selected disabled>-- เลือกอำเภอ/เขต --</option>
+                                                            <div class="inputText setting-font">บัตรของขวัญมูลค่า (บาท)</div>
+                                                            <input type="number" id="promotion_giftVoucher_price" class="setting-form" />
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <div class="inputText setting-font">ส่วนลดวันโอน (บาท)</div>
+                                                            <input type="number" id="promotion_discount_transferDate" class="setting-form" />
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <div class="inputText setting-font">ฟรีค่าบริการสาธารณะ (ปี)</div>
+                                                            <input type="number" id="promotion_publicServicefeeYear_free" class="setting-form" />
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <div class="inputText setting-font">ฟรีแอร์(เครื่อง)</div>
+                                                            <input type="number" id="promotion_airConditioner_free" class="setting-form" />
+                                                        </div>
+                                                          <div class="col-lg-3"> 
+                                                            <div class="inputText setting-font"> <br /> </div>                                                        
+                                                              <label class="set-label-checkbox setting-font checkbox-item">ฟรีค่าติดตั้งมิเตอร์ไฟฟ้า
+                                                                  <input type="checkbox"   id="promotion_IsElectricMeter_free" class="setting-form" />
+                                                                  <span class="checkmark"></span>
+                                                              </label>
+                                                        </div>
+                                                          <div class="col-lg-3">
+                                                                <div class="inputText setting-font"> <br /> </div>
+                                                               <label class="set-label-checkbox setting-font checkbox-item">ฟรีค่าติดตั้งมิเตอร์น้ำประปา
+                                                                  <input type="checkbox"   id="promotion_IsWaterMeter_free" class="setting-form" />
+                                                                  <span class="checkmark"></span>
+                                                              </label>
+                                                               
+                                                        </div>
+                                                     
 
-                                                            </select>
-                                                        </div>
-                                                        <div class="col-lg-3">
-                                                            <div class="inputText setting-font">เลือกตำบล/แขวง* </div>
-                                                            <select id="drdwSubDistrict" class="w-100">
-                                                                <option value="" selected disabled>-- เลือกตำบล/แขวง --</option>
+                                                        <div class="col-lg-6">
+                                                            <div class="inputText setting-font">รายละเอียดฟรีแอร์ </div>
+                                                            <textarea id="promotion_airConditioner_remark" name="promotion_airConditioner_remark" rows="3" cols="50" maxlength="255">
+                                                                         
+                                                            </textarea>
 
-                                                            </select>
                                                         </div>
-                                                        <div class="col-lg-3">
-                                                            <div class="inputText setting-font">รหัสไปรษณีย์* </div>
-                                                            <input type="text" id="pro_postal_code" placeholder="รหัสไปรษณีย์*" class="setting-form" maxlength="100" />
+                                                        <div class="col-lg-6">
+                                                            <div class="inputText setting-font">promotion อื่นๆ </div>
+                                                            <textarea id="promotion_other" name="promotion_other" rows="3" cols="50" maxlength="255">
+                                                                         
+                                                             </textarea>
                                                         </div>
 
                                                     </div>
@@ -319,37 +304,128 @@
 
                                         <div id="labelBank" class="card shadow mb-4">
                                             <div class="card-header py-3">
-                                                <h6 class="m-0 font-weight-bold "><span style="color: #198754">ข้อมูลบัญชีธนาคาร </span><span style="font-weight: 400">*สำหรับให้ลูกค้าโอน</span></h6>
+                                                <h6 class="m-0 font-weight-bold "><span style="color: #198754">สิ่งอำนวยความสะดวก </span> </h6>
                                             </div>
                                             <div class="card-body">
                                                 <div class="form-group row ">
                                                     <div id="divProjectBank" class="row col-12 setting-row">
+                                                        <div class="col-lg-3">                                                           
+                                                                <br />                                                       
+                                                            <label class="set-label-checkbox setting-font checkbox-item">
+                                                                    ลิฟต์
+                                                                  <input type="checkbox" id="facilities_IsLift" class="setting-form" />
+                                                                <span class="checkmark"></span>
+                                                            </label>
+                                                        </div>
+
+                                                        <div class="col-lg-3">                                                             
+                                                                <br />                                                           
+                                                            <label class="set-label-checkbox setting-font checkbox-item">
+                                                                ที่จอดรถ
+                                                                  <input type="checkbox" id="facilities_IsParking" class="setting-form" />
+                                                                <span class="checkmark"></span>
+                                                            </label>
+                                                        </div>
+
+                                                        <div class="col-lg-3">                                                         
+                                                                <br />                                                        
+                                                            <label class="set-label-checkbox setting-font checkbox-item">
+                                                                ฟิตเนส
+                                                                  <input type="checkbox" id="facilities_IsFitness" class="setting-form" />
+                                                                <span class="checkmark"></span>
+                                                            </label>
+                                                        </div>
+
+                                                       
+                                                        <div class="col-lg-3">
+                                                            <br />
+                                                            <label class="set-label-checkbox setting-font checkbox-item">
+                                                                คลับเฮ้าส์
+                                                                  <input type="checkbox" id="facilities_IsClubHouse" class="setting-form" />
+                                                                <span class="checkmark"></span>
+                                                            </label>
+                                                        </div>
 
                                                         <div class="col-lg-3">
-                                                            <div class="inputText setting-font">ชื่อธนาคาร </div>
-                                                            <input type="text" id="pro_bank_name" placeholder="" class="setting-form" maxlength="100" />
+                                                            <br />
+                                                            <label class="set-label-checkbox setting-font checkbox-item">
+                                                                ห้องซักรีด
+                                                                  <input type="checkbox" id="facilities_IsLaunDry" class="setting-form" />
+                                                                <span class="checkmark"></span>
+                                                            </label>
+                                                        </div>
+                                                        
+                                                        <div class="col-lg-3">
+                                                            <br />
+                                                            <label class="set-label-checkbox setting-font checkbox-item">
+                                                                CCTV
+                                                                  <input type="checkbox" id="facilities_IsCCTV" class="setting-form" />
+                                                                <span class="checkmark"></span>
+                                                            </label>
+                                                        </div>
+
+                                                        <div class="col-lg-3">
+                                                            <br />
+                                                            <label class="set-label-checkbox setting-font checkbox-item">
+                                                                Co-working space
+                                                                  <input type="checkbox" id="facilities_IsCoWorkingSpace" class="setting-form" />
+                                                                <span class="checkmark"></span>
+                                                            </label>
+                                                        </div> 
+                                                      
+                                                        <div class="col-lg-3">
+                                                            <br />
+                                                            <label class="set-label-checkbox setting-font checkbox-item">
+                                                                สระว่ายน้ำ
+                                                                  <input type="checkbox" id="facilities_IsSwimmingPool" class="setting-form" />
+                                                                <span class="checkmark"></span>
+                                                            </label>
+                                                        </div>
+
+                                                        <div class="col-lg-3">
+                                                            <br />
+                                                            <label class="set-label-checkbox setting-font checkbox-item">
+                                                                สวนสาธารณะ
+                                                                  <input type="checkbox" id="facilities_IsParks" class="setting-form" />
+                                                                <span class="checkmark"></span>
+                                                            </label>
+                                                        </div>
+
+                                                          <div class="col-lg-3">
+                                                            <br />
+                                                            <label class="set-label-checkbox setting-font checkbox-item">
+                                                                สวนดาดฟ้า
+                                                                  <input type="checkbox" id="facilities_IsRoofGarden" class="setting-form" />
+                                                                <span class="checkmark"></span>
+                                                            </label>
+                                                        </div> 
+
+                                                        <div class="col-lg-3">
+                                                            <br />
+                                                            <label class="set-label-checkbox setting-font checkbox-item">
+                                                                คีย์การ์ดและสแกนนิ้ว
+                                                                  <input type="checkbox" id="facilities_IsKeyCard" class="setting-form" />
+                                                                <span class="checkmark"></span>
+                                                            </label>
                                                         </div>
                                                         <div class="col-lg-3">
-                                                            <div class="inputText setting-font">ชื่อสาขาธนาคาร </div>
-                                                            <input type="text" id="pro_bank_branchName" placeholder="" class="setting-form" maxlength="100" />
+                                                            <br />
+                                                            <label class="set-label-checkbox setting-font checkbox-item">
+                                                                ใกล้สถานีรถไฟฟ้า
+                                                                  <input type="checkbox" id="facilities_IsNearBySkyTrain" class="setting-form" />
+                                                                <span class="checkmark"></span>
+                                                            </label>
                                                         </div>
-                                                        <div class="col-lg-3">
-                                                            <div class="inputText setting-font">เลขบัญชีธนาคาร </div>
-                                                            <input type="text" id="pro_bank_number" placeholder="" class="setting-form" maxlength="100" />
+
+                                                         <div class="col-lg-4">                                                         
+                                                                <br />                                                      
+                                                            <label class="set-label-checkbox setting-font checkbox-item">
+                                                                ระบบรักษาความปลอดภัย24ชม.
+                                                                  <input type="checkbox" id="facilities_IsSecuritySystem" class="setting-form" />
+                                                                <span class="checkmark"></span>
+                                                            </label>
                                                         </div>
-                                                        <div class="col-lg-3">
-                                                            <div class="inputText setting-font">รูป QR Code </div>
-                                                            <input type="file" id="pro_bank_qrCodeImg" class="setting-form theme-btn-3 btn-setting w-100" accept="image/png,image/jpg" onchange="upload_qrCode(event)" />
-                                                            <%--<input  type="file" class="setting-form theme-btn-3 btn-setting w-100" accept="image/*" multiple="multiple" id="fileUploader">--%>
-                                                            <div id="display_image">
-                                                                <img id='output'>
-                                                            </div>
 
-
-
-
-
-                                                        </div>
 
                                                     </div>
 
@@ -415,16 +491,22 @@
 
         console.log('pro_id', pro_id);
 
-        let jsonData = JSON.stringify({
-            "plan_type_id": pro_id
+        let jsonTopic = JSON.stringify({
+            "pro_id": pro_id
         });
         //เรียก api
-        $.get("../../api/projectList", { jsonData: jsonData, types: "listProjectDetails" })
+        $.get("../../api/projectList", { jsonData: jsonTopic, types: "listTopicByProID" })
             .done(function (data) {
 
-                let resData = JSON.parse(data);
-                console.log(resData)
+                let listTopic = JSON.parse(data);
+                $('#topic_pro_id').html(` [รหัส ${listTopic[0].pro_id}]`);
+                $('#topic_com_name').html(` [${listTopic[0].com_name}]`);
 
+                $('#topic_pro_name').val(listTopic[0].pro_name);
+                $('#topic_pro_type_name').val(listTopic[0].pro_type_name);
+                $('#topic_pro_location_name').val(listTopic[0].pro_location_name);
+                $('#topic_pro_statusType_name').val(listTopic[0].pro_statusType_name);
+  
                 /// สร้างตาราง 
                 //createProjectDataTable(resData, "");
 
@@ -433,12 +515,20 @@
 
 
     });
+    // แปลง format ราคา
+    function onPriceChange(e){         
+        let price = money_unformat(e.value);
+        $('#plan_price').val(money_format(price));
+    }
 
     // ตั้งค่าเมื่อกดปุ่ม Create
     function btnAddClick() {
+        let modalTopic = $('#topic_pro_name').val();
         $('#btnSave').val('Create');
+        $('#modalTopic').html(`[${modalTopic}]`)
+
         HideTopbar(1);
-        ClearModal("#FormModal_Project_Details");
+        //ClearModal("#FormModal_Project_Details");
 
         $("#FormModal_Project_Details").modal("show");
         LockModal("#FormModal_Project_Details");
