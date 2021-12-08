@@ -51,7 +51,7 @@ namespace real_estate.Controllers.project
                 sqltext += "      , s.sale_firstName +' '+ s.sale_lastName as sale_fullName        ";
                 sqltext += "      , s.sale_phone                                                   ";
                 sqltext += "      , s.sale_company                   ";
-                sqltext += "      , PJL.plan_image_profile                                         "; 
+                sqltext += "      , PJL.plan_image_profile, PJL.plan_view                          "; 
 
                 sqltext += "   FROM [realestate].[dbo].[re_ProjectTable] PJ  ";
                 sqltext += "   INNER JOIN [realestate].[dbo].[re_Project_PlanType] PJL ON PJL.pro_id = PJ.pro_id ";
@@ -172,7 +172,8 @@ namespace real_estate.Controllers.project
                 sqltext += "      , PJL.facilities_IsParks                           ";
                 sqltext += "      , PJL.facilities_IsRoofGarden                      ";
                 sqltext += "      , PJL.facilities_IsKeyCard                         ";
-                sqltext += "      , PJL.facilities_IsNearBySkyTrain                  "; 
+                sqltext += "      , PJL.facilities_IsNearBySkyTrain                  ";
+                sqltext += "      , PJL.plan_view                                    "; 
                 sqltext += "   FROM [realestate].[dbo].[re_ProjectTable] PJ  ";
                 sqltext += "   INNER JOIN [realestate].[dbo].[re_Project_PlanType] PJL ON PJL.pro_id = PJ.pro_id ";
                 sqltext += "   INNER JOIN [realestate].[dbo].[re_Project_Type_Table]  pType ON pType.pro_type_id = PJ.pro_type_id        ";
@@ -284,6 +285,7 @@ namespace real_estate.Controllers.project
                 sqltext += "      , PJL.facilities_IsRoofGarden                      ";
                 sqltext += "      , PJL.facilities_IsKeyCard                         ";
                 sqltext += "      , PJL.facilities_IsNearBySkyTrain                  ";
+                sqltext += "      , PJL.plan_view                                    ";
                 sqltext += "   FROM [realestate].[dbo].[re_ProjectTable] PJ  ";
                 sqltext += "   INNER JOIN [realestate].[dbo].[re_Project_PlanType] PJL ON PJL.pro_id = PJ.pro_id ";
                 sqltext += "   INNER JOIN [realestate].[dbo].[re_Project_Type_Table]  pType ON pType.pro_type_id = PJ.pro_type_id        ";

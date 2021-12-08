@@ -146,7 +146,7 @@
             }).done(function (data) {
 
                 let resData = JSON.parse(data);
-                //console.log(resData);
+                console.log(resData);
                 if (resData.length > 0) {
                     if (resData[0].user_role_id == "1") {
                        sessionStorage.setItem("LogInData", data);

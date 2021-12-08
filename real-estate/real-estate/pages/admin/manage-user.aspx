@@ -257,10 +257,11 @@
     const d = new Date();
     let yearNow = d.getFullYear();
     let Sdata;
-    const userData = JSON.parse(sessionStorage.getItem("LogInData"));
+    let LogIn = localStorage.getItem("LogInData");
+    let userData = JSON.parse(LogIn)
 
     $(document).ready(function () {
-
+        
 
         checkLogin(1);
         loadUser();
