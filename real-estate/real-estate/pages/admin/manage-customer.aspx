@@ -25,7 +25,7 @@
                     <h1 class="h3 mb-2 text-gray-800 d-sm-inline-block">จัดการสมาชิก</h1>
                 </div>
                 <div class="text-end">
-                    <a href="javascript:void(0);" class="d-sm-inline-block  btn-sm btn-primary shadow-sm btnAdd btn-setting" data-value="" onclick="btnAddClick();"><i class="fas fa-plus fa-sm text-white-50 d-none"></i>&nbsp;Create</a>
+                    <%--<a href="javascript:void(0);" class="d-sm-inline-block  btn-sm btn-primary shadow-sm btnAdd btn-setting" data-value="" onclick="btnAddClick();"><i class="fas fa-plus fa-sm text-white-50 d-none"></i>&nbsp;Create</a>--%>
                     <a href="javascript:void(0);" class="d-sm-inline-block  btn-sm btn-success shadow-sm btn-Refresh btn-setting"><i class="fas fa-redo fa-sm text-white-50"></i>&nbsp;Refresh</a>
                 </div>
             </div>
@@ -82,7 +82,9 @@
     const d = new Date();
     let yearNow = d.getFullYear();
     let Sdata;
-    const userData = JSON.parse(localStorage.getItem("LogInData"));
+
+    let LogIn = localStorage.getItem("LogInData");
+    let userData = JSON.parse(LogIn)
 
     $(document).ready(function () {
         checkLogin(1);
