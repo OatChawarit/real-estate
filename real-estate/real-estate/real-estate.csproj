@@ -2193,6 +2193,7 @@
     <Compile Include="ConnectDB\DBClass.cs" />
     <Compile Include="Controllers\imageApi\ImageAPIController.cs" />
     <Compile Include="Controllers\main\newsController.cs" />
+    <Compile Include="Controllers\main\saleDataController.cs" />
     <Compile Include="Controllers\main\userDataController.cs" />
     <Compile Include="Controllers\project\projectListController.cs" />
     <Compile Include="Controllers\register\registerController.cs" />
