@@ -138,7 +138,7 @@
             } else {
                 htmlgrid += '<div class="product-badge"><ul><li class="sale-badge">' + item.pro_statusType_name + '</li></ul></div>';
             }
-            htmlgrid += '<div class="product-img-location-gallery"><div class=""><ul><li><h5 style="color:#fff;"><i class="fas fa-eye"></i> 300</h5></li></ul></div></div></div>';
+            htmlgrid += '<div class="product-img-location-gallery"><div class=""><ul><li><h5 style="color:#fff;"><i class="fas fa-eye"></i> ' + item.plan_view + '</h5></li></ul></div></div></div>';
             htmlgrid += '<div class="product-info">';
             htmlgrid += '<div class="product-price"><span>' + money_format(item.plan_price) + '<label>&nbsp;/บาท</label></span></div>';
             htmlgrid += '<h2 class="product-title"><a href="project-details.aspx?id='+ item.plan_type_id +'">' + item.pro_name + '</a></h2>';
@@ -157,7 +157,7 @@
 
             htmllist += '<div class="col-lg-12"><div class="ltn__product-item ltn__product-item-4 ltn__product-item-5">';
             htmllist += '<div class="product-img"><a href="project-details.aspx?id=' + item.plan_type_id + '"><img src="../../image/project/' + item.plan_image_profile + '" alt="' + item.plan_type_id + '" /></a>';
-            htmllist += '<div class="product-img-location-gallery"><div class=""><ul><li><h5 style="color:#fff;"><i class="fas fa-eye"></i> 300</h5></li></ul></div></div></div>';
+            htmllist += '<div class="product-img-location-gallery"><div class=""><ul><li><h5 style="color:#fff;"><i class="fas fa-eye"></i> ' + item.plan_view + '</h5></li></ul></div></div></div>';
             htmllist += '<div class="product-info"><div class="product-badge-price"><div class="product-badge">';
             if (item.pro_statusType_name == "โครงการพร้อมอยู่") {
                 htmllist += '<ul><li class="sale-badge bg-green" style="padding: 5px 5px 2px 5px;">' + item.pro_statusType_name + '</li></ul></div>';

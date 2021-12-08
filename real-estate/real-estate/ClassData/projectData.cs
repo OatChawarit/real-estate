@@ -81,6 +81,7 @@ namespace real_estate.ClassData
             sqltext += " , s.sale_phone ";
             sqltext += " , s.sale_company "; 
             sqltext += " , PJL.plan_image_profile ";
+            sqltext += " , PJL.plan_view "; 
             sqltext += "   FROM [realestate].[dbo].[re_ProjectTable] PJ  ";
             sqltext += "   INNER JOIN [realestate].[dbo].[re_Project_PlanType] PJL ON PJL.pro_id = PJ.pro_id ";
             sqltext += "   INNER JOIN [realestate].[dbo].[re_Project_Type_Table]  pType ON pType.pro_type_id = PJ.pro_type_id        ";
@@ -106,7 +107,7 @@ namespace real_estate.ClassData
                     {
                         str.AppendLine("<div class='product-badge'><ul><li class='sale-badge'>" + dr["pro_statusType_name"].ToString() + "</li></ul></div>");
                     }
-                    str.AppendLine("<div class='product-img-location-gallery'><div class=''><ul><li><h5 style='color:#fff;'><i class='fas fa-eye'></i> 300</h5></li></ul></div></div></div>");
+                    str.AppendLine("<div class='product-img-location-gallery'><div class=''><ul><li><h5 style='color:#fff;'><i class='fas fa-eye'></i> " + dr["plan_view"].ToString() + "</h5></li></ul></div></div></div>");
                     str.AppendLine("<div class='product-info'><div class='product-price'><span>" + Convert.ToDouble(dr["plan_price"].ToString()).ToString("N2") + "<label>&nbsp;/บาท</label></span></div>");
                     str.AppendLine("<h2 class='product-title'><a href='../project/project-details.aspx?id="+ dr["plan_type_id"].ToString() +"'>" + dr["pro_name"].ToString() + "</a></h2>");
                     str.AppendLine("<div class='product-description'>" + dr["pro_type_name"].ToString() + " : " + dr["plan_type_id"].ToString() + " " + dr["plan_name"].ToString() + "</div>");

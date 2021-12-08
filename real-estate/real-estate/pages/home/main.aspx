@@ -395,9 +395,11 @@
     <!-- #include virtual ="../include/footer.html" -->
 </body>
 <script> 
+   
+    const userData = localStorage.getItem("LogInData");
 
     $(document).ready(function () {
-
+      
         var jsonData = JSON.stringify({
 
         });
@@ -414,13 +416,6 @@
                 loadNews(resData);
             });
 
-
-        //$.get("../../api/projectList", { jsonData: jsonData, types: "listProject" })
-        // .done(function (data) {
-        //     let listProject = JSON.parse(data);
-        //     console.log('listProject', listProject);
-        //     loadProject(listProject);
-        // }); 
         Swal.close();
     });
 
@@ -449,11 +444,6 @@
         //console.log(html);
         $('#news_blog').append(html);
         loadCSS();
-
-        /* setTimeout(function () {
-            //loadCSS();
-            //loadScript();
-        }, 200); */
     }
 
     //drdw เขต/แขวง หน้าเว็บ

@@ -27,14 +27,26 @@
 
 <script>
 
-    const logInData = JSON.parse(sessionStorage.getItem("LogInData"));
+    const userLocal = localStorage.getItem("LogInData");
+    let logInData;
 
     $(document).ready(function () {
         //$('#tbUsername').html('');
-        if (logInData) {
-    
-            $('.topbar_login').addClass('d-none');
+        //console.log(localStorage.getItem("LogInData"));
+        if (userLocal == "" || userLocal == null) {
+            $("#mob-profile").addClass('d-none');
+            $("#bar-profile").addClass('d-none');
+            $("#mob-exit").addClass('d-none');
+            $("#bar-exit").addClass('d-none');
+            $("#bar-order").addClass('d-none');
+            $("#mob-order").addClass('d-none');
+            $("#bar-manage").addClass('d-none');
+            $("#mob-manage").addClass('d-none');
 
+        } else {
+            logInData = JSON.parse(userLocal);
+
+            $('.topbar_login').addClass('d-none');
             let user_role = "";
 
             if (logInData[0].user_role_id == 1) {
@@ -65,15 +77,6 @@
                 $("#bar-manage").addClass('d-none');
                 $("#mob-manage").addClass('d-none');
             }
-        } else {
-            $("#mob-profile").addClass('d-none');
-            $("#bar-profile").addClass('d-none');
-            $("#mob-exit").addClass('d-none');
-            $("#bar-exit").addClass('d-none');
-            $("#bar-order").addClass('d-none');
-            $("#mob-order").addClass('d-none');
-            $("#bar-manage").addClass('d-none');
-            $("#mob-manage").addClass('d-none');
         }
 
     });
@@ -81,22 +84,23 @@
 
     function checkLogin(permission_role) {
 
-        if (logInData == null) {
+        if (userLocal == null || userLocal == "") {
             alert('กรุณาเข้าสู่ระบบ!!');
             window.location.href = "../home/login";
-        }
+        } else {
+            //logInData = JSON.parse(userData);
 
-        if (logInData[0].user_role_id == 1) {
-            //system admin ผ่าน
+            if (logInData[0].user_role_id == 1) {
+                //system admin ผ่าน
 
-        } else if (logInData[0].user_role_id != permission_role) {
-            alert(" คุณไม่ได้รับสิทธิ์เข้า!! ");
-            window.location.href = "../home/main";
+            } else if (logInData[0].user_role_id != permission_role) {
+                alert(" คุณไม่ได้รับสิทธิ์เข้า!! ");
+                window.location.href = "../home/main";
+            }
         }
     }
 
     function logOutClick() {
-
         sessionStorage.setItem("LogInData", null)
         localStorage.setItem("LogInData", "");                 
         //window.location.reload();
