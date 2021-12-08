@@ -113,7 +113,7 @@
             uName = $('#sName').val();
             uPassword = $('#sPassword').val();
         }
-        console.log(uName, uPassword)
+        //console.log(uName, uPassword)
 
         if (!uName) {
             Swal.fire({
@@ -150,11 +150,11 @@
                 if (resData.length > 0) {
                     if (resData[0].user_role_id == "1") {
                        sessionStorage.setItem("LogInData", data);
-                       //localStorage.setItem("LogInData", resData);                     
-                        location.replace('../admin/manage-user.aspx')
+                       localStorage.setItem("LogInData", data);                     
+                       location.replace('../admin/manage-user.aspx')
                     } else {
                        sessionStorage.setItem("LogInData", data);
-                       //localStorage.setItem("LogInData", resData);                     
+                       localStorage.setItem("LogInData", data);                     
                        location.replace('../home/main.aspx')
                     }
                 } else {

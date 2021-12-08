@@ -20,7 +20,7 @@
     Header
 -------------------------------------------------------------- */
 .ltn__header-area {
-    z-index: 9999;
+    z-index: 99;
     position: relative;
 }
 /* ----------------------------------------------
@@ -101,7 +101,7 @@
     Header Middle Area
 ---------------------------------------------- */
 .ltn__header-middle-area {
-    z-index: 999; 
+    z-index: 99; 
 }
 .ltn__header-middle-area > .container-fluid > .row,
 .ltn__header-middle-area > .container > .row {

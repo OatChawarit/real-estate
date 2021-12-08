@@ -182,7 +182,7 @@
                                                 <div class="row">
                                                     <div class="col-lg-6">
                                                         <div class="inputText setting-font">ประเภทผู้ใช้งาน</div>
-                                                        <select id="user_role_id" class="w-100">
+                                                        <select id="user_role_id" class="w-100" disabled="disabled">
                                                             <option value="">-- เลือกประเภทผู้ใช้งาน --</option>
                                                             <%
                                                                 real_estate.ClassData.DropDownData.drdwRoleType();
@@ -235,8 +235,8 @@
 
                         <!-- close modal body -->
                         <div class="modal-footer">
-                            <button id="btnSave" type="button" class="btn-setting btn btn-primary btnSave" onclick="btnConfirmPass(this.value)" value="Create"><i class="far fa-save"></i>&nbsp;Save</button>
-                            <button type="button" class="btn-setting btn btn-secondary close" data-dismiss="modal"><i class="fas fa-times"></i>&nbsp;Close</button>
+                            <button id="btnSave" type="button" class="btn-setting btn btn-primary btnSave" onclick="onConfirm(this.value)" value="Edit"><i class="far fa-save"></i>&nbsp;Save</button>
+                            <button type="button" class="btn-setting btn-secondary close" data-dismiss="modal"><i class="fas fa-times"></i>&nbsp;Close</button>
                         </div>
                     </div>
                 </div>
@@ -275,11 +275,97 @@
         });
     });
 
+    function onConfirm(types) {
+        //console.log(types);
+        var uid = $("#user_id").val();
+        var upass = $("#user_password").val();
+        var ustatus = $("#user_status").val();
+        var cfpass = $("#confirm_user_password").val();
+        var json;
+
+        //เปลี่ยนสถานะ
+        if ((upass == "" || cfpass == "") || ((upass == null || cfpass == null))) {
+            json = JSON.stringify({
+                user_id: uid,
+                user_password: upass,
+                user_status: ustatus,
+                forgot: "0" //เอาไปเช็คเพื่อเปลี่ยนสถานะ
+            });
+
+            $.get("../../api/userData", { jsonData: json, types: "update_user", username: userData[0].user_id })
+                .done(function (data) {
+                    Sdata = data;
+                    //console.log(Sdata);
+                    if (Sdata == "success") {
+                        Swal.fire(
+                            "Success", //title
+                            "แก้ไขข้อมูล เรียบร้อย!", //main text
+                            "success" //icon
+                        );
+                        $("#Edit-UserModal").modal("hide");
+                        loadUser();
+                    } else {
+                        Swal.fire(
+                            "Found an Error", //title
+                            "แก้ไข ไม่สำเร็จ!", //main text
+                            "error" //icon
+                        );
+                    }
+                });
+
+        }
+        //เปลี่ยนพาสเวิร์ด
+        else {
+            if (upass != cfpass) {
+                Swal.fire(
+                    "Warning", //title
+                    "กรุณากรอก รหัสผ่านใหม่และยืนยันรหัสผ่านใหม่, ให้ตรงกัน!!", //main text
+                    "warning" //icon
+                );
+            } else {
+                json = JSON.stringify({
+                    user_id: uid,
+                    user_password: upass,
+                    user_status: ustatus,
+                    forgot: "1" //เอาไปเช็คเพื่อเปลี่ยนพาสเวิร์ด
+                });
+
+                $.get("../../api/userData", { jsonData: json, types: "update_user", username: userData[0].user_id })
+                    .done(function (data) {
+                        Sdata = data;
+                        //console.log(Sdata);
+                        if (Sdata == "success") {
+                            Swal.fire(
+                                "Success", //title
+                                "แก้ไขข้อมูล เรียบร้อย!", //main text
+                                "success" //icon
+                            );
+                            $("#Edit-UserModal").modal("hide");
+                            loadUser();
+                        } else {
+                            Swal.fire(
+                                "Found an Error", //title
+                                "แก้ไข ไม่สำเร็จ!", //main text
+                                "error" //icon
+                            );
+                        }
+                    });
+            }
+        }
+
+        //console.log(json);
+    }
+
     $(document).on("click", ".btnEdit", function () {
         HideTopbar(1);
         var uid = $(this).data('value');
         //console.log(uid);
+
+        //HideTopbar(1);
+        ClearModal("#Edit-UserModal");
+
         $("#Edit-UserModal").modal("show");
+        LockModal("#Edit-UserModal");
 
         var json = JSON.stringify({
             user_id: uid
@@ -313,12 +399,12 @@
 
     $(document).on("click", ".btnCanCel", function () {
         var uid = $(this).data('value');
-        console.log(uid);
-
+        //console.log(uid);
+        HideTopbar(1);
         var jsonData = JSON.stringify({
             user_id: uid,
         });
-        Swal.fire({ 
+        Swal.fire({
             title: 'คุณต้องยกเลิกผู้ใช่งาน!',
             html: '<p>รหัสสมาชิก : ' + uid + ' ใช่หรือไม่ ? </p>',
             type: 'warning',
@@ -368,7 +454,7 @@
         });
 
         let tb = $("#user-table").DataTable();
-         $("#user-table").DataTable().clear().draw();
+        $("#user-table").DataTable().clear().draw();
 
         $.get("../../api/userData", { jsonData: jsonData, types: "list_user", username: userData[0].user_id })
             .done(function (data) {
@@ -381,7 +467,7 @@
                         let Action = "";
                         if (item.user_status == 'A') {
                             Status = '<span class="bg-green" style="padding: 5px;">Active</span>';
-                             Action = `<button type='button' class='btn-danger btn-sm btnCanCel' id='btnCanCel` + item.user_id + `' data-value='` + item.user_id + `' title='ยกเลิก'><i class='fas fa-trash-alt'></i></button>`;
+                            Action = `<button type='button' class='btn-danger btn-sm btnCanCel' id='btnCanCel` + item.user_id + `' data-value='` + item.user_id + `' title='ยกเลิก'><i class='fas fa-trash-alt'></i></button>`;
                         }
                         else if (item.user_status == 'C') {
                             Status = '<span class="bg-red" style="padding: 5px;">InActive</span>';
