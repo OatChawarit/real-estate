@@ -205,31 +205,31 @@
 
                                                        <div class="col-lg-6">
                                                             <div class="inputText setting-font">ชื่อแบบแปลน* </div>
-                                                            <input type="text" id="plan_name" placeholder=" " class="setting-form" maxlength="100" />
+                                                            <input type="text" id="plan_name" placeholder=" " class="setting-form pro-input" maxlength="100" />
                                                         </div> 
                                                         <div class="col-lg-3">
                                                             <div class="inputText setting-font">พื้นที่ใช้สอย </div>
-                                                            <input type="text" id="plan_useable_area" placeholder=" " class="setting-form" maxlength="20" />
+                                                            <input type="text" id="plan_useable_area" placeholder=" " class="setting-form pro-input" maxlength="20" />
                                                         </div> 
                                                         <div class="col-lg-3">
                                                             <div class="inputText setting-font">ราคาขาย*</div>
-                                                            <input type="text" id="plan_price"   class="setting-form" maxlength="30" onkeyup="onPriceChange(this)" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"/>
+                                                            <input type="text" id="plan_price"   class="setting-form pro-input" maxlength="30" onkeyup="onPriceChange(this)" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"/>
                                                         </div> 
                                                         <div class="col-lg-3">
                                                             <div class="inputText setting-font">จำนวนชั้น </div>
-                                                            <input type="number" id="plan_floor"  class="setting-form"  />
+                                                            <input type="number" id="plan_floor"  class="setting-form pro-input"  />
                                                         </div>
                                                         <div class="col-lg-3">
                                                             <div class="inputText setting-font">จำนวนห้องนอน</div>
-                                                            <input type="number" id="plan_bed_room"   class="setting-form"   />
+                                                            <input type="number" id="plan_bed_room"   class="setting-form pro-input"   />
                                                         </div>
                                                         <div class="col-lg-3">
                                                             <div class="inputText setting-font">จำนวนห้องน้ำ</div>
-                                                            <input type="number" id="plan_bath_room"   class="setting-form"   />
+                                                            <input type="number" id="plan_bath_room"   class="setting-form pro-input"   />
                                                         </div>
                                                         <div class="col-lg-3">
                                                             <div class="inputText setting-font">จำนวนห้องอเนกประสงค์</div>
-                                                            <input type="number" id="plan_multiFunction_room"   class="setting-form"   />
+                                                            <input type="number" id="plan_multiFunction_room"   class="setting-form pro-input"   />
                                                         </div>
                                                         
 
@@ -247,35 +247,35 @@
                                                     <div id="divProjectPromotion" class="row col-12 setting-row">
                                                         <div class="col-lg-3">
                                                             <div class="inputText setting-font">ส่วนลด(เปอร์เซ็น)</div>
-                                                            <input type="number" id="promotion_discount_percent" class="setting-form" />
+                                                            <input type="number" id="promotion_discount_percent" class="setting-form pro-input" />
                                                         </div>
                                                         <div class="col-lg-3">
                                                             <div class="inputText setting-font">บัตรของขวัญมูลค่า (บาท)</div>
-                                                            <input type="number" id="promotion_giftVoucher_price" class="setting-form" />
+                                                            <input type="number" id="promotion_giftVoucher_price" class="setting-form pro-input" />
                                                         </div>
                                                         <div class="col-lg-3">
                                                             <div class="inputText setting-font">ส่วนลดวันโอน (บาท)</div>
-                                                            <input type="number" id="promotion_discount_transferDate" class="setting-form" />
+                                                            <input type="number" id="promotion_discount_transferDate" class="setting-form pro-input" />
                                                         </div>
                                                         <div class="col-lg-3">
                                                             <div class="inputText setting-font">ฟรีค่าบริการสาธารณะ (ปี)</div>
-                                                            <input type="number" id="promotion_publicServicefeeYear_free" class="setting-form" />
+                                                            <input type="number" id="promotion_publicServicefeeYear_free" class="setting-form pro-input" />
                                                         </div>
                                                         <div class="col-lg-3">
                                                             <div class="inputText setting-font">ฟรีแอร์(เครื่อง)</div>
-                                                            <input type="number" id="promotion_airConditioner_free" class="setting-form" />
+                                                            <input type="number" id="promotion_airConditioner_free" class="setting-form pro-input" />
                                                         </div>
                                                           <div class="col-lg-3"> 
                                                             <div class="inputText setting-font"> <br /> </div>                                                        
                                                               <label class="set-label-checkbox setting-font checkbox-item">ฟรีค่าติดตั้งมิเตอร์ไฟฟ้า
-                                                                  <input type="checkbox"   id="promotion_IsElectricMeter_free" class="setting-form" />
+                                                                  <input type="checkbox"   id="promotion_IsElectricMeter_free" class="setting-form pro-chk-input" />
                                                                   <span class="checkmark"></span>
                                                               </label>
                                                         </div>
                                                           <div class="col-lg-3">
                                                                 <div class="inputText setting-font"> <br /> </div>
                                                                <label class="set-label-checkbox setting-font checkbox-item">ฟรีค่าติดตั้งมิเตอร์น้ำประปา
-                                                                  <input type="checkbox"   id="promotion_IsWaterMeter_free" class="setting-form" />
+                                                                  <input type="checkbox"   id="promotion_IsWaterMeter_free" class="setting-form pro-chk-input" />
                                                                   <span class="checkmark"></span>
                                                               </label>
                                                                
@@ -284,14 +284,14 @@
 
                                                         <div class="col-lg-6">
                                                             <div class="inputText setting-font">รายละเอียดฟรีแอร์ </div>
-                                                            <textarea id="promotion_airConditioner_remark" name="promotion_airConditioner_remark" rows="3" cols="50" maxlength="255">
+                                                            <textarea id="promotion_airConditioner_remark" name="promotion_airConditioner_remark" rows="3" cols="50" maxlength="255" class="pro-input">
                                                                          
                                                             </textarea>
 
                                                         </div>
                                                         <div class="col-lg-6">
                                                             <div class="inputText setting-font">promotion อื่นๆ </div>
-                                                            <textarea id="promotion_other" name="promotion_other" rows="3" cols="50" maxlength="255">
+                                                            <textarea id="promotion_other" name="promotion_other" rows="3" cols="50" maxlength="255" class="pro-input">
                                                                          
                                                              </textarea>
                                                         </div>
@@ -313,7 +313,7 @@
                                                                 <br />                                                       
                                                             <label class="set-label-checkbox setting-font checkbox-item">
                                                                     ลิฟต์
-                                                                  <input type="checkbox" id="facilities_IsLift" class="setting-form" />
+                                                                  <input type="checkbox" id="facilities_IsLift" class="setting-form pro-chk-input" />
                                                                 <span class="checkmark"></span>
                                                             </label>
                                                         </div>
@@ -322,7 +322,7 @@
                                                                 <br />                                                           
                                                             <label class="set-label-checkbox setting-font checkbox-item">
                                                                 ที่จอดรถ
-                                                                  <input type="checkbox" id="facilities_IsParking" class="setting-form" />
+                                                                  <input type="checkbox" id="facilities_IsParking" class="setting-form pro-chk-input" />
                                                                 <span class="checkmark"></span>
                                                             </label>
                                                         </div>
@@ -331,7 +331,7 @@
                                                                 <br />                                                        
                                                             <label class="set-label-checkbox setting-font checkbox-item">
                                                                 ฟิตเนส
-                                                                  <input type="checkbox" id="facilities_IsFitness" class="setting-form" />
+                                                                  <input type="checkbox" id="facilities_IsFitness" class="setting-form pro-chk-input" />
                                                                 <span class="checkmark"></span>
                                                             </label>
                                                         </div>
@@ -341,7 +341,7 @@
                                                             <br />
                                                             <label class="set-label-checkbox setting-font checkbox-item">
                                                                 คลับเฮ้าส์
-                                                                  <input type="checkbox" id="facilities_IsClubHouse" class="setting-form" />
+                                                                  <input type="checkbox" id="facilities_IsClubHouse" class="setting-form pro-chk-input" />
                                                                 <span class="checkmark"></span>
                                                             </label>
                                                         </div>
@@ -350,7 +350,7 @@
                                                             <br />
                                                             <label class="set-label-checkbox setting-font checkbox-item">
                                                                 ห้องซักรีด
-                                                                  <input type="checkbox" id="facilities_IsLaunDry" class="setting-form" />
+                                                                  <input type="checkbox" id="facilities_IsLaunDry" class="setting-form pro-chk-input" />
                                                                 <span class="checkmark"></span>
                                                             </label>
                                                         </div>
@@ -359,7 +359,7 @@
                                                             <br />
                                                             <label class="set-label-checkbox setting-font checkbox-item">
                                                                 CCTV
-                                                                  <input type="checkbox" id="facilities_IsCCTV" class="setting-form" />
+                                                                  <input type="checkbox" id="facilities_IsCCTV" class="setting-form pro-chk-input" />
                                                                 <span class="checkmark"></span>
                                                             </label>
                                                         </div>
@@ -368,7 +368,7 @@
                                                             <br />
                                                             <label class="set-label-checkbox setting-font checkbox-item">
                                                                 Co-working space
-                                                                  <input type="checkbox" id="facilities_IsCoWorkingSpace" class="setting-form" />
+                                                                  <input type="checkbox" id="facilities_IsCoWorkingSpace" class="setting-form pro-chk-input" />
                                                                 <span class="checkmark"></span>
                                                             </label>
                                                         </div> 
@@ -377,7 +377,7 @@
                                                             <br />
                                                             <label class="set-label-checkbox setting-font checkbox-item">
                                                                 สระว่ายน้ำ
-                                                                  <input type="checkbox" id="facilities_IsSwimmingPool" class="setting-form" />
+                                                                  <input type="checkbox" id="facilities_IsSwimmingPool" class="setting-form pro-chk-input" />
                                                                 <span class="checkmark"></span>
                                                             </label>
                                                         </div>
@@ -386,7 +386,7 @@
                                                             <br />
                                                             <label class="set-label-checkbox setting-font checkbox-item">
                                                                 สวนสาธารณะ
-                                                                  <input type="checkbox" id="facilities_IsParks" class="setting-form" />
+                                                                  <input type="checkbox" id="facilities_IsParks" class="setting-form pro-chk-input" />
                                                                 <span class="checkmark"></span>
                                                             </label>
                                                         </div>
@@ -395,7 +395,7 @@
                                                             <br />
                                                             <label class="set-label-checkbox setting-font checkbox-item">
                                                                 สวนดาดฟ้า
-                                                                  <input type="checkbox" id="facilities_IsRoofGarden" class="setting-form" />
+                                                                  <input type="checkbox" id="facilities_IsRoofGarden" class="setting-form pro-chk-input" />
                                                                 <span class="checkmark"></span>
                                                             </label>
                                                         </div> 
@@ -404,7 +404,7 @@
                                                             <br />
                                                             <label class="set-label-checkbox setting-font checkbox-item">
                                                                 คีย์การ์ดและสแกนนิ้ว
-                                                                  <input type="checkbox" id="facilities_IsKeyCard" class="setting-form" />
+                                                                  <input type="checkbox" id="facilities_IsKeyCard" class="setting-form pro-chk-input" />
                                                                 <span class="checkmark"></span>
                                                             </label>
                                                         </div>
@@ -412,7 +412,7 @@
                                                             <br />
                                                             <label class="set-label-checkbox setting-font checkbox-item">
                                                                 ใกล้สถานีรถไฟฟ้า
-                                                                  <input type="checkbox" id="facilities_IsNearBySkyTrain" class="setting-form" />
+                                                                  <input type="checkbox" id="facilities_IsNearBySkyTrain" class="setting-form pro-chk-input" />
                                                                 <span class="checkmark"></span>
                                                             </label>
                                                         </div>
@@ -421,7 +421,7 @@
                                                                 <br />                                                      
                                                             <label class="set-label-checkbox setting-font checkbox-item">
                                                                 ระบบรักษาความปลอดภัย24ชม.
-                                                                  <input type="checkbox" id="facilities_IsSecuritySystem" class="setting-form" />
+                                                                  <input type="checkbox" id="facilities_IsSecuritySystem" class="setting-form pro-chk-input" />
                                                                 <span class="checkmark"></span>
                                                             </label>
                                                         </div>
@@ -478,26 +478,23 @@
     let yearNow = d.getFullYear();
     let qrCodeImg = "";
     let qrCodeData = [];
-
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const pro_id = urlParams.get('id');
+  
     $(document).ready(function () {
         checkLogin(3);
-
         $('#FormModal_Project_Details').modal({ backdrop: 'static', keyboard: false })
         $('#footer_callme').addClass('d-none');
 
-        const queryString = window.location.search;
-        const urlParams = new URLSearchParams(queryString);
-        const pro_id = urlParams.get('id');
-
         console.log('pro_id', pro_id);
-
+        ////// topic 
         let jsonTopic = JSON.stringify({
             "pro_id": pro_id
         });
         //เรียก api
         $.get("../../api/projectList", { jsonData: jsonTopic, types: "listTopicByProID" })
             .done(function (data) {
-
                 let listTopic = JSON.parse(data);
                 $('#topic_pro_id').html(` [รหัส ${listTopic[0].pro_id}]`);
                 $('#topic_com_name').html(` [${listTopic[0].com_name}]`);
@@ -509,10 +506,7 @@
   
                 /// สร้างตาราง 
                 //createProjectDataTable(resData, "");
-
             });
-
-
 
     });
     // แปลง format ราคา
@@ -526,8 +520,10 @@
         let modalTopic = $('#topic_pro_name').val();
         $('#btnSave').val('Create');
         $('#modalTopic').html(`[${modalTopic}]`)
-
         HideTopbar(1);
+        // Clear input
+        $('.pro-input').val('');
+        $('.pro-chk-input').prop('checked', false);
         //ClearModal("#FormModal_Project_Details");
 
         $("#FormModal_Project_Details").modal("show");
@@ -539,97 +535,132 @@
 
         let action = e;
         const d = new Date();
-        let time = d.getTime();
-
-
+        let time = d.getTime(); 
         if (action == "Create") {
-            let sale_id = logInData[0].sale_id;
-            let pro_company_id = $('#pro_company_id').val();
-            let pro_name = $('#pro_name').val();
-            let pro_description = $('#pro_description').val();
-            let pro_type_id = $('#pro_type_id').val();
-            let pro_location_id = $('#pro_location_id').val();
-            let pro_total_area = $('#pro_total_area').val();
-            let pro_land_area = $('#pro_land_area').val();
-            let pro_usable_area = $('#pro_usable_area').val();
-            let pro_unit = $('#pro_unit').val();
-            let pro_opening_price = $('#pro_opening_price').val();
-            let pro_opening_date = $('#pro_opening_date').val();
-            let pro_address = $('#pro_address').val();
-            let pro_sub_district_id = $('#drdwSubDistrict').val();
-            let pro_district_id = $('#drdwDistrict').val();
-            let pro_province_id = $('#drdwProvince').val();
-            let pro_postal_code = $('#pro_postal_code').val();
-            let pro_LinkGoogleMap = $('#pro_LinkGoogleMap').val().trim();
-            let pro_bank_name = $('#pro_bank_name').val();
-            let pro_bank_branchName = $('#pro_bank_branchName').val();
-            let pro_bank_number = $('#pro_bank_number').val();
-            let pro_bank_qrCodeImg = qrCodeImg;
-            let pro_statusType_id = $('#pro_statusType_id').val();
+            let sale_id = logInData[0].sale_id; 
+            console.log('sale', sale_id);          
+            let plan_name = $('#plan_name').val();
+            let plan_useable_area = $('#plan_useable_area').val();
+            let plan_price = $('#plan_price').val();
+            let plan_floor = $('#plan_floor').val();
+            let plan_bed_room = $('#plan_bed_room').val();
+            let plan_bath_room = $('#plan_bath_room').val();
+            let plan_multiFunction_room = $('#plan_multiFunction_room').val();
 
-            if (!pro_company_id) {
+            let promotion_discount_percent = $('#promotion_discount_percent').val();
+            let promotion_giftVoucher_price = $('#promotion_giftVoucher_price').val();
+            let promotion_discount_transferDate = $('#promotion_discount_transferDate').val();
+            let promotion_publicServicefeeYear_free = $('#promotion_publicServicefeeYear_free').val();
+            let promotion_airConditioner_free = $('#promotion_airConditioner_free').val();
+
+            let promotion_IsElectricMeter_free = 0;
+            let promotion_IsWaterMeter_free = 0;
+            if ($("#promotion_IsElectricMeter_free").prop("checked")) {
+                promotion_IsElectricMeter_free = 1;
+            } else {
+                promotion_IsElectricMeter_free = 0;
+            }
+            if ($("#promotion_IsWaterMeter_free").prop("checked")) {
+                  promotion_IsWaterMeter_free = 1;            
+            } else {
+                  promotion_IsWaterMeter_free = 0;          
+            }       
+            let promotion_airConditioner_remark = $('#promotion_airConditioner_remark').val().trim();
+            let promotion_other = $('#promotion_other').val().trim();
+
+            let facilities_IsLift = 0;
+            if ($("#facilities_IsLift").prop("checked")) {
+                facilities_IsLift = 1;
+            } else {
+                facilities_IsLift = 0;
+            }  
+            let facilities_IsParking = 0;
+            if ($("#facilities_IsParking").prop("checked")) {
+                facilities_IsParking = 1;
+            } else {
+                facilities_IsParking = 0;
+            }  
+            let facilities_IsFitness = 0;
+            if ($("#facilities_IsFitness").prop("checked")) {
+                facilities_IsFitness = 1;
+            } else {
+                facilities_IsFitness = 0;
+            }  
+            let facilities_IsClubHouse = 0;
+            if ($("#facilities_IsClubHouse").prop("checked")) {
+                facilities_IsClubHouse = 1;
+            } else {
+                facilities_IsClubHouse = 0;
+            }  
+            let facilities_IsLaunDry = 0;
+            if ($("#facilities_IsLaunDry").prop("checked")) {
+                facilities_IsLaunDry = 1;
+            } else {
+                facilities_IsLaunDry = 0;
+            }  
+            let facilities_IsCCTV = 0;
+            if ($("#facilities_IsCCTV").prop("checked")) {
+                facilities_IsCCTV = 1;
+            } else {
+                facilities_IsCCTV = 0;
+            }  
+            let facilities_IsCoWorkingSpace = 0;
+            if ($("#facilities_IsCoWorkingSpace").prop("checked")) {
+                facilities_IsCoWorkingSpace = 1;
+            } else {
+                facilities_IsCoWorkingSpace = 0;
+            }  
+            let facilities_IsSwimmingPool = 0;
+            if ($("#facilities_IsSwimmingPool").prop("checked")) {
+                facilities_IsSwimmingPool = 1;
+            } else {
+                facilities_IsSwimmingPool = 0;
+            }  
+            let facilities_IsParks = 0;
+            if ($("#facilities_IsParks").prop("checked")) {
+                facilities_IsParks = 1;
+            } else {
+                facilities_IsParks = 0;
+            }  
+            let facilities_IsRoofGarden = 0;
+            if ($("#facilities_IsRoofGarden").prop("checked")) {
+                facilities_IsRoofGarden = 1;
+            } else {
+                facilities_IsRoofGarden = 0;
+            }  
+            let facilities_IsKeyCard = 0;
+            if ($("#facilities_IsKeyCard").prop("checked")) {
+                facilities_IsKeyCard = 1;
+            } else {
+                facilities_IsKeyCard = 0;
+            }  
+            let facilities_IsNearBySkyTrain = 0;
+            if ($("#facilities_IsNearBySkyTrain").prop("checked")) {
+                facilities_IsNearBySkyTrain = 1;
+            } else {
+                facilities_IsNearBySkyTrain = 0;
+            }  
+            let facilities_IsSecuritySystem = 0;
+            if ($("#facilities_IsSecuritySystem").prop("checked")) {
+                facilities_IsSecuritySystem = 1;
+            } else {
+                facilities_IsSecuritySystem = 0;
+            }   
+
+            if (!plan_name) {
                 Swal.fire({
                     type: 'warning',
                     title: 'กรุณาระบุ!!',
-                    text: 'บริษัท'
+                    text: 'ชื่อแปลน'
                 });
             }
-            else if (!pro_name) {
+            else if (!plan_price) {
                 Swal.fire({
                     type: 'warning',
                     title: 'กรุณาระบุ!!',
-                    text: 'ชื่อโครงการ'
-                });
-            } else if (!pro_type_id) {
-                Swal.fire({
-                    type: 'warning',
-                    title: 'กรุณาระบุ!!',
-                    text: 'ประเภทโครงการ'
-                });
-            } else if (!pro_location_id) {
-                Swal.fire({
-                    type: 'warning',
-                    title: 'กรุณาระบุ!!',
-                    text: 'โซน/ทำเล'
-                });
-            } else if (!pro_statusType_id) {
-                Swal.fire({
-                    type: 'warning',
-                    title: 'กรุณาระบุ!!',
-                    text: 'สถานะประเภทโครงการ'
-                });
-            } else if (!pro_address) {
-                Swal.fire({
-                    type: 'warning',
-                    title: 'กรุณาระบุ!!',
-                    text: 'ที่ตั้งโครงการ'
-                });
-            } else if (!pro_sub_district_id) {
-                Swal.fire({
-                    type: 'warning',
-                    title: 'กรุณาระบุ!!',
-                    text: 'ตำบล/แขวง'
-                });
-            } else if (!pro_district_id) {
-                Swal.fire({
-                    type: 'warning',
-                    title: 'กรุณาระบุ!!',
-                    text: 'อำเภอ/เขต'
-                });
-            } else if (!pro_province_id) {
-                Swal.fire({
-                    type: 'warning',
-                    title: 'กรุณาระบุ!!',
-                    text: 'จังหวัด'
-                });
-            } else if (!pro_postal_code) {
-                Swal.fire({
-                    type: 'warning',
-                    title: 'กรุณาระบุ!!',
-                    text: 'รหัสไปรษณีย์'
-                });
+                    text: 'ราคาขาย'
+                });            
             }
-
             else {
 
                 Swal.fire({ //alert confirm 
@@ -643,94 +674,107 @@
                 })
                     .then((val) => {
                         if (val.value) {
+                           
+                            //Number.parseFloat(money_unformat($('#plan_price').val())).toFixed(2);
+                            console.log('plan_price', plan_price);
 
-                            if (qrCodeImg) {
+                            //if (qrCodeImg) {
 
-                                pro_bank_qrCodeImg = "BY_" + sale_id + "_" + time + "_" + qrCodeImg;
-                            } else {
+                            //    pro_bank_qrCodeImg = "BY_" + sale_id + "_" + time + "_" + qrCodeImg;
+                            //} else {
 
-                                pro_bank_qrCodeImg = "";
-                            }
-
+                            //    pro_bank_qrCodeImg = "";
+                            //}
 
                             var jsonData = JSON.stringify({
                                 "sale_id": sale_id,
-                                "pro_company_id": pro_company_id,
-                                "pro_name": pro_name,
-                                "pro_description": pro_description,
-                                "pro_type_id": pro_type_id,
-                                "pro_location_id": pro_location_id,
-                                "pro_total_area": pro_total_area,
-                                "pro_land_area": pro_land_area,
-                                "pro_usable_area": pro_usable_area,
-                                "pro_unit": pro_unit,
-                                "pro_opening_price": pro_opening_price,
-                                "pro_opening_date": pro_opening_date,
-                                "pro_address": pro_address,
-                                "pro_sub_district_id": pro_sub_district_id,
-                                "pro_district_id": pro_district_id,
-                                "pro_province_id": pro_province_id,
-                                "pro_postal_code": pro_postal_code,
-                                "pro_LinkGoogleMap": pro_LinkGoogleMap.trim(),
-                                "pro_bank_name": pro_bank_name,
-                                "pro_bank_branchName": pro_bank_branchName,
-                                "pro_bank_number": pro_bank_number,
-                                "pro_bank_qrCodeImg": pro_bank_qrCodeImg,
-                                "pro_statusType_id": pro_statusType_id,
+                                "pro_id": pro_id,
+
+                                "plan_name": plan_name,
+                                "plan_useable_area": plan_useable_area,
+                                "plan_price": money_unformat(plan_price) ,
+                                "plan_floor": plan_floor,
+                                "plan_bed_room": plan_bed_room,
+                                "plan_bath_room": plan_bath_room,
+                                "plan_multiFunction_room": plan_multiFunction_room,
+
+                                "promotion_discount_percent": promotion_discount_percent,
+                                "promotion_giftVoucher_price": promotion_giftVoucher_price,
+                                "promotion_discount_transferDate": promotion_discount_transferDate,
+                                "promotion_publicServicefeeYear_free": promotion_publicServicefeeYear_free,
+                                "promotion_airConditioner_free": promotion_airConditioner_free,
+                                "promotion_IsElectricMeter_free": promotion_IsElectricMeter_free,
+                                "promotion_IsWaterMeter_free": promotion_IsWaterMeter_free,
+                                "promotion_airConditioner_remark": promotion_airConditioner_remark,
+                                "promotion_other": promotion_other,
+
+                                "facilities_IsLift": facilities_IsLift,
+                                "facilities_IsParking": facilities_IsParking,
+                                "facilities_IsFitness": facilities_IsFitness,
+                                "facilities_IsClubHouse": facilities_IsClubHouse,
+                                "facilities_IsLaunDry": facilities_IsLaunDry,
+                                "facilities_IsCCTV": facilities_IsCCTV,
+                                "facilities_IsCoWorkingSpace": facilities_IsCoWorkingSpace,
+                                "facilities_IsSwimmingPool": facilities_IsSwimmingPool,
+                                "facilities_IsParks": facilities_IsParks,
+                                "facilities_IsRoofGarden": facilities_IsRoofGarden,
+                                "facilities_IsKeyCard": facilities_IsKeyCard,
+                                "facilities_IsNearBySkyTrain": facilities_IsNearBySkyTrain,
+                                "facilities_IsSecuritySystem": facilities_IsSecuritySystem,                            
 
                             });
 
                             console.log(JSON.parse(jsonData))
-                            if (qrCodeData != "") {
+                            ////if (qrCodeData != "") {
 
-                                var formData = new FormData();
-                                formData.append("file", qrCodeData);
-                                $.ajax({
-                                    url: '/api/ImageAPI/UploadFiles',
-                                    type: 'POST',
-                                    data: formData,
-                                    headers: {
-                                        "sale_id": sale_id,
-                                        "time": time,
-                                    },
-                                    cache: false,
-                                    contentType: false,
-                                    processData: false,
-                                    success: function (fileName) {
-                                        //console.log('fileName', fileName)
+                            ////    var formData = new FormData();
+                            ////    formData.append("file", qrCodeData);
+                            ////    $.ajax({
+                            ////        url: '/api/ImageAPI/UploadFiles',
+                            ////        type: 'POST',
+                            ////        data: formData,
+                            ////        headers: {
+                            ////            "sale_id": sale_id,
+                            ////            "time": time,
+                            ////        },
+                            ////        cache: false,
+                            ////        contentType: false,
+                            ////        processData: false,
+                            ////        success: function (fileName) {
+                            ////            //console.log('fileName', fileName)
 
-                                    }
-                                })
-                            }
+                            ////        }
+                            ////    })
+                            ////}
 
-                            //เรียก api
-                            $.ajax({
-                                type: 'POST',
-                                url: "../../api/projectList",
-                                data: { "data": jsonData },
-                                headers: {
-                                    "types": "addProject"
-                                }
-                            }).done(function (data) {
+                            //////เรียก api
+                            ////$.ajax({
+                            ////    type: 'POST',
+                            ////    url: "../../api/projectList",
+                            ////    data: { "data": jsonData },
+                            ////    headers: {
+                            ////        "types": "addProject"
+                            ////    }
+                            ////}).done(function (data) {
 
-                                if (data == "success") {
-                                    swal.fire({
-                                        type: 'success',
-                                        title: 'บันทึกข้อมูลเรียบร้อย'
-                                    }).then((value) => {
-                                        location.reload();
+                            ////    if (data == "success") {
+                            ////        swal.fire({
+                            ////            type: 'success',
+                            ////            title: 'บันทึกข้อมูลเรียบร้อย'
+                            ////        }).then((value) => {
+                            ////            location.reload();
 
-                                    });
-                                } else {
-                                    swal.fire({
-                                        type: 'warning',
-                                        title: 'พบข้อผิดพลาด',
-                                        text: data
-                                    }).then((value) => {
-                                        //location.reload();
-                                    });
-                                }
-                            });
+                            ////        });
+                            ////    } else {
+                            ////        swal.fire({
+                            ////            type: 'warning',
+                            ////            title: 'พบข้อผิดพลาด',
+                            ////            text: data
+                            ////        }).then((value) => {
+                            ////            //location.reload();
+                            ////        });
+                            ////    }
+                            ////});
 
                         }
                     });
@@ -829,8 +873,7 @@
 
             });
     }
-
-
+     
 
     $('.close').click(() => {
         HideTopbar(0);
@@ -911,13 +954,7 @@
                     },
                     className: "text-center"
                 },
-                //{
-                //    render: function (data, type, row, meta) {
-
-                //        return row.pro_status
-                //    },
-                //    className: "text-center"
-                //},
+       
 
 
             ],
