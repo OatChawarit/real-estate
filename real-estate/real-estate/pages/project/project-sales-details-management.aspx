@@ -60,6 +60,10 @@
       
             height: 45px !important;
         }
+        /* Solid border */
+        hr.solid {
+            border-top: 3px solid #bbb;
+        }
 
     </style>
 
@@ -238,7 +242,7 @@
                                             </div>
                                         </div>
 
-                                        <div id="labelAddress" class="card shadow mb-4">
+                                        <div id="labelPromotion" class="card shadow mb-4">
                                             <div class="card-header py-3">
                                                 <h6 class="m-0 font-weight-bold  " style="color: #dc3545">ข้อมูล Promotion</h6>
                                             </div>
@@ -433,6 +437,42 @@
                                             </div>
                                         </div>
 
+                                          <div id="labelImage" class="card shadow mb-4">
+                                            <div class="card-header py-3">
+                                                <h6 class="m-0 font-weight-bold  " style="color: #ffc107">ข้อมูลภาพแบบแปลน</h6>
+                                            </div>
+                                            <div class="card-body">
+                                                
+                                                <div class="form-group row ">
+                                                    <div id="divPlanImageProfile" class="row col-12 setting-row">
+                                                        <div class="col-lg-6">
+                                                            <div class="inputText setting-font">รูปโปรไฟล์ แปลนโครงการ </div>  
+                                                            <input type="file" id="plan_image_profile" class="my-3 setting-form theme-btn-3 btn-setting w-100"  accept="image/png,image/jpg" onchange="upload_image_profile(event)" />                                                        
+                                                            <div id="display_image">
+                                                                <img id='output'>  
+                                                            </div> 
+                                                              <br />
+
+                                                        </div>                                                         
+                                                    </div>      
+                                                
+                                                    <hr class="solid">
+                                                    <div class="row col-12 setting-row">
+                                                        <div class="col-lg-6">
+                                                            <div class="inputText setting-font">รูปแปลนโครงการ </div>
+                                                            <input type="file" id="plan_image_profileArray" class="my-3 setting-form theme-btn-3 btn-setting w-100" multiple="multiple" accept="image/png,image/jpg" onchange="upload_image_profileArray(event)" />
+                                                         
+                                                        </div>
+                                                    </div>
+                                                    <div class="row col-12 setting-row" id="display_imageArray">
+                                                       <%-- show image --%>
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
                                     </div>
                                     <!-- แถบเพิ่มข้อมูล -->
                                     <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="tab2-tab">
@@ -472,15 +512,21 @@
     <!-- นำเข้าส่วนท้าย JS -->
     <!-- #include virtual ="../include/footer.html" -->
 </body>
-<script>
+<script> 
 
     const d = new Date();
     let yearNow = d.getFullYear();
-    let qrCodeImg = "";
-    let qrCodeData = [];
+    let pf_img = "";
+    let pf_imgData = [];
+
+    let pf_imgArray = [];
+    let pf_imgDataArray = []; 
+
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const pro_id = urlParams.get('id');
+    const sale_id = JSON.parse(userLocal)[0].sale_id  ;
+    let inputArray = [];
   
     $(document).ready(function () {
         checkLogin(3);
@@ -537,8 +583,7 @@
         const d = new Date();
         let time = d.getTime(); 
         if (action == "Create") {
-            let sale_id = logInData[0].sale_id; 
-            console.log('sale', sale_id);          
+                   
             let plan_name = $('#plan_name').val();
             let plan_useable_area = $('#plan_useable_area').val();
             let plan_price = $('#plan_price').val();
@@ -647,6 +692,11 @@
                 facilities_IsSecuritySystem = 0;
             }   
 
+            let plan_image_profile = pf_img;
+            //let plan_image_Array = inputArray;
+            let plan_image_Array = pf_imgArray;
+ 
+
             if (!plan_name) {
                 Swal.fire({
                     type: 'warning',
@@ -678,13 +728,26 @@
                             //Number.parseFloat(money_unformat($('#plan_price').val())).toFixed(2);
                             console.log('plan_price', plan_price);
 
-                            //if (qrCodeImg) {
+                            if (pf_img) {
 
-                            //    pro_bank_qrCodeImg = "BY_" + sale_id + "_" + time + "_" + qrCodeImg;
-                            //} else {
+                                plan_image_profile = "BY_" + sale_id + "_" + time + "_" + pf_img;
+                            } else {
 
-                            //    pro_bank_qrCodeImg = "";
-                            //}
+                                plan_image_profile = "";
+                            }
+
+                            if (plan_image_Array.length > 0) {
+
+                                plan_image_Array.forEach((item , index) => { 
+                                 
+                                    item.plan_img_path = (index+1)+"-BY_" + sale_id + "_" + time + "_" + item.plan_img_path;
+                                     
+                                });
+
+                            } else {
+
+                                plan_image_Array = [];
+                            }
 
                             var jsonData = JSON.stringify({
                                 "sale_id": sale_id,
@@ -720,9 +783,27 @@
                                 "facilities_IsRoofGarden": facilities_IsRoofGarden,
                                 "facilities_IsKeyCard": facilities_IsKeyCard,
                                 "facilities_IsNearBySkyTrain": facilities_IsNearBySkyTrain,
-                                "facilities_IsSecuritySystem": facilities_IsSecuritySystem,                            
+                                "facilities_IsSecuritySystem": facilities_IsSecuritySystem,  
 
+                                "plan_image_profile": plan_image_profile,
+
+                                "plan_image_Array": plan_image_Array
                             });
+
+
+                            //console.log('plan_image_Array', plan_image_Array);
+
+
+
+                            //let jsonImg = JSON.stringify({ 
+                                 
+                            //    "plan_image_Array": plan_image_Array
+
+
+                            //});
+                            //console.log('jsonImg' , JSON.parse(jsonImg))
+
+
 
                             console.log(JSON.parse(jsonData))
                             ////if (qrCodeData != "") {
@@ -793,7 +874,7 @@
 
 
     }
-    function upload_qrCode(e) {
+    function upload_image_profile(e) {
 
         let input = e.target;
 
@@ -806,72 +887,84 @@
 
         if (input.files[0]) {
             reader.readAsDataURL(input.files[0]);
-            qrCodeImg = input.files[0].name;
-            qrCodeData = input.files[0];
+            pf_img = input.files[0].name;
+            pf_imgData = input.files[0];
         } else {
-            qrCodeImg = "";
-            qrCodeData = [];
-            clearpic();
+            pf_img = "";
+            pf_imgData = [];
+            clearpic(0);
         }
 
 
     }
-    function clearpic() {
-        $("#output").attr("src", "");
-        $("#pro_bank_qrCodeImg").val('');
 
+    function upload_image_profileArray(e) {
+        
+        let input = e.target;
+        let innerHtml = "";
+       
+        inputArray = input.files; 
+
+        if (inputArray.length == 0) {
+            console.log('clearpic'); 
+            pf_imgArray = [];
+            pf_imgDataArray = [];
+            clearpic(1);
+        }  
+
+        for (let i = 0; i < inputArray.length; i++) {
+ 
+            innerHtml += `
+                    <div class="col-lg-3">
+                         <img id='outputArray${i}' >
+                    </div>
+                 
+            `;
+            $('#display_imageArray').html(innerHtml); 
+
+            setTimeout(function () {
+
+                let reader = new FileReader();
+                reader.onload = function () {
+                    let dataURL = reader.result;
+                    let output = document.getElementById('outputArray' + i);
+                    output.src = dataURL;
+                }; 
+
+                reader.readAsDataURL(input.files[i]);
+                pf_imgArray.push({ "plan_img_path": input.files[i].name,  });
+                //pf_imgArray.push( input.files[i].name  );
+                pf_imgDataArray.push( input.files[i]  );
+  
+
+            }, 400);
+             
+           
+        }
+ 
+
+        //console.log('inputArray', inputArray); 
+        //console.log('pf_imgArray', pf_imgArray);
+        //console.log('pf_imgDataArray', pf_imgDataArray);
+  
     }
+ 
 
+    function clearpic(type) {
 
-    function drdwProvinceChange(e) {
-        let province_id = e;
-        $("#drdwDistrict").niceSelect();
-        $("#drdwDistrict").empty();
-        $("#drdwDistrict").val("");
+        if (type == 0) {
+            $("#output").attr("src", "");
+            $("#plan_image_profile").val('');
 
-        $.get("../../api/drdwData", { id: province_id, types: "District" })
-            .done(function (data) {
-                let JsondropdownData = JSON.parse(data);
-                //console.log('JsondropdownData', JsondropdownData) 
-                if (JsondropdownData.length == 0) {
-                    $("#drdwDistrict").html('');
-                    $('#drdwDistrict').niceSelect('update');
-                } else {
-                    $("#drdwDistrict").html('');
-                    $("#drdwDistrict").append('<option value="" selected disabled>-- เลือกอำเภอ/เขต --</option>');
+        } else if(type == 1) {
 
-                    JsondropdownData.forEach((item, i) => {
-                        $("#drdwDistrict").append('<option value="' + item.district_id + '">' + item.district_name + ' </option>');
-                    });
-                    $('#drdwDistrict').niceSelect('update');
-                }
+            $("#plan_image_profileArray").val('');
+            $("#display_imageArray").html("");
 
-            });
-    }
-    function drdwDistrictChange(e) {
-        let district_id = e;
-        $("#drdwSubDistrict").niceSelect();
-        $("#drdwSubDistrict").empty();
-        $("#drdwSubDistrict").val("");
-
-        $.get("../../api/drdwData", { id: district_id, types: "SubDistrict" })
-            .done(function (data) {
-                let JsondropdownData = JSON.parse(data);
-                //console.log('JsondropdownData', JsondropdownData) 
-                if (JsondropdownData.length == 0) {
-                    $("#drdwSubDistrict").html('');
-                    $('#drdwSubDistrict').niceSelect('update');
-                } else {
-                    $("#drdwSubDistrict").html('');
-                    $("#drdwSubDistrict").append('<option value="" selected disabled>-- เลือกตำบล/แขวง --</option>');
-
-                    JsondropdownData.forEach((item, i) => {
-                        $("#drdwSubDistrict").append('<option value="' + item.sub_district_id + '">' + item.sub_district_name + ' </option>');
-                    });
-                    $('#drdwSubDistrict').niceSelect('update');
-                }
-
-            });
+        }
+ 
+ 
+  
     }
      
 

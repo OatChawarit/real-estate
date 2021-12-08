@@ -354,7 +354,8 @@
     let yearNow = d.getFullYear(); 
     let qrCodeImg = "";
     let qrCodeData = [];
- 
+    const sale_id = JSON.parse(userLocal)[0].sale_id;
+
     $(document).ready(function () {
         checkLogin(3);
 
@@ -362,7 +363,11 @@
 
         $('#footer_callme').addClass('d-none');  
 
-        let sale_id = logInData[0].sale_id;
+      
+        //let sale_id = logInData[0].sale_id;
+        //let sale_id = JSON.parse(userLocal[0].sale_id)
+        console.log('sale_id' , sale_id);
+
         let jsonData = JSON.stringify({
             "sale_id" : sale_id
         }); 
