@@ -51,8 +51,6 @@
             $("#mob-login").addClass('d-none');
 
             if (logInData[0].user_role_id == "2") {
-                $("#bar-order").addClass('d-none');
-                $("#mob-order").addClass('d-none');
 
                 $("#bar-manage").addClass('d-none');
                 $("#mob-manage").addClass('d-none');
@@ -100,6 +98,7 @@
     function logOutClick() {
 
         sessionStorage.setItem("LogInData", null)
+        localStorage.setItem("LogInData", "");                 
         //window.location.reload();
         window.location.href = "../home/main";
     }
