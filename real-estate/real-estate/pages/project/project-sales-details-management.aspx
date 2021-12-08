@@ -302,13 +302,13 @@
                                             </div>
                                         </div>
 
-                                        <div id="labelBank" class="card shadow mb-4">
+                                        <div id="labelFacilities" class="card shadow mb-4">
                                             <div class="card-header py-3">
                                                 <h6 class="m-0 font-weight-bold "><span style="color: #198754">สิ่งอำนวยความสะดวก </span> </h6>
                                             </div>
                                             <div class="card-body">
                                                 <div class="form-group row ">
-                                                    <div id="divProjectBank" class="row col-12 setting-row">
+                                                    <div id="divProjectFacilities" class="row col-12 setting-row">
                                                         <div class="col-lg-3">                                                           
                                                                 <br />                                                       
                                                             <label class="set-label-checkbox setting-font checkbox-item">
