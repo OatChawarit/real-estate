@@ -113,15 +113,27 @@
                                         <h6>ข้อมูลส่วนตัวผู้สั่งจอง</h6>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <div class="inputText setting-font">ชื่อ-สกุล *</div>
+                                                <div class="inputText setting-font">ชื่อ *</div>
                                                 <div class="input-item input-item-name ltn__custom-icon">
-                                                    <input type="text" id="fullName" placeholder="ชื่อ-สกุล" class="setting-form" title="ชื่อ-สกุล" />
+                                                    <input type="text" id="fullName" placeholder="ชื่อ" class="setting-form" title="ชื่อ" />
+                                                </div>
+                                            </div>
+                                             <div class="col-md-6">
+                                                <div class="inputText setting-font">นามสกุล *</div>
+                                                <div class="input-item input-item-name ltn__custom-icon">
+                                                    <input type="text" id="lastName" placeholder="นามสกุล" class="setting-form" title="นามสกุล" />
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="inputText setting-font">เลขบัตรประจำตัวประชาชน *</div>
                                                 <div class="input-item input-item-name ltn__custom-icon">
                                                     <input type="text" id="cus_idCard" placeholder="เลขบัตรประจำตัวประชาชน" class="setting-form" title="เลขบัตรประจำตัวประชาชน" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="inputText setting-font">สถานที่ทำงาน</div>
+                                                <div class="input-item input-item-name ltn__custom-icon">
+                                                    <input type="text" id="cus_company_name" placeholder="สถานที่ทำงาน" class="setting-form" title="สถานที่ทำงาน" />
                                                 </div>
                                             </div>
                                         </div>
@@ -218,7 +230,7 @@
                                             <div class="col-md-6">
                                                 <div class="inputText setting-font">ราคา</div>
                                                 <div class="input-item input-item-number ltn__custom-icon">
-                                                    <input type="number" id="plan_price" value="0"  class="setting-form" title="ราคา" readonly="true" />
+                                                    <input type="text" id="plan_price" value="0"  class="setting-form" title="ราคา" readonly="true" />
                                                 </div>
                                             </div>
                                         </div>
@@ -254,7 +266,7 @@
 
                                         <div class="btn-wrapper text-center--- mt-0">
                                             <!-- <button type="submit" class="btn theme-btn-1 btn-effect-1 text-uppercase" >Next Step</button> -->
-                                            <a href="#" class="btn theme-btn-1 btn-effect-1 text-uppercase">จองโครงการ</a>
+                                            <a href="#" class="btn theme-btn-1 btn-effect-1 text-uppercase" onclick="onBooking(this)">จองโครงการ</a>
                                         </div>
                                     </div>
                                 </div>
@@ -273,7 +285,195 @@
     <!-- #include virtual ="../include/footer.html" -->
 </body>
 <script>
+ 
+
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const plan_type_id = urlParams.get('id');
+    const user_id = JSON.parse(userLocal)[0].user_id;
+    const user_email = JSON.parse(userLocal)[0].user_email;
+
+     
+    $(document).ready(function () {
+
+        fillData();
+         
+
+    });
+
+    function fillData() {
+
+
+        let jsonData = JSON.stringify({
+            "user_id": user_id
+        });
+        //เรียก api
+        $.get("../../api/projectList", { jsonData: jsonData, types: "getCustomerInformation" })
+            .done(function (data) {
+                let dataInformation = JSON.parse(data);
+                $('#fullName').val(dataInformation[0].user_firstName);
+                $('#lastName').val(dataInformation[0].user_lastName);
+                $('#cus_idCard').val(dataInformation[0].cus_idCard);
+                $('#cus_phone').val(dataInformation[0].cus_phone);
+
+            });
+
+        let jsonData1 = JSON.stringify({
+            "plan_type_id": plan_type_id
+        });
+        //เรียก api
+        $.get("../../api/projectList", { jsonData: jsonData1, types: "getProjectInformation" })
+            .done(function (data) {
+                let projectInformation = JSON.parse(data);
+                $('#plan_type_id').val(projectInformation[0].plan_type_id);
+                $('#pro_name').val(projectInformation[0].pro_name);
+                $('#pro_type_name').val(projectInformation[0].pro_type_name);
+                $('#plan_name').val(projectInformation[0].plan_name);
+
+                $('#pro_location_name').val(projectInformation[0].pro_location_name);
+                $('#plan_price').val(projectInformation[0].plan_price);
+                $('#sale_company').val(projectInformation[0].sale_company);
+                $('#sale_fullName').val(projectInformation[0].sale_fullName);
+                $('#sale_phone').val(projectInformation[0].sale_phone);
+                $('#sale_mail').val(projectInformation[0].sale_mail);
+
+
+            });
+
+    };
+
+
+    function onBooking() {
+
+         
+        let user_firstName = $('#fullName').val();
+        let user_lastName =  $('#lastName').val();
+        let cus_idCard = $('#cus_idCard').val();
+        let cus_company_name = $('#cus_company_name').val();
+        let cus_address = $('#cus_address').val();   
+        let cus_province_id = $('#drdwProvince').val();         
+        let cus_district_id = $('#drdwDistrict').val();         
+        let cus_sub_district_id = $('#drdwSubDistrict').val();  
+        let cus_postal_code = $('#cus_postal_code').val();
+        let cus_phone = $('#cus_phone').val();
     
+        
+
+        if (!user_firstName) {
+            Swal.fire({
+                type: 'warning',
+                title: 'กรุณาระบุ!!',
+                text: 'ชื่อ'
+            });
+        } else if (!user_lastName) {
+            Swal.fire({
+                type: 'warning',
+                title: 'กรุณาระบุ!!',
+                text: 'นามสกุล'
+            });
+        }
+        else if (!cus_idCard) {
+            Swal.fire({
+                type: 'warning',
+                title: 'กรุณาระบุ!!',
+                text: 'เลขบัตรประชาชน'
+            });
+
+        } else if (!cus_phone) {
+            Swal.fire({
+                type: 'warning',
+                title: 'กรุณาระบุ!!',
+                text: 'เบอร์โทรศัพท์'
+            });
+        }
+
+        else {
+
+            Swal.fire({ //alert confirm 
+                title: 'ยืนยันการสมัคร ?',
+                type: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'ตกลง',
+                cancelButtonText: 'ยกเลิก',
+            })
+                .then((val) => {
+                    if (val.value) {
+
+
+
+                        var jsonDataSave = JSON.stringify({
+                            //INSERT
+                            "user_id": user_id,
+                            "user_email": user_email,
+                            "plan_type_id": plan_type_id,
+                            "book_firstName": user_firstName,
+                            "book_lastName": user_lastName,
+                            "book_type": 'สั่งจอง',
+                            "book_phone": cus_phone,
+
+                            //UPDATE
+                            "user_firstName": user_firstName,
+                            "user_lastName": user_lastName,
+                            "cus_idCard": cus_idCard,
+                            "cus_company_name": cus_company_name,
+                            "cus_address": cus_address,
+                            "cus_province_id": cus_province_id,
+                            "cus_district_id": cus_district_id,
+                            "cus_sub_district_id": cus_sub_district_id,
+                            "cus_postal_code": cus_postal_code,
+                            "cus_phone": cus_phone,
+                             
+
+                        });
+                        console.log('jsonDataSave', JSON.parse(jsonDataSave) );
+
+                        //เรียก api
+                        $.ajax({
+                            type: 'POST',
+                            url: "../../api/projectList",
+                            data: { "data": jsonDataSave },
+                            headers: {
+                                "types": "addBooking"
+                            }
+                        }).done(function (data) {
+
+                            if (data == "success") {
+                                swal.fire({
+                                    type: 'success',
+                                    title: 'บันทึกข้อมูลเรียบร้อย'
+                                }).then((value) => {
+                                    location.reload();
+                                    window.location.href = "../project/project-list" 
+                                   
+                                });
+                            } else {
+                                swal.fire({
+                                    type: 'warning',
+                                    title: 'พบข้อผิดพลาด',
+                                    text: data
+                                }).then((value) => {
+                                    //location.reload();
+                                });
+                            }
+                        });
+
+                    }
+                });
+
+
+        }
+    };
+
+
+
+
+
+
+
+
+
 
 
     function drdwProvinceChange(e) {

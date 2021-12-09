@@ -291,15 +291,12 @@
                                                                 </div>
                                                                  <div class="col-lg-3">
                                                                     <div class="inputText setting-font">รูป QR Code </div>
-                                                                    <input type="file" id="pro_bank_qrCodeImg" class="setting-form theme-btn-3 btn-setting w-100"  accept="image/png,image/jpg" onchange="upload_qrCode(event)" />
+                                                                    <input type="file" id="pro_bank_qrCodeImg" class="setting-form theme-btn-3 btn-setting w-100"  accept="image/*" onchange="upload_qrCode(event)" />
                                                                        <%--<input  type="file" class="setting-form theme-btn-3 btn-setting w-100" accept="image/*" multiple="multiple" id="fileUploader">--%>
                                                                      <div id="display_image">
                                                                           <img id='output'  >  
                                                                      </div>
-                                                                  
-                                                               
-
-
+                                                                   
 
                                                                 </div>
 
@@ -391,7 +388,7 @@
         $('#btnSave').val('Create');
         HideTopbar(1);
         ClearModal("#FormModal_Project");  
-
+        clearpic();
         $("#FormModal_Project").modal("show");
         LockModal("#FormModal_Project"); 
     };

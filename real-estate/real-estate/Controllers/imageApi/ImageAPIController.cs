@@ -21,7 +21,7 @@ namespace real_estate.Controllers.imageApi
 
             string sale_id = Request.Headers.GetValues("sale_id").FirstOrDefault().ToString();
             string time = Request.Headers.GetValues("time").FirstOrDefault().ToString();
-
+            string type = Request.Headers.GetValues("type").FirstOrDefault().ToString(); 
 
             //Create the Directory.
             string path = HttpContext.Current.Server.MapPath("~/image/project/");
@@ -32,20 +32,41 @@ namespace real_estate.Controllers.imageApi
 
             //Fetch the File.
             HttpPostedFile postedFile = HttpContext.Current.Request.Files[0];
-     
 
-
-            //Fetch the File Name.
-            string fileName = "BY_" + sale_id + "_" + time + "_" + Path.GetFileName(postedFile.FileName);
-            
-
-
+            string fileName = "";
+            if (type == "Profile")
+            {
+                  fileName = "ProFile_BY_" + sale_id + "_" + time + "_" + Path.GetFileName(postedFile.FileName);
+            }
+            else {
+                //Fetch the File Name.
+                  fileName = "BY_" + sale_id + "_" + time + "_" + Path.GetFileName(postedFile.FileName);
+            }
+             
             //Save the File.
             postedFile.SaveAs(path +  fileName  );
 
             //Send OK Response to Client.
             return Request.CreateResponse(HttpStatusCode.OK, fileName);
         }
+
+        [Route("api/ImageAPI/UploadFilesArray")]
+        [HttpPost]
+        public HttpResponseMessage UploadFilesArray(HttpContext context)
+        { 
+            string sale_id = Request.Headers.GetValues("sale_id").FirstOrDefault().ToString();
+            string time = Request.Headers.GetValues("time").FirstOrDefault().ToString(); 
+            string countIndex = Request.Headers.GetValues("countIndex").FirstOrDefault().ToString();
+
+ 
+
+
+            return Request.CreateResponse(HttpStatusCode.OK, "OK");
+
+           
+
+        }
+
 
         [HttpPost]
         [Route("api/ImageAPI/GetFiles")]
@@ -64,6 +85,10 @@ namespace real_estate.Controllers.imageApi
 
             return Request.CreateResponse(HttpStatusCode.OK, images);
         }
- 
+
+
+
+
+        
     }
 }

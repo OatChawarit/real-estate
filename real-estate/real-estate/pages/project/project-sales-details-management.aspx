@@ -150,7 +150,8 @@
                                     <thead class="table-dark" align="center">
                                         <tr>
                                             <th style="width: 60px; min-width: 60px; max-width: 60px; vertical-align: middle;"></th>
-                                            <th style="width: 40px;">รหัสแบบแปลนโครงการ</th>
+                                            <th style="width: 40px;">รหัสแบบแปลน</th>
+                                            <th style="width: 80px;">ชื่อแบบแปลน </th>
                                             <th style="width: 80px;">พื้นที่ใช้สอย</th>
                                             <th style="width: 80px;">จำนวนชั้น</th>
                                             <th style="width: 40px;">ห้องนอน</th>
@@ -207,7 +208,7 @@
                                                 <div class="form-group row ">
                                                     <div id="divProjectInfo" class="row col-12 setting-row">
 
-                                                       <div class="col-lg-6">
+                                                       <div class="col-lg-3">
                                                             <div class="inputText setting-font">ชื่อแบบแปลน* </div>
                                                             <input type="text" id="plan_name" placeholder=" " class="setting-form pro-input" maxlength="100" />
                                                         </div> 
@@ -230,6 +231,10 @@
                                                         <div class="col-lg-3">
                                                             <div class="inputText setting-font">จำนวนห้องน้ำ</div>
                                                             <input type="number" id="plan_bath_room"   class="setting-form pro-input"   />
+                                                        </div>
+                                                         <div class="col-lg-3">
+                                                            <div class="inputText setting-font">ที่จอดรถ</div>
+                                                            <input type="number" id="plan_parking"   class="setting-form pro-input"   />
                                                         </div>
                                                         <div class="col-lg-3">
                                                             <div class="inputText setting-font">จำนวนห้องอเนกประสงค์</div>
@@ -447,7 +452,7 @@
                                                     <div id="divPlanImageProfile" class="row col-12 setting-row">
                                                         <div class="col-lg-6">
                                                             <div class="inputText setting-font">รูปโปรไฟล์ แปลนโครงการ </div>  
-                                                            <input type="file" id="plan_image_profile" class="my-3 setting-form theme-btn-3 btn-setting w-100"  accept="image/png,image/jpg" onchange="upload_image_profile(event)" />                                                        
+                                                            <input type="file" id="plan_image_profile" class="my-3 setting-form theme-btn-3 btn-setting w-100" accept="image/*" onchange="upload_image_profile(event)" />                                                        
                                                             <div id="display_image">
                                                                 <img id='output'>  
                                                             </div> 
@@ -460,8 +465,9 @@
                                                     <div class="row col-12 setting-row">
                                                         <div class="col-lg-6">
                                                             <div class="inputText setting-font">รูปแปลนโครงการ </div>
-                                                            <input type="file" id="plan_image_profileArray" class="my-3 setting-form theme-btn-3 btn-setting w-100" multiple="multiple" accept="image/png,image/jpg" onchange="upload_image_profileArray(event)" />
-                                                         
+                                                            <%--<input type="file" id="plan_image_profileArray" class="my-3 setting-form theme-btn-3 btn-setting w-100" multiple="multiple" accept="image/*" onchange="upload_image_profileArray(event)" />--%>
+                                                         <asp:FileUpload ID="FileUpload1" runat="server"   class="my-3 setting-form theme-btn-3 btn-setting w-100" multiple="multiple" accept="image/*" onchange="upload_image_profileArray(event)"  />
+                                                            <asp:Button ID="btnUpload1111" runat="server" Text="Upload" class=" " OnClick="btnUpload_Click"   />
                                                         </div>
                                                     </div>
                                                     <div class="row col-12 setting-row" id="display_imageArray">
@@ -521,6 +527,7 @@
 
     let pf_imgArray = [];
     let pf_imgDataArray = []; 
+     
 
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
@@ -549,9 +556,21 @@
                 $('#topic_pro_type_name').val(listTopic[0].pro_type_name);
                 $('#topic_pro_location_name').val(listTopic[0].pro_location_name);
                 $('#topic_pro_statusType_name').val(listTopic[0].pro_statusType_name);
-  
+   
+            });
+
+        let jsonPlanTable = JSON.stringify({
+            "pro_id": pro_id, 
+            "sale_id" : sale_id
+        });
+
+        $.get("../../api/projectList", { jsonData: jsonPlanTable, types: "listPlanTable" })
+            .done(function (data) {
+                let listPlanTable = JSON.parse(data);
+               
+                console.log('listPlanTable' , listPlanTable)
                 /// สร้างตาราง 
-                //createProjectDataTable(resData, "");
+                createProjectPlanDataTable(listPlanTable, "");
             });
 
     });
@@ -570,6 +589,7 @@
         // Clear input
         $('.pro-input').val('');
         $('.pro-chk-input').prop('checked', false);
+        clearpic();
         //ClearModal("#FormModal_Project_Details");
 
         $("#FormModal_Project_Details").modal("show");
@@ -591,6 +611,7 @@
             let plan_bed_room = $('#plan_bed_room').val();
             let plan_bath_room = $('#plan_bath_room').val();
             let plan_multiFunction_room = $('#plan_multiFunction_room').val();
+            let plan_parking = $('#plan_parking').val();
 
             let promotion_discount_percent = $('#promotion_discount_percent').val();
             let promotion_giftVoucher_price = $('#promotion_giftVoucher_price').val();
@@ -724,13 +745,10 @@
                 })
                     .then((val) => {
                         if (val.value) {
-                           
-                            //Number.parseFloat(money_unformat($('#plan_price').val())).toFixed(2);
-                            console.log('plan_price', plan_price);
-
+                
                             if (pf_img) {
 
-                                plan_image_profile = "BY_" + sale_id + "_" + time + "_" + pf_img;
+                                plan_image_profile = "ProFile_BY_" + sale_id + "_" + time + "_" + pf_img;
                             } else {
 
                                 plan_image_profile = "";
@@ -739,13 +757,12 @@
                             if (plan_image_Array.length > 0) {
 
                                 plan_image_Array.forEach((item , index) => { 
-                                 
-                                    item.plan_img_path = (index+1)+"-BY_" + sale_id + "_" + time + "_" + item.plan_img_path;
+                                    let prefix = `${index + 1}-BY_${sale_id}_${time}_`
+                                    item.plan_img_path = prefix + item.plan_img_path;
                                      
                                 });
 
                             } else {
-
                                 plan_image_Array = [];
                             }
 
@@ -760,6 +777,7 @@
                                 "plan_bed_room": plan_bed_room,
                                 "plan_bath_room": plan_bath_room,
                                 "plan_multiFunction_room": plan_multiFunction_room,
+                                "plan_parking": plan_parking,
 
                                 "promotion_discount_percent": promotion_discount_percent,
                                 "promotion_giftVoucher_price": promotion_giftVoucher_price,
@@ -786,76 +804,92 @@
                                 "facilities_IsSecuritySystem": facilities_IsSecuritySystem,  
 
                                 "plan_image_profile": plan_image_profile,
-
                                 "plan_image_Array": plan_image_Array
                             });
-
-
-                            //console.log('plan_image_Array', plan_image_Array);
-
-
-
-                            //let jsonImg = JSON.stringify({ 
-                                 
-                            //    "plan_image_Array": plan_image_Array
-
-
-                            //});
-                            //console.log('jsonImg' , JSON.parse(jsonImg))
-
-
-
+  
                             console.log(JSON.parse(jsonData))
-                            ////if (qrCodeData != "") {
 
-                            ////    var formData = new FormData();
-                            ////    formData.append("file", qrCodeData);
-                            ////    $.ajax({
-                            ////        url: '/api/ImageAPI/UploadFiles',
-                            ////        type: 'POST',
-                            ////        data: formData,
-                            ////        headers: {
-                            ////            "sale_id": sale_id,
-                            ////            "time": time,
-                            ////        },
-                            ////        cache: false,
-                            ////        contentType: false,
-                            ////        processData: false,
-                            ////        success: function (fileName) {
-                            ////            //console.log('fileName', fileName)
+                            if (pf_imgData != "") {
+                                console.log('pf_imgData' , pf_imgData)
+                                var formData = new FormData();
+                                formData.append("file", pf_imgData);
+                                 
+                                $.ajax({
+                                    url: '/api/ImageAPI/UploadFiles',
+                                    type: 'POST',
+                                    data: formData,
+                                    headers: {
+                                        "sale_id": sale_id,
+                                        "time": time,
+                                        "type": 'Profile',
+                                    },
+                                    cache: false,
+                                    contentType: false,
+                                    processData: false,
+                                    success: function (postedFile) {
+                                        console.log('postedFile', postedFile)
 
-                            ////        }
-                            ////    })
-                            ////}
+                                    }
+                                })
+                            }
+                         
+ 
+                            //if (pf_imgDataArray.length > 0) {
 
-                            //////เรียก api
-                            ////$.ajax({
-                            ////    type: 'POST',
-                            ////    url: "../../api/projectList",
-                            ////    data: { "data": jsonData },
-                            ////    headers: {
-                            ////        "types": "addProject"
-                            ////    }
-                            ////}).done(function (data) {
+                            //    //$('#btnUpload').click();
+                               
+                            //    var formDataArr = new FormData();                              
+                            //    formDataArr.append("file1", pf_imgDataArray);
+                            //    $.ajax({
+                            //        url: '/api/ImageAPI/UploadFilesArray',
+                            //        type: 'POST',
+                            //        data: formDataArr,
+                            //        headers: {
+                            //            "sale_id": sale_id,
+                            //            "time": time,
+                            //            "data": pf_imgDataArray,
+                            //            "countIndex": pf_imgDataArray.length
 
-                            ////    if (data == "success") {
-                            ////        swal.fire({
-                            ////            type: 'success',
-                            ////            title: 'บันทึกข้อมูลเรียบร้อย'
-                            ////        }).then((value) => {
-                            ////            location.reload();
+                                  
+                            //        },
+                            //        cache: false,
+                            //        contentType: false,
+                            //        processData: false,
+                            //        success: function (result ) {
+                            //            console.log('result', result)
 
-                            ////        });
-                            ////    } else {
-                            ////        swal.fire({
-                            ////            type: 'warning',
-                            ////            title: 'พบข้อผิดพลาด',
-                            ////            text: data
-                            ////        }).then((value) => {
-                            ////            //location.reload();
-                            ////        });
-                            ////    }
-                            ////});
+                            //        }
+                            //    })
+                            //}
+
+                            //เรียก api
+                            $.ajax({
+                                type: 'POST',
+                                url: "../../api/projectList",
+                                data: { "data": jsonData },
+                                headers: {
+                                    "types": "addProjectPlan"
+                                }
+                            }).done(function (data) {
+
+                                if (data == "success") {
+                                    swal.fire({
+                                        type: 'success',
+                                        title: 'บันทึกข้อมูลเรียบร้อย'
+                                    }).then((value) => {
+                                        location.reload();
+
+                                    });
+                                } else {
+                                    swal.fire({
+                                        type: 'warning',
+                                        title: 'พบข้อผิดพลาด',
+                                        text: data
+                                    }).then((value) => {
+                                        //location.reload();
+                                    });
+                                }
+                            });
 
                         }
                     });
@@ -902,6 +936,7 @@
         
         let input = e.target;
         let innerHtml = "";
+        pf_imgArray = [];
        
         inputArray = input.files; 
 
@@ -932,11 +967,12 @@
                 }; 
 
                 reader.readAsDataURL(input.files[i]);
-                pf_imgArray.push({ "plan_img_path": input.files[i].name,  });
+                pf_imgArray.push({ "plan_img_path": input.files[i].name  });
                 //pf_imgArray.push( input.files[i].name  );
-                pf_imgDataArray.push( input.files[i]  );
-  
+                pf_imgDataArray.push(input.files[i]);
+                //pf_imgDataArray.push({ "pf_imgDataArray": input.files[i]  } );
 
+           
             }, 400);
              
            
@@ -956,11 +992,16 @@
             $("#output").attr("src", "");
             $("#plan_image_profile").val('');
 
-        } else if(type == 1) {
+        } else if (type == 1) {
 
             $("#plan_image_profileArray").val('');
             $("#display_imageArray").html("");
 
+        } else {
+            $("#output").attr("src", "");
+            $("#plan_image_profile").val('');
+            $("#plan_image_profileArray").val('');
+            $("#display_imageArray").html("");
         }
  
  
@@ -978,10 +1019,10 @@
 
 
     //สร้างตาราง
-    function createProjectDataTable(data, type) {
+    function createProjectPlanDataTable(data, type) {
 
 
-        $("#register_project").dataTable({
+        $("#register_project_plan").dataTable({
             "destroy": true,
             data: data,
             "responsive": true,
@@ -996,7 +1037,7 @@
 
                         let chk = `
                                   <td>                                 
-                                        <button type='button' class='btn-warning sm btnView  ' id="btnView${meta.row}"  value="${row.pro_id}" title='รายละเอียดประเภทแปลนโครงการ'  onclick="onBtnViewClick(this)"   ><i class='fas fa-eye' style="color:white" ></i>  </button>
+                                        <button type='button' class='btn-warning sm btnView d-none ' id="btnView${meta.row}"  value="${row.plan_type_id}" title='รายละเอียดประเภทแปลนโครงการ'  onclick="onBtnEditClick(this)"   ><i class='fas fa-eye' style="color:white" ></i>  </button>
                                                   
                                   </td> 
                                   `;
@@ -1008,42 +1049,90 @@
                 {
                     render: function (data, type, row, meta) {
 
-                        return row.pro_id
+                        return row.plan_type_id
                     },
                     className: "text-center"
                 },
                 {
                     render: function (data, type, row, meta) {
 
-                        return row.com_name
+                        return row.plan_name
                     },
                     className: "text-center"
                 },
                 {
                     render: function (data, type, row, meta) {
 
-                        return row.pro_name
+                        return row.plan_useable_area
                     },
                     className: "text-center"
                 },
                 {
                     render: function (data, type, row, meta) {
 
-                        return row.pro_type_name
+                        return row.plan_floor
                     },
                     className: "text-center"
                 },
                 {
                     render: function (data, type, row, meta) {
 
-                        return row.pro_location_name
+                        return row.plan_bed_room
                     },
                     className: "text-center"
                 },
                 {
                     render: function (data, type, row, meta) {
 
-                        return row.pro_statusType_name
+                        return row.plan_bath_room
+                    },
+                    className: "text-center"
+                },
+                {
+                    render: function (data, type, row, meta) {
+
+                        return row.plan_multiFunction_room
+                    },
+                    className: "text-center"
+                },
+                {
+                    render: function (data, type, row, meta) {
+
+                        return row.plan_parking
+                    },
+                    className: "text-center"
+                },
+                {
+                    render: function (data, type, row, meta) {
+
+                        return row.plan_price
+                    },
+                    className: "text-right"
+                },
+                {
+                    render: function (data, type, row, meta) {
+
+                        let status = "";
+
+                        if (row.plan_status == 'N') {
+
+                            status = `<span class="badge badge-success" style="background-color:#198754"> ปกติ </span>`;
+
+                        } else {
+
+                            status = `<span class="badge badge-danger" style="background-color:red"> ยกเลิก </span>`;
+
+
+                        }
+                         
+                        return status
+                    },
+                    className: "text-center"
+                },
+                {
+                    render: function (data, type, row, meta) {
+
+                        return row.plan_view
                     },
                     className: "text-center"
                 },

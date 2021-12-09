@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.IO;
+using System.Configuration;
 
 namespace real_estate.pages.project
 {
@@ -11,6 +13,12 @@ namespace real_estate.pages.project
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
+        }
+
+        protected void btnUpload_Click(object sender, EventArgs e)
+        { 
+               
 
         }
     }
