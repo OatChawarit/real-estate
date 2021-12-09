@@ -178,6 +178,7 @@
     <Content Include="pages\home\profile.aspx" />
     <Content Include="pages\include\footcontent-admin.html" />
     <Content Include="pages\include\topbar-admin.html" />
+    <Content Include="pages\project\find-project.aspx" />
     <Content Include="pages\project\project-details.aspx" />
     <Content Include="pages\project\project-list.aspx" />
     <Content Include="pages\project\project-sales-details-management.aspx" />
@@ -2195,6 +2196,7 @@
     <Compile Include="Controllers\main\newsController.cs" />
     <Compile Include="Controllers\main\saleDataController.cs" />
     <Compile Include="Controllers\main\userDataController.cs" />
+    <Compile Include="Controllers\project\findProjectController.cs" />
     <Compile Include="Controllers\project\projectListController.cs" />
     <Compile Include="Controllers\register\registerController.cs" />
     <Compile Include="Controllers\service\drdwDataController.cs" />
@@ -2285,6 +2287,13 @@
     </Compile>
     <Compile Include="pages\home\profile.aspx.designer.cs">
       <DependentUpon>profile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\project\find-project.aspx.cs">
+      <DependentUpon>find-project.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\project\find-project.aspx.designer.cs">
+      <DependentUpon>find-project.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\project\project-details.aspx.cs">
       <DependentUpon>project-details.aspx</DependentUpon>
