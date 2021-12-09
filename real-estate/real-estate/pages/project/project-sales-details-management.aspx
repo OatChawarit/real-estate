@@ -70,7 +70,6 @@
     <!-- นำเข้าส่วนหัว -->
     <!-- #include virtual ="../include/header.html" -->
 
-
 </head>
 <body>
     <!-- Body main wrapper start -->

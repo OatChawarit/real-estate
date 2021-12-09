@@ -46,7 +46,7 @@
                             <div class="text-center">
                                 <i class="far fa-envelope" ></i>
                             </div>
-                            <h3>Email</h3>
+                            <h3>Email </h3>
                             <p>
                                 thaweesakoum@gmail.com
                             </p>
