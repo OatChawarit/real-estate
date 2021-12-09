@@ -42,9 +42,257 @@ namespace real_estate.Controllers.imageApi
                 //Fetch the File Name.
                   fileName = "BY_" + sale_id + "_" + time + "_" + Path.GetFileName(postedFile.FileName);
             }
+
              
             //Save the File.
             postedFile.SaveAs(path +  fileName  );
+
+            //Send OK Response to Client.
+            return Request.CreateResponse(HttpStatusCode.OK, fileName);
+        }
+        [Route("api/ImageAPI/UploadFiles1")]
+        [HttpPost]
+        public HttpResponseMessage UploadFiles1()
+        {
+
+            string sale_id = Request.Headers.GetValues("sale_id").FirstOrDefault().ToString();
+            string time = Request.Headers.GetValues("time").FirstOrDefault().ToString();
+            string type = Request.Headers.GetValues("type").FirstOrDefault().ToString();
+
+            //Create the Directory.
+            string path = HttpContext.Current.Server.MapPath("~/image/project/");
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+
+            //Fetch the File.
+            HttpPostedFile postedFile = HttpContext.Current.Request.Files[0];
+
+            string fileName = "";
+            if (type == "Profile")
+            {
+                fileName = "ProFile_BY_" + sale_id + "_" + time + "_" + Path.GetFileName(postedFile.FileName);
+            }
+            else if( type == "Array")
+            {
+                //Fetch the File Name.
+                fileName = "1-BY_" + sale_id + "_" + time + "_" + Path.GetFileName(postedFile.FileName);
+            }
+            else
+            {
+                //Fetch the File Name.
+                fileName = "BY_" + sale_id + "_" + time + "_" + Path.GetFileName(postedFile.FileName);
+            }
+            //Save the File.
+            postedFile.SaveAs(path + fileName);
+
+            //Send OK Response to Client.
+            return Request.CreateResponse(HttpStatusCode.OK, fileName);
+        }
+        [Route("api/ImageAPI/UploadFiles2")]
+        [HttpPost]
+        public HttpResponseMessage UploadFiles2()
+        {
+
+            string sale_id = Request.Headers.GetValues("sale_id").FirstOrDefault().ToString();
+            string time = Request.Headers.GetValues("time").FirstOrDefault().ToString();
+            string type = Request.Headers.GetValues("type").FirstOrDefault().ToString();
+
+            //Create the Directory.
+            string path = HttpContext.Current.Server.MapPath("~/image/project/");
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+
+            //Fetch the File.
+            HttpPostedFile postedFile = HttpContext.Current.Request.Files[0];
+
+            string fileName = "";
+            if (type == "Profile")
+            {
+                fileName = "ProFile_BY_" + sale_id + "_" + time + "_" + Path.GetFileName(postedFile.FileName);
+            }
+            else if (type == "Array")
+            {
+                //Fetch the File Name.
+                fileName = "2-BY_" + sale_id + "_" + time + "_" + Path.GetFileName(postedFile.FileName);
+            }
+            else
+            {
+                //Fetch the File Name.
+                fileName = "BY_" + sale_id + "_" + time + "_" + Path.GetFileName(postedFile.FileName);
+            }
+
+            //Save the File.
+            postedFile.SaveAs(path + fileName);
+
+            //Send OK Response to Client.
+            return Request.CreateResponse(HttpStatusCode.OK, fileName);
+        }
+
+        [Route("api/ImageAPI/UploadFiles3")]
+        [HttpPost]
+        public HttpResponseMessage UploadFiles3()
+        {
+
+            string sale_id = Request.Headers.GetValues("sale_id").FirstOrDefault().ToString();
+            string time = Request.Headers.GetValues("time").FirstOrDefault().ToString();
+            string type = Request.Headers.GetValues("type").FirstOrDefault().ToString();
+
+            //Create the Directory.
+            string path = HttpContext.Current.Server.MapPath("~/image/project/");
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+
+            //Fetch the File.
+            HttpPostedFile postedFile = HttpContext.Current.Request.Files[0];
+
+            string fileName = "";
+            if (type == "Profile")
+            {
+                fileName = "ProFile_BY_" + sale_id + "_" + time + "_" + Path.GetFileName(postedFile.FileName);
+            }
+            else if (type == "Array")
+            {
+                //Fetch the File Name.
+                fileName = "3-BY_" + sale_id + "_" + time + "_" + Path.GetFileName(postedFile.FileName);
+            }
+            else
+            {
+                //Fetch the File Name.
+                fileName = "BY_" + sale_id + "_" + time + "_" + Path.GetFileName(postedFile.FileName);
+            }
+
+            //Save the File.
+            postedFile.SaveAs(path + fileName);
+
+            //Send OK Response to Client.
+            return Request.CreateResponse(HttpStatusCode.OK, fileName);
+        }
+
+        [Route("api/ImageAPI/UploadFiles4")]
+        [HttpPost]
+        public HttpResponseMessage UploadFiles4()
+        {
+
+            string sale_id = Request.Headers.GetValues("sale_id").FirstOrDefault().ToString();
+            string time = Request.Headers.GetValues("time").FirstOrDefault().ToString();
+            string type = Request.Headers.GetValues("type").FirstOrDefault().ToString();
+
+            //Create the Directory.
+            string path = HttpContext.Current.Server.MapPath("~/image/project/");
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+
+            //Fetch the File.
+            HttpPostedFile postedFile = HttpContext.Current.Request.Files[0];
+
+            string fileName = "";
+            if (type == "Profile")
+            {
+                fileName = "ProFile_BY_" + sale_id + "_" + time + "_" + Path.GetFileName(postedFile.FileName);
+            }
+            else if (type == "Array")
+            {
+                //Fetch the File Name.
+                fileName = "4-BY_" + sale_id + "_" + time + "_" + Path.GetFileName(postedFile.FileName);
+            }
+            else
+            {
+                //Fetch the File Name.
+                fileName = "BY_" + sale_id + "_" + time + "_" + Path.GetFileName(postedFile.FileName);
+            }
+
+            //Save the File.
+            postedFile.SaveAs(path + fileName);
+
+            //Send OK Response to Client.
+            return Request.CreateResponse(HttpStatusCode.OK, fileName);
+        }
+        [Route("api/ImageAPI/UploadFiles5")]
+        [HttpPost]
+        public HttpResponseMessage UploadFiles5()
+        {
+
+            string sale_id = Request.Headers.GetValues("sale_id").FirstOrDefault().ToString();
+            string time = Request.Headers.GetValues("time").FirstOrDefault().ToString();
+            string type = Request.Headers.GetValues("type").FirstOrDefault().ToString();
+
+            //Create the Directory.
+            string path = HttpContext.Current.Server.MapPath("~/image/project/");
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+
+            //Fetch the File.
+            HttpPostedFile postedFile = HttpContext.Current.Request.Files[0];
+
+            string fileName = "";
+            if (type == "Profile")
+            {
+                fileName = "ProFile_BY_" + sale_id + "_" + time + "_" + Path.GetFileName(postedFile.FileName);
+            }
+            else if (type == "Array")
+            {
+                //Fetch the File Name.
+                fileName = "5-BY_" + sale_id + "_" + time + "_" + Path.GetFileName(postedFile.FileName);
+            }
+            else
+            {
+                //Fetch the File Name.
+                fileName = "BY_" + sale_id + "_" + time + "_" + Path.GetFileName(postedFile.FileName);
+            }
+
+            //Save the File.
+            postedFile.SaveAs(path + fileName);
+
+            //Send OK Response to Client.
+            return Request.CreateResponse(HttpStatusCode.OK, fileName);
+        }
+        [Route("api/ImageAPI/UploadFiles6")]
+        [HttpPost]
+        public HttpResponseMessage UploadFiles6()
+        {
+
+            string sale_id = Request.Headers.GetValues("sale_id").FirstOrDefault().ToString();
+            string time = Request.Headers.GetValues("time").FirstOrDefault().ToString();
+            string type = Request.Headers.GetValues("type").FirstOrDefault().ToString();
+
+            //Create the Directory.
+            string path = HttpContext.Current.Server.MapPath("~/image/project/");
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+
+            //Fetch the File.
+            HttpPostedFile postedFile = HttpContext.Current.Request.Files[0];
+
+            string fileName = "";
+            if (type == "Profile")
+            {
+                fileName = "ProFile_BY_" + sale_id + "_" + time + "_" + Path.GetFileName(postedFile.FileName);
+            }
+            else if (type == "Array")
+            {
+                //Fetch the File Name.
+                fileName = "6-BY_" + sale_id + "_" + time + "_" + Path.GetFileName(postedFile.FileName);
+            }
+            else
+            {
+                //Fetch the File Name.
+                fileName = "BY_" + sale_id + "_" + time + "_" + Path.GetFileName(postedFile.FileName);
+            }
+
+            //Save the File.
+            postedFile.SaveAs(path + fileName);
 
             //Send OK Response to Client.
             return Request.CreateResponse(HttpStatusCode.OK, fileName);

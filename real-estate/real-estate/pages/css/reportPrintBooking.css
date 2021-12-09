@@ -1,0 +1,295 @@
+﻿/* Credit By IT - Mee Capital Co.,Ltd. || 2019 */
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    /*background: rgb(102, 100, 95);*/
+    /*background: #d9d9d9;*/
+    background: white;
+    /*font-family: Tahoma;*/
+    font-family: 'Angsana New';
+    font-size: 16pt;
+    line-height: 1;
+}
+
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+.book {
+    width: 210mm;
+    height: 297mm;
+    display: block;
+    background: center center no-repeat;
+    margin: auto;
+}
+
+.page {
+    width: 210mm;
+    height: 297mm;
+    min-height: 297mm;
+    max-height: 297mm;
+    /*padding: 10mm;
+        margin: 10mm auto;*/
+    border: 1px #ffffff solid;
+    background: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 1);
+}
+
+.headpage {
+    height: 25mm;
+    /*width: 210mm;*/
+    /*outline: 1mm blue solid;*/
+    /*background-image: url('../img/reporthead.jpg');*/
+    background-position: center;
+    background-size: cover;
+    /*background-color: aliceblue;*/
+}
+.head-right h2 , p {
+    margin: 0px;
+}
+.head-left {
+    width: 25%;
+}
+
+
+
+.subpage {
+    /*height: 247mm;*/
+    /*width: 210mm;*/
+    line-height: 1.5;
+    /*max-height: 215mm;*/
+    /*padding: 5px 20px 5px 20px;*/
+    /*outline: 1mm #FFEAEA solid;*/
+    background-color: white;
+    /*background-color: #f0f0f0ba;*/
+}
+
+.subpage h3 {
+    /*margin: 0 ;*/
+}
+
+.subpage span {
+    padding: 0 12px;
+}
+
+.row {
+    display:flex;
+}
+
+
+
+.p-A4 {
+    /*display: inline-block;*/
+    width: 210mm;
+    height: 297mm;
+    max-width: 210mm;
+    max-height: 297mm;
+    /*padding: 1.27cm;*/
+    padding: 1.27cm 1.27cm 1.27cm 2.27cm;
+    /*padding-top: 0.5cm  ;
+    padding-left: 0.6cm;*/
+    /*border: 1px solid black;*/
+    /*padding: 5px;
+    margin: 5px;*/
+    /*padding-right: 1cm;*/
+    /*background: white;*/
+}
+
+
+
+@page {
+    size: A4;
+    margin: 0;
+}
+
+@media print {
+    html, body {
+        width: 210mm;
+        height: 297mm;
+        /*max-height: 5.5in;
+        max-width: 8.5in;*/
+        margin: 0;
+        /*background: white;*/
+    }
+    .page {
+        box-shadow: none;
+    }
+
+
+    .p-A4 {
+        width: 210mm;
+        height: 297mm;
+        max-width: 210mm;
+        max-height: 297mm;
+    }
+
+    .page {
+        margin: 0;
+        border: initial;
+        border-radius: initial;
+        width: initial;
+        min-height: initial;
+        box-shadow: initial;
+        background: initial;
+        page-break-after: always;
+    }
+    .no-print {
+        display: none;
+    }
+}
+
+
+.nb-left {
+    border-left: none;
+}
+
+.nb-right {
+    border-right: none;
+}
+
+.nb-top {
+    border-top: none;
+}
+
+.nb-bottom {
+    border-bottom: none;
+}
+
+.nb-all {
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    border-top: none;
+    border-collapse: collapse;
+}
+
+.bd-all {
+    border-left: 1px;
+    border-right: 1px;
+    border-bottom: 1px;
+    border-top: 1px;
+}
+
+td, th {
+    /*border: solid 1px;*/
+}
+
+.myBtnPrint {
+    position: fixed;
+    right: 100px;
+    top: 10px;
+    background-color: dodgerblue;
+    border: none;
+    color: white;
+    padding: 12px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 5);
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+    .myBtnPrint:hover {
+        background-color: deepskyblue;
+    }
+
+    .myBtnPrint:active {
+        background-color: royalblue;
+    }
+
+.boB {
+    border-bottom: 1px solid black;
+}
+
+.boT {
+    border-top: 1px solid black;
+}
+
+.boL {
+    border-left: 1px solid black;
+}
+
+.boR {
+    border-right: 1px solid black;
+}
+
+.w-50 {
+    width: 50%
+}
+
+.w-10 {
+    width: 10%
+}
+
+.w-15 {
+    width: 15%
+}
+.w-25 {
+    width: 25%;
+}
+.w-30 {
+    width: 30%;
+}
+.w-70 {
+    width: 70%;
+}
+.w-75 {
+    width: 75%;
+}
+.w-100{
+    width:100%;
+}
+.w-35 {
+    width: 35%
+}
+.txt-C {
+    text-align:center;
+}
+.txt-R {
+    text-align: right;
+    padding-right: 5px;
+}
+.txt-L {
+    text-align: left;
+}
+.pd-L-10 {
+    padding-left: 10px;
+}
+.pd-R-2 {
+    padding-right: 2px;
+}
+
+.txt-indent3 {
+    text-indent:3rem;
+}
+
+.text-up {
+    /*font-family: angsana new;*/
+    /* color: #363636; */
+    /*font-weight: bold;*/
+    /*font-size: 16pt;*/
+    position: absolute;
+    margin-top: -8px;
+}
+
+.center-text-box {
+    justify-content: center;
+    display: inline-flex;
+    padding:0 !important;
+}
+
+.dis-inline-block {
+    display: inline-block;
+}
+
+.pd-0 {
+    padding:0px!important;
+}
+ 
+

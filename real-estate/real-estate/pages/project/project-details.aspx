@@ -183,6 +183,7 @@
     <!-- #include virtual ="../include/footer.html" -->
 </body>
 <script>
+  
 
     $(document).ready(function () {
         Swal.fire({
@@ -198,6 +199,13 @@
         const urlParams = new URLSearchParams(queryString);
         const pro_id = urlParams.get('id');
         //console.log(news_id);
+
+
+        // function update view
+        updateView(pro_id);
+
+
+
 
         var jsonData = JSON.stringify({
             "plan_type_id": pro_id
@@ -220,7 +228,7 @@
 
                     $('#pro_date').append("<i class='far fa-calendar-alt'></i>" + dateFormat(item.create_date) + "");
                     $('#pro_head').append(item.pro_name);
-                    $('#pro_views').append("<i class='fas fa-eye'></i>ผู้เข้าชม : 300");
+                    $('#pro_views').append(`<i class='fas fa-eye'></i>ผู้เข้าชม :   ${item.plan_view}`);
                     $('#pro_price').append("฿ " + money_format(item.plan_price));
 
                     let details = "รูปแบบแปลนโครงการ : " + item.plan_name + "<br />ประเภทบ้าน : " + item.pro_type_name + "<br />ทำเลที่ตั้ง : " + item.pro_location_name + "<br />เพิ่มเติม : " + item.promotion_airConditioner_remark;
@@ -270,6 +278,47 @@
         //    loadScript();
         //}, 500);
     });
+
+    function updateView(pro_id) {
+ 
+        let jsonData = JSON.stringify({
+            "plan_type_id": pro_id,
+        });
+
+        $.get("../../api/projectList", { jsonData: jsonData, types: "getView" })
+            .done(function (data) {
+                let getView = JSON.parse(data);
+                let plan_view = getView[0].plan_view;
+                console.log('plan_view', plan_view)
+  
+                let jasonUpdate = JSON.stringify({
+                    "getView": plan_view ,
+                    "plan_type_id": pro_id,
+                });
+
+                console.log('jasonUpdate', jasonUpdate);
+                ///เรียก api
+                $.ajax({
+                    type: 'POST',
+                    url: "../../api/projectList",
+                    data: { "data": jasonUpdate },
+                    headers: {
+                        "types": "updateView"
+                    }
+                }).done(function (data) {
+
+                    if (data == "success") {
+                        console.log('UpdateView Success');
+                    } else {
+                        console.log('error' , data);
+                        
+                    }
+                });
+
+
+            });
+
+    }
 
 
     function loadfacilities(arrDara) {

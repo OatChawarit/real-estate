@@ -11,7 +11,7 @@ namespace real_estate.pages.project
 {
 
 
-    public partial class project_sales_details_management
+    public partial class purchase_order_report_booking
     {
     }
 }

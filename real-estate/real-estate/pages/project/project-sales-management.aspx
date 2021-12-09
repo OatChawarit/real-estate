@@ -550,7 +550,8 @@
                                     data: formData,
                                     headers: {
                                         "sale_id": sale_id,
-                                        "time": time ,
+                                        "time": time,
+                                        "type": "",
                                     },
                                     cache: false,
                                     contentType: false,

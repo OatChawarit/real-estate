@@ -89,7 +89,7 @@
                 </div>
                 <div class="text-end">
                     <a href="javascript:void(0);" class="d-sm-inline-block  btn-sm btn-danger shadow-sm btn-Back btn-setting" onclick="history.back()"><i class="fas fa-arrow-left fa-sm text-white-50"></i>&nbsp;Back</a>
-                    <a href="javascript:void(0);" class="d-sm-inline-block  btn-sm btn-primary shadow-sm btnAdd btn-setting" data-value="" onclick="btnAddClick();"><i class="fas fa-plus fa-sm text-white-50 d-none"></i>&nbsp;Create</a>
+                    <a href="javascript:void(0);" class="d-sm-inline-block  btn-sm btn-primary shadow-sm btnAdd btn-setting" data-value="" onclick="btnAddClick()"><i class="fas fa-plus fa-sm text-white-50 d-none"></i>&nbsp;Create</a>
                     <a href="javascript:void(0);" class="d-sm-inline-block  btn-sm btn-success shadow-sm btn-Refresh btn-setting"><i class="fas fa-redo fa-sm text-white-50"></i>&nbsp;Refresh</a>
                 </div>
             </div>
@@ -462,16 +462,71 @@
                                                     </div>      
                                                 
                                                     <hr class="solid">
-                                                    <div class="row col-12 setting-row">
+                                               <%--     <div class="row col-12 setting-row">
                                                         <div class="col-lg-6">
                                                             <div class="inputText setting-font">รูปแปลนโครงการ </div>
-                                                            <%--<input type="file" id="plan_image_profileArray" class="my-3 setting-form theme-btn-3 btn-setting w-100" multiple="multiple" accept="image/*" onchange="upload_image_profileArray(event)" />--%>
+                                                            <input type="file" id="plan_image_profileArray" class="my-3 setting-form theme-btn-3 btn-setting w-100" multiple="multiple" accept="image/*" onchange="upload_image_profileArray(event)" />
                                                          <asp:FileUpload ID="FileUpload1" runat="server"   class="my-3 setting-form theme-btn-3 btn-setting w-100" multiple="multiple" accept="image/*" onchange="upload_image_profileArray(event)"  />
                                                             <asp:Button ID="btnUpload1111" runat="server" Text="Upload" class=" " OnClick="btnUpload_Click"   />
                                                         </div>
-                                                    </div>
-                                                    <div class="row col-12 setting-row" id="display_imageArray">
-                                                       <%-- show image --%>
+                                                    </div>--%>
+                                                    <%--<div class="row col-12 setting-row" id="display_imageArray">
+                                                     
+
+                                                    </div>--%>
+                                                    <div id="divPlanImage1" class="row col-12 setting-row">
+                                                        <div class="col-lg-4">
+                                                            <div class="inputText setting-font">รูปแปลนโครงการ 1 </div>
+                                                            <input type="file" id="plan_image_1" class="my-3 setting-form theme-btn-3 btn-setting w-100" accept="image/*" onchange="upload_image_profile1(event)" />
+                                                            <div id="display_image1">
+                                                                <img id='output1'>
+                                                            </div>
+                                                            <br />
+                                                        </div>
+                                                         <div class="col-lg-4">
+                                                            <div class="inputText setting-font">รูปแปลนโครงการ 2 </div>
+                                                            <input type="file" id="plan_image_2" class="my-3 setting-form theme-btn-3 btn-setting w-100" accept="image/*" onchange="upload_image_profile2(event)" />
+                                                            <div id="display_image2">
+                                                                <img id='output2'>
+                                                            </div>
+                                                            <br />
+                                                        </div>
+                                                         <div class="col-lg-4">
+                                                            <div class="inputText setting-font">รูปแปลนโครงการ 3 </div>
+                                                            <input type="file" id="plan_image_3" class="my-3 setting-form theme-btn-3 btn-setting w-100" accept="image/*" onchange="upload_image_profile3(event)" />
+                                                            <div id="display_image3">
+                                                                <img id='output3'>
+                                                            </div>
+                                                            <br />
+                                                        </div>
+                                                         <div class="col-lg-4">
+                                                            <div class="inputText setting-font">รูปแปลนโครงการ 4 </div>
+                                                            <input type="file" id="plan_image_4" class="my-3 setting-form theme-btn-3 btn-setting w-100" accept="image/*" onchange="upload_image_profile4(event)" />
+                                                            <div id="display_image4">
+                                                                <img id='output4'>
+                                                            </div>
+                                                            <br />
+                                                        </div> 
+                                                         <div class="col-lg-4">
+                                                            <div class="inputText setting-font">รูปแปลนโครงการ 5 </div>
+                                                            <input type="file" id="plan_image_5" class="my-3 setting-form theme-btn-3 btn-setting w-100" accept="image/*" onchange="upload_image_profile5(event)" />
+                                                            <div id="display_image5">
+                                                                <img id='output5'>
+                                                            </div>
+                                                            <br />
+                                                        </div> 
+                                                         <div class="col-lg-4">
+                                                            <div class="inputText setting-font">รูปแปลนโครงการ 6</div>
+                                                            <input type="file" id="plan_image_6" class="my-3 setting-form theme-btn-3 btn-setting w-100" accept="image/*" onchange="upload_image_profile6(event)" />
+                                                            <div id="display_image6">
+                                                                <img id='output6'>
+                                                            </div>
+                                                            <br />
+                                                        </div> 
+
+
+
+
 
                                                     </div>
 
@@ -523,7 +578,21 @@
     const d = new Date();
     let yearNow = d.getFullYear();
     let pf_img = "";
+    let pf_img1 = "";
+    let pf_img2 = "";
+    let pf_img3 = "";
+    let pf_img4 = "";
+    let pf_img5 = "";
+    let pf_img6 = "";
+
     let pf_imgData = [];
+    let pf_imgData1 = [];
+    let pf_imgData2 = [];
+    let pf_imgData3 = [];
+    let pf_imgData4 = [];
+    let pf_imgData5 = [];
+    let pf_imgData6 = [];
+
 
     let pf_imgArray = [];
     let pf_imgDataArray = []; 
@@ -541,6 +610,7 @@
         $('#footer_callme').addClass('d-none');
 
         console.log('pro_id', pro_id);
+         
         ////// topic 
         let jsonTopic = JSON.stringify({
             "pro_id": pro_id
@@ -574,6 +644,9 @@
             });
 
     });
+    
+
+
     // แปลง format ราคา
     function onPriceChange(e){         
         let price = money_unformat(e.value);
@@ -753,18 +826,26 @@
 
                                 plan_image_profile = "";
                             }
+                            let plan_img_seq = [];
 
-                            if (plan_image_Array.length > 0) {
+                            pf_img1 ? plan_img_seq.push({ "plan_img_seq": "1-BY_" + sale_id + "_" + time + "_" + pf_img1 })  : pf_img1 = ""
+                            pf_img2 ? plan_img_seq.push({ "plan_img_seq": "2-BY_" + sale_id + "_" + time + "_" + pf_img2 }) : pf_img2 = ""
+                            pf_img3 ? plan_img_seq.push({ "plan_img_seq": "3-BY_" + sale_id + "_" + time + "_" + pf_img3 }) : pf_img3 = ""
+                            pf_img4 ? plan_img_seq.push({ "plan_img_seq": "4-BY_" + sale_id + "_" + time + "_" + pf_img4 }) : pf_img4 = ""
+                            pf_img5 ? plan_img_seq.push({ "plan_img_seq": "5-BY_" + sale_id + "_" + time + "_" + pf_img5 }) : pf_img5 = ""
+                            pf_img6 ? plan_img_seq.push({ "plan_img_seq": "6-BY_" + sale_id + "_" + time + "_" + pf_img6 }) : pf_img6 = ""
+                             
+                            //if (plan_image_Array.length > 0) {
 
-                                plan_image_Array.forEach((item , index) => { 
-                                    let prefix = `${index + 1}-BY_${sale_id}_${time}_`
-                                    item.plan_img_path = prefix + item.plan_img_path;
+                            //    plan_image_Array.forEach((item , index) => { 
+                            //        let prefix = `${index + 1}-BY_${sale_id}_${time}_`
+                            //        item.plan_img_path = prefix + item.plan_img_path;
                                      
-                                });
+                            //    });
 
-                            } else {
-                                plan_image_Array = [];
-                            }
+                            //} else {
+                            //    plan_image_Array = [];
+                            //}
 
                             var jsonData = JSON.stringify({
                                 "sale_id": sale_id,
@@ -803,11 +884,14 @@
                                 "facilities_IsNearBySkyTrain": facilities_IsNearBySkyTrain,
                                 "facilities_IsSecuritySystem": facilities_IsSecuritySystem,  
 
-                                "plan_image_profile": plan_image_profile,
-                                "plan_image_Array": plan_image_Array
+                                "plan_image_profile": plan_image_profile, 
+                                "plan_img_seq": plan_img_seq
+                                                  
                             });
-  
-                            console.log(JSON.parse(jsonData))
+                            let json = JSON.parse(jsonData) ;
+
+                            console.log('json', json.plan_img_seq);
+                            //console.log(JSON.parse(jsonData))
 
                             if (pf_imgData != "") {
                                 console.log('pf_imgData' , pf_imgData)
@@ -832,7 +916,143 @@
                                     }
                                 })
                             }
-                         
+                            if (pf_imgData1 != "") {
+                                console.log('pf_imgData1', pf_imgData1)
+                                var formData1 = new FormData();
+                                formData1.append("file", pf_imgData1);
+                                $.ajax({
+                                    url: '/api/ImageAPI/UploadFiles1',
+                                    type: 'POST',
+                                    data: formData1,
+                                    headers: {
+                                        "sale_id": sale_id,
+                                        "time": time,
+                                        "type": 'Array',
+                                    },
+                                    cache: false,
+                                    contentType: false,
+                                    processData: false,
+                                    success: function (postedFile) {
+                                        console.log('postedFile', postedFile)
+
+                                    }
+                                })
+                            }
+                            if (pf_imgData2 != "") {
+                                console.log('pf_imgData2', pf_imgData2)
+                                var formData2 = new FormData();
+                                formData2.append("file", pf_imgData2);
+
+                                $.ajax({
+                                    url: '/api/ImageAPI/UploadFiles2',
+                                    type: 'POST',
+                                    data: formData2,
+                                    headers: {
+                                        "sale_id": sale_id,
+                                        "time": time,
+                                        "type": 'Array',
+                                    },
+                                    cache: false,
+                                    contentType: false,
+                                    processData: false,
+                                    success: function (postedFile) {
+                                        console.log('postedFile', postedFile)
+
+                                    }
+                                })
+                            }
+                            if (pf_imgData3 != "") {
+                                console.log('pf_imgData3', pf_imgData3)
+                                var formData3 = new FormData();
+                                formData3.append("file", pf_imgData3);
+
+                                $.ajax({
+                                    url: '/api/ImageAPI/UploadFiles3',
+                                    type: 'POST',
+                                    data: formData3,
+                                    headers: {
+                                        "sale_id": sale_id,
+                                        "time": time,
+                                        "type": 'Array',
+                                    },
+                                    cache: false,
+                                    contentType: false,
+                                    processData: false,
+                                    success: function (postedFile) {
+                                        console.log('postedFile', postedFile)
+
+                                    }
+                                })
+                            }
+                            if (pf_imgData4 != "") {
+                                console.log('pf_imgData4', pf_imgData4)
+                                var formData4 = new FormData();
+                                formData4.append("file", pf_imgData4);
+
+                                $.ajax({
+                                    url: '/api/ImageAPI/UploadFiles4',
+                                    type: 'POST',
+                                    data: formData4,
+                                    headers: {
+                                        "sale_id": sale_id,
+                                        "time": time,
+                                        "type": 'Array',
+                                    },
+                                    cache: false,
+                                    contentType: false,
+                                    processData: false,
+                                    success: function (postedFile) {
+                                        console.log('postedFile', postedFile)
+
+                                    }
+                                })
+                            }
+                            if (pf_imgData5 != "") {
+                                console.log('pf_imgData5', pf_imgData5)
+                                var formData5 = new FormData();
+                                formData5.append("file", pf_imgData5);
+
+                                $.ajax({
+                                    url: '/api/ImageAPI/UploadFiles5',
+                                    type: 'POST',
+                                    data: formData5,
+                                    headers: {
+                                        "sale_id": sale_id,
+                                        "time": time,
+                                        "type": 'Array',
+                                    },
+                                    cache: false,
+                                    contentType: false,
+                                    processData: false,
+                                    success: function (postedFile) {
+                                        console.log('postedFile', postedFile)
+
+                                    }
+                                })
+                            }
+                            if (pf_imgData6 != "") {
+                                console.log('pf_imgData6', pf_imgData6)
+                                var formData6 = new FormData();
+                                formData6.append("file", pf_imgData6);
+
+                                $.ajax({
+                                    url: '/api/ImageAPI/UploadFiles6',
+                                    type: 'POST',
+                                    data: formData6,
+                                    headers: {
+                                        "sale_id": sale_id,
+                                        "time": time,
+                                        "type": 'Array',
+                                    },
+                                    cache: false,
+                                    contentType: false,
+                                    processData: false,
+                                    success: function (postedFile) {
+                                     console.log('postedFile', postedFile)
+
+                                    }
+                                })
+                            }
  
                             //if (pf_imgDataArray.length > 0) {
 
@@ -862,7 +1082,7 @@
                             //    })
                             //}
 
-                            //เรียก api
+                            ///เรียก api
                             $.ajax({
                                 type: 'POST',
                                 url: "../../api/projectList",
@@ -908,17 +1128,16 @@
 
 
     }
+ 
     function upload_image_profile(e) {
 
         let input = e.target;
-
         var reader = new FileReader();
         reader.onload = function () {
             var dataURL = reader.result;
             var output = document.getElementById('output');
             output.src = dataURL;
         };
-
         if (input.files[0]) {
             reader.readAsDataURL(input.files[0]);
             pf_img = input.files[0].name;
@@ -928,9 +1147,124 @@
             pf_imgData = [];
             clearpic(0);
         }
-
-
     }
+    function upload_image_profile1(e) {
+
+        let input = e.target;
+        var reader = new FileReader();
+        reader.onload = function () {
+            var dataURL = reader.result;
+            var output = document.getElementById('output1');
+            output.src = dataURL;
+        };
+        if (input.files[0]) {
+            reader.readAsDataURL(input.files[0]);
+            pf_img1 = input.files[0].name;
+            pf_imgData1 = input.files[0];
+        } else {
+            pf_img1 = "";
+            pf_imgData1 = [];
+            clearpic(0);
+        }
+    }
+    function upload_image_profile2(e) {
+
+        let input = e.target;
+        var reader = new FileReader();
+        reader.onload = function () {
+            var dataURL = reader.result;
+            var output = document.getElementById('output2');
+            output.src = dataURL;
+        };
+        if (input.files[0]) {
+            reader.readAsDataURL(input.files[0]);
+            pf_img2 = input.files[0].name;
+            pf_imgData2 = input.files[0];
+        } else {
+            pf_img2 = "";
+            pf_imgData2 = [];
+            clearpic(0);
+        }
+    }
+    function upload_image_profile3(e) {
+
+        let input = e.target;
+        var reader = new FileReader();
+        reader.onload = function () {
+            var dataURL = reader.result;
+            var output = document.getElementById('output3');
+            output.src = dataURL;
+        };
+        if (input.files[0]) {
+            reader.readAsDataURL(input.files[0]);
+            pf_img3 = input.files[0].name;
+            pf_imgData3 = input.files[0];
+        } else {
+            pf_img3 = "";
+            pf_imgData3 = [];
+            clearpic(0);
+        }
+    }
+    function upload_image_profile4(e) {
+
+        let input = e.target;
+        var reader = new FileReader();
+        reader.onload = function () {
+            var dataURL = reader.result;
+            var output = document.getElementById('output4');
+            output.src = dataURL;
+        };
+        if (input.files[0]) {
+            reader.readAsDataURL(input.files[0]);
+            pf_img4 = input.files[0].name;
+            pf_imgData4 = input.files[0];
+        } else {
+            pf_img4 = "";
+            pf_imgData4 = [];
+            clearpic(0);
+        }
+    }
+    function upload_image_profile5(e) {
+
+        let input = e.target;
+        var reader = new FileReader();
+        reader.onload = function () {
+            var dataURL = reader.result;
+            var output = document.getElementById('output5');
+            output.src = dataURL;
+        };
+        if (input.files[0]) {
+            reader.readAsDataURL(input.files[0]);
+            pf_img5 = input.files[0].name;
+            pf_imgData5 = input.files[0];
+        } else {
+            pf_img5 = "";
+            pf_imgData5 = [];
+            clearpic(0);
+        }
+    }
+    function upload_image_profile6(e) {
+
+        let input = e.target;
+        var reader = new FileReader();
+        reader.onload = function () {
+            var dataURL = reader.result;
+            var output = document.getElementById('output6');
+            output.src = dataURL;
+        };
+        if (input.files[0]) {
+            reader.readAsDataURL(input.files[0]);
+            pf_img6 = input.files[0].name;
+            pf_imgData6 = input.files[0];
+        } else {
+            pf_img6 = "";
+            pf_imgData6 = [];
+            clearpic(0);
+        }
+    }
+
+
+
 
     function upload_image_profileArray(e) {
         

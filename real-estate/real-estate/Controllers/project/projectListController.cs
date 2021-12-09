@@ -371,7 +371,57 @@ namespace real_estate.Controllers.project
                 rs = JsonConvert.SerializeObject(arr);
 
             }
+            else if (types == "listBookingCustomer")
+            {
+                SqlDataReader dr;
+                string sqltext = "  SELECT  a.[book_id] , format(a.[create_date], 'dd/MM/yyyy') as 	create_date, a.book_firstName +' ' + a.book_lastName as book_fullName                                  ";
+                sqltext += "              , c.pro_id , c.pro_name , b.plan_type_id , b.plan_name , d.pro_type_name , FORMAT( b.plan_price , 'N2' ) as plan_price         ";
+                sqltext += "              , c.sale_id , e.sale_firstName +' '+ e.sale_lastName as sale_fullName     , e.sale_phone , a.book_status                       "; 
+                sqltext += "  FROM [realestate].[dbo].[re_Project_Booking] a                                                                                         ";
+                sqltext += "  INNER JOIN realestate..re_Project_PlanType b ON a.plan_type_id = b.plan_type_id                                                       ";
+                sqltext += "  INNER JOIN realestate..re_ProjectTable c ON c.pro_id = b.pro_id                                                                       ";
+                sqltext += "  INNER JOIN realestate..re_Project_Type_Table d ON d.pro_type_id = c.pro_type_id                                                       ";
+                sqltext += "  INNER JOIN realestate..re_SaleTable e ON e.sale_id = c.sale_id                                                             "; 
 
+                sqltext += "  WHERE a.user_id  = '" + stuff.user_id + "'                                      ";
+
+
+                dr = db.GetSqlDataReader(sqltext);
+                ArrayList arr = new ArrayList();
+                while (dr.Read())
+                {
+                    var result = new Dictionary<string, object>();
+                    for (int i = 0; i < dr.FieldCount; i++)
+                    {
+                        result.Add(dr.GetName(i), dr[i].ToString());
+                    }
+                    arr.Add(result);
+                }
+                rs = JsonConvert.SerializeObject(arr);
+
+            }
+
+            else if (types == "getView")
+            {
+                SqlDataReader dr;
+                string sqltext = "  SELECT  [plan_view] + 1      as      plan_view                       ";
+                sqltext += "        FROM [realestate].[dbo].[re_Project_PlanType]       ";  
+                sqltext += "  WHERE  plan_type_id  = '" + stuff.plan_type_id + "'          "; 
+
+                dr = db.GetSqlDataReader(sqltext);
+                ArrayList arr = new ArrayList();
+                while (dr.Read())
+                {
+                    var result = new Dictionary<string, object>();
+                    for (int i = 0; i < dr.FieldCount; i++)
+                    {
+                        result.Add(dr.GetName(i), dr[i].ToString());
+                    }
+                    arr.Add(result);
+                }
+                rs = JsonConvert.SerializeObject(arr);
+
+            }
             else
             {
                 rs = "ไม่ข้อมูล";
@@ -546,6 +596,10 @@ namespace real_estate.Controllers.project
             {
                 string planId = PrefixID.RunPrefixID("gen_planId", "Add");
 
+                dynamic arr = JsonConvert.DeserializeObject(stuff.plan_img_seq.ToString());
+
+                rs = "success";
+
                 StringBuilder sqlInsert = new StringBuilder();
                 sqlInsert.Clear();
                 sqlInsert.Append("INSERT INTO [realestate].[dbo].[re_Project_PlanType] ( ");
@@ -586,7 +640,7 @@ namespace real_estate.Controllers.project
                 sqlInsert.AppendLine("     ,[plan_status]                           ");
                 sqlInsert.AppendLine("     ,[plan_image_profile]                    ");
                 sqlInsert.AppendLine("     ,[plan_view]                             ");
-                  
+
                 sqlInsert.AppendLine(" )                                            ");
                 sqlInsert.AppendLine(" VALUES (                                     ");
                 sqlInsert.AppendLine(" '" + planId + "',                            ");
@@ -625,17 +679,36 @@ namespace real_estate.Controllers.project
                 sqlInsert.AppendLine(" '" + stuff.facilities_IsNearBySkyTrain + "',             ");
                 sqlInsert.AppendLine("      getdate(),                                          ");
                 sqlInsert.AppendLine(" '" + stuff.sale_id + "',                                 ");
- 
+
                 sqlInsert.AppendLine(" 'N' ,                                        ");
                 sqlInsert.AppendLine(" '" + stuff.plan_image_profile + "' ,          ");
                 sqlInsert.AppendLine(" 1           ");
                 sqlInsert.AppendLine(" ) ");
 
+                for (int i = 0; i < arr.Count; i++)
+                {
+                    StringBuilder sql_insertDT = new StringBuilder();
+                    sql_insertDT.Append("INSERT INTO  [realestate].[dbo].[re_PlanType_ImgTransaction] (");                   
+                    sql_insertDT.AppendLine(" plan_img_path,");
+                    sql_insertDT.AppendLine(" [plan_type_id],");
+                    sql_insertDT.AppendLine(" Create_by,");
+                    sql_insertDT.AppendLine(" Create_date");
+                    sql_insertDT.AppendLine(" ) VALUES ( ");                  
+                    sql_insertDT.AppendLine("'" + arr[i].plan_img_seq + "',              ");
+                    sql_insertDT.AppendLine(" '" + planId + "',                            ");
+                    sql_insertDT.AppendLine(" '" + stuff.sale_id + "',                   ");
+                    sql_insertDT.AppendLine(" getdate() ) ");        
+                    try
+                    {
+                        db.SqlExecute(sql_insertDT.ToString());
+                        //rs = sql_insertDT.ToString();
+                    }
+                    catch (SqlException ex) { rs = ex.ToString(); }
+                }
+
                 try
                 {
-                    db.SqlExecute(sqlInsert.ToString());
-
-                    rs = "success";
+                    db.SqlExecute(sqlInsert.ToString()); 
 
                     //rs = sqlInsert.ToString();
                 }
@@ -645,8 +718,7 @@ namespace real_estate.Controllers.project
             }
             else if (types == "addBooking")
             {
-                string bookId = PrefixID.RunPrefixID("gen_booking", "Add");
-
+                string bookId = PrefixID.RunPrefixID("gen_booking", "Add"); 
 
                 StringBuilder sqlUpdate = new StringBuilder();
                 sqlUpdate.Clear();
@@ -707,7 +779,25 @@ namespace real_estate.Controllers.project
 
 
             }
+            else if (types == "updateView")
+            {
+                
+                StringBuilder sqlUpdate = new StringBuilder();
+                sqlUpdate.Clear();
+                sqlUpdate.Append(" UPDATE [realestate].[dbo].[re_Project_PlanType] SET");
+                sqlUpdate.AppendLine(" [plan_view] ='" + stuff.getView + "'  "); 
+                sqlUpdate.AppendLine(" WHERE plan_type_id='" + stuff.plan_type_id + "' "); 
 
+                try
+                {                    
+                    db.SqlExecute(sqlUpdate.ToString());
+                    rs = "success";
+                    //rs = sqlInsert.ToString();
+                }
+                catch (SqlException ex) { rs = ex.ToString(); }
+
+
+            }
             return rs;
         }
 

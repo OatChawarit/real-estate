@@ -78,7 +78,7 @@
             <!-- Page Heading -->
             <div class="row d-sm-flex align-items-center justify-content-between mb-2 my-4">
                 <div class="text-end">
-                    <a href="javascript:void(0);" class="d-sm-inline-block  btn-sm btn-primary shadow-sm btnAdd btn-setting" data-value="" onclick="btnAddClick();"><i class="fas fa-plus fa-sm text-white-50 d-none"></i>&nbsp;Create</a>
+                    <a href="javascript:void(0);" class="d-sm-inline-block  btn-sm btn-primary shadow-sm btnAdd btn-setting" data-value="" onclick="btnAddClick()"><i class="fas fa-plus fa-sm text-white-50 d-none"></i>&nbsp;Create</a>
                     <a href="javascript:void(0);" class="d-sm-inline-block  btn-sm btn-success shadow-sm btn-Refresh btn-setting"><i class="fas fa-redo fa-sm text-white-50"></i>&nbsp;Refresh</a>
                 </div>
             </div>
@@ -94,8 +94,8 @@
                     <div class="form-group row">
 
                         <div class="table-responsive" style="padding-bottom: 30px">
-                            <%--<table class="table table-bordered dataTable js-exportable" id="orderTable" width="100%" cellspacing="0">--%>
-                            <table class="table table-bordered " id="register_project" width="100%" cellspacing="0">
+       
+                            <table class="table table-bordered " id="order_list" width="100%" cellspacing="0">
                                 <thead class="table-dark" align="center">
                                     <tr>
                                         <th style="width: 60px; min-width: 60px; max-width: 60px; vertical-align: middle;"></th>
@@ -104,6 +104,8 @@
                                         <th>ชื่อผู้สั่งจอง</th>
                                         <th>รหัสโครงการ</th>
                                         <th>ชื่อโครงการ</th>
+                                        <th>รหัสแบบแปลน</th>
+                                        <th>ชื่อแบบแปลน</th> 
                                         <th>ประเภทโครงการ</th>
                                         <th>ราคา</th>
                                         <th>ชื่อตัวแทนขาย</th>
@@ -138,22 +140,187 @@
 
     const d = new Date();
     let yearNow = d.getFullYear();
+    
+    const user_id = JSON.parse(userLocal)[0].user_id;
+    const user_role_id = JSON.parse(userLocal)[0].user_role_id;
+
+    console.log('user_id', user_id);
+
 
     $(document).ready(function () {
         //checkLogin(3);
-
         $('#FormModal_Project').modal({ backdrop: 'static', keyboard: false })
-
-        $('#footer_callme').addClass('d-none');
-        $('#register_project').DataTable({
-            "destroy": true,
-            "responsive": true,
-            "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-            pageLength: 10,
-
-            "order": [[1, "asc"]]
+        $('#footer_callme').addClass('d-none');         
+           
+        let jsonPlanTable = JSON.stringify({
+            "user_id": user_id
         });
 
+        $.get("../../api/projectList", { jsonData: jsonPlanTable, types: "listBookingCustomer" })
+            .done(function (data) {
+                let listBooking = JSON.parse(data);
+
+                console.log('listBooking', listBooking)
+                /// สร้างตาราง 
+                createProjectPlanDataTable(listBooking, "");
+            });
+
+         
+
     });
+
+
+
+    function btnAddClick(e) {
+
+    }
+
+
+    function onBtnPrintClick(e) {
+
+        //window.location.href = "../project/purchase-order-report_booking?id" + e.value;
+        window.location.href = "../project/purchase-order-report_booking?id" + e.value;
+ 
+
+
+
+    }
+
+    //สร้างตาราง
+    function createProjectPlanDataTable(data, type) { 
+
+        $("#order_list").dataTable({
+            "destroy": true,
+            data: data,
+            "responsive": true,
+            "bLengthChange": true,
+            "bInfo": true,
+            "searching": true,
+            "bPaginate": true,
+            columns: [
+
+                {
+                    render: function (data, type, row, meta) {
+
+                        let chk = `
+                                  <td>                                 
+                                        <button type='button' class='btn-warning lg btnView d-none ' id="btnView${meta.row}"  value="${row.book_id}" title='รายละเอียดการสั่งจอง'  onclick="onBtnViewClick(this)"   ><i class='fas fa-eye' style="color:white" ></i>  </button>
+                                        <button type='button' class='btn-primary lg btnView  ' id="btnPrint${meta.row}"  value="${row.book_id}" title='พิมพ์ใบสั่งจอง'  onclick="onBtnPrintClick(this)"   ><i class='fas fa-print' style="color:white" ></i>  </button>
+                                                  
+          
+                                  </td> 
+                                  `;
+
+                        return "" + chk + "";
+                    },
+                    className: "text-center"
+                },
+                {
+                    render: function (data, type, row, meta) {
+
+                        return row.book_id
+                    },
+                    className: "text-center"
+                },
+                {
+                    render: function (data, type, row, meta) {
+
+                        return row.create_date
+                    },
+                    className: "text-center"
+                },
+                {
+                    render: function (data, type, row, meta) {
+
+                        return row.book_fullName
+                    },
+                    className: "text-center"
+                },
+                {
+                    render: function (data, type, row, meta) {
+
+                        return row.pro_id
+                    },
+                    className: "text-center"
+                },
+                {
+                    render: function (data, type, row, meta) {
+
+                        return row.pro_name
+                    },
+                    className: "text-center"
+                },
+                {
+                    render: function (data, type, row, meta) {
+
+                        return row.plan_type_id
+                    },
+                    className: "text-center"
+                },
+                {
+                    render: function (data, type, row, meta) {
+
+                        return row.plan_name
+                    },
+                    className: "text-center"
+                },
+                {
+                    render: function (data, type, row, meta) {
+
+                        return row.pro_type_name
+                    },
+                    className: "text-center"
+                },
+                {
+                    render: function (data, type, row, meta) {
+
+                        return row.plan_price
+                    },
+                    className: "text-right"
+                },
+                {
+                    render: function (data, type, row, meta) {
+
+                        return row.sale_fullName
+                    },
+                    className: "text-center"
+                },
+                {
+                    render: function (data, type, row, meta) {
+
+                        return row.sale_phone
+                    },
+                    className: "text-center"
+                },
+                {
+                    render: function (data, type, row, meta) {
+
+                        let status = "";
+
+                        if (row.book_status == 'N') {
+
+                            status = `<span class="badge badge-success" style="background-color:#198754"> ปกติ </span>`;
+
+                        } else {
+
+                            status = `<span class="badge badge-danger" style="background-color:red"> ยกเลิก </span>`;
+
+
+                        }
+
+                        return status
+                    },
+                    className: "text-center"
+                },
+             
+
+
+            ],
+            pageLength: 10
+        });
+
+
+    }
+
 </script>
 </html>

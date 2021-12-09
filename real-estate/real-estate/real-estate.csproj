@@ -142,6 +142,8 @@
     <Content Include="image\news\1.jpg" />
     <Content Include="image\news\2.jpg" />
     <Content Include="image\news\3.jpg" />
+    <Content Include="image\project\ProFile_BY_S-21000004_1639000217701_IMG_ศุภธัญญ์.jpg.jpg" />
+    <Content Include="image\project\ProFile_BY_S-21000004_1639002308850_ศุภการิน-01.jpg.jpg" />
     <Content Include="image\project\setthasiri-rama-5-floorplan-meridian-454.png" />
     <Content Include="image\project\setthasiri-rama-5-housetype-majesty-324.png" />
     <Content Include="image\project\setthasiri-rama-5-housetype-meridian-454-1.png" />
@@ -149,6 +151,7 @@
     <Content Include="pages\admin\manage-customer.aspx" />
     <Content Include="pages\admin\manage-news.aspx" />
     <Content Include="pages\admin\manage-user.aspx" />
+    <Content Include="pages\css\reportPrintBooking.css" />
     <Content Include="pages\home\about.aspx" />
     <Content Include="pages\home\contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -183,6 +186,7 @@
     <Content Include="pages\project\project-list.aspx" />
     <Content Include="pages\project\project-sales-details-management.aspx" />
     <Content Include="pages\project\project-sales-management.aspx" />
+    <Content Include="pages\project\purchase-order-report_booking.aspx" />
     <Content Include="pages\project\purchase-order.aspx" />
     <Content Include="pages\register\register-sale.aspx" />
     <Content Include="pages\register\register-user.aspx" />
@@ -2323,6 +2327,13 @@
     <Compile Include="pages\project\project-sales-management.aspx.designer.cs">
       <DependentUpon>project-sales-management.aspx</DependentUpon>
     </Compile>
+    <Compile Include="pages\project\purchase-order-report_booking.aspx.cs">
+      <DependentUpon>purchase-order-report_booking.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\project\purchase-order-report_booking.aspx.designer.cs">
+      <DependentUpon>purchase-order-report_booking.aspx</DependentUpon>
+    </Compile>
     <Compile Include="pages\project\purchase-order.aspx.cs">
       <DependentUpon>purchase-order.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2377,7 +2388,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Data\" />
-    <Folder Include="pages\admin\" />
     <Folder Include="Views\news\" />
     <Folder Include="Views\register\" />
   </ItemGroup>
