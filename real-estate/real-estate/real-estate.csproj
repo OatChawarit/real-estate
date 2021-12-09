@@ -150,6 +150,7 @@
     <Content Include="image\project\setthasiri-rama-5-housetype-meridian-454-2.png" />
     <Content Include="pages\admin\manage-customer.aspx" />
     <Content Include="pages\admin\manage-news.aspx" />
+    <Content Include="pages\admin\manage-project.aspx" />
     <Content Include="pages\admin\manage-user.aspx" />
     <Content Include="pages\css\reportPrintBooking.css" />
     <Content Include="pages\home\about.aspx" />
@@ -2217,6 +2218,13 @@
     </Compile>
     <Compile Include="pages\admin\manage-news.aspx.designer.cs">
       <DependentUpon>manage-news.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\admin\manage-project.aspx.cs">
+      <DependentUpon>manage-project.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\admin\manage-project.aspx.designer.cs">
+      <DependentUpon>manage-project.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\admin\manage-user.aspx.cs">
       <DependentUpon>manage-user.aspx</DependentUpon>

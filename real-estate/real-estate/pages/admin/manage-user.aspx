@@ -21,6 +21,7 @@
 
         .setting-form {
             height: 50px !important;
+            margin-bottom: 10px !important;
         }
 
         .setting-modal {
@@ -103,7 +104,7 @@
                                 <%--<table class="table table-bordered dataTable js-exportable" id="orderTable" width="100%" cellspacing="0">--%>
                                 <table class="table table-striped " id="user-table" width="100%" cellspacing="0">
                                     <thead class="table-dark" align="center">
-                                        <tr>
+                                        <tr id="trUser">
                                             <th style="width: 60px; min-width: 60px; max-width: 60px; vertical-align: middle;">#</th>
                                             <th>รหัสสมาชิก</th>
                                             <th>รหัสผู้ใช้งาน</th>
@@ -128,7 +129,7 @@
 
             </div>
 
-            <div class="modal fade " id="Edit-UserModal" tabindex="-1" role="dialog" aria-labelledby="Edit-UserModal" aria-hidden="true">
+            <div class="modal fade " id="EditUserModal" tabindex="-1" role="dialog" aria-labelledby="EditUserModal" aria-hidden="true">
                 <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header setting-modal">
@@ -252,16 +253,16 @@
     <!-- นำเข้าส่วนท้าย JS -->
     <!-- #include virtual ="../include/footer.html" -->
 </body>
+    
 <script>
 
     const d = new Date();
     let yearNow = d.getFullYear();
     let Sdata;
     let LogIn = localStorage.getItem("LogInData");
-    let userData = JSON.parse(LogIn)
+    let userData = JSON.parse(LogIn);
 
     $(document).ready(function () {
-        
 
         checkLogin(1);
         loadUser();
@@ -303,7 +304,7 @@
                             "แก้ไขข้อมูล เรียบร้อย!", //main text
                             "success" //icon
                         );
-                        $("#Edit-UserModal").modal("hide");
+                        $("#EditUserModal").modal("hide");
                         loadUser();
                     } else {
                         Swal.fire(
@@ -358,15 +359,14 @@
     }
 
     $(document).on("click", ".btnEdit", function () {
-        HideTopbar(1);
         var uid = $(this).data('value');
-        //console.log(uid);
+        console.log(uid);
 
         //HideTopbar(1);
-        ClearModal("#Edit-UserModal");
+        ClearModal("#EditUserModal");
 
-        $("#Edit-UserModal").modal("show");
-        LockModal("#Edit-UserModal");
+        $("#EditUserModal").modal("show");
+        LockModal("#EditUserModal");
 
         var json = JSON.stringify({
             user_id: uid
@@ -401,12 +401,12 @@
     $(document).on("click", ".btnCanCel", function () {
         var uid = $(this).data('value');
         //console.log(uid);
-        HideTopbar(1);
+        //HideTopbar(1);
         var jsonData = JSON.stringify({
             user_id: uid,
         });
         Swal.fire({
-            title: 'คุณต้องยกเลิกผู้ใช่งาน!',
+            title: 'คุณต้องยกเลิกผู้ใช้งาน!',
             html: '<p>รหัสสมาชิก : ' + uid + ' ใช่หรือไม่ ? </p>',
             type: 'warning',
             showCancelButton: true,
@@ -423,7 +423,7 @@
                         if (Sdata == "success") {
                             Swal.fire(
                                 "Success", //title
-                                "แก้ไขข้อมูล เรียบร้อย!", //main text
+                                "ยกเลิกข้อมูล เรียบร้อย!", //main text
                                 "success" //icon
                             );
                             loadUser();
@@ -437,6 +437,11 @@
                     });
             }
         });
+    });
+
+
+    $(document).on("click", "#trUser", function () {
+        loadUser();
     });
 
 
@@ -516,7 +521,7 @@
 
     $('.close').click(() => {
         HideTopbar(0);
-        $('#Edit-UserModal').modal('hide');
+        $('#EditUserModal').modal('hide');
     });
 
 

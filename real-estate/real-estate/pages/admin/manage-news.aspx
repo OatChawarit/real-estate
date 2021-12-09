@@ -83,7 +83,7 @@
                     <h1 class="h3 mb-2 text-gray-800 d-sm-inline-block">จัดการข่าวสาร</h1>
                 </div>
                 <div class="text-end">
-                    <a href="javascript:void(0);" class="d-sm-inline-block  btn-sm btn-primary shadow-sm btnAdd btn-setting" data-value="" onclick="btnAddClick();"><i class="fas fa-plus fa-sm text-white-50 d-none"></i>&nbsp;Create</a>
+                    <a href="javascript:void(0);" class="d-sm-inline-block  btn-sm btn-primary shadow-sm btnAdd btn-setting" data-value="" onclick="btnAddClick()"><i class="fas fa-plus fa-sm text-white-50 d-none"></i>&nbsp;Create</a>
                     <a href="javascript:void(0);" class="d-sm-inline-block  btn-sm btn-success shadow-sm btn-Refresh btn-setting"><i class="fas fa-redo fa-sm text-white-50"></i>&nbsp;Refresh</a>
                 </div>
             </div>
@@ -100,9 +100,9 @@
 
                         <div class="table-responsive" style="padding-bottom: 30px">
                             <%--<table class="table table-bordered dataTable js-exportable" id="orderTable" width="100%" cellspacing="0">--%>
-                            <table class="table table-striped " id="news-table" width="100%" cellspacing="0">
+                            <table class="table table-striped" id="news-table" width="100%" cellspacing="0">
                                 <thead class="table-dark" align="center">
-                                    <tr>
+                                    <tr id="trNews">
                                         <th style="width: 60px; min-width: 60px; max-width: 60px; vertical-align: middle;">#</th>
                                         <th>ภาพข่าว</th>
                                         <th>รหัสข่าว</th>
@@ -121,6 +121,81 @@
                     </div>
                 </div>
 
+            </div>
+
+            <div class="modal fade " id="addNewsModal" tabindex="-1" role="dialog" aria-labelledby="addNewsModal" aria-hidden="true">
+                <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header setting-modal">
+                            <h5 class="modal-title topic-text" id="topic_Modal">แก้ไขข้อมูลผู้ใช้งาน</h5>
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+
+                        <div class="modal-body">
+
+                            <ul class="nav nav-tabs d-none" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"></a>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+
+                                    <div id="labelNews" class="card shadow mb-4">
+                                        <div class="card-header py-3">
+                                            <h6 class="m-0 font-weight-bold text-primary">รายละเอียดข่าวสาร</h6>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="form-group row ">
+
+                                                <div id="divProjectInfo" class="row col-12 setting-row">
+                                                    <div class="row mx-auto">
+                                                        <div class="col-lg-12">
+                                                            <div class="inputText setting-font">หัวข้อข่าวสาร *</div>
+                                                            <input type="text" id="news_topic" placeholder="" class="setting-form" value="" readonly="true" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mx-auto">
+                                                        <div class="col-lg-12">
+                                                            <div class="inputText setting-font">เนื้อหาของข่าว *</div>
+                                                            <textarea class="form-control" id="news_content" rows="5"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="labelimg" class="card shadow mb-4">
+                                    <div class="card-header py-3">
+                                        <h6 class="m-0 font-weight-bold  " style="color: #dc3545">รูปภาพข่าวสาร *</h6>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="form-group row mx-auto">
+                                            <input type="file" id="news_image" class="my-3 setting-form theme-btn-3 btn-setting w-80" accept="image/*" onchange="upload_image_profile(event)" />
+                                            <div id="display_image">
+                                                <img id='output'>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!-- close nav tabs -->
+                        </div>
+
+                        <!-- close modal body -->
+                        <div class="modal-footer">
+                            <button id="btnSave" type="button" class="btn-setting btn btn-primary btnSave" onclick="onSaveNews(this.value)" value="Add"><i class="far fa-save"></i>&nbsp;Save</button>
+                            <button type="button" class="btn-setting btn-secondary close" data-dismiss="modal"><i class="fas fa-times"></i>&nbsp;Close</button>
+                        </div>
+                    </div>
+                </div>
             </div>
 
         </div>
@@ -150,10 +225,58 @@
         });
     });
 
-    $(document).on("click", ".btnEdit", function () {
+    $(document).on("click", ".btnAdd", function () {
+        $("#addNewsModal").modal("show");
+        LockModal("#addNewsModal");
+        clearpic(0);
+
+
+    });
+
+    $(document).on("click", ".btnCanCel", function () {
         var uid = $(this).data('value');
-        console.log(uid);
-        $("#Edit-UserModal").modal("show");
+        //console.log(uid);
+        //HideTopbar(1);
+        var jsonData = JSON.stringify({
+            user_id: uid,
+        });
+        Swal.fire({
+            title: 'คุณต้องยกเลิกข่าวสาร!',
+            html: '<p>ข่าวสารเลขที่ : ' + uid + ' ใช่หรือไม่ ? </p>',
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'ตกลง',
+            cancelButtonText: 'ยกเลิก',
+        }).then((result) => {
+            if (result.value) {
+                $.get("../../api/userData", { jsonData: jsonData, types: "AdminCancelProject", username: userData[0].user_id })
+                    .done(function (data) {
+                        Sdata = data;
+                        //console.log(Sdata);
+                        if (Sdata == "success") {
+                            Swal.fire(
+                                "Success", //title
+                                "ยกเลิกข้อมูล เรียบร้อย!", //main text
+                                "success" //icon
+                            );
+                            loadUser();
+                        } else {
+                            Swal.fire(
+                                "Found an Error", //title
+                                "แก้ไข ไม่สำเร็จ!", //main text
+                                "error" //icon
+                            );
+                        }
+                    });
+            }
+        });
+    });
+
+
+    $(document).on("click", "#trNews", function () {
+        loadNews();
     });
 
     function loadNews() {
@@ -171,17 +294,18 @@
         });
 
         let tb = $("#news-table").DataTable();
+        $("#news-table").DataTable().clear().draw();
 
         $.get("../../api/news", { jsonData, types: "listNews" })
             .done(function (data) {
                 Sdata = JSON.parse(data);
-                console.log(Sdata);
+                //console.log(Sdata);
                 if (Sdata.length > 0) {
                     Sdata.forEach((item, rows) => {
                         let Status = "";
-
+                        //let Action = `<button type='button' class='btn-primary btn-sm btnEdit' id='btnEdit` + item.news_id + `' data-value='` + item.news_id + `' title='แก้ไข'><i class='fas fa-eye'></i></button>`;
                         tb.row.add([
-                            `<div class="text-center"><button type='button' class='btn-primary btn-sm btnEdit' id='btnEdit` + item.news_id + `' data-value='` + item.news_id + `' title='แก้ไข'><i class='fas fa-eye'></i></button>
+                            `<div class="text-center">
                              <button type='button' class='btn-danger btn-sm btnCanCel' id='btnCanCel` + item.news_id + `' data-value='` + item.news_id + `' title='ยกเลิก'><i class='fas fa-trash-alt'></i></button></div>`,
                             `<div class="text-center"> <img src='../../../image/news/${item.news_image}' id="news_image" alt="Image" style='width:80px;height:60px' /></div>`,
                             `<div >${item.news_id}</div>`,
@@ -203,9 +327,43 @@
             });
     }
 
+    function upload_image_profile(e) {
+
+        let input = e.target;
+
+        var reader = new FileReader();
+        reader.onload = function () {
+            var dataURL = reader.result;
+            var output = document.getElementById('output');
+            output.src = dataURL;
+        };
+
+        if (input.files[0]) {
+            reader.readAsDataURL(input.files[0]);
+            pf_img = input.files[0].name;
+            pf_imgData = input.files[0];
+        } else {
+            pf_img = "";
+            pf_imgData = [];
+            clearpic(0);
+        }
+    }
+
+
+    function clearpic(type) {
+        if (type == 0) {
+            $("#output").attr("src", "");
+            $("#plan_image_profile").val('');
+
+        } else {
+            $("#output").attr("src", "");
+            $("#plan_image_profile").val('');
+        }
+    }
+
     $('.close').click(() => {
         HideTopbar(0);
-        $('#Edit-UserModal').modal('hide');
+        $('#addNewsModal').modal('hide');
     });
 
 

@@ -62,7 +62,7 @@ namespace real_estate.ClassData
             var db = new ConnectDB.DBClass();
             StringBuilder str = new StringBuilder();
 
-            string sqltext = "SELECT "; 
+            string sqltext = "SELECT Top 6"; 
             sqltext += " PJL.plan_type_id ";
             sqltext += " , pro_name ";
             sqltext += " , pType.pro_type_name ";
@@ -83,12 +83,12 @@ namespace real_estate.ClassData
             sqltext += " , PJL.plan_image_profile ";
             sqltext += " , PJL.plan_view "; 
             sqltext += "   FROM [realestate].[dbo].[re_ProjectTable] PJ  ";
-            sqltext += "   INNER JOIN [realestate].[dbo].[re_Project_PlanType] PJL ON PJL.pro_id = PJ.pro_id ";
-            sqltext += "   INNER JOIN [realestate].[dbo].[re_Project_Type_Table]  pType ON pType.pro_type_id = PJ.pro_type_id        ";
+            sqltext += "   INNER JOIN (Select * From [realestate].[dbo].[re_Project_PlanType] Where plan_status ='N') PJL ON PJL.pro_id = PJ.pro_id ";
+            sqltext += "   INNER JOIN [realestate].[dbo].[re_Project_Type_Table] pType ON pType.pro_type_id = PJ.pro_type_id        ";
             sqltext += "   INNER JOIN [realestate].[dbo].[re_Project_Location_Table] pLo ON pLo.pro_location_id = PJ.pro_location_id ";
             sqltext += "   INNER JOIN realestate..re_Project_StatusType pS ON pS.pro_statusType_id = PJ.pro_statusType_id            ";
             sqltext += "   INNER JOIN realestate..re_SaleTable s ON s.sale_id = PJ.sale_id AND s.sale_status = 'A'                   ";
-            sqltext += "   WHERE PJ.pro_status = 'N' ";
+            sqltext += "   WHERE PJ.pro_status = 'N'   Order by PJL.plan_view Desc  ";
 
             SqlDataReader dr = db.GetSqlDataReader(sqltext);
 

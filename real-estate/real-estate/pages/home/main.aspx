@@ -116,7 +116,7 @@
                                                     </select>
                                                 </div>
                                                 <div class="col-lg-3 col-md-6">
-                                                    <select id="drdwDistrict" class="w-100">
+                                                    <select id="drdwProjectLocation" class="w-100">
                                                         <option value="">เลือกโซน/ทำเล/ปริมณฑล</option>
                                                         <%
                                                             real_estate.ClassData.DropDownData.drdwProjectLocation();
@@ -132,7 +132,6 @@
                                                     </select>
                                                 </div>
                                                 <div class="col-lg-3 col-md-6">
-                                                    
                                                 </div>
                                             </div>
 
@@ -174,7 +173,7 @@
                                                 <div class="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-calendar  col-lg-3 col-md-6">
                                                     <div class="btn-wrapper text-center mt-0">
                                                         <!-- <button type="submit" class="btn theme-btn-1 btn-effect-1 text-uppercase">Search Inventory</button> -->
-                                                        <a href="shop-right-sidebar.html" class="btn theme-btn-1 btn-effect-1 text-uppercase">ค้นหา</a>
+                                                        <a href="javascript:void(0)" class="btn theme-btn-1 btn-effect-1 text-uppercase" onclick="onfindProject()">ค้นหา</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -197,7 +196,7 @@
                                                     </select>
                                                 </div>
                                                 <div class="col-lg-3 col-md-6">
-                                                    <select id="drdwDistrictMob" class="w-100">
+                                                    <select id="drdwProjectLocationMob" class="w-100">
                                                         <option value="">เลือกโซน/ทำเล/ปริมณฑล</option>
                                                         <%
                                                             real_estate.ClassData.DropDownData.drdwProjectLocation();
@@ -213,7 +212,6 @@
                                                     </select>
                                                 </div>
                                                 <div class="col-lg-3 col-md-6">
-                                                    
                                                 </div>
                                             </div>
 
@@ -395,11 +393,11 @@
     <!-- #include virtual ="../include/footer.html" -->
 </body>
 <script> 
-   
+
     const users = localStorage.getItem("LogInData");
 
     $(document).ready(function () {
-      
+
         var jsonData = JSON.stringify({
 
         });
@@ -418,6 +416,50 @@
 
         Swal.close();
     });
+
+
+    function onfindProject() {
+        let pro_province_id = $("#drdwProvince").val();
+        let pro_location_id = $("#drdwProjectLocation").val();
+        let pro_type_id = $("#projectType").val();
+        let pro_statusType_id = $("#proStatusType").val();
+        let price_low = $("#rangeMoneyForm").val();
+        let price_hight = $("#rangeMoneyTo").val();
+
+        let findlink = "";
+        if (pro_province_id != "") {
+            findlink += "?provinecid=" + pro_province_id;
+        } else {
+            findlink += "?provinecid";
+        }
+        if (pro_location_id != "") {
+            findlink += "&locationid=" + pro_location_id;
+        } else {
+            findlink += "&locationid";
+        }
+        if (pro_type_id != "") {
+            findlink += "&typeid=" + pro_type_id;
+        } else {
+            findlink += "&typeid";
+        }
+        if (pro_statusType_id != "") {
+            findlink += "&statustypeid=" + pro_statusType_id;
+        } else {
+            findlink += "&statustypeid";
+        }
+        if (price_low != "") {
+            findlink += "&pricelow=" + price_low;
+        } else {
+            findlink += "&pricelow";
+        }
+        if (price_hight != "") {
+            findlink += "&pricehight=" + price_hight;
+        } else {
+            findlink += "&pricehight";
+        }
+
+        location.href = "../project/find-project.aspx" + findlink;
+    }
 
     function loadNews(arrData) {
         var html = "";
@@ -445,54 +487,6 @@
         $('#news_blog').append(html);
         loadCSS();
     }
-
-    //drdw เขต/แขวง หน้าเว็บ
-    //$("#drdwProvince").change(function () {
-    //    $("#drdwDistrict").empty();
-    //    $(".drdwDis").empty();
-    //    $("#drdwDistrict").val("");
-
-
-    //    let html1 = '<option value=""> เลือกทำเลที่ตั้งในจังหวัด</option>';
-    //    let html2 = '<li data-value="" class="option focus"></li>';
-    //    $.get("../../api/drdwData", { id: $(this).val(), types: "District" })
-    //        .done(function (data) {
-    //            Listdata = JSON.parse(data);
-    //            //console.log(Listdata)
-    //            Listdata.forEach((item, i) => {
-    //                html1 += '<option value="' + item.district_id + '">' + item.district_name + '</option>';
-    //                html2 += '<li data-value="' + item.district_id + '" class="option focus">' + item.district_name + '</li>';
-
-    //            });
-    //            $(".drdwDis").append(html2);
-    //            $("#drdwDistrict").append(html1);
-    //            $('.drdwDis').niceSelect('update');
-    //        });
-    //});
-
-    //drdw เขต/แขวง หน้ามือถือ
-    //$("#drdwProvinceMob").change(function () {
-    //    $("#drdwDistrictMob").empty();
-    //    $(".drdwDisMob").empty();
-    //    $("#drdwDistrictMob").val("");
-
-    //    let Listdata;
-    //    let html1 = '<option value=""> เลือกทำเลที่ตั้งในจังหวัด</option>';
-    //    let html2 = '<li data-value="" class="option focus"></li>';
-    //    $.get("../../api/drdwData", { id: $(this).val(), types: "District" })
-    //        .done(function (data) {
-    //            Listdata = JSON.parse(data);
-    //            //console.log(Listdata)
-    //            Listdata.forEach((item, i) => {
-    //                html1 += '<option value="' + item.district_id + '">' + item.district_name + '</option>';
-    //                html2 += '<li data-value="' + item.district_id + '" class="option focus">' + item.district_name + '</li>';
-
-    //            });
-    //            $(".drdwDisMob").append(html2);
-    //            $("#drdwDistrictMob").append(html1);
-    //            $('.drdwDisMob').niceSelect('update');
-    //        });
-    //});
 
     function loadProject(arrData) {
         var htmlgrid = '';
