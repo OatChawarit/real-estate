@@ -93,7 +93,6 @@ namespace real_estate.Controllers.main
                     rs = "success";
                 }
                 catch (SqlException ex) { rs = ex.ToString(); }
-
             }
             else
             {

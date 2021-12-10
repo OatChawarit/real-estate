@@ -365,7 +365,6 @@
     });
 
 
-
     function getAddress() {
         let uid = $("#u_id").val();
         var jsonData = JSON.stringify({
@@ -384,17 +383,19 @@
                 let dat = JSON.parse(data);
 
                 if (dat.length > 0) {
-                    console.log(Sdata)
+                    //console.log(Sdata)
+                    //ปัจจุบัน
                     if (Sdata[0].cus_province_id != "") {
                         drdwProvinceChange(dat[0].cus_province_id);
-                    } else { }
+                    } else {  }
                     if (Sdata[0].cus_district_id != "") {
                         drdwDistrictChange(dat[0].cus_district_id);
                     } else { }
 
                     $('#cus_address').val(dat[0].cus_address);
                     $("#cus_postal_code").val(dat[0].cus_postal_code);
-
+                        
+                    //ตามทะเบียนบ้าน
                     if (dat[0].cus_home_province_id != "") {
                         drdwProvinceHomeChange(dat[0].cus_home_province_id);
                     } else { }
