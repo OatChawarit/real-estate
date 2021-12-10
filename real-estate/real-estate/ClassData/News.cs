@@ -22,7 +22,7 @@ namespace real_estate.ClassData
         {
             var db = new ConnectDB.DBClass();
             StringBuilder str = new StringBuilder();
-            string strSql = "SELECT top 9 news_id,news_topic,news_content,news_image,create_date,create_by FROM realestate..re_news Order by news_id desc";
+            string strSql = "SELECT top 18 news_id,news_topic,news_content,news_image,create_date,create_by FROM realestate..re_news Order by create_date desc";
             SqlDataReader reader = db.GetSqlDataReader(strSql);
             if (reader.HasRows)
             {
@@ -30,7 +30,7 @@ namespace real_estate.ClassData
                 {
                     str.AppendLine("<div class='col-lg-4 col-sm-6 col-12'>");
                     str.AppendLine("<div class='ltn__blog-img ltn__blog-item-3'><div class='ltn__blog-img'>");
-                    str.AppendLine("<a href='news-detail.aspx?newsid=" + reader["news_id"].ToString() + "'><img src='../../vendor/img/blog/" + reader["news_image"].ToString() + "' alt='" + reader["news_image"].ToString() + "'></a></div>");
+                    str.AppendLine("<a href='news-detail.aspx?newsid=" + reader["news_id"].ToString() + "'><img src='../../../image/news/" + reader["news_image"].ToString() + "' alt='" + reader["news_image"].ToString() + "'></a></div>");
                     str.AppendLine("<div class='ltn__blog-brief'>");
                     str.AppendLine("<div class='ltn__blog-meta'>");
                     str.AppendLine("<ul><li class='ltn__blog-author'><ul><li class='ltn__blog-author'><a href ='javascript:void(0)'><i class='far fa-user'></i>ผู้เขียน: " + reader["create_by"].ToString() + "</a></li></ul></div>");

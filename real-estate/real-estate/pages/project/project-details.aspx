@@ -183,7 +183,7 @@
     <!-- #include virtual ="../include/footer.html" -->
 </body>
 <script>
-  
+    let chkLogIn = localStorage.getItem("LogInData");
 
     $(document).ready(function () {
         Swal.fire({
@@ -203,8 +203,6 @@
 
         // function update view
         updateView(pro_id);
-
-
 
 
         var jsonData = JSON.stringify({
@@ -454,7 +452,29 @@
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
         const pro_id = urlParams.get('id');
-        window.location.href = "../project/purchase-order?id=" + pro_id; 
+
+        if (chkLogIn) {
+            //console.log(1);
+            window.location.href = "../project/purchase-order?id=" + pro_id; 
+        } else {
+            //console.log(2);
+            Swal.fire({
+                title: 'แจ้งเตือน!',
+                html: 'กรุณาสมัครสมาชิก <br />ล็อคอินเข้าเข้าใช้งานระบบ ก่อนทำการสั่งจองโครงการ',
+                type: 'warning',
+                showCancelButton: false,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'ตกลง',
+                //cancelButtonText: 'ยกเลิก',
+            }).then((result) => {
+                if (result.value) {
+                    window.location.href = "../home/login.aspx";
+                }
+                window.location.href = "../home/login.aspx";
+            });
+        }
+       
     }
 
 </script>

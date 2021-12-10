@@ -371,44 +371,47 @@
         var jsonData = JSON.stringify({
             user_id: uid
         });
-        $('select').niceSelect();
 
         $.get("../../api/userData", { jsonData: jsonData, types: "list_customer", username: profiles[0].user_id })
             .done(function (data) {
                 Sdata = JSON.parse(data);
 
                 if (Sdata.length > 0) {
-                    console.log(Sdata);
+
                     if (Sdata[0].cus_province_id != "") {
                         drdwProvinceChange(Sdata[0].cus_province_id);
-                        $('#drdwDistrict').val(Sdata[0].cus_district_id);
                     }
-                      if (Sdata[0].cus_district_id != "") {
-                          drdwDistrictChange(Sdata[0].cus_district_id);
-                           $('#drdwSubDistrict').val(Sdata[0].cus_sub_district_id);
+                    if (Sdata[0].cus_district_id != "") {
+                        drdwDistrictChange(Sdata[0].cus_district_id);
                     }
 
                     $('#cus_address').val(Sdata[0].cus_address);
-                   
-                    
-                    $('#drdwProvince').val(Sdata[0].cus_province_id);
+                    setTimeout(() => {
+                        $('#drdwProvince').val(Sdata[0].cus_province_id);
+                        $('#drdwProvince').niceSelect('update');
+                        $('#drdwDistrict').val(Sdata[0].cus_district_id);
+                        $('#drdwDistrict').niceSelect('update');
+                        $('#drdwSubDistrict').val(Sdata[0].cus_sub_district_id);
+                        $('#drdwSubDistrict').niceSelect('update');
+                    }, 400);
                     $("#cus_postal_code").val(Sdata[0].cus_postal_code);
 
+                    if (Sdata[0].cus_home_province_id != "") {
+                        drdwProvinceChange(Sdata[0].cus_home_province_id);
+                    }
+                    if (Sdata[0].cus_home_district_id != "") {
+                        drdwDistrictChange(Sdata[0].cus_home_district_id);
+                    }
                     $("#cus_home_address").val(Sdata[0].cus_home_address);
-                    $("#drdwSubDistrictHome").val(Sdata[0].cus_home_sub_district_id);
-                    $("#drdwDistrictHome").val(Sdata[0].cus_home_district_id);
-                    $("#drdwProvinceHome").val(Sdata[0].cus_home_province_id);
+                    setTimeout(() => {
+                        $("#drdwSubDistrictHome").val(Sdata[0].cus_home_sub_district_id);
+                        $('#drdwSubDistrictHome').niceSelect('update');
+                        $("#drdwDistrictHome").val(Sdata[0].cus_home_district_id);
+                        $('#drdwDistrictHome').niceSelect('update');
+                        $("#drdwProvinceHome").val(Sdata[0].cus_home_province_id);
+                        $('#drdwProvinceHome').niceSelect('update');
+                    }, 400);
                     $('#cus_home_postal_code').val(Sdata[0].cus_home_postal_code);
-
-                    $('#drdwProvince').niceSelect('update');
-                     $('#drdwSubDistrict').niceSelect();
-                     $('#drdwSubDistrict').niceSelect();
-                    $('#drdwProvinceHome').niceSelect('update');
-                    $('#drdwSubDistrictHome').niceSelect('update');
-                    $('#drdwDistrictHome').niceSelect('update');
-
-              
-              
                 }
                 else {
                     $('#cus_address').val("");
@@ -434,6 +437,14 @@
     }
 
 
+    $('#drdwDistrict').change(function () {
+         $("#cus_postal_code").val("");
+    });
+
+    $('#drdwDistrictHome').change(function () {
+         $("#cus_home_postal_code").val("");
+    });
+
     function onEditAddr() {
         var postJson = JSON.stringify({
             user_id: profiles[0].user_id,
@@ -452,6 +463,25 @@
         });
 
         console.log(postJson);
+
+         $.get("../../api/userData", { jsonData: postJson, types: "update_customer", username: profiles[0].user_id })
+                .done(function (data) {
+                    let respone = data;
+                    if (respone == "success") {
+                        Swal.fire(
+                            "Success", //title
+                            "แก้ไขข้อมูล เรียบร้อย!", //main text
+                            "success" //icon
+                        );
+                        getUserDetail(profiles[0].user_id);
+                    } else {
+                        Swal.fire(
+                            "Found an Error", //title
+                            "แก้ไข ไม่สำเร็จ!", //main text
+                            "error" //icon
+                        );
+                    }
+                });
     }
 
 
@@ -754,7 +784,7 @@
         $("#drdwDistrict").niceSelect();
         $("#drdwDistrict").empty();
         $("#drdwDistrict").val("");
-
+        console.log("province_id", province_id);
         $.get("../../api/drdwData", { id: province_id, types: "District" })
             .done(function (data) {
                 let JsondropdownData = JSON.parse(data);
@@ -781,7 +811,7 @@
         $("#drdwSubDistrict").niceSelect();
         $("#drdwSubDistrict").empty();
         $("#drdwSubDistrict").val("");
-
+        console.log("district_id", district_id);
         $.get("../../api/drdwData", { id: district_id, types: "SubDistrict" })
             .done(function (data) {
                 let JsondropdownData = JSON.parse(data);
