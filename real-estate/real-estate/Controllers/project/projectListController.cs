@@ -51,7 +51,7 @@ namespace real_estate.Controllers.project
                 sqltext += "      , PJL.plan_multiFunction_room      ";
                 sqltext += "      , PJL.plan_parking                 ";
                 sqltext += "      , PJL.plan_price                   ";
-                sqltext += "      , pS.pro_statusType_name           ";
+                sqltext += "      , PJ.pro_statusType_id, pS.pro_statusType_name           ";
                 sqltext += "      , s.sale_firstName +' '+ s.sale_lastName as sale_fullName        ";
                 sqltext += "      , s.sale_phone                                                   ";
                 sqltext += "      , s.sale_company                   ";
