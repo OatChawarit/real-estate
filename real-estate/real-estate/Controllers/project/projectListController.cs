@@ -402,6 +402,82 @@ namespace real_estate.Controllers.project
                 rs = JsonConvert.SerializeObject(arr);
 
             }
+            else if (types == "listBookingSale")
+            {
+                SqlDataReader dr;
+                string sqltext = "  SELECT  a.[book_id] , format(a.[create_date], 'dd/MM/yyyy') as 	create_date, a.book_firstName +' ' + a.book_lastName as book_fullName                                  ";
+                sqltext += "              , c.pro_id , c.pro_name , b.plan_type_id , b.plan_name , d.pro_type_name , FORMAT( b.plan_price , 'N2' ) as plan_price         ";
+                sqltext += "              , c.sale_id , e.sale_firstName +' '+ e.sale_lastName as sale_fullName     , e.sale_phone , a.book_status                       ";
+                sqltext += "  FROM [realestate].[dbo].[re_Project_Booking] a                                                                                         ";
+                sqltext += "  INNER JOIN realestate..re_Project_PlanType b ON a.plan_type_id = b.plan_type_id                                                       ";
+                sqltext += "  INNER JOIN realestate..re_ProjectTable c ON c.pro_id = b.pro_id                                                                       ";
+                sqltext += "  INNER JOIN realestate..re_Project_Type_Table d ON d.pro_type_id = c.pro_type_id                                                       ";
+                sqltext += "  INNER JOIN realestate..re_SaleTable e ON e.sale_id = c.sale_id                                                             ";
+
+                sqltext += "  WHERE e.sale_id  = '" + stuff.sale_id + "'                                      ";
+
+
+                dr = db.GetSqlDataReader(sqltext);
+                ArrayList arr = new ArrayList();
+                while (dr.Read())
+                {
+                    var result = new Dictionary<string, object>();
+                    for (int i = 0; i < dr.FieldCount; i++)
+                    {
+                        result.Add(dr.GetName(i), dr[i].ToString());
+                    }
+                    arr.Add(result);
+                }
+                rs = JsonConvert.SerializeObject(arr);
+
+            }
+            else if (types == "getBookingPrint")
+            {
+                SqlDataReader dr;
+                string sqltext = "  SELECT  a.[book_id] , c.pro_id , c.pro_name , format( a.create_date ,'dd-MM-yyyy') as  create_date   , a.book_firstName + ' ' + a.book_lastName as book_fullName                               ";
+                sqltext += "         , cus.cus_idCard   , cus.cus_address + ' ' + subCus.sub_district_name + ' ' + adCus.district_name   + ' ' + apCus.province_name + ' ' + cus.cus_postal_code  as cus_address_full    ";
+                sqltext += "         , cus.cus_phone , com.com_name , ap.province_name , ad.district_name , sub.sub_district_name      , c.pro_total_area                  ";
+
+                sqltext += " , promotion_discount_percent	, promotion_giftVoucher_price	";
+                sqltext += " , promotion_discount_transferDate		, promotion_publicServicefeeYear_free	";
+                sqltext += " , case when promotion_IsElectricMeter_free = 1 then 'ฟรีค่าติดตั้งมิเตอร์ไฟฟ้า' else null end as promotion_IsElectricMeter_free  ";
+                sqltext += " , case when promotion_IsWaterMeter_free = 1 then 'ฟรีค่าติดตั้งมิเตอร์น้ำประปา' else null end as promotion_IsWaterMeter_free";
+                sqltext += " , promotion_airConditioner_free	, promotion_airConditioner_remark , promotion_other , c.pro_bank_qrCodeImg	";
+                sqltext += " ,  d.pro_type_name  , b.plan_useable_area	 , b.plan_price , b.plan_type_id";
+
+
+                sqltext += "  FROM [realestate].[dbo].[re_Project_Booking] a                                                                                           ";
+                sqltext += "  INNER JOIN realestate..re_Project_PlanType b ON a.plan_type_id = b.plan_type_id                                                        ";
+                sqltext += "  INNER JOIN realestate..re_ProjectTable c ON c.pro_id = b.pro_id                                                                       ";
+                sqltext += "  INNER JOIN realestate..re_Project_Type_Table d ON d.pro_type_id = c.pro_type_id                                                       ";
+                sqltext += "  INNER JOIN realestate..re_SaleTable e ON e.sale_id = c.sale_id                                                             ";
+
+                sqltext += "  INNER JOIN realestate..re_CustomerTable cus ON cus.user_id = a.user_id                                                           ";
+                sqltext += "  INNER JOIN realestate..sa_AddressProvince ap ON ap.province_id = c.pro_province_id                                                         ";
+                sqltext += "  INNER JOIN realestate..sa_AddressDistrict ad ON ad.district_id = c.pro_district_id                                                          ";
+                sqltext += "  INNER JOIN realestate..sa_AddressSubDistrict sub ON sub.sub_district_id = c.pro_sub_district_id                                                             ";
+                sqltext += "  INNER JOIN realestate..sa_AddressProvince apCus ON apCus.province_id = cus.cus_province_id                                                               ";
+                sqltext += "  INNER JOIN realestate..sa_AddressDistrict adCus ON adCus.district_id = cus.cus_district_id                                                         ";
+                sqltext += "  INNER JOIN realestate..sa_AddressSubDistrict subCus ON subCus.sub_district_id = cus.cus_sub_district_id                                                             ";
+                sqltext += "  INNER JOIN realestate..re_CompanyTable com ON com.com_id = c.pro_company_id                                                            ";
+                 
+                sqltext += "  WHERE a.book_id  = '" + stuff.book_id + "'                                      ";
+
+
+                dr = db.GetSqlDataReader(sqltext);
+                ArrayList arr = new ArrayList();
+                while (dr.Read())
+                {
+                    var result = new Dictionary<string, object>();
+                    for (int i = 0; i < dr.FieldCount; i++)
+                    {
+                        result.Add(dr.GetName(i), dr[i].ToString());
+                    }
+                    arr.Add(result);
+                }
+                rs = JsonConvert.SerializeObject(arr);
+
+            }
 
             else if (types == "getView")
             {
@@ -798,6 +874,40 @@ namespace real_estate.Controllers.project
                 }
                 catch (SqlException ex) { rs = ex.ToString(); }
 
+
+            }
+            else if (types == "updateApproveBooking")
+            {
+                StringBuilder sqlUpdate = new StringBuilder();
+                sqlUpdate.Clear();
+                sqlUpdate.Append(" UPDATE  [realestate].[dbo].[re_Project_Booking]   SET");
+                sqlUpdate.AppendLine(" [book_status] ='A'  ");
+                sqlUpdate.AppendLine(" WHERE book_id='" + stuff.book_id + "' ");
+
+                try
+                {
+                    db.SqlExecute(sqlUpdate.ToString());
+                    rs = "success";
+                 
+                }
+                catch (SqlException ex) { rs = ex.ToString(); }
+
+            }
+            else if (types == "updateCancelBooking")
+            {
+                StringBuilder sqlUpdate = new StringBuilder();
+                sqlUpdate.Clear();
+                sqlUpdate.Append(" UPDATE  [realestate].[dbo].[re_Project_Booking]   SET");
+                sqlUpdate.AppendLine(" [book_status] ='C'  ");
+                sqlUpdate.AppendLine(" WHERE book_id='" + stuff.book_id + "' ");
+
+                try
+                {
+                    db.SqlExecute(sqlUpdate.ToString());
+                    rs = "success";
+                
+                }
+                catch (SqlException ex) { rs = ex.ToString(); }
 
             }
             return rs;

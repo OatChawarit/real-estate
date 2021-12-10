@@ -145,7 +145,7 @@
                         <div class="form-group row">
 
                             <div class="table-responsive" style="padding-bottom: 30px">                            
-                                <table class="table table-bordered " id="register_project_plan" width="100%" cellspacing="0">
+                                <table class="table table-striped  " id="register_project_plan" width="100%" cellspacing="0">
                                     <thead class="table-dark" align="center">
                                         <tr>
                                             <th style="width: 60px; min-width: 60px; max-width: 60px; vertical-align: middle;"></th>

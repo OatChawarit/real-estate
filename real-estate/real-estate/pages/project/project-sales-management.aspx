@@ -79,7 +79,7 @@
 
                                 <div class="table-responsive" style="padding-bottom:30px">
                                     <%--<table class="table table-bordered dataTable js-exportable" id="orderTable" width="100%" cellspacing="0">--%>
-                                    <table class="table table-bordered " id="register_project" width="100%" cellspacing="0" >
+                                    <table class="table table-striped " id="register_project" width="100%" cellspacing="0" >
                                         <thead class="table-dark" align="center">
                                             <tr>
                                                 <th style="width: 60px; min-width: 60px; max-width: 60px; vertical-align: middle;"></th>
@@ -121,7 +121,7 @@
 
                                         <ul class="nav nav-tabs d-none" id="myTab" role="tablist">
                                             <li class="nav-item">
-                                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">ข้อมูลสั่งซื้อประกันภัย</a>
+                                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"> </a>
                                             </li>
                                             <li class="nav-item">
                                                 <a class="nav-link" id="upimg-tab" data-toggle="tab" href="#upimg" role="tab" aria-controls="profile" aria-selected="false"></a>

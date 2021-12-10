@@ -6,8 +6,8 @@
 <head runat="server">
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
-    <title>Report - MeeCapital</title>
-    <link rel="shortcut icon" href="../../img/icon-logoMct.ico" type="image/png" />
+    <title>Report - Booking</title>
+     
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -31,7 +31,21 @@
             text-align: right;
 
         }
-
+        p {
+            font-size:14pt;
+        }
+        h4 {
+            margin:5px;
+        }
+        .subpage span {
+            padding: 0  ;
+        }
+        b {
+            padding:0 12px;
+        }
+        .d-none {
+            display:none;
+        }
     </style>
 
 </head>
@@ -55,44 +69,92 @@
                 
 
                 <script>
-                    let PrintDate = '';
-                    let Brand = '';
-                    let Model = '';
-                    let EngineNumber = '';
-                    let ChassisNumber = '';
-                    let Color = '';
-                    let CustomerName = '';
-                    let AgreementId = '';
-                    let Address = '';
-                    let ExecutedDate = '';
-                    let AgreementAmountVat = '';
-                    let NumberOfPeriod = '';
-                    let PayAmountTax = '';
-                     
+                    var arr = [] ;         
+                    let book_id = "";
+                    let pro_name = "";
+                    let create_date = "";
+                    let book_fullName = "";
+                    let cus_idCard = "";
+                    let cus_address_full = "";
+                    let cus_phone = "";
+                    let com_name = "";
+                    let province_name = "";
+                    let district_name = "";
+                    let sub_district_name = "";
 
-                    var ix = 0;
-                    //var arr = JSON.parse(localStorage['arr_localPrint']);       
-                    var arr = [] ;              
-                    
-                    console.log(arr);
+                    let pro_bank_qrCodeImg = "";
+                    let pro_type_name = "";
+                    let plan_useable_area = "";
+                    let plan_price = "";
+                    let plan_type_id = "";
+                    let pro_total_area = "";
 
-                    arr.forEach((item, i) => {
-                        PrintDate = item.PrintDate;
-                        Brand = item.MakeBrand;
-                        Model = item.Model;
-                        EngineNumber = item.EngineNumber;
-                        ChassisNumber = item.ChassisNumber;
-                        Color = item.Color;
-                        CustomerName = item.CustomerName;
-                        AgreementId = item.AgreementId;
-                        Address = item.Address;
-                        ExecutedDate = item.ExecutedDate;
-                        AgreementAmountVat = item.AgreementAmountVat;
-                        NumberOfPeriod = item.NumberOfPeriod;
-                        PayAmountTax = item.PayAmountTax;
-     
+                    let promotion_discount_percent = "";
+                    let promotion_giftVoucher_price = "";
+                    let promotion_discount_transferDate = "";
+                    let promotion_publicServicefeeYear_free = "";
+                    let promotion_IsElectricMeter_free = "";
+                    let promotion_IsWaterMeter_free = "";
+                    let promotion_airConditioner_free = "";
+                    let promotion_airConditioner_remark = "";
+                    let promotion_other = "";
+
+                    let pro_deed_id = "";
+                    let pro_land_number = "";
+                    let pro_survey_page = "";
+                    let new_deed_id = "";
+                    let new_land_number = "";
+                  
+      
+                    var arr = JSON.parse( localStorage.getItem("arr_localPrint")) ;        
+                    console.log(arr); 
+
+                    arr.forEach((item, i) => {         
+                        book_id = item.book_id;
+                        //pro_name = item.pro_name;
+                        pro_name = item.pro_name.replace( 'โครงการ', '');
+                        
+                        create_date = item.create_date;
+                        book_fullName = item.book_fullName;
+                        cus_idCard = item.cus_idCard;
+                        cus_address_full = item.cus_address_full;
+                        cus_phone = item.cus_phone;
+                        com_name = item.com_name;
+                        province_name = item.province_name;
+                        district_name = item.district_name;
+                        sub_district_name = item.sub_district_name;
+
+                        pro_bank_qrCodeImg = item.pro_bank_qrCodeImg;
+                        pro_type_name = item.pro_type_name;
+                        plan_useable_area = item.plan_useable_area;
+                        plan_price = item.plan_price;
+                        plan_type_id = item.plan_type_id;
+                        pro_total_area = item.pro_total_area;
+
+                        promotion_discount_percent = item.promotion_discount_percent;
+                        promotion_giftVoucher_price = item.promotion_giftVoucher_price;
+                        promotion_discount_transferDate = item.promotion_discount_transferDate;
+                        promotion_publicServicefeeYear_free = item.promotion_publicServicefeeYear_free;
+                        promotion_IsElectricMeter_free = item.promotion_IsElectricMeter_free;
+                        promotion_IsWaterMeter_free = item.promotion_IsWaterMeter_free;
+                        promotion_airConditioner_free = item.promotion_airConditioner_free;
+                        promotion_airConditioner_remark = item.promotion_airConditioner_remark;
+                        promotion_other = item.promotion_other;
+
+                        pro_deed_id = item.pro_deed_id;
+                       
+                        pro_survey_page = item.pro_survey_page;
+                        new_deed_id = item.new_deed_id;
+                        new_land_number = item.new_land_number;    
+                        pro_land_number = item.pro_land_number;
 
                     });
+   
+
+
+                
+
+
 
 
                     var txthtml = "<div class= ' p-A4 '>" +
@@ -103,47 +165,139 @@
                          </div >
                         ` +
                         // subpage
-                        `  <div class = 'subpage' >
-                                   <div class="txt-R">
-                                    <p style="padding-right:30px">วันที่ &nbsp;&nbsp; ${PrintDate}  &emsp;&emsp;</p>
-                                    <br><br>
-                                </div>
-                                <div class="txt-C">
-                                    <h3>หนังสือรับรองการเช่าซื้อ</h3>
-                                </div>
-                             
-                                <div>
-                                    <p>เรียน  นายทะเบียนยานพาหนะกองทะเบียนกรมการขนส่งทางบก</p>
-                                </div>
-                                    <br>
-                                <div>
-                                    <p class='txt-indent3'> โดยหนังสือฉบับนี้ บริษัทฯ ขอรับรองว่ารถยี่ห้อ <span>${Brand}</span>  รุ่น <span>${Model}</span> </p>
-                                    <p> สี <span>${Color}</span>		หมายเลขเครื่องยนต์ <span>${EngineNumber}</span>		 หมายเลขตัวถัง	<span>${ChassisNumber}</span></p>
-                                    <p> ซึ่งบริษัทฯได้ตกลงให้ </p>
-                                </div>
-                                    <br>
-                                <div>
-                                     <p> <span class='set-span'>  ชื่อ  &nbsp; </span> <span> ${CustomerName}</span>		 </p>
-                                     <p> <span class='set-span'>  ที่อยู่  </span> <span class='set-span-address'> ${Address} </span></p>
-                                </div>
-                                    <br>
-                                <div>
-                                    <p class="txt-indent3">
-                                        เป็นผู้เช่าซื้อรถยนต์คันดังกล่าวไปเมื่อวันที่  <span>${ExecutedDate}</span> ในราคาเช่าซื้อทั้งสิ้น <span>${AgreementAmountVat}</span> บาท <br>
-                                        แบ่งชำระเป็น <span>${NumberOfPeriod}</span> งวด งวดละ <span>${PayAmountTax}</span> บาท
-                                    </p>         
-                                </div>
-                                     <br>
-                                <div>
-                                    <p class="txt-indent3">จึงเรียนมาเพื่อขอให้ท่านได้โปรดพิจารณาอนุมัติการจดทะเบียนรถยนต์คันดังกล่าว   ในนามบริษัท </p>
-                                    <p>มี แคปปิตอล จำกัด</p>
-                                </div>
-                                    <br><br>
-                                <div>
-                                    <p style="padding-left:25rem">ขอแสดงความนับถือ </p>
-                                    <br><br>
-                                    <p style="padding-left:24rem">บริษัท มี แคปปิตอล จำกัด</p>
-                                </div>
+                        `  <div class='subpage'>
+<div class="txt-R">
+    <p style="padding-right:30px">ใบจองเลขที่ &nbsp;&nbsp; ${book_id} &emsp;&emsp;</p>                                                 
+</div>
+<div class="txt-C ">
+    <h4 >หนังสือจองที่ดินจัดสรรพร้อมสิ่งปลูกสร้าง</h4>
+    <h4 > โครงการ  &nbsp;&nbsp;<b>${pro_name}</b> </h4>
+</div>
+<div class="txt-C ">
+    <p  style="padding-left:150px">ทำที่ สำนักงานขายโครงการ &nbsp; <b>${pro_name}</b>  </p>
+</div>
+
+
+<div class="txt-R">
+    <p style="padding-right:30px">วันที่  &nbsp; <b> ${create_date}</b> &emsp;&emsp;</p>
+    
+</div>
+
+<div>
+    <p> <span>ข้าพเจ้า &nbsp; <b>${book_fullName}</b>   </span>ผู้จอง <span style="padding-left: 200px;">บัตรประชาชนเลขที่<b>${cus_idCard}</b>  </span> </p>
+</div>
+
+<div>
+    <p>ที่อยู่&nbsp;<b>${cus_address_full} </b>  </p>
+</div>
+<div>
+    <p>หมายเลขโทรศัพท์ &nbsp;<b>${cus_phone} </b>   </p>
+</div>
+<div>
+    <p style="padding-left: 50px;">  ผู้จองมีความประสงค์จองที่ดินจัดสรรพร้อมสิ่งปลูกสร้างของโครงการ&nbsp; <b>${pro_name}</b>
+    </p>
+</div>
+
+<div>
+    <p>จากบริษัท&nbsp; <b>${com_name}</b> เจ้าของโครงการซึ่งต่อไปนี้จะเรียกว่า "บริษัท" 
+    </p>
+</div>
+ 
+<div>
+    <p> ตั้งอยู่บนที่ดินบางส่วนของ 
+        <span>โฉนดเลขที่ &nbsp;<b>${pro_deed_id}</b> </span>
+        <span>เลขที่ดิน &nbsp;<b>${pro_land_number}</b></span>
+        <span>หน้าสำรวจ &nbsp;<b>${pro_survey_page}</b></span>
+    </p>
+</div>
+
+<div>
+    <p>
+        <span>แขวง/ตำบล &nbsp;<b>${sub_district_name}</b>  </span>
+        <span>เขต/อำเภอ &nbsp;<b>${district_name}</b> </span>
+        <span>จังหวัด &nbsp;<b>${province_name}</b> </span>
+         
+       
+    </p>
+    <p> <span>เนื้อที่ดิน &nbsp;<b>${pro_total_area}</b>  </span></p>
+</div>
+
+<div>
+    <p>
+        <span>ปัจจุบันได้แบ่งแยกออกเป็นโฉนดเลขที่&nbsp;<b>${new_deed_id}</b> </span>
+        <span>เลขที่ดิน &nbsp;<b>${new_land_number} </b></span>
+    </p>
+</div>
+
+<div>
+    <p>
+        <span style="padding-left: 50px;">โดยผู้จองตกลงซื้อที่ดินจัดสรรพร้อมสิ่งปลูกสร้างแปลงเลขที่&nbsp;<b>${plan_type_id}</b> </span>
+        <span>แบบ&nbsp;<b> ${pro_type_name}</b></span>
+       
+    </p>
+    <p> <span>พื้นที่ประมาณ&nbsp;<b>${plan_useable_area}</b> </span> <span>จำนวน 1 แปลง </span></p>
+</div>
+<div>
+    <p>
+        <span>  จำนวน 1 แปลง ราคาขายเป็นจำนวนเงิน &nbsp;<b>${plan_price}</b> </span>
+        <span> บาท</span> 
+    </p>
+</div>
+ 
+<div>
+    <p>โปรโมชั่น : </p>
+    <p id="promotion_discount_percent"><b>- &nbsp;ส่วนลด ${promotion_discount_percent} %</b></p>
+    <p id="promotion_giftVoucher_price"><b>- &nbsp;บัตรของขวัญมูลค่า&nbsp; ${promotion_giftVoucher_price}&nbsp; บาท</b> </p>
+    <p id="promotion_discount_transferDate"><b>- &nbsp;ส่วนลดวันโอน&nbsp; ${promotion_discount_transferDate}&nbsp; บาท</b> </p>
+    <p id="promotion_publicServicefeeYear_free"><b>- &nbsp; ฟรีค่าบริการสาธารณะ&nbsp;${promotion_publicServicefeeYear_free}&nbsp; ปี </b></p>
+    <p id="promotion_IsElectricMeter_free"><b>- &nbsp; ${promotion_IsElectricMeter_free} </b></p>
+    <p id="promotion_IsWaterMeter_free"> <b>- &nbsp; ${promotion_IsWaterMeter_free} </b></p>
+    <p id="promotion_airConditioner_free"><b>- &nbsp; ฟรีแอร์ ${promotion_airConditioner_free} เครื่อง</b></p> 
+    <p id="promotion_other"><b>- &nbsp; อื่นๆ ${promotion_other}</b></p>
+
+   
+
+</div>
+
+<div style="padding-top: 5px;"><p> ผู้จองได้อ่านและเข้าใจข้อความในหนังสือจองฉบับนี้โดยตลอดแล้วเพื่อเป็นหลักฐานข้าพเจ้าจึงได้ลงลายมือไว้ต่อหน้าพยานข้างท้ายนี้ </p></div>
+<br>
+
+
+<div>
+<p> 
+    <span>ลงชื่อ..................................................................ผู้จอง&nbsp;&nbsp;</span>
+    <span>ลงชื่อ..................................................................ผู้รับจอง</span>
+</p>
+
+</div>
+<div>
+<p style="margin-left: 20px;"> 
+    <span>(........................................................................)&nbsp;&nbsp;</span>
+    <span style="margin-left: 25px;">(........................................................................)</span>
+</p>
+
+</div>
+
+<br><br>
+<div>
+<p > 
+    <span>ลงชื่อ..................................................................ผู้อนุมัติ&nbsp;&nbsp;</span>
+    <span>ลงชื่อ..................................................................พยาน</span>
+</p>
+
+</div>
+<div>
+<p style="margin-left: 20px;"> 
+    <span>(........................................................................)&nbsp;&nbsp;</span>
+    <span style="margin-left: 25px;">(........................................................................)</span>
+</p>
+
+</div>
+
+<img src="../../image/project/${pro_bank_qrCodeImg}" style="width: 120px  ;height:120px; position: relative;     bottom: 420px; margin-left: 350px;" >
+ 
+
+
 
                         ` +
                         `
@@ -154,10 +308,8 @@
                         ` +
                         // footerpage
                         `
-                            <div class= 'footerpage' >
-                                 <div class="row">
-                                        
-                                </div>
+                            <div class= ' ' >
+                                 
                                   
                             </div > `;
 
@@ -165,9 +317,36 @@
 
                          $("#ReportBooking").append(txthtml);
 
+ 
+
+                        if (!promotion_discount_percent) {
+                            $('#promotion_discount_percent').addClass('d-none');
+                        }
+                        if (!promotion_giftVoucher_price) {
+                            $('#promotion_giftVoucher_price').addClass('d-none');
+                        }
+                        if (!promotion_discount_transferDate) {
+                            $('#promotion_discount_transferDate').addClass('d-none');
+                        }
+                        if (!promotion_publicServicefeeYear_free) {
+                            $('#promotion_publicServicefeeYear_free').addClass('d-none');
+                        }
+
+                        if (!promotion_IsElectricMeter_free) {
+                            $('#promotion_IsElectricMeter_free').addClass('d-none');
+                        }
+                        if (!promotion_IsWaterMeter_free) {
+                            $('#promotion_IsWaterMeter_free').addClass('d-none');
+                        }
+                        if (!promotion_airConditioner_free) {
+                            $('#promotion_airConditioner_free').addClass('d-none');
+                        }
+                        if (!promotion_other) {
+                            $('#promotion_other').addClass('d-none');
+                        }
 
 
-                    
+ 
 
                     //}
                    // window.print();
