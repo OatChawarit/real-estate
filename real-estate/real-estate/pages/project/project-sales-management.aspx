@@ -186,7 +186,7 @@
                                                                 </div>
                                                                 <div class="col-lg-3">
                                                                     <div class="inputText setting-font">จำนวนยูนิต </div>
-                                                                    <input type="text" id="pro_unit" placeholder="" class="setting-form"  />
+                                                                    <input type="number" id="pro_unit" placeholder="" class="setting-form"  />
                                                                 </div>
                                                                 <div class="col-lg-3">
                                                                     <div class="inputText setting-font">ราคาเปิดโครงการ </div>
@@ -351,11 +351,12 @@
     let yearNow = d.getFullYear(); 
     let qrCodeImg = "";
     let qrCodeData = [];
-    const sale_id = JSON.parse(userLocal)[0].sale_id;
+
 
     $(document).ready(function () {
         checkLogin(3);
-
+        const sale_id = JSON.parse(userLocal)[0].sale_id;
+ 
         $('#FormModal_Project').modal({ backdrop: 'static', keyboard: false })  
 
         $('#footer_callme').addClass('d-none');  

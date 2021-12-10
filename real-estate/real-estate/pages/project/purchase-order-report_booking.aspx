@@ -71,7 +71,7 @@
 
 
                     var ix = 0;
-                    var arr = JSON.parse(localStorage['arr_localPrint']);       
+                    //var arr = JSON.parse(localStorage['arr_localPrint']);       
                     var arr = [] ;              
                     
                     console.log(arr);

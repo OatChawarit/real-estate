@@ -28,7 +28,7 @@
 <script>
 
     const userLocal = localStorage.getItem("LogInData");
-    let logInData;
+    let logInData = "" ;
 
     $(document).ready(function () {
         //$('#tbUsername').html('');
@@ -44,8 +44,9 @@
             $("#mob-manage").addClass('d-none');
 
         } else {
+            
             logInData = JSON.parse(userLocal);
-
+ 
             $('.topbar_login').addClass('d-none');
             let user_role = "";
 
