@@ -351,11 +351,11 @@
     let yearNow = d.getFullYear(); 
     let qrCodeImg = "";
     let qrCodeData = [];
+    const sale_id = JSON.parse(userLocal)[0].sale_id;
 
-
-    $(document).ready(function () {
+    $(document).ready(function () { 
         checkLogin(3);
-        const sale_id = JSON.parse(userLocal)[0].sale_id;
+    
  
         $('#FormModal_Project').modal({ backdrop: 'static', keyboard: false })  
 
