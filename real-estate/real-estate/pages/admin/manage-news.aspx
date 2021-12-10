@@ -127,7 +127,7 @@
                 <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header setting-modal">
-                            <h5 class="modal-title topic-text" id="topic_Modal">แก้ไขข้อมูลผู้ใช้งาน</h5>
+                            <h5 class="modal-title topic-text" id="topic_Modal">แก้ไขข้อมูลข่าว</h5>
                             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">×</span>
                             </button>
