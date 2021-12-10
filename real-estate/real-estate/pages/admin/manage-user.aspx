@@ -465,7 +465,7 @@
         $.get("../../api/userData", { jsonData: jsonData, types: "list_user", username: userData[0].user_id })
             .done(function (data) {
                 Sdata = JSON.parse(data);
-                //console.log(Sdata);
+                console.log(Sdata);
                 if (Sdata.length > 0) {
                     Sdata.forEach((item, rows) => {
                         let Status = "";
