@@ -248,6 +248,22 @@ namespace real_estate.Controllers.main
                 }
                 rs = JsonConvert.SerializeObject(arr);
             }
+            else if (types == "up_sauser")
+            {
+                string sqltext = "";
+                    sqltext += " Update [realestate].[dbo].[sa_user] Set  ";
+                    sqltext += " user_firstName='" + stuff.user_firstName + "' ";
+                    sqltext += " ,user_lastName='" + stuff.user_lastName + "' ";
+                    sqltext += "  ,update_date=getdate(), update_by='" + username + "'  ";
+                    sqltext += "  Where user_id='" + stuff.user_id + "'  ";
+                    try
+                    {
+                        db.SqlExecute(sqltext.ToString());
+                        rs = "success";
+                    }
+                    catch (SqlException ex) { rs = ex.ToString(); }
+   
+            }
             else
             {
                 rs = "ระบบผิดพลาด ไม่สามารถแก้ไขได้";
