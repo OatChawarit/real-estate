@@ -220,7 +220,7 @@ namespace real_estate.Controllers.register
                 sqlInsertSale.AppendLine(" '" + stuff.sale_AgentApproveNo + "', "); 
                 sqlInsertSale.AppendLine(" getdate() ,                          ");
                 sqlInsertSale.AppendLine(" 'System' ,                           ");
-                sqlInsertSale.AppendLine(" 'N'                                  ");
+                sqlInsertSale.AppendLine(" 'A'                                  ");
                 sqlInsertSale.AppendLine(" )                                    ");
                 try
                 {
