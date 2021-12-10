@@ -80,7 +80,7 @@ namespace real_estate.Controllers.main
                 sqltext += " ,sale_idCard='" + stuff.sale_idCard + "' ";
                 sqltext += " ,sale_phone='" + stuff.sale_phone + "' ";
                 sqltext += " ,sale_line='" + stuff.sale_line + "' ";
-                sqltext += " ,sale_mail='" + stuff.sale_mail + "' ";
+                //sqltext += " ,sale_mail='" + stuff.sale_mail + "' ";
                 sqltext += " ,sale_company='" + stuff.sale_company + "' ";
                 sqltext += " ,sale_position='" + stuff.sale_position + "' ";
                 sqltext += " ,sale_AgentApproveNo='" + stuff.sale_AgentApproveNo + "' ";

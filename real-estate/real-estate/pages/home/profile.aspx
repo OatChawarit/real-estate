@@ -371,47 +371,59 @@
         var jsonData = JSON.stringify({
             user_id: uid
         });
-
+        Swal.fire({
+            title: 'โปรดรอสักครู่',
+            html: 'กำลังโหลดข้อมูล..',// add html attribute if you want or remove
+            allowOutsideClick: false,
+            onBeforeOpen: () => {
+                Swal.showLoading()
+            },
+        });
         $.get("../../api/userData", { jsonData: jsonData, types: "list_customer", username: profiles[0].user_id })
             .done(function (data) {
-                Sdata = JSON.parse(data);
+                let dat = JSON.parse(data);
 
-                if (Sdata.length > 0) {
-
+                if (dat.length > 0) {
+                    console.log(Sdata)
                     if (Sdata[0].cus_province_id != "") {
-                        drdwProvinceChange(Sdata[0].cus_province_id);
-                    }
+                        drdwProvinceChange(dat[0].cus_province_id);
+                    } else { }
                     if (Sdata[0].cus_district_id != "") {
-                        drdwDistrictChange(Sdata[0].cus_district_id);
-                    }
+                        drdwDistrictChange(dat[0].cus_district_id);
+                    } else { }
 
-                    $('#cus_address').val(Sdata[0].cus_address);
+                    $('#cus_address').val(dat[0].cus_address);
+                    $("#cus_postal_code").val(dat[0].cus_postal_code);
+
+                    if (dat[0].cus_home_province_id != "") {
+                        drdwProvinceHomeChange(dat[0].cus_home_province_id);
+                    } else { }
+                    if (dat[0].cus_home_district_id != "") {
+                        drdwDistrictHomeChange(dat[0].cus_home_district_id);
+                    } else { }
+
+                    $("#cus_home_address").val(dat[0].cus_home_address);
+                    $('#cus_home_postal_code').val(dat[0].cus_home_postal_code);
+
                     setTimeout(() => {
-                        $('#drdwProvince').val(Sdata[0].cus_province_id);
+                        $('#drdwProvince').val(dat[0].cus_province_id);
                         $('#drdwProvince').niceSelect('update');
-                        $('#drdwDistrict').val(Sdata[0].cus_district_id);
+                        $('#drdwDistrict').val(dat[0].cus_district_id);
                         $('#drdwDistrict').niceSelect('update');
-                        $('#drdwSubDistrict').val(Sdata[0].cus_sub_district_id);
+                        $('#drdwSubDistrict').val(dat[0].cus_sub_district_id);
                         $('#drdwSubDistrict').niceSelect('update');
-                    }, 400);
-                    $("#cus_postal_code").val(Sdata[0].cus_postal_code);
 
-                    if (Sdata[0].cus_home_province_id != "") {
-                        drdwProvinceChange(Sdata[0].cus_home_province_id);
-                    }
-                    if (Sdata[0].cus_home_district_id != "") {
-                        drdwDistrictChange(Sdata[0].cus_home_district_id);
-                    }
-                    $("#cus_home_address").val(Sdata[0].cus_home_address);
-                    setTimeout(() => {
-                        $("#drdwSubDistrictHome").val(Sdata[0].cus_home_sub_district_id);
+                        $("#drdwSubDistrictHome").val(dat[0].cus_home_sub_district_id);
                         $('#drdwSubDistrictHome').niceSelect('update');
-                        $("#drdwDistrictHome").val(Sdata[0].cus_home_district_id);
+                        $("#drdwDistrictHome").val(dat[0].cus_home_district_id);
                         $('#drdwDistrictHome').niceSelect('update');
-                        $("#drdwProvinceHome").val(Sdata[0].cus_home_province_id);
+                        $("#drdwProvinceHome").val(dat[0].cus_home_province_id);
                         $('#drdwProvinceHome').niceSelect('update');
-                    }, 400);
-                    $('#cus_home_postal_code').val(Sdata[0].cus_home_postal_code);
+                        setTimeout(() => {
+                            Swal.close()
+                        }, 1000);
+                    }, 1500);
+                    
                 }
                 else {
                     $('#cus_address').val("");
@@ -438,11 +450,11 @@
 
 
     $('#drdwDistrict').change(function () {
-         $("#cus_postal_code").val("");
+        $("#cus_postal_code").val("");
     });
 
     $('#drdwDistrictHome').change(function () {
-         $("#cus_home_postal_code").val("");
+        $("#cus_home_postal_code").val("");
     });
 
     function onEditAddr() {
@@ -464,24 +476,24 @@
 
         console.log(postJson);
 
-         $.get("../../api/userData", { jsonData: postJson, types: "update_customer", username: profiles[0].user_id })
-                .done(function (data) {
-                    let respone = data;
-                    if (respone == "success") {
-                        Swal.fire(
-                            "Success", //title
-                            "แก้ไขข้อมูล เรียบร้อย!", //main text
-                            "success" //icon
-                        );
-                        getUserDetail(profiles[0].user_id);
-                    } else {
-                        Swal.fire(
-                            "Found an Error", //title
-                            "แก้ไข ไม่สำเร็จ!", //main text
-                            "error" //icon
-                        );
-                    }
-                });
+        $.get("../../api/userData", { jsonData: postJson, types: "update_customer", username: profiles[0].user_id })
+            .done(function (data) {
+                let respone = data;
+                if (respone == "success") {
+                    Swal.fire(
+                        "Success", //title
+                        "แก้ไขข้อมูล เรียบร้อย!", //main text
+                        "success" //icon
+                    );
+                    getUserDetail(profiles[0].user_id);
+                } else {
+                    Swal.fire(
+                        "Found an Error", //title
+                        "แก้ไข ไม่สำเร็จ!", //main text
+                        "error" //icon
+                    );
+                }
+            });
     }
 
 
@@ -513,7 +525,8 @@
                             "แก้ไขข้อมูล เรียบร้อย!", //main text
                             "success" //icon
                         );
-                        getUserDetail(profiles[0].user_id);
+                        //getUserDetail(profiles[0].user_id);
+                        setTimeout(() => { location.reload(); }, 400);
                     } else {
                         Swal.fire(
                             "Found an Error", //title
@@ -528,8 +541,8 @@
             var postJson = JSON.stringify({
                 user_id: profiles[0].user_id,
                 sale_firstName: $('#cus_firstName').val(),
-                sale_idCard: $('#cus_lastName').val(),
-                cus_idCard: $('#cus_idCard').val(),
+                sale_lastName: $('#cus_lastName').val(),
+                sale_idCard: $('#cus_idCard').val(),
                 sale_dateOfBirth: $("#cus_dateOfBirth").val(),
                 sale_phone: $("#cus_phone").val(),
                 sale_line: $("#sale_line").val(),
@@ -549,7 +562,8 @@
                             "แก้ไขข้อมูล เรียบร้อย!", //main text
                             "success" //icon
                         );
-                        getUserDetail(profiles[0].user_id);
+                        //getUserDetail(profiles[0].user_id);
+                        setTimeout(() => { location.reload(); }, 400);
                     } else {
                         Swal.fire(
                             "Found an Error", //title
