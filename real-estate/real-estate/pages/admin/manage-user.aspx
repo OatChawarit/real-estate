@@ -82,7 +82,7 @@
                 <!-- Page Heading -->
                 <div class="row d-sm-flex align-items-center justify-content-between mb-2 my-4">
                     <div>
-                        <h1 class="h3 mb-2 text-gray-800 d-sm-inline-block">จัดการผู้ใช้งาน</h1>
+                        <h1 class="h3 mb-2 text-gray-800 d-sm-inline-block">จัดการข้อมูลผู้ใช้​งาน</h1>
                     </div>
                     <div class="text-end">
                         <%--<a href="javascript:void(0);" class="d-sm-inline-block  btn-sm btn-primary shadow-sm btnAdd btn-setting" data-value="" onclick="btnAddClick();"><i class="fas fa-plus fa-sm text-white-50 d-none"></i>&nbsp;Create</a>--%>
@@ -93,7 +93,7 @@
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
                         <div class="row col-12">
-                            <h5 class="m-0 font-weight-bold text-primary mr-5">จัดการผู้ใช้งาน</h5>
+                            <h5 class="m-0 font-weight-bold text-primary mr-5">จัดการข้อมูลผู้ใช้​งาน </h5>
                         </div>
 
                     </div>
