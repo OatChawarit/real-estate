@@ -387,14 +387,14 @@
                     //ปัจจุบัน
                     if (Sdata[0].cus_province_id != "") {
                         drdwProvinceChange(dat[0].cus_province_id);
-                    } else {  }
+                    } else { }
                     if (Sdata[0].cus_district_id != "") {
                         drdwDistrictChange(dat[0].cus_district_id);
                     } else { }
 
                     $('#cus_address').val(dat[0].cus_address);
                     $("#cus_postal_code").val(dat[0].cus_postal_code);
-                        
+
                     //ตามทะเบียนบ้าน
                     if (dat[0].cus_home_province_id != "") {
                         drdwProvinceHomeChange(dat[0].cus_home_province_id);
@@ -424,7 +424,7 @@
                             Swal.close()
                         }, 1000);
                     }, 1500);
-                    
+
                 }
                 else {
                     $('#cus_address').val("");
@@ -515,6 +515,15 @@
                 typedata: "detail"
             });
 
+            let user_firstName = $('#cus_firstName').val();
+            let user_lastName = $('#cus_lastName').val();
+
+            var saJson = JSON.stringify({
+                user_id: profiles[0].user_id,
+                user_firstName: user_firstName,
+                user_lastName: user_lastName,
+            });
+
             //console.log(postJson);
 
             $.get("../../api/userData", { jsonData: postJson, types: "update_customer", username: profiles[0].user_id })
@@ -526,6 +535,7 @@
                             "แก้ไขข้อมูล เรียบร้อย!", //main text
                             "success" //icon
                         );
+                        up_saUser(saJson);
                         //getUserDetail(profiles[0].user_id);
                         setTimeout(() => { location.reload(); }, 400);
                     } else {
@@ -552,6 +562,14 @@
                 sale_AgentApproveNo: $('#sale_AgentApproveNo').val(),
             });
 
+            let user_firstName = $('#cus_firstName').val();
+            let user_lastName = $('#cus_lastName').val();
+
+            var saJson = JSON.stringify({
+                user_id: profiles[0].user_id,
+                user_firstName: user_firstName,
+                user_lastName: user_lastName,
+            });
             //console.log(postJson);
 
             $.get("../../api/saleData", { jsonData: postJson, types: "update_sale", username: profiles[0].user_id })
@@ -563,6 +581,7 @@
                             "แก้ไขข้อมูล เรียบร้อย!", //main text
                             "success" //icon
                         );
+                        up_saUser(saJson);
                         //getUserDetail(profiles[0].user_id);
                         setTimeout(() => { location.reload(); }, 400);
                     } else {
@@ -844,6 +863,30 @@
                     $('#drdwSubDistrict').niceSelect('update');
                 }
 
+            });
+    }
+
+    function up_saUser(json) {
+        $.get("../../api/userData", { jsonData: json, types: "up_sauser", username: profiles[0].user_id })
+            .done(function (data) {
+                let respone = data;
+                if (respone == "success") {
+                    console.log('success');
+                    //Swal.fire(
+                    //    "Success", //title
+                    //    "แก้ไขข้อมูล เรียบร้อย!", //main text
+                    //    "success" //icon
+                    //);
+                    ////getUserDetail(profiles[0].user_id);
+                    //setTimeout(() => { location.reload(); }, 400);
+                } else {
+                    console.log('error');
+                    //Swal.fire(
+                    //    "Found an Error", //title
+                    //    "แก้ไข ไม่สำเร็จ!", //main text
+                    //    "error" //icon
+                    //);
+                }
             });
     }
 </script>
