@@ -240,7 +240,9 @@
                     $('#pro_tel').append("<i class='fas fa-phone'></i>&nbsp;เบอร์โทร : " + item.sale_phone);
 
                     let dialogTel = "<a href='tel:" + item.sale_phone + "' class='btn btn-outline-success btn-sm' style='font-size:14px'><i class='fas fa-phone'></i>&nbsp;โทร</a>";
-                    dialogTel += "<a href='javascript:void(0)' data-toggle='modal' data-target='#sendModalCenter' class='btn btn-outline-primary btn-sm' style='font-size:14px'><i class='far fa-comment'></i>&nbsp;สอบถาม</a>";
+                    //dialogTel += "<a href='mailto:someone@example.com' data-toggle='modal' data-target='#sendModalCenter' class='btn btn-outline-primary btn-sm' style='font-size:14px'><i class='far fa-comment'></i>&nbsp;สอบถาม</a>";
+                    dialogTel += "<a href='mailto:" + item.sale_mail + "'class='btn btn-outline-primary btn-sm' style='font-size:14px'><i class='far fa-comment'></i>&nbsp;สอบถาม</a>";
+
                     $('#pro_tel2').append(dialogTel);
 
                     let prop = "";
@@ -316,8 +318,7 @@
 
             });
 
-    }
-
+    } 
 
     function loadfacilities(arrDara) {
 

@@ -294,7 +294,7 @@
 
 </div>
 
-<img src="../../image/project/${pro_bank_qrCodeImg}" style="width: 120px  ;height:120px; position: relative;     bottom: 420px; margin-left: 350px;" >
+<img id="qrcode" src="../../image/project/${pro_bank_qrCodeImg}" style="width: 120px  ;height:120px; position: relative;     bottom: 420px; margin-left: 350px;" >
  
 
 
@@ -315,9 +315,7 @@
 
 
 
-                         $("#ReportBooking").append(txthtml);
-
- 
+                         $("#ReportBooking").append(txthtml); 
 
                         if (!promotion_discount_percent) {
                             $('#promotion_discount_percent').addClass('d-none');
@@ -343,6 +341,9 @@
                         }
                         if (!promotion_other) {
                             $('#promotion_other').addClass('d-none');
+                        }
+                        if (!pro_bank_qrCodeImg) {
+                            $('#qrcode').addClass('d-none');
                         }
 
 
