@@ -98,36 +98,20 @@
                     var txthtml = "<div class= ' p-A4 '>" +
 
                         //headpage
-                        `<div class= "headpage" > 
-                                <div class="txt-R">
-                                    <p style="padding-right:30px">ใบจองเลขที่ &nbsp;&nbsp; ${PrintDate}  &emsp;&emsp;</p>
-                                    <br><br>
-                                </div>
-
-                                <div class="row">
-                                    <div class="head-left ">
-                                         
-                                    </div>
-                                    <div class="head-right" >
-                                        <b><h2>บริษัท มี แคปปิตอลจํากัด MEE CAPITAL CO.,LTD.</h2></b>
-                                        <p>455/9-11 ถนนพระราม 6 แขวงถนนเพชรบุรี เขตราชเทวี กรุงเทพฯ 10400</p>
-                                        <p>โทรศัพท์ &nbsp;&nbsp; 0-2613-9040-51 &nbsp;&nbsp;   โทรสาร  &nbsp;&nbsp;  : &nbsp;&nbsp;    0-2613-7846  &nbsp;&nbsp;  , &nbsp;&nbsp;   0-2613-9056</p>   
-                                        <p>ใบจองเลขที่</p>
-                                    </div>
-                                </div>         
-                                
-                                  
+                        `<div class= " " > 
+                             
                          </div >
                         ` +
                         // subpage
                         `  <div class = 'subpage' >
-                                <div class="txt-C">
-                                    <h3>หนังสือรับรองการเช่าซื้อ</h3>
-                                </div>
-                                <div class="txt-R">                                    
+                                   <div class="txt-R">
                                     <p style="padding-right:30px">วันที่ &nbsp;&nbsp; ${PrintDate}  &emsp;&emsp;</p>
                                     <br><br>
                                 </div>
+                                <div class="txt-C">
+                                    <h3>หนังสือรับรองการเช่าซื้อ</h3>
+                                </div>
+                             
                                 <div>
                                     <p>เรียน  นายทะเบียนยานพาหนะกองทะเบียนกรมการขนส่งทางบก</p>
                                 </div>
@@ -217,9 +201,11 @@
 <script src="../../../vendor/js/helper.js"></script>
 <script src="../../../vendor/bootstrap-select/js/bootstrap-select.js"></script>
 <!-- close textmenu click -->
+
+
 <script language="JavaScript">
     document.oncontextmenu = new Function("return false;")
 </script>
-<body onselectstart="return false">
+<%--<body onselectstart="return false">--%>
 </html>
  

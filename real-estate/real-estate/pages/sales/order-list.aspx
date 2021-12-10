@@ -144,7 +144,7 @@
     const user_id = JSON.parse(userLocal)[0].user_id;
     const user_role_id = JSON.parse(userLocal)[0].user_role_id;
 
-    console.log('user_id', user_id);
+    console.log('user_id', user_id , ' '  ,user_role_id);
 
 
     $(document).ready(function () {
@@ -152,18 +152,31 @@
         $('#FormModal_Project').modal({ backdrop: 'static', keyboard: false })
         $('#footer_callme').addClass('d-none');         
            
-        let jsonPlanTable = JSON.stringify({
-            "user_id": user_id
-        });
+   
 
-        $.get("../../api/projectList", { jsonData: jsonPlanTable, types: "listBookingCustomer" })
-            .done(function (data) {
-                let listBooking = JSON.parse(data);
+        if (user_role_id == 3) {
 
-                console.log('listBooking', listBooking)
-                /// สร้างตาราง 
-                createProjectPlanDataTable(listBooking, "");
+
+        } else if (user_role_id == 2) {
+
+
+            let jsonPlanTableCustomer = JSON.stringify({
+                "user_id": user_id
             });
+            $.get("../../api/projectList", { jsonData: jsonPlanTableCustomer, types: "listBookingCustomer" })
+                .done(function (data) {
+                    let listBooking = JSON.parse(data);
+
+                    console.log('listBooking', listBooking)
+                    /// สร้างตาราง 
+                    createProjectPlanDataTable(listBooking, "");
+                });
+
+
+
+        }
+
+  
 
          
 
@@ -179,8 +192,8 @@
     function onBtnPrintClick(e) {
 
         //window.location.href = "../project/purchase-order-report_booking?id" + e.value;
-        window.location.href = "../project/purchase-order-report_booking?id" + e.value;
- 
+      
+        window.open("../project/purchase-order-report_booking.aspx")
 
 
 

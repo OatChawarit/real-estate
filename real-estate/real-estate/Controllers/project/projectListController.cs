@@ -67,6 +67,8 @@ namespace real_estate.Controllers.project
 
                 sqltext += "   WHERE PJ.pro_status = 'N' ";
 
+                sqltext += "  ORDER BY  PJL.plan_view DESC";
+
                 dr = db.GetSqlDataReader(sqltext);
                 ArrayList arr = new ArrayList();
                 while (dr.Read())

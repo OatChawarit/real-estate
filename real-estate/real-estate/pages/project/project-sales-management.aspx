@@ -359,12 +359,9 @@
  
         $('#FormModal_Project').modal({ backdrop: 'static', keyboard: false })  
 
-        $('#footer_callme').addClass('d-none');  
-
-      
-        //let sale_id = logInData[0].sale_id;
-        //let sale_id = JSON.parse(userLocal[0].sale_id)
-        console.log('sale_id' , sale_id);
+        $('#footer_callme').addClass('d-none');   
+ 
+        //console.log('sale_id' , sale_id);
 
         let jsonData = JSON.stringify({
             "sale_id" : sale_id
@@ -403,7 +400,7 @@
   
        
         if (action == "Create") {
-            let sale_id = logInData[0].sale_id;
+            //let sale_id = logInData[0].sale_id;
             let pro_company_id = $('#pro_company_id').val();
             let pro_name = $('#pro_name').val();
             let pro_description = $('#pro_description').val();
@@ -511,8 +508,7 @@
 
                                 pro_bank_qrCodeImg = "";
                             }
-                         
-
+                          
                             var jsonData = JSON.stringify({
                                 "sale_id": sale_id,
                                 "pro_company_id": pro_company_id,
