@@ -149,7 +149,7 @@
                                     <thead class="table-dark" align="center">
                                         <tr>
                                             <th style="width: 60px; min-width: 60px; max-width: 60px; vertical-align: middle;"></th>
-                                            <th style="width: 40px;">รหัสแบบแปลน</th>
+                                            <th style="width: 100px;">รหัสแบบแปลน</th>
                                             <th style="width: 80px;">ชื่อแบบแปลน </th>
                                             <th style="width: 80px;">พื้นที่ใช้สอย</th>
                                             <th style="width: 80px;">จำนวนชั้น</th>
