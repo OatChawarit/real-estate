@@ -492,8 +492,8 @@
             console.log(jsonData);
 
             Swal.fire({
-                title: 'ยืนยันแก้ไขข่าวสาร!',
-                html: '<p>ข่าวสารเลขที่ : ' + newsid + ' ใช่หรือไม่ ? </p>',
+                title: 'ยืนยันแก้ไขข้อมูลข่าวสาร!',
+                //html: '<p>ข่าวสารเลขที่ : ' + newsid + ' ใช่หรือไม่ ? </p>',
                 type: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
