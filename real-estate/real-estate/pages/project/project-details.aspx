@@ -234,7 +234,7 @@
                     $('#pro_detail').append(details);
 
                     $('#pro_sale').append(item.sale_fullName);
-                    $('#pro_comp').append(" : " + item.sale_company);
+                    $('#pro_comp').append(" : " + item.sale_company); 
                     $('#pro_mail').append("<i class='far fa-envelope'></i>&nbsp;Email : " + item.sale_mail);
                     $('#pro_line').append("<i class='fab fa-line'></i>&nbsp;Line : " + item.sale_line);
                     $('#pro_tel').append("<i class='fas fa-phone'></i>&nbsp;เบอร์โทร : " + item.sale_phone);
