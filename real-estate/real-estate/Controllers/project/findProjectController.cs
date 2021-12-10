@@ -58,7 +58,7 @@ namespace real_estate.Controllers.project
                 sqltext += "  s.sale_company,   ";
                 sqltext += "  PJL.plan_image_profile  ,  ";
                 sqltext += "  PJL.plan_view,  ";
-                sqltext += "  PJ.pro_province_id  ";
+                sqltext += "  PJ.pro_province_id, PJ.pro_opening_date  ";
                 sqltext += " FROM[realestate].[dbo].[re_ProjectTable] PJ  ";
                 sqltext += " INNER JOIN[realestate].[dbo].[re_Project_PlanType] PJL ON PJL.pro_id = PJ.pro_id   ";
                 sqltext += " INNER JOIN[realestate].[dbo].[re_Project_Type_Table] pType ON pType.pro_type_id = PJ.pro_type_id   ";
@@ -132,7 +132,7 @@ namespace real_estate.Controllers.project
                 sqltext += "  ,[plan_price]  ";
                 sqltext += "  ,[plan_status]  ";
                 sqltext += "  ,[plan_image_profile]  ";
-                sqltext += "  ,[plan_view]  ";
+                sqltext += "  ,[plan_view], pt.pro_opening_date  ";
                 sqltext += "  FROM [realestate].[dbo].[re_Project_PlanType] pp  ";
                 sqltext += "  Inner Join [realestate].[dbo].[re_ProjectTable] pt On pp.pro_id=pt.pro_id Order by plan_type_id Asc ";
                 dr = db.GetSqlDataReader(sqltext);

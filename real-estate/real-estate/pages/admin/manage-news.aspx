@@ -241,6 +241,7 @@
         $('#news_topic').val("");
         $('#news_content').val("");
         action = "Add";
+        $("#labelimg").removeClass("d-none");
     });
 
     var newsid;
@@ -313,9 +314,9 @@
     });
 
 
-    $(document).on("click", "#trNews", function () {
-        loadNews();
-    });
+    //$(document).on("click", "#trNews", function () {
+    //    loadNews();
+    //});
 
     function loadNews() {
         Swal.fire({
@@ -340,19 +341,20 @@
                 console.log(Sdata);
                 if (Sdata.length > 0) {
                     Sdata.forEach((item, rows) => {
-                        let Status = "";
-                        let Action = `<button type='button' class='btn-primary btn-sm btnEdit' id='btnEdit` + item.news_id + `' data-value='` + item.news_id + `' title='แก้ไข'><i class='fas fa-eye'></i></button>`;
-                        tb.row.add([
-                            `<div class="text-center">${Action}
-                             <button type='button' class='btn-danger btn-sm btnCanCel' id='btnCanCel` + item.news_id + `' data-value='` + item.news_id + `' title='ยกเลิก'><i class='fas fa-trash-alt'></i></button></div>`,
-                            `<div class="text-center"> <img src='../../../image/news/${item.news_image}' id="news_image" alt="Image" style='width:80px;height:60px' /></div>`,
-                            `<div >${item.news_id}</div>`,
-                            `<div >${item.news_topic}</div>`,
-                            `<div class="text-center">${dateFormat(item.create_date)}</div >`,
-                            `<div class="text-center">${item.create_by}</div>`,
-                        ]).draw(false);
+                        createTable(Sdata, "");
+                        //let Status = "";
+                        //let Action = `<button type='button' class='btn-primary btn-sm btnEdit' id='btnEdit` + item.news_id + `' data-value='` + item.news_id + `' title='แก้ไข'><i class='fas fa-eye'></i></button>`;
+                        //tb.row.add([
+                        //    `<div class="text-center">${Action}
+                        //     <button type='button' class='btn-danger btn-sm btnCanCel' id='btnCanCel` + item.news_id + `' data-value='` + item.news_id + `' title='ยกเลิก'><i class='fas fa-trash-alt'></i></button></div>`,
+                        //    `<div class="text-center"> <img src='../../../image/news/${item.news_image}' id="news_image" alt="Image" style='width:80px;height:60px' /></div>`,
+                        //    `<div >${item.news_id}</div>`,
+                        //    `<div >${item.news_topic}</div>`,
+                        //    `<div class="text-center">${dateFormat(item.create_date)}</div >`,
+                        //    `<div class="text-center">${item.create_by}</div>`,
+                        //]).draw(false);
 
-                        Swal.close();
+                        //Swal.close();
                     });
                 } else {
                     Swal.fire(
@@ -363,6 +365,67 @@
                 }
 
             });
+    }
+
+      function createTable(data, type) {
+
+        $("#news-table").dataTable({
+            "destroy": true,
+            data: data,
+            "responsive": true,
+            "bLengthChange": true,
+            "bInfo": true,
+            "searching": true,
+            "bPaginate": true,
+            columns: [
+                {
+                    render: function (data, type, row, meta) {
+                        let Action = `<button type='button' class='btn-primary btn-sm btnEdit' id='btnEdit` + row.news_id + `' data-value='` + row.news_id + `' title='แก้ไข'><i class='fas fa-eye'></i></button>`;
+                       
+                        let chk = ` ${Action} <button type='button' class='btn-danger btn-sm btnCanCel' id='btnCanCel` + row.news_id + `' data-value='` + row.news_id + `' title='ยกเลิก'><i class='fas fa-trash-alt'></i></button></div>`;
+
+                        return chk;  //" <td>" + chk + "</td>";
+                    },
+                    className: "text-center"
+                },
+                {
+                    render: function (data, type, row, meta) {
+                        let imgNews = `<img src='../../../image/news/`+ row.news_image +`' id="news_image" alt="Image" style='width:80px;height:60px' />`
+                        return imgNews
+                    },
+                    className: "text-center"
+                },
+                {
+                    render: function (data, type, row, meta) {
+                        return row.news_id
+                    },
+                    className: "text-center"
+                },
+                {
+                    render: function (data, type, row, meta) {
+                        return row.news_topic
+                    },
+                    className: "text-center"
+                },
+                {
+                    render: function (data, type, row, meta) {
+                        return dateFormat(row.create_date)
+                    },
+                    className: "text-center"
+                },
+                
+                {
+                    render: function (data, type, row, meta) {
+                        return row.create_by
+                    },
+                    className: "text-center"
+                }
+
+            ],
+            pageLength: 10
+        });
+
+        Swal.close();
     }
 
     function onSaveNews() {

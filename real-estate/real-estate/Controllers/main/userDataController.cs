@@ -32,7 +32,7 @@ namespace real_estate.Controllers.main
             {
                 SqlDataReader dr;
                 string sqltext = "";
-                sqltext = " SELECT[user_id] ";
+                sqltext = " SELECT [user_id] ";
                 sqltext += " ,[user_email] ";
                 sqltext += " ,[user_password] ";
                 sqltext += " ,[user_role_id] ";
