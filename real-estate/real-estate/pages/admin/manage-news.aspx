@@ -115,7 +115,7 @@
                                 <tbody>
                                 </tbody>
                                 <tfoot align="center" style="background-color: black;">
-                                </tfoot>
+                                </tfoot> 
                             </table>
                         </div>
                     </div>
