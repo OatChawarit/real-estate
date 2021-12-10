@@ -154,13 +154,13 @@
                                                     <div class="row mx-auto">
                                                         <div class="col-lg-12">
                                                             <div class="inputText setting-font">หัวข้อข่าวสาร *</div>
-                                                            <input type="text" id="news_topic" placeholder="" class="setting-form" value="" readonly="true" />
+                                                            <input type="text" id="news_topic" placeholder="" class="setting-form" value="" />
                                                         </div>
                                                     </div>
                                                     <div class="row mx-auto">
                                                         <div class="col-lg-12">
                                                             <div class="inputText setting-font">เนื้อหาของข่าว *</div>
-                                                            <textarea class="form-control" id="news_content" rows="5"></textarea>
+                                                            <textarea class="form-control" id="news_content" rows="5" placeholder="ถ้าหากอยากขึ้นบรรทัดใหม่ให้ใส่ <br /> หลังบรรทัดนั้น" style="margin-top: 0px; margin-bottom: 30px; height: 250px;"></textarea>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -178,7 +178,7 @@
                                         <div class="form-group row mx-auto">
                                             <input type="file" id="news_image" class="my-3 setting-form theme-btn-3 btn-setting w-80" accept="image/*" onchange="upload_image_profile(event)" />
                                             <div id="display_image">
-                                                <img id='output'>
+                                                <img id='output' />
                                             </div>
                                         </div>
                                     </div>
@@ -191,7 +191,7 @@
 
                         <!-- close modal body -->
                         <div class="modal-footer">
-                            <button id="btnSave" type="button" class="btn-setting btn btn-primary btnSave" onclick="onSaveNews(this.value)" value="Add"><i class="far fa-save"></i>&nbsp;Save</button>
+                            <button id="btnSave" type="button" class="btn-setting btn btn-primary btnSave" onclick="onSaveNews()"><i class="far fa-save"></i>&nbsp;Save</button>
                             <button type="button" class="btn-setting btn-secondary close" data-dismiss="modal"><i class="fas fa-times"></i>&nbsp;Close</button>
                         </div>
                     </div>
@@ -210,6 +210,14 @@
 </body>
 <script>
     let Sdata;
+    const d = new Date();
+    let yearNow = d.getFullYear();
+    let n_img = "";
+    let news_imgData = [];
+    let LogIn = localStorage.getItem("LogInData");
+    let userNews = JSON.parse(LogIn);
+
+    let action = "";
 
     $(document).ready(function () {
         checkLogin(1);
@@ -225,24 +233,54 @@
         });
     });
 
+
     $(document).on("click", ".btnAdd", function () {
         $("#addNewsModal").modal("show");
         LockModal("#addNewsModal");
-        clearpic(0);
+        //clearpic(0);
+        $('#news_topic').val("");
+        $('#news_content').val("");
+        action = "Add";
+    });
 
+    var newsid;
 
+    $(document).on("click", ".btnEdit", function () {
+        $("#addNewsModal").modal("show");
+        LockModal("#addNewsModal");
+        //clearpic(0);
+        newsid = $(this).data('value');
+
+        var jsonData = JSON.stringify({
+            id: newsid
+        });
+        action = "Edit";
+        let Listdata;
+        $.get("../../api/news", { jsonData, types: "getNews" })
+            .done(function (data) {
+                Listdata = JSON.parse(data);
+                console.log(Listdata);
+
+                let img_path = '../../../image/news/' + Listdata[0].news_image;
+                $("#news_image").attr('src', img_path);
+                $('#news_topic').val(Listdata[0].news_topic);
+                $('#news_content').val(Listdata[0].news_content);
+                //Swal.close();
+                //loadNews(Listdata);
+                $("#labelimg").addClass("d-none");
+            });
     });
 
     $(document).on("click", ".btnCanCel", function () {
-        var uid = $(this).data('value');
-        //console.log(uid);
+        var newsid = $(this).data('value');
+        //console.log(newsid);
         //HideTopbar(1);
         var jsonData = JSON.stringify({
-            user_id: uid,
+            id: newsid,
         });
         Swal.fire({
             title: 'คุณต้องยกเลิกข่าวสาร!',
-            html: '<p>ข่าวสารเลขที่ : ' + uid + ' ใช่หรือไม่ ? </p>',
+            html: '<p>ข่าวสารเลขที่ : ' + newsid + ' ใช่หรือไม่ ? </p>',
             type: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -251,7 +289,7 @@
             cancelButtonText: 'ยกเลิก',
         }).then((result) => {
             if (result.value) {
-                $.get("../../api/userData", { jsonData: jsonData, types: "AdminCancelProject", username: userData[0].user_id })
+                $.get("../../api/news", { jsonData: jsonData, types: "cancelNews" })
                     .done(function (data) {
                         Sdata = data;
                         //console.log(Sdata);
@@ -261,7 +299,7 @@
                                 "ยกเลิกข้อมูล เรียบร้อย!", //main text
                                 "success" //icon
                             );
-                            loadUser();
+                            loadNews();
                         } else {
                             Swal.fire(
                                 "Found an Error", //title
@@ -299,18 +337,18 @@
         $.get("../../api/news", { jsonData, types: "listNews" })
             .done(function (data) {
                 Sdata = JSON.parse(data);
-                //console.log(Sdata);
+                console.log(Sdata);
                 if (Sdata.length > 0) {
                     Sdata.forEach((item, rows) => {
                         let Status = "";
-                        //let Action = `<button type='button' class='btn-primary btn-sm btnEdit' id='btnEdit` + item.news_id + `' data-value='` + item.news_id + `' title='แก้ไข'><i class='fas fa-eye'></i></button>`;
+                        let Action = `<button type='button' class='btn-primary btn-sm btnEdit' id='btnEdit` + item.news_id + `' data-value='` + item.news_id + `' title='แก้ไข'><i class='fas fa-eye'></i></button>`;
                         tb.row.add([
-                            `<div class="text-center">
+                            `<div class="text-center">${Action}
                              <button type='button' class='btn-danger btn-sm btnCanCel' id='btnCanCel` + item.news_id + `' data-value='` + item.news_id + `' title='ยกเลิก'><i class='fas fa-trash-alt'></i></button></div>`,
                             `<div class="text-center"> <img src='../../../image/news/${item.news_image}' id="news_image" alt="Image" style='width:80px;height:60px' /></div>`,
                             `<div >${item.news_id}</div>`,
                             `<div >${item.news_topic}</div>`,
-                            `<div class="text-center">${nowDateString(item.create_date)}</div >`,
+                            `<div class="text-center">${dateFormat(item.create_date)}</div >`,
                             `<div class="text-center">${item.create_by}</div>`,
                         ]).draw(false);
 
@@ -327,6 +365,176 @@
             });
     }
 
+    function onSaveNews() {
+        const d = new Date();
+        let time = d.getTime();
+        let days = d.getFullYear() + "" + (d.getMonth() + 1) + "" + d.getDate();
+        if (action == "Add") {
+
+
+            let news_topic = $('#news_topic').val();
+            let news_content = $('#news_content').val();
+            let news_image = n_img;
+
+            if (!news_topic) {
+                Swal.fire({
+                    type: 'warning',
+                    title: 'กรุณาใส่ข้อมูล!!',
+                    text: 'หัวข้อข่าวสาร'
+                });
+            }
+            else if (!news_image) {
+                Swal.fire({
+                    type: 'warning',
+                    title: 'กรุณาใส่ข้อมูล!!',
+                    text: 'รูปภาพข่าวสาร'
+                });
+            }
+            else {
+
+                Swal.fire({ //alert confirm 
+                    title: 'ยืนยันการสร้างข่าวสาร ?',
+                    type: 'question',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'ตกลง',
+                    cancelButtonText: 'ยกเลิก',
+                })
+                    .then((val) => {
+                        if (val.value) {
+
+                            if (n_img) {
+                                news_image = "News_" + days + "_" + time + "_" + n_img;
+                            } else {
+                                news_image = "";
+                            }
+
+                            var jsonData = JSON.stringify({
+                                news_topic: news_topic,
+                                news_content: news_content,
+                                news_image: news_image,
+                                create_by: userNews[0].user_id,
+                            });
+
+                            console.log(JSON.parse(jsonData));
+
+                            if (news_imgData != "") {
+                                //console.log('news_imgData', news_imgData)
+
+                                var formData = new FormData();
+                                formData.append("file", news_imgData);
+
+                                $.ajax({
+                                    url: '/api/ImageAPI/UploadFilesNews',
+                                    type: 'POST',
+                                    data: formData,
+                                    headers: {
+                                        //"news_id": news_id,
+                                        "time": time,
+                                        "days": days
+                                    },
+                                    cache: false,
+                                    contentType: false,
+                                    processData: false,
+                                    success: function (postedFile) {
+                                        console.log('postedFile', postedFile)
+
+                                    }
+                                });
+                            } else {
+
+                            }
+
+                            ///เรียก api Save
+                            $.ajax({
+                                type: 'POST',
+                                url: "../../api/news",
+                                data: { "data": jsonData },
+                                headers: {
+                                    "types": "addNews"
+                                }
+                            }).done(function (data) {
+
+                                if (data == "success") {
+                                    swal.fire({
+                                        type: 'success',
+                                        title: 'บันทึกข้อมูลเรียบร้อย'
+                                    }).then((value) => {
+                                        location.reload();
+
+                                    });
+                                } else {
+                                    swal.fire({
+                                        type: 'warning',
+                                        title: 'พบข้อผิดพลาด',
+                                        text: data
+                                    }).then((value) => {
+                                        //location.reload();
+                                    });
+                                }
+                            });
+                        }
+
+                    });
+            }
+        }
+        else {
+            let news_topic = $('#news_topic').val();
+            let news_content = $('#news_content').val();
+
+            var jsonData = JSON.stringify({
+                id: newsid,
+                news_topic: news_topic,
+                news_content: news_content,
+                update_by: userNews[0].user_id,
+            });
+            console.log(jsonData);
+
+            Swal.fire({
+                title: 'ยืนยันแก้ไขข้อมูลข่าวสาร!',
+                //html: '<p>ข่าวสารเลขที่ : ' + newsid + ' ใช่หรือไม่ ? </p>',
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'ตกลง',
+                cancelButtonText: 'ยกเลิก',
+            }).then((result) => {
+                if (result.value) {
+                    ///เรียก api Save
+                    $.ajax({
+                        type: 'POST',
+                        url: "../../api/news",
+                        data: { "data": jsonData },
+                        headers: {
+                            "types": "editNews"
+                        }
+                    }).done(function (data) {
+
+                        if (data == "success") {
+                            swal.fire({
+                                type: 'success',
+                                title: 'บันทึกข้อมูลเรียบร้อย'
+                            }).then((value) => {
+                                location.reload();
+
+                            });
+                        } else {
+                            swal.fire({
+                                type: 'warning',
+                                title: 'พบข้อผิดพลาด',
+                                text: data
+                            }).then((value) => {
+                                //location.reload();
+                            });
+                        }
+                    });
+                }
+            });
+        }
+    }
+
     function upload_image_profile(e) {
 
         let input = e.target;
@@ -340,11 +548,11 @@
 
         if (input.files[0]) {
             reader.readAsDataURL(input.files[0]);
-            pf_img = input.files[0].name;
-            pf_imgData = input.files[0];
+            n_img = input.files[0].name;
+            news_imgData = input.files[0];
         } else {
-            pf_img = "";
-            pf_imgData = [];
+            n_img = "";
+            news_imgData = [];
             clearpic(0);
         }
     }
@@ -353,11 +561,11 @@
     function clearpic(type) {
         if (type == 0) {
             $("#output").attr("src", "");
-            $("#plan_image_profile").val('');
+            $("#news_image_profile").val('');
 
         } else {
             $("#output").attr("src", "");
-            $("#plan_image_profile").val('');
+            $("#news_image_profile").val('');
         }
     }
 

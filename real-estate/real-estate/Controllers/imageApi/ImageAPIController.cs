@@ -298,6 +298,35 @@ namespace real_estate.Controllers.imageApi
             return Request.CreateResponse(HttpStatusCode.OK, fileName);
         }
 
+
+        [Route("api/ImageAPI/UploadFilesNews")]
+        [HttpPost]
+        public HttpResponseMessage UploadFilesNews()
+        {
+
+            //string news_id = Request.Headers.GetValues("news_id").FirstOrDefault().ToString();
+            string time = Request.Headers.GetValues("time").FirstOrDefault().ToString();
+            string days = Request.Headers.GetValues("days").FirstOrDefault().ToString();
+            //Create the Directory.
+            string path = HttpContext.Current.Server.MapPath("~/image/news/");
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+
+            //Fetch the File.
+            HttpPostedFile postedFile = HttpContext.Current.Request.Files[0];
+
+            string fileName = "News_"+ days + "_" + time + "_" + Path.GetFileName(postedFile.FileName);
+
+            //Save the File.
+            postedFile.SaveAs(path + fileName);
+
+            //Send OK Response to Client.
+            return Request.CreateResponse(HttpStatusCode.OK, fileName);
+        }
+
+
         [Route("api/ImageAPI/UploadFilesArray")]
         [HttpPost]
         public HttpResponseMessage UploadFilesArray(HttpContext context)

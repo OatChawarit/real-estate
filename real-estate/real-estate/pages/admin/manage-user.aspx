@@ -479,8 +479,9 @@
                             Status = '<span class="bg-red" style="padding: 5px;">InActive</span>';
                             Action = `<button type='button' class='btn-danger btn-sm btnCanCel' id='btnCanCel` + item.user_id + `' data-value='` + item.user_id + `' title='ยกเลิก' disabled><i class='fas fa-trash-alt'></i></button>`;
                         }
-                        else if (item.user_status == 'N' && item.user_role_id == "3") {
+                        else if (item.user_status == 'N' && (item.user_role_id == "1" || item.user_role_id == "2" || item.user_role_id == "3")) {
                             Status = '<span class="bg-blue" style="padding: 5px;">Panding</span>';
+                             Action = `<button type='button' class='btn-danger btn-sm btnCanCel' id='btnCanCel` + item.user_id + `' data-value='` + item.user_id + `' title='ยกเลิก'><i class='fas fa-trash-alt'></i></button>`;
                         }
 
                         if (item.user_role_id == '1') {
