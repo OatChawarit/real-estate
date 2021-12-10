@@ -68,7 +68,7 @@
                     let AgreementAmountVat = '';
                     let NumberOfPeriod = '';
                     let PayAmountTax = '';
-
+                     
 
                     var ix = 0;
                     //var arr = JSON.parse(localStorage['arr_localPrint']);       
