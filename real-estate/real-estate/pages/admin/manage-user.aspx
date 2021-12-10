@@ -253,7 +253,7 @@
     <!-- นำเข้าส่วนท้าย JS -->
     <!-- #include virtual ="../include/footer.html" -->
 </body>
-    
+
 <script>
 
     const d = new Date();
@@ -440,9 +440,9 @@
     });
 
 
-    $(document).on("click", "#trUser", function () {
-        loadUser();
-    });
+    //$(document).on("click", "#trUser", function () {
+    //    loadUser();
+    //});
 
 
     function loadUser() {
@@ -467,48 +467,49 @@
                 Sdata = JSON.parse(data);
                 console.log(Sdata);
                 if (Sdata.length > 0) {
-                    Sdata.forEach((item, rows) => {
-                        let Status = "";
-                        let ShowRole = "";
-                        let Action = "";
-                        if (item.user_status == 'A') {
-                            Status = '<span class="bg-green" style="padding: 5px;">Active</span>';
-                            Action = `<button type='button' class='btn-danger btn-sm btnCanCel' id='btnCanCel` + item.user_id + `' data-value='` + item.user_id + `' title='ยกเลิก'><i class='fas fa-trash-alt'></i></button>`;
-                        }
-                        else if (item.user_status == 'C') {
-                            Status = '<span class="bg-red" style="padding: 5px;">InActive</span>';
-                            Action = `<button type='button' class='btn-danger btn-sm btnCanCel' id='btnCanCel` + item.user_id + `' data-value='` + item.user_id + `' title='ยกเลิก' disabled><i class='fas fa-trash-alt'></i></button>`;
-                        }
-                        else if (item.user_status == 'N' && (item.user_role_id == "1" || item.user_role_id == "2" || item.user_role_id == "3")) {
-                            Status = '<span class="bg-blue" style="padding: 5px;">Panding</span>';
-                             Action = `<button type='button' class='btn-danger btn-sm btnCanCel' id='btnCanCel` + item.user_id + `' data-value='` + item.user_id + `' title='ยกเลิก'><i class='fas fa-trash-alt'></i></button>`;
-                        }
+                    createTable(Sdata, "");
+                    //Sdata.forEach((item, rows) => {
+                    //    let Status = "";
+                    //    let ShowRole = "";
+                    //    let Action = "";
+                    //    if (item.user_status == 'A') {
+                    //        Status = '<span class="bg-green" style="padding: 5px;">Active</span>';
+                    //        Action = `<button type='button' class='btn-danger btn-sm btnCanCel' id='btnCanCel` + item.user_id + `' data-value='` + item.user_id + `' title='ยกเลิก'><i class='fas fa-trash-alt'></i></button>`;
+                    //    }
+                    //    else if (item.user_status == 'C') {
+                    //        Status = '<span class="bg-red" style="padding: 5px;">InActive</span>';
+                    //        Action = `<button type='button' class='btn-danger btn-sm btnCanCel' id='btnCanCel` + item.user_id + `' data-value='` + item.user_id + `' title='ยกเลิก' disabled><i class='fas fa-trash-alt'></i></button>`;
+                    //    }
+                    //    else if (item.user_status == 'N' && (item.user_role_id == "1" || item.user_role_id == "2" || item.user_role_id == "3")) {
+                    //        Status = '<span class="bg-blue" style="padding: 5px;">Panding</span>';
+                    //         Action = `<button type='button' class='btn-danger btn-sm btnCanCel' id='btnCanCel` + item.user_id + `' data-value='` + item.user_id + `' title='ยกเลิก'><i class='fas fa-trash-alt'></i></button>`;
+                    //    }
 
-                        if (item.user_role_id == '1') {
-                            ShowRole = '<span class="bg-green" style="padding: 5px;">Administrator</span>';
-                        }
-                        else if (item.user_role_id == '2') {
-                            ShowRole = '<span class="bg-blue" style="padding: 5px;">Customer</span>';
-                        }
-                        else {
-                            ShowRole = '<span class="bg-orange" style="padding: 5px;">Sale</span>';
-                        }
+                    //    if (item.user_role_id == '1') {
+                    //        ShowRole = '<span class="bg-green" style="padding: 5px;">Administrator</span>';
+                    //    }
+                    //    else if (item.user_role_id == '2') {
+                    //        ShowRole = '<span class="bg-blue" style="padding: 5px;">Customer</span>';
+                    //    }
+                    //    else {
+                    //        ShowRole = '<span class="bg-orange" style="padding: 5px;">Sale</span>';
+                    //    }
 
-                        tb.row.add([
-                            `<div class="text-center">
-                            <button type='button' class='btn-primary btn-sm btnEdit' id='btnEdit` + item.user_id + `' data-value='` + item.user_id + `' title='แก้ไข'><i class='fas fa-eye'></i></button>
-                            ${Action}</div>`,
-                            `<div class="text-center">${item.user_id}</div>`,
-                            `<div >${item.user_email}</div>`,
-                            `<div >${item.user_firstName}</div>`,
-                            `<div >${item.user_lastName}</div>`,
-                            `<div class="text-center">${ShowRole}</div>`,
-                            `<div class="text-center">${item.last_login}</div>`,
-                            `<div class="text-center">${Status}</div>`,
-                        ]).draw(false);
+                    //    tb.row.add([
+                    //        `<div class="text-center">
+                    //        <button type='button' class='btn-primary btn-sm btnEdit' id='btnEdit` + item.user_id + `' data-value='` + item.user_id + `' title='แก้ไข'><i class='fas fa-eye'></i></button>
+                    //        ${Action}</div>`,
+                    //        `<div class="text-center">${item.user_id}</div>`,
+                    //        `<div >${item.user_email}</div>`,
+                    //        `<div >${item.user_firstName}</div>`,
+                    //        `<div >${item.user_lastName}</div>`,
+                    //        `<div class="text-center">${ShowRole}</div>`,
+                    //        `<div class="text-center">${item.last_login}</div>`,
+                    //        `<div class="text-center">${Status}</div>`,
+                    //    ]).draw();
 
-                        Swal.close();
-                    });
+                    //    Swal.close();
+                    //});
                 } else {
                     Swal.fire(
                         "Found an Error", //title
@@ -518,6 +519,106 @@
                 }
 
             });
+    }
+
+    function createTable(data, type) {
+
+        $("#user-table").dataTable({
+            "destroy": true,
+            data: data,
+            "responsive": true,
+            "bLengthChange": true,
+            "bInfo": true,
+            "searching": true,
+            "bPaginate": true,
+            columns: [
+                {
+                    render: function (data, type, row, meta) {
+                        let Action = "";
+                        if (row.user_status == 'A') {
+                            Action = `<button type='button' class='btn-danger btn-sm btnCanCel' id='btnCanCel` + row.user_id + `' data-value='` + row.user_id + `' title='ยกเลิก'><i class='fas fa-trash-alt'></i></button>`;
+                        }
+                        else if (row.user_status == 'C') {
+                            Action = `<button type='button' class='btn-danger btn-sm btnCanCel' id='btnCanCel` + row.user_id + `' data-value='` + row.user_id + `' title='ยกเลิก' disabled><i class='fas fa-trash-alt'></i></button>`;
+                        }
+                        else if (row.user_status == 'N' && (row.user_role_id == "1" || row.user_role_id == "2" || row.user_role_id == "3")) {
+                            Action = `<button type='button' class='btn-danger btn-sm btnCanCel' id='btnCanCel` + row.user_id + `' data-value='` + row.user_id + `' title='ยกเลิก'><i class='fas fa-trash-alt'></i></button>`;
+                        }
+                        let chk = `<button type='button' class='btn-primary btn-sm btnEdit' id='btnEdit` + row.user_id + `' data-value='` + row.user_id + `' title='แก้ไข'><i class='fas fa-eye'></i></button> ${Action}`;
+
+                        return chk;  //" <td>" + chk + "</td>";
+                    },
+                    className: "text-center"
+                },
+                {
+                    render: function (data, type, row, meta) {
+                        return row.user_id
+                    },
+                    className: "text-center"
+                },
+                {
+                    render: function (data, type, row, meta) {
+                        return row.user_email
+                    },
+                    className: "text-center"
+                },
+                {
+                    render: function (data, type, row, meta) {
+                        return row.user_firstName
+                    },
+                    className: "text-center"
+                },
+                {
+                    render: function (data, type, row, meta) {
+                        return row.user_lastName
+                    },
+                    className: "text-center"
+                },
+                {
+                    render: function (data, type, row, meta) {
+                        let ShowRole;
+                        if (row.user_role_id == '1') {
+                            ShowRole = '<span class="bg-green" style="padding: 5px;">Administrator</span>';
+                        }
+                        else if (row.user_role_id == '2') {
+                            ShowRole = '<span class="bg-blue" style="padding: 5px;">Customer</span>';
+                        }
+                        else {
+                            ShowRole = '<span class="bg-orange" style="padding: 5px;">Sale</span>';
+                        }
+                        return ShowRole
+                    },
+                    className: "text-center"
+                },
+                {
+                    render: function (data, type, row, meta) {
+                        return row.last_login
+                    },
+                    className: "text-center"
+                },
+                {
+                    render: function (data, type, row, meta) {
+                        let Status = "";
+                        if (row.user_status == 'A') {
+                            Status = '<span class="bg-green" style="padding: 5px;">Active</span>';
+                        }
+                        else if (row.user_status == 'C') {
+                            Status = '<span class="bg-red" style="padding: 5px;">InActive</span>';
+                        }
+                        else if (row.user_status == 'N' && (row.user_role_id == "1" || row.user_role_id == "2" || row.user_role_id == "3")) {
+                            Status = '<span class="bg-blue" style="padding: 5px;">Panding</span>';
+                        }
+
+                        return Status
+                    },
+                    className: "text-center"
+                },
+
+            ],
+            pageLength: 10
+        });
+
+        Swal.close();
     }
 
     $('.close').click(() => {

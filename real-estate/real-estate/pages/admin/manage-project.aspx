@@ -111,7 +111,7 @@
                                         <th>ขนาดพื้นที่แปลน</th>
                                         <th>รหัสโครงการ</th>
                                         <th>ชื่อโครงการ</th>
-                                       <!-- <th>จำนวนยูนิต</th> -->
+                                        <!-- <th>จำนวนยูนิต</th> -->
                                         <th>ราคา</th>
                                         <th style="width: 80px;">วันเดือนปีที่เปิดขาย</th>
                                         <th class="text-center">ผู้เข้าชม</th>
@@ -238,7 +238,7 @@
                                                 <input type="text" id="plan_name" placeholder=" " class="setting-form" value="" readonly="true" />
                                             </div>
                                         </div>
-                                        
+
                                         <div class="row">
                                             <div class="col-lg-6">
                                                 <div class="inputText setting-font">ราคา</div>
@@ -249,7 +249,7 @@
                                                 <input type="text" id="plan_useable_area" placeholder=" " class="setting-form" value="" readonly="true" />
                                             </div>
                                         </div>
-                                             <div class="row">
+                                        <div class="row">
                                             <div class="col-lg-6">
                                                 <div class="inputText setting-font">ห้องนอน</div>
                                                 <input type="text" id="plan_bed_room" placeholder=" " class="setting-form" value="" readonly="true" />
@@ -307,9 +307,9 @@
         });
     });
 
-    $(document).on("click", "#trPro", function () {
-        loadProject();
-    });
+    //$(document).on("click", "#trPro", function () {
+    //    loadProject();
+    //});
 
 
     $(document).on("click", ".btnEdit", function () {
@@ -343,10 +343,10 @@
                     $("#pro_type_name").val(Sdata[0].pro_type_name);
                     $("#pro_unit").val(Sdata[0].pro_unit);
 
-                     $('#plan_name').val(Sdata[0].plan_name);
+                    $('#plan_name').val(Sdata[0].plan_name);
                     $("#plan_type_id").val(Sdata[0].plan_type_id);
                     $("#plan_useable_area").val(Sdata[0].plan_useable_area);
-                     $('#plan_price').val(Sdata[0].plan_price);
+                    $('#plan_price').val(Sdata[0].plan_price);
                     $("#plan_bed_room").val(Sdata[0].plan_bed_room);
                     $("#plan_bath_room").val(Sdata[0].plan_bath_room);
 
@@ -467,48 +467,50 @@
         $.get("../../api/findProject", { jsonData: jsonData, types: "AdminProject", username: userData[0].user_id })
             .done(function (data) {
                 Sdata = JSON.parse(data);
-                //console.log(Sdata);
+                console.log(Sdata);
                 if (Sdata.length > 0) {
-                    Sdata.forEach((item, rows) => {
-                        let Status = "";
-                        let Cancel = "";
-                        let Approve = "";
 
-                        if (item.plan_status == 'A') {
-                            Status = '<span class="bg-green" style="padding: 5px;">On Sold</span>';
-                            Cancel = `<button type='button' class='btn-danger btn-sm btnCanCel' id='btnCanCel` + item.plan_type_id + `' data-value='` + item.plan_type_id + `' title='ยกเลิก' disabled><i class='fas fa-trash-alt'></i></button>`;
-                            Approve = `<button type='button' class='btn-success btn-sm btnApprove' id='btnApprove` + item.plan_type_id + `' data-value='` + item.plan_type_id + `' title='อนุมัติขายแล้ว' disabled><i class="fas fa-check"></i></button>`;
-                        }
-                        else if (item.plan_status == 'C') {
-                            Status = '<span class="bg-red" style="padding: 5px;">Cancel</span>';
-                            Cancel = `<button type='button' class='btn-danger btn-sm btnCanCel' id='btnCanCel` + item.plan_type_id + `' data-value='` + item.plan_type_id + `' title='ยกเลิก' disabled><i class='fas fa-trash-alt'></i></button>`;
-                            Approve = `<button type='button' class='btn-success btn-sm btnApprove' id='btnApprove` + item.plan_type_id + `' data-value='` + item.plan_type_id + `' title='อนุมัติขายแล้ว' disabled><i class="fas fa-check"></i></button>`;
-                        }
-                        else if (item.plan_status == 'N') {
-                            Status = '<span class="bg-blue" style="padding: 5px;">On Sale</span>';
-                            Approve = `<button type='button' class='btn-success btn-sm btnApprove' id='btnApprove` + item.plan_type_id + `' data-value='` + item.plan_type_id + `' title='อนุมัติขายแล้ว'><i class="fas fa-check"></i></button>`;
-                            Cancel = `<button type='button' class='btn-danger btn-sm btnCanCel' id='btnCanCel` + item.plan_type_id + `' data-value='` + item.plan_type_id + `' title='ยกเลิก'><i class='fas fa-trash-alt'></i></button>`;
-                        }
+                    createTable(Sdata, "");
+                    //Sdata.forEach((item, rows) => {
+                    //    let Status = "";
+                    //    let Cancel = "";
+                    //    let Approve = "";
 
-                        tb.row.add([
-                            `<div class="text-center">
-                            <button type='button' class='btn-primary btn-sm btnEdit' id='btnEdit` + item.plan_type_id + `' data-value='` + item.plan_type_id + `' title='ดูรายละเอียด'><i class='fas fa-eye'></i></button>
-                            ${Cancel} ${Approve}</div>`,
-                            `<div class="text-center"><img src='../../image/project/${item.plan_image_profile}' id="news_image" alt="Image" style='width:80px;height:60px' /></div>`,
-                            `<div class="text-center">${item.plan_type_id}</div>`,
-                            `<div >${item.plan_name}</div>`,
-                            `<div >${item.plan_useable_area}</div>`,
-                            `<div >${item.pro_id}</div>`,
-                            `<div >${item.pro_name}</div>`,
-                            //`<div >${item.pro_unit}</div>`,
-                            `<div class="text-center">${money_format(item.plan_price)}</div >`,
-                            `<div >${nowDateString(item.pro_opening_date)}</div >`,
-                            `<div class="text-center">${item.plan_view}</div>`,
-                            `<div class="text-center">${Status}</div>`,
-                        ]).draw(false);
+                    //    if (item.plan_status == 'A') {
+                    //        Status = '<span class="bg-green" style="padding: 5px;">On Sold</span>';
+                    //        Cancel = `<button type='button' class='btn-danger btn-sm btnCanCel' id='btnCanCel` + item.plan_type_id + `' data-value='` + item.plan_type_id + `' title='ยกเลิก' disabled><i class='fas fa-trash-alt'></i></button>`;
+                    //        Approve = `<button type='button' class='btn-success btn-sm btnApprove' id='btnApprove` + item.plan_type_id + `' data-value='` + item.plan_type_id + `' title='อนุมัติขายแล้ว' disabled><i class="fas fa-check"></i></button>`;
+                    //    }
+                    //    else if (item.plan_status == 'C') {
+                    //        Status = '<span class="bg-red" style="padding: 5px;">Cancel</span>';
+                    //        Cancel = `<button type='button' class='btn-danger btn-sm btnCanCel' id='btnCanCel` + item.plan_type_id + `' data-value='` + item.plan_type_id + `' title='ยกเลิก' disabled><i class='fas fa-trash-alt'></i></button>`;
+                    //        Approve = `<button type='button' class='btn-success btn-sm btnApprove' id='btnApprove` + item.plan_type_id + `' data-value='` + item.plan_type_id + `' title='อนุมัติขายแล้ว' disabled><i class="fas fa-check"></i></button>`;
+                    //    }
+                    //    else if (item.plan_status == 'N') {
+                    //        Status = '<span class="bg-blue" style="padding: 5px;">On Sale</span>';
+                    //        Approve = `<button type='button' class='btn-success btn-sm btnApprove' id='btnApprove` + item.plan_type_id + `' data-value='` + item.plan_type_id + `' title='อนุมัติขายแล้ว'><i class="fas fa-check"></i></button>`;
+                    //        Cancel = `<button type='button' class='btn-danger btn-sm btnCanCel' id='btnCanCel` + item.plan_type_id + `' data-value='` + item.plan_type_id + `' title='ยกเลิก'><i class='fas fa-trash-alt'></i></button>`;
+                    //    }
 
-                        Swal.close();
-                    });
+                    //    tb.row.add([
+                    //        `<div class="text-center">
+                    //        <button type='button' class='btn-primary btn-sm btnEdit' id='btnEdit` + item.plan_type_id + `' data-value='` + item.plan_type_id + `' title='ดูรายละเอียด'><i class='fas fa-eye'></i></button>
+                    //        ${Cancel} ${Approve}</div>`,
+                    //        `<div class="text-center"><img src='../../image/project/${item.plan_image_profile}' id="news_image" alt="Image" style='width:80px;height:60px' /></div>`,
+                    //        `<div class="text-center">${item.plan_type_id}</div>`,
+                    //        `<div >${item.plan_name}</div>`,
+                    //        `<div >${item.plan_useable_area}</div>`,
+                    //        `<div >${item.pro_id}</div>`,
+                    //        `<div >${item.pro_name}</div>`,
+                    //        //`<div >${item.pro_unit}</div>`,
+                    //        `<div class="text-center">${money_format(item.plan_price)}</div >`,
+                    //        `<div >${nowDateString(item.pro_opening_date)}</div >`,
+                    //        `<div class="text-center">${item.plan_view}</div>`,
+                    //        `<div class="text-center">${Status}</div>`,
+                    //    ]).draw(false);
+
+                    //    Swal.close();
+                    //});
                 } else {
                     Swal.fire(
                         "Found an Error", //title
@@ -518,6 +520,125 @@
                 }
 
             });
+    }
+
+    function createTable(data, type) {
+
+        $("#pro-table").dataTable({
+            "destroy": true,
+            data: data,
+            "responsive": true,
+            "bLengthChange": true,
+            "bInfo": true,
+            "searching": true,
+            "bPaginate": true,
+            columns: [
+                {
+                    render: function (data, type, row, meta) {
+                        let Cancel = "";
+                        let Approve = "";
+
+                        if (row.plan_status == 'A') {
+                            Cancel = `<button type='button' class='btn-danger btn-sm btnCanCel' id='btnCanCel` + row.plan_type_id + `' data-value='` + row.plan_type_id + `' title='ยกเลิก' disabled><i class='fas fa-trash-alt'></i></button>`;
+                            Approve = `<button type='button' class='btn-success btn-sm btnApprove' id='btnApprove` + row.plan_type_id + `' data-value='` + row.plan_type_id + `' title='อนุมัติขายแล้ว' disabled><i class="fas fa-check"></i></button>`;
+                        }
+                        else if (row.plan_status == 'C') {
+                            Cancel = `<button type='button' class='btn-danger btn-sm btnCanCel' id='btnCanCel` + row.plan_type_id + `' data-value='` + row.plan_type_id + `' title='ยกเลิก' disabled><i class='fas fa-trash-alt'></i></button>`;
+                            Approve = `<button type='button' class='btn-success btn-sm btnApprove' id='btnApprove` + row.plan_type_id + `' data-value='` + row.plan_type_id + `' title='อนุมัติขายแล้ว' disabled><i class="fas fa-check"></i></button>`;
+                        }
+                        else if (row.plan_status == 'N') {
+                            Cancel = `<button type='button' class='btn-danger btn-sm btnCanCel' id='btnCanCel` + row.plan_type_id + `' data-value='` + row.plan_type_id + `' title='ยกเลิก'><i class='fas fa-trash-alt'></i></button>`;
+                            Approve = `<button type='button' class='btn-success btn-sm btnApprove' id='btnApprove` + row.plan_type_id + `' data-value='` + row.plan_type_id + `' title='อนุมัติขายแล้ว'><i class="fas fa-check"></i></button>`;
+                        }
+                        let chk = `<button type='button' class='btn-primary btn-sm btnEdit' id='btnEdit` + row.plan_type_id + `' data-value='` + row.plan_type_id + `' title='ดูรายละเอียด'><i class='fas fa-eye'></i></button> ${Cancel} ${Approve}`;
+
+                        return chk;  //" <td>" + chk + "</td>";
+                    },
+                    className: "text-center"
+                },
+                {
+                    render: function (data, type, row, meta) {
+                        let imgp = `<img src='../../image/project/` + row.plan_image_profile + `' id="news_image" alt="Image" style='width:80px;height:60px' />`;
+                        return imgp
+                    },
+
+                    className: "text-center"
+                },
+                {
+                    render: function (data, type, row, meta) {
+                        return row.plan_type_id
+                    },
+                    //className: "text-center"
+                },
+                 {
+                    render: function (data, type, row, meta) {
+                       return row.plan_name
+                    },
+
+                    //className: "text-center"
+                },
+                {
+                    render: function (data, type, row, meta) {
+                        return row.plan_useable_area
+                    },
+                    className: "text-center"
+                },
+                {
+                    render: function (data, type, row, meta) {
+                        return row.pro_id
+                    },
+                    //className: "text-center"
+                },
+                {
+                    render: function (data, type, row, meta) {
+                        return row.pro_name
+                    },
+                    //className: "text-center"
+                },
+                {
+                    render: function (data, type, row, meta) {
+                        return money_format(row.plan_price)
+                    },
+                    className: "text-center"
+                },
+
+                {
+                    render: function (data, type, row, meta) {
+                        return dateFormat(row.pro_opening_date)
+                    },
+                    className: "text-center"
+                },
+                {
+                    render: function (data, type, row, meta) {
+                        return row.plan_view
+                    },
+                    className: "text-center"
+                },
+                {
+                    render: function (data, type, row, meta) {
+                        let Status;
+                        if (row.plan_status == 'A') {
+                            Status = '<span class="bg-green" style="padding: 5px;">On Sold</span>';
+
+                        }
+                        else if (row.plan_status == 'C') {
+                            Status = '<span class="bg-red" style="padding: 5px;">Cancel</span>';
+
+                        }
+                        else if (row.plan_status == 'N') {
+                            Status = '<span class="bg-blue" style="padding: 5px;">On Sale</span>';
+
+                        }
+                        return Status
+                    },
+                    className: "text-center"
+                }
+
+            ],
+            pageLength: 10
+        });
+
+        Swal.close();
     }
 
     $('.close').click(() => {
