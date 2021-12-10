@@ -227,7 +227,7 @@
 
                                                                 <div class="col-lg-6">
                                                                     <div class="inputText setting-font">อำเภอ/เขต</div>
-                                                                    <select id="drdwDistrict" class="w-100 setting-form" onchange="drdwDistrictChange(this.value)">
+                                                                    <select id="drdwDistrict" class="w-100 setting-form ignore" onchange="drdwDistrictChange(this.value)">
                                                                         <option value="">-- เลือกอำเภอ/เขต --</option>
 
                                                                     </select>
@@ -371,6 +371,7 @@
         var jsonData = JSON.stringify({
             user_id: uid
         });
+        $('select').niceSelect();
 
         $.get("../../api/userData", { jsonData: jsonData, types: "list_customer", username: profiles[0].user_id })
             .done(function (data) {
@@ -378,9 +379,18 @@
 
                 if (Sdata.length > 0) {
                     console.log(Sdata);
+                    if (Sdata[0].cus_province_id != "") {
+                        drdwProvinceChange(Sdata[0].cus_province_id);
+                        $('#drdwDistrict').val(Sdata[0].cus_district_id);
+                    }
+                      if (Sdata[0].cus_district_id != "") {
+                          drdwDistrictChange(Sdata[0].cus_district_id);
+                           $('#drdwSubDistrict').val(Sdata[0].cus_sub_district_id);
+                    }
+
                     $('#cus_address').val(Sdata[0].cus_address);
-                    $('#drdwSubDistrict').val(Sdata[0].cus_sub_district_id);
-                    $('#drdwDistrict').val(Sdata[0].cus_district_id);
+                   
+                    
                     $('#drdwProvince').val(Sdata[0].cus_province_id);
                     $("#cus_postal_code").val(Sdata[0].cus_postal_code);
 
@@ -391,14 +401,34 @@
                     $('#cus_home_postal_code').val(Sdata[0].cus_home_postal_code);
 
                     $('#drdwProvince').niceSelect('update');
+                     $('#drdwSubDistrict').niceSelect();
+                     $('#drdwSubDistrict').niceSelect();
+                    $('#drdwProvinceHome').niceSelect('update');
+                    $('#drdwSubDistrictHome').niceSelect('update');
+                    $('#drdwDistrictHome').niceSelect('update');
+
+              
+              
+                }
+                else {
+                    $('#cus_address').val("");
+                    $('#drdwSubDistrict').val("");
+                    $('#drdwDistrict').val("");
+                    $('#drdwProvince').val("");
+                    $("#cus_postal_code").val("");
+
+                    $("#cus_home_address").val("");
+                    $("#drdwSubDistrictHome").val("");
+                    $("#drdwDistrictHome").val("");
+                    $("#drdwProvinceHome").val("");
+                    $('#cus_home_postal_code').val("");
+
+                    $('#drdwProvince').niceSelect('update');
                     $('#drdwSubDistrict').niceSelect('update');
                     $('#drdwDistrict').niceSelect('update');
                     $('#drdwProvinceHome').niceSelect('update');
                     $('#drdwSubDistrictHome').niceSelect('update');
                     $('#drdwDistrictHome').niceSelect('update');
-                }
-                else {
-
                 }
             });
     }

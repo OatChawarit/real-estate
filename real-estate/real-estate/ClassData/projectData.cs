@@ -76,7 +76,7 @@ namespace real_estate.ClassData
             sqltext += " , PJL.plan_multiFunction_room ";
             sqltext += " , PJL.plan_parking ";
             sqltext += " , PJL.plan_price ";
-            sqltext += " , pS.pro_statusType_name ";
+            sqltext += " , PJ.pro_statusType_id, pS.pro_statusType_name ";
             sqltext += " , s.sale_firstName +' '+ s.sale_lastName as sale_fullName ";
             sqltext += " , s.sale_phone ";
             sqltext += " , s.sale_company "; 
@@ -99,13 +99,21 @@ namespace real_estate.ClassData
                     str.AppendLine("<div class='col-lg-12'>");
                     str.AppendLine("<div class='ltn__product-item ltn__product-item-4'>");
                     str.AppendLine("<div class='product-img'><a href='../project/project-details.aspx?id=" + dr["plan_type_id"].ToString() + "'><img src='../../image/project/" + dr["plan_image_profile"].ToString() + "' alt='" + dr["plan_type_id"].ToString() + "' /></a>");
-                    if (dr["pro_statusType_name"].ToString() == "โครงการพร้อมอยู่")
+                    if (dr["pro_statusType_id"].ToString() == "1")
+                    {
+                        str.AppendLine("<div class='product-badge'><ul><li class='sale-badge'>" + dr["pro_statusType_name"].ToString() + "</li></ul></div>");
+                    }
+                    else if (dr["pro_statusType_id"].ToString() == "2")
+                    {
+                        str.AppendLine("<div class='product-badge'><ul><li class='sale-badge bg-blue'>" + dr["pro_statusType_name"].ToString() + "</li></ul></div>");
+                    }
+                    else if(dr["pro_statusType_id"].ToString() == "3")
                     {
                         str.AppendLine("<div class='product-badge'><ul><li class='sale-badge bg-green'>" + dr["pro_statusType_name"].ToString() + "</li></ul></div>");
                     }
                     else
                     {
-                        str.AppendLine("<div class='product-badge'><ul><li class='sale-badge'>" + dr["pro_statusType_name"].ToString() + "</li></ul></div>");
+                        str.AppendLine("<div class='product-badge'><ul><li class='sale-badge bg-red'>" + dr["pro_statusType_name"].ToString() + "</li></ul></div>");
                     }
                     str.AppendLine("<div class='product-img-location-gallery'><div class=''><ul><li><h5 style='color:#fff;'><i class='fas fa-eye'></i> " + dr["plan_view"].ToString() + "</h5></li></ul></div></div></div>");
                     str.AppendLine("<div class='product-info'><div class='product-price'><span>" + Convert.ToDouble(dr["plan_price"].ToString()).ToString("N2") + "<label>&nbsp;/บาท</label></span></div>");
